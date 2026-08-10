@@ -1,0 +1,18 @@
+# pub.dev automated publishing (OIDC). Prerequisite: the FIRST version must be
+# published manually (dart pub publish locally), then enable automated
+# publishing for github.com/scrape-badger/scrapebadger-dart on pub.dev.
+name: Release
+on:
+  push:
+    tags: ["v[0-9]+.[0-9]+.[0-9]+"]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - run: dart pub get
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: dart pub publish --force
