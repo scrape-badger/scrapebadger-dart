@@ -1,3 +1,51 @@
+# ScrapeBadger Dart SDK
+
+[![version](https://img.shields.io/pub/v/scrapebadger)](https://pub.dev/packages/scrapebadger) [![CI](https://img.shields.io/github/actions/workflow/status/scrape-badger/scrapebadger-dart/ci.yml?label=CI)](https://github.com/scrape-badger/scrapebadger-dart/actions) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+Official **Dart** SDK for [ScrapeBadger](https://scrapebadger.com) — one API key for
+30+ scraping APIs: Twitter/X, Reddit, Facebook, Instagram, TikTok, YouTube, Amazon, eBay,
+Walmart, Vinted, Google (18 products), Bing, Yahoo, ChatGPT, Perplexity, real estate, and
+any URL via the general Web Scraping API. Generated from the ScrapeBadger OpenAPI spec —
+always in sync with the API. ⚠️ This repository is regenerated automatically; don't send
+PRs here, request changes via the [roadmap](https://github.com/scrape-badger/roadmap).
+
+📚 [API docs](https://docs.scrapebadger.com) · 🧰 [All SDKs](https://scrapebadger.com/sdks) · 🔑 [Get an API key](https://scrapebadger.com/auth/signup) — 1,000 free credits
+
+## 🚀 Install
+
+```
+dart pub add scrapebadger
+```
+
+## ⚡ Quick start
+
+```dart
+import 'package:scrapebadger/scrapebadger.dart';
+
+Future<void> main() async {
+  final sb = Scrapebadger();
+  sb.dio.options.headers['X-API-Key'] = 'YOUR_API_KEY';
+
+  final twitter = sb.getTwitterApi();
+  final user = await twitter.twitterGetUserByUsername(username: 'elonmusk');
+  print(user.data);
+}
+```
+
+Every scraper is available as its own API class (`TwitterApi`, `AmazonApi`, `GoogleApi`, …)
+with one method per endpoint — the full list is in the reference below.
+
+## 🛠 Development
+
+```sh
+dart pub get                                        # deps
+dart run build_runner build --delete-conflicting-outputs   # codegen
+dart analyze                                        # lint
+dart test                                           # tests
+```
+
+---
+
 # scrapebadger (EXPERIMENTAL)
 Unified credit-based scraping API. https://docs.scrapebadger.com
 
