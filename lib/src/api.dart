@@ -12,6 +12,7 @@ import 'package:scrapebadger/src/auth/oauth.dart';
 import 'package:scrapebadger/src/api/account_api.dart';
 import 'package:scrapebadger/src/api/amazon_api.dart';
 import 'package:scrapebadger/src/api/apartments_api.dart';
+import 'package:scrapebadger/src/api/app_store_api.dart';
 import 'package:scrapebadger/src/api/baidu_api.dart';
 import 'package:scrapebadger/src/api/bing_api.dart';
 import 'package:scrapebadger/src/api/chat_gpt_api.dart';
@@ -21,6 +22,7 @@ import 'package:scrapebadger/src/api/e_bay_api.dart';
 import 'package:scrapebadger/src/api/facebook_api.dart';
 import 'package:scrapebadger/src/api/gemini_api.dart';
 import 'package:scrapebadger/src/api/google_api.dart';
+import 'package:scrapebadger/src/api/google_play_api.dart';
 import 'package:scrapebadger/src/api/idealista_api.dart';
 import 'package:scrapebadger/src/api/immobiliare_api.dart';
 import 'package:scrapebadger/src/api/instagram_api.dart';
@@ -113,6 +115,12 @@ class Scrapebadger {
     return ApartmentsApi(dio, serializers);
   }
 
+  /// Get AppStoreApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  AppStoreApi getAppStoreApi() {
+    return AppStoreApi(dio, serializers);
+  }
+
   /// Get BaiduApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   BaiduApi getBaiduApi() {
@@ -165,6 +173,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   GoogleApi getGoogleApi() {
     return GoogleApi(dio, serializers);
+  }
+
+  /// Get GooglePlayApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  GooglePlayApi getGooglePlayApi() {
+    return GooglePlayApi(dio, serializers);
   }
 
   /// Get IdealistaApi instance, base route and serializer can be overridden by a given but be careful,

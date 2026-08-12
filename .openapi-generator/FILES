@@ -6,6 +6,7 @@ doc/AccountApi.md
 doc/AccountInfo.md
 doc/AmazonApi.md
 doc/ApartmentsApi.md
+doc/AppStoreApi.md
 doc/BaiduApi.md
 doc/BillingLogListResponse.md
 doc/BillingLogResponse.md
@@ -25,6 +26,7 @@ doc/FilterRuleValidateRequest.md
 doc/FilterRuleValidateResponse.md
 doc/GeminiApi.md
 doc/GoogleApi.md
+doc/GooglePlayApi.md
 doc/HTTPValidationError.md
 doc/IdealistaApi.md
 doc/ImmobiliareApi.md
@@ -66,6 +68,7 @@ lib/src/api.dart
 lib/src/api/account_api.dart
 lib/src/api/amazon_api.dart
 lib/src/api/apartments_api.dart
+lib/src/api/app_store_api.dart
 lib/src/api/baidu_api.dart
 lib/src/api/bing_api.dart
 lib/src/api/chat_gpt_api.dart
@@ -75,6 +78,7 @@ lib/src/api/e_bay_api.dart
 lib/src/api/facebook_api.dart
 lib/src/api/gemini_api.dart
 lib/src/api/google_api.dart
+lib/src/api/google_play_api.dart
 lib/src/api/idealista_api.dart
 lib/src/api/immobiliare_api.dart
 lib/src/api/instagram_api.dart
@@ -136,6 +140,7 @@ test/account_api_test.dart
 test/account_info_test.dart
 test/amazon_api_test.dart
 test/apartments_api_test.dart
+test/app_store_api_test.dart
 test/baidu_api_test.dart
 test/billing_log_list_response_test.dart
 test/billing_log_response_test.dart
@@ -155,6 +160,7 @@ test/filter_rule_validate_request_test.dart
 test/filter_rule_validate_response_test.dart
 test/gemini_api_test.dart
 test/google_api_test.dart
+test/google_play_api_test.dart
 test/http_validation_error_test.dart
 test/idealista_api_test.dart
 test/immobiliare_api_test.dart
