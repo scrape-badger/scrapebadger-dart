@@ -25,11 +25,20 @@ void main() {
       // TODO
     });
 
+    // Get advertiser page info
+    //
+    // Get advertiser page info: category, followers, page transparency (creation date, name history, managing organization, admin-account locations), related pages, and ad spend (for political/issue advertisers).
+    //
+    //Future<JsonObject> facebookGetAdvertiserPageInfo(String pageId, { String country }) async
+    test('test facebookGetAdvertiserPageInfo', () async {
+      // TODO
+    });
+
     // Get an ad
     //
-    // Get a single Ad Library ad by its archive id.
+    // Get a single Ad Library ad by its archive id. For EU/UK-targeted ads the response also includes transparency insights (payer/beneficiary, total EU reach, and age/gender/country reach breakdowns).
     //
-    //Future<JsonObject> facebookGetAnAd(String adArchiveId) async
+    //Future<JsonObject> facebookGetAnAd(String adArchiveId, { String country }) async
     test('test facebookGetAnAd', () async {
       // TODO
     });
@@ -121,6 +130,15 @@ void main() {
     //
     //Future<JsonObject> facebookListLocations() async
     test('test facebookListLocations', () async {
+      // TODO
+    });
+
+    // Search advertiser pages
+    //
+    // Search advertiser Pages in the Ad Library — returns page ids, categories, likes/followers, verification and Instagram handles.
+    //
+    //Future<JsonObject> facebookSearchAdvertiserPages(String query, { String country }) async
+    test('test facebookSearchAdvertiserPages', () async {
       // TODO
     });
 

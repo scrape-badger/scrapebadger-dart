@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**facebookBrowseAMarketplaceCategory**](FacebookApi.md#facebookbrowseamarketplacecategory) | **GET** /v1/facebook/marketplace/category/{category} | Browse a Marketplace category
 [**facebookGetAMarketplaceItem**](FacebookApi.md#facebookgetamarketplaceitem) | **GET** /v1/facebook/marketplace/item/{item_id} | Get a Marketplace item
+[**facebookGetAdvertiserPageInfo**](FacebookApi.md#facebookgetadvertiserpageinfo) | **GET** /v1/facebook/ads/pages/{page_id} | Get advertiser page info
 [**facebookGetAnAd**](FacebookApi.md#facebookgetanad) | **GET** /v1/facebook/ads/{ad_archive_id} | Get an ad
 [**facebookGetGroupDetail**](FacebookApi.md#facebookgetgroupdetail) | **GET** /v1/facebook/groups/{group_id} | Get group detail
 [**facebookGetGroupPosts**](FacebookApi.md#facebookgetgroupposts) | **GET** /v1/facebook/groups/{group_id}/posts | Get group posts
@@ -22,6 +23,7 @@ Method | HTTP request | Description
 [**facebookGetProfilePosts**](FacebookApi.md#facebookgetprofileposts) | **GET** /v1/facebook/profiles/{identifier}/posts | Get profile posts
 [**facebookListCategories**](FacebookApi.md#facebooklistcategories) | **GET** /v1/facebook/marketplace/categories | List categories
 [**facebookListLocations**](FacebookApi.md#facebooklistlocations) | **GET** /v1/facebook/marketplace/locations | List locations
+[**facebookSearchAdvertiserPages**](FacebookApi.md#facebooksearchadvertiserpages) | **GET** /v1/facebook/ads/pages/search | Search advertiser pages
 [**facebookSearchEvents**](FacebookApi.md#facebooksearchevents) | **GET** /v1/facebook/search/events | Search events
 [**facebookSearchEverything**](FacebookApi.md#facebooksearcheverything) | **GET** /v1/facebook/search | Search everything
 [**facebookSearchGroups**](FacebookApi.md#facebooksearchgroups) | **GET** /v1/facebook/search/groups | Search groups
@@ -137,12 +139,61 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **facebookGetAdvertiserPageInfo**
+> JsonObject facebookGetAdvertiserPageInfo(pageId, country)
+
+Get advertiser page info
+
+Get advertiser page info: category, followers, page transparency (creation date, name history, managing organization, admin-account locations), related pages, and ad spend (for political/issue advertisers).
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getFacebookApi();
+final String pageId = pageId_example; // String | 
+final String country = country_example; // String | 
+
+try {
+    final response = api.facebookGetAdvertiserPageInfo(pageId, country);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling FacebookApi->facebookGetAdvertiserPageInfo: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageId** | **String**|  | 
+ **country** | **String**|  | [optional] [default to 'US']
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **facebookGetAnAd**
-> JsonObject facebookGetAnAd(adArchiveId)
+> JsonObject facebookGetAnAd(adArchiveId, country)
 
 Get an ad
 
-Get a single Ad Library ad by its archive id.
+Get a single Ad Library ad by its archive id. For EU/UK-targeted ads the response also includes transparency insights (payer/beneficiary, total EU reach, and age/gender/country reach breakdowns).
 
 ### Example
 ```dart
@@ -154,9 +205,10 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getFacebookApi();
 final String adArchiveId = adArchiveId_example; // String | 
+final String country = country_example; // String | ISO country code (an EU code returns EU transparency)
 
 try {
-    final response = api.facebookGetAnAd(adArchiveId);
+    final response = api.facebookGetAnAd(adArchiveId, country);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling FacebookApi->facebookGetAnAd: $e\n');
@@ -168,6 +220,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adArchiveId** | **String**|  | 
+ **country** | **String**| ISO country code (an EU code returns EU transparency) | [optional] [default to 'US']
 
 ### Return type
 
@@ -640,6 +693,55 @@ try {
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **facebookSearchAdvertiserPages**
+> JsonObject facebookSearchAdvertiserPages(query, country)
+
+Search advertiser pages
+
+Search advertiser Pages in the Ad Library — returns page ids, categories, likes/followers, verification and Instagram handles.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getFacebookApi();
+final String query = query_example; // String | Advertiser name or keyword
+final String country = country_example; // String | 
+
+try {
+    final response = api.facebookSearchAdvertiserPages(query, country);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling FacebookApi->facebookSearchAdvertiserPages: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **query** | **String**| Advertiser name or keyword | 
+ **country** | **String**|  | [optional] [default to 'US']
 
 ### Return type
 
