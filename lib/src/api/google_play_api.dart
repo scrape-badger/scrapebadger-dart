@@ -27,6 +27,7 @@ class GooglePlayApi {
   /// * [categoryId] - Play category id, e.g. 'GAME_PUZZLE' or 'SOCIAL'
   /// * [country] - Play storefront country (gl), ISO 3166-1 alpha-2, e.g. 'US'
   /// * [lang] - Play content language (hl), e.g. 'en' or 'pt-BR'
+  /// * [num_] - Max apps; follows each rail's 'see more' continuation above the ~40-120 the page renders directly
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -40,6 +41,7 @@ class GooglePlayApi {
     required String categoryId,
     String? country = 'US',
     String? lang = 'en',
+    int? num_ = 100,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -70,6 +72,7 @@ class GooglePlayApi {
     final _queryParameters = <String, dynamic>{
       if (country != null) r'country': encodeQueryParameter(_serializers, country, const FullType(String)),
       if (lang != null) r'lang': encodeQueryParameter(_serializers, lang, const FullType(String)),
+      if (num_ != null) r'num': encodeQueryParameter(_serializers, num_, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -401,6 +404,7 @@ class GooglePlayApi {
   /// * [developer] - Developer name or numeric id
   /// * [country] - Play storefront country (gl), ISO 3166-1 alpha-2, e.g. 'US'
   /// * [lang] - Play content language (hl), e.g. 'en' or 'pt-BR'
+  /// * [num_] - Max apps; follows rail continuations above the page's directly-rendered slice
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -414,6 +418,7 @@ class GooglePlayApi {
     required String developer,
     String? country = 'US',
     String? lang = 'en',
+    int? num_ = 100,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -444,6 +449,7 @@ class GooglePlayApi {
     final _queryParameters = <String, dynamic>{
       if (country != null) r'country': encodeQueryParameter(_serializers, country, const FullType(String)),
       if (lang != null) r'lang': encodeQueryParameter(_serializers, lang, const FullType(String)),
+      if (num_ != null) r'num': encodeQueryParameter(_serializers, num_, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(

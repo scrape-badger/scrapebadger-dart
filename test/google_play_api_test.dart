@@ -11,7 +11,7 @@ void main() {
     //
     // The top apps within a Play category.
     //
-    //Future<JsonObject> googlePlayBrowseACategory(String categoryId, { String country, String lang }) async
+    //Future<JsonObject> googlePlayBrowseACategory(String categoryId, { String country, String lang, int num_ }) async
     test('test googlePlayBrowseACategory', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // A developer's published apps.
     //
-    //Future<JsonObject> googlePlayGetDeveloperApps(String developer, { String country, String lang }) async
+    //Future<JsonObject> googlePlayGetDeveloperApps(String developer, { String country, String lang, int num_ }) async
     test('test googlePlayGetDeveloperApps', () async {
       // TODO
     });

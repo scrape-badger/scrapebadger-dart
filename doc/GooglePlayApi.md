@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 
 # **googlePlayBrowseACategory**
-> JsonObject googlePlayBrowseACategory(categoryId, country, lang)
+> JsonObject googlePlayBrowseACategory(categoryId, country, lang, num_)
 
 Browse a category
 
@@ -40,9 +40,10 @@ final api = Scrapebadger().getGooglePlayApi();
 final String categoryId = categoryId_example; // String | Play category id, e.g. 'GAME_PUZZLE' or 'SOCIAL'
 final String country = country_example; // String | Play storefront country (gl), ISO 3166-1 alpha-2, e.g. 'US'
 final String lang = lang_example; // String | Play content language (hl), e.g. 'en' or 'pt-BR'
+final int num_ = 56; // int | Max apps; follows each rail's 'see more' continuation above the ~40-120 the page renders directly
 
 try {
-    final response = api.googlePlayBrowseACategory(categoryId, country, lang);
+    final response = api.googlePlayBrowseACategory(categoryId, country, lang, num_);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling GooglePlayApi->googlePlayBrowseACategory: $e\n');
@@ -56,6 +57,7 @@ Name | Type | Description  | Notes
  **categoryId** | **String**| Play category id, e.g. 'GAME_PUZZLE' or 'SOCIAL' | 
  **country** | **String**| Play storefront country (gl), ISO 3166-1 alpha-2, e.g. 'US' | [optional] [default to 'US']
  **lang** | **String**| Play content language (hl), e.g. 'en' or 'pt-BR' | [optional] [default to 'en']
+ **num_** | **int**| Max apps; follows each rail's 'see more' continuation above the ~40-120 the page renders directly | [optional] [default to 100]
 
 ### Return type
 
@@ -230,7 +232,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **googlePlayGetDeveloperApps**
-> JsonObject googlePlayGetDeveloperApps(developer, country, lang)
+> JsonObject googlePlayGetDeveloperApps(developer, country, lang, num_)
 
 Get developer apps
 
@@ -248,9 +250,10 @@ final api = Scrapebadger().getGooglePlayApi();
 final String developer = developer_example; // String | Developer name or numeric id
 final String country = country_example; // String | Play storefront country (gl), ISO 3166-1 alpha-2, e.g. 'US'
 final String lang = lang_example; // String | Play content language (hl), e.g. 'en' or 'pt-BR'
+final int num_ = 56; // int | Max apps; follows rail continuations above the page's directly-rendered slice
 
 try {
-    final response = api.googlePlayGetDeveloperApps(developer, country, lang);
+    final response = api.googlePlayGetDeveloperApps(developer, country, lang, num_);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling GooglePlayApi->googlePlayGetDeveloperApps: $e\n');
@@ -264,6 +267,7 @@ Name | Type | Description  | Notes
  **developer** | **String**| Developer name or numeric id | 
  **country** | **String**| Play storefront country (gl), ISO 3166-1 alpha-2, e.g. 'US' | [optional] [default to 'US']
  **lang** | **String**| Play content language (hl), e.g. 'en' or 'pt-BR' | [optional] [default to 'en']
+ **num_** | **int**| Max apps; follows rail continuations above the page's directly-rendered slice | [optional] [default to 100]
 
 ### Return type
 
