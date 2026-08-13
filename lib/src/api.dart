@@ -10,6 +10,7 @@ import 'package:scrapebadger/src/auth/basic_auth.dart';
 import 'package:scrapebadger/src/auth/bearer_auth.dart';
 import 'package:scrapebadger/src/auth/oauth.dart';
 import 'package:scrapebadger/src/api/account_api.dart';
+import 'package:scrapebadger/src/api/airbnb_api.dart';
 import 'package:scrapebadger/src/api/amazon_api.dart';
 import 'package:scrapebadger/src/api/apartments_api.dart';
 import 'package:scrapebadger/src/api/app_store_api.dart';
@@ -101,6 +102,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   AccountApi getAccountApi() {
     return AccountApi(dio, serializers);
+  }
+
+  /// Get AirbnbApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  AirbnbApi getAirbnbApi() {
+    return AirbnbApi(dio, serializers);
   }
 
   /// Get AmazonApi instance, base route and serializer can be overridden by a given but be careful,

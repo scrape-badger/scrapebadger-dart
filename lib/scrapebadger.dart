@@ -11,6 +11,7 @@ export 'package:scrapebadger/src/serializers.dart';
 export 'package:scrapebadger/src/model/date.dart';
 
 export 'package:scrapebadger/src/api/account_api.dart';
+export 'package:scrapebadger/src/api/airbnb_api.dart';
 export 'package:scrapebadger/src/api/amazon_api.dart';
 export 'package:scrapebadger/src/api/apartments_api.dart';
 export 'package:scrapebadger/src/api/app_store_api.dart';

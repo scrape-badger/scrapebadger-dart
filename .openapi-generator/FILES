@@ -4,6 +4,7 @@ README.md
 analysis_options.yaml
 doc/AccountApi.md
 doc/AccountInfo.md
+doc/AirbnbApi.md
 doc/AmazonApi.md
 doc/ApartmentsApi.md
 doc/AppStoreApi.md
@@ -66,6 +67,7 @@ doc/ZillowApi.md
 lib/scrapebadger.dart
 lib/src/api.dart
 lib/src/api/account_api.dart
+lib/src/api/airbnb_api.dart
 lib/src/api/amazon_api.dart
 lib/src/api/apartments_api.dart
 lib/src/api/app_store_api.dart
@@ -138,6 +140,7 @@ lib/src/serializers.dart
 pubspec.yaml
 test/account_api_test.dart
 test/account_info_test.dart
+test/airbnb_api_test.dart
 test/amazon_api_test.dart
 test/apartments_api_test.dart
 test/app_store_api_test.dart
