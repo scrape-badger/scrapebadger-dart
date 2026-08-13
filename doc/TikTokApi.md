@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**tiktokGetOembedMetadata**](TikTokApi.md#tiktokgetoembedmetadata) | **GET** /v1/tiktok/oembed | Get oEmbed metadata
 [**tiktokGetRelatedVideos**](TikTokApi.md#tiktokgetrelatedvideos) | **GET** /v1/tiktok/videos/{video_id}/related | Get related videos
 [**tiktokGetReposts**](TikTokApi.md#tiktokgetreposts) | **GET** /v1/tiktok/users/{username}/reposts | Get reposts
+[**tiktokGetTiktokAdDetail**](TikTokApi.md#tiktokgettiktokaddetail) | **GET** /v1/tiktok/ads/{ad_id} | Get TikTok ad detail
 [**tiktokGetTranscript**](TikTokApi.md#tiktokgettranscript) | **GET** /v1/tiktok/videos/{video_id}/transcript | Get transcript
 [**tiktokGetUserProfile**](TikTokApi.md#tiktokgetuserprofile) | **GET** /v1/tiktok/users/{username} | Get user profile
 [**tiktokGetUserVideos**](TikTokApi.md#tiktokgetuservideos) | **GET** /v1/tiktok/users/{username}/videos | Get user videos
@@ -31,6 +32,7 @@ Method | HTTP request | Description
 [**tiktokListRegions**](TikTokApi.md#tiktoklistregions) | **GET** /v1/tiktok/regions | List regions
 [**tiktokSearchHashtags**](TikTokApi.md#tiktoksearchhashtags) | **GET** /v1/tiktok/search/hashtags | Search hashtags
 [**tiktokSearchTheTiktokAdLibrary**](TikTokApi.md#tiktoksearchthetiktokadlibrary) | **GET** /v1/tiktok/ads/search | Search the TikTok Ad Library
+[**tiktokSearchTiktokAdvertisers**](TikTokApi.md#tiktoksearchtiktokadvertisers) | **GET** /v1/tiktok/ads/advertisers | Search TikTok advertisers
 [**tiktokSearchUsers**](TikTokApi.md#tiktoksearchusers) | **GET** /v1/tiktok/search/users | Search users
 [**tiktokSearchVideos**](TikTokApi.md#tiktoksearchvideos) | **GET** /v1/tiktok/search/videos | Search videos
 [**tiktokTrendingHashtags**](TikTokApi.md#tiktoktrendinghashtags) | **GET** /v1/tiktok/trending/hashtags | Trending hashtags
@@ -707,6 +709,55 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **tiktokGetTiktokAdDetail**
+> JsonObject tiktokGetTiktokAdDetail(adId, region)
+
+Get TikTok ad detail
+
+Get a single ad's advertiser, creatives, and targeting/impression breakdown.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+final String adId = adId_example; // String | 
+final String region = region_example; // String | EU region code (the Ad Library is EU-only)
+
+try {
+    final response = api.tiktokGetTiktokAdDetail(adId, region);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokGetTiktokAdDetail: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adId** | **String**|  | 
+ **region** | **String**| EU region code (the Ad Library is EU-only) | [optional] [default to 'DE']
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **tiktokGetTranscript**
 > JsonObject tiktokGetTranscript(videoId, region)
 
@@ -1136,6 +1187,57 @@ Name | Type | Description  | Notes
  **offset** | **int**|  | [optional] [default to 0]
  **searchId** | **String**|  | [optional] [default to '']
  **count** | **int**|  | [optional] [default to 20]
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tiktokSearchTiktokAdvertisers**
+> JsonObject tiktokSearchTiktokAdvertisers(query, region, count)
+
+Search TikTok advertisers
+
+Look up TikTok advertiser business ids by name (feeds ads/search?advertiser_id=).
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+final String query = query_example; // String | Advertiser name (or partial) to look up
+final String region = region_example; // String | EU region code (the Ad Library is EU-only)
+final int count = 56; // int | 
+
+try {
+    final response = api.tiktokSearchTiktokAdvertisers(query, region, count);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokSearchTiktokAdvertisers: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **query** | **String**| Advertiser name (or partial) to look up | 
+ **region** | **String**| EU region code (the Ad Library is EU-only) | [optional] [default to 'DE']
+ **count** | **int**|  | [optional] [default to 10]
 
 ### Return type
 

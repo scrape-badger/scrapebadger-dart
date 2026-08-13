@@ -124,6 +124,15 @@ void main() {
       // TODO
     });
 
+    // Get TikTok ad detail
+    //
+    // Get a single ad's advertiser, creatives, and targeting/impression breakdown.
+    //
+    //Future<JsonObject> tiktokGetTiktokAdDetail(String adId, { String region }) async
+    test('test tiktokGetTiktokAdDetail', () async {
+      // TODO
+    });
+
     // Get transcript
     //
     // Get subtitle/caption tracks for a TikTok video.
@@ -202,6 +211,15 @@ void main() {
     //
     //Future<JsonObject> tiktokSearchTheTiktokAdLibrary({ String query, String advertiserId, String region, int days, String sort, int offset, String searchId, int count }) async
     test('test tiktokSearchTheTiktokAdLibrary', () async {
+      // TODO
+    });
+
+    // Search TikTok advertisers
+    //
+    // Look up TikTok advertiser business ids by name (feeds ads/search?advertiser_id=).
+    //
+    //Future<JsonObject> tiktokSearchTiktokAdvertisers(String query, { String region, int count }) async
+    test('test tiktokSearchTiktokAdvertisers', () async {
       // TODO
     });
 

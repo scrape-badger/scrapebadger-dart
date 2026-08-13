@@ -405,6 +405,7 @@ Class | Method | HTTP request | Description
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokGetOembedMetadata**](doc/TikTokApi.md#tiktokgetoembedmetadata) | **GET** /v1/tiktok/oembed | Get oEmbed metadata
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokGetRelatedVideos**](doc/TikTokApi.md#tiktokgetrelatedvideos) | **GET** /v1/tiktok/videos/{video_id}/related | Get related videos
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokGetReposts**](doc/TikTokApi.md#tiktokgetreposts) | **GET** /v1/tiktok/users/{username}/reposts | Get reposts
+[*TikTokApi*](doc/TikTokApi.md) | [**tiktokGetTiktokAdDetail**](doc/TikTokApi.md#tiktokgettiktokaddetail) | **GET** /v1/tiktok/ads/{ad_id} | Get TikTok ad detail
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokGetTranscript**](doc/TikTokApi.md#tiktokgettranscript) | **GET** /v1/tiktok/videos/{video_id}/transcript | Get transcript
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokGetUserProfile**](doc/TikTokApi.md#tiktokgetuserprofile) | **GET** /v1/tiktok/users/{username} | Get user profile
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokGetUserVideos**](doc/TikTokApi.md#tiktokgetuservideos) | **GET** /v1/tiktok/users/{username}/videos | Get user videos
@@ -414,6 +415,7 @@ Class | Method | HTTP request | Description
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokListRegions**](doc/TikTokApi.md#tiktoklistregions) | **GET** /v1/tiktok/regions | List regions
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokSearchHashtags**](doc/TikTokApi.md#tiktoksearchhashtags) | **GET** /v1/tiktok/search/hashtags | Search hashtags
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokSearchTheTiktokAdLibrary**](doc/TikTokApi.md#tiktoksearchthetiktokadlibrary) | **GET** /v1/tiktok/ads/search | Search the TikTok Ad Library
+[*TikTokApi*](doc/TikTokApi.md) | [**tiktokSearchTiktokAdvertisers**](doc/TikTokApi.md#tiktoksearchtiktokadvertisers) | **GET** /v1/tiktok/ads/advertisers | Search TikTok advertisers
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokSearchUsers**](doc/TikTokApi.md#tiktoksearchusers) | **GET** /v1/tiktok/search/users | Search users
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokSearchVideos**](doc/TikTokApi.md#tiktoksearchvideos) | **GET** /v1/tiktok/search/videos | Search videos
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTrendingHashtags**](doc/TikTokApi.md#tiktoktrendinghashtags) | **GET** /v1/tiktok/trending/hashtags | Trending hashtags
