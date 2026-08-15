@@ -484,9 +484,9 @@ class GoogleApi {
   ///
   /// Parameters:
   /// * [dataId] - Maps data ID
-  /// * [sortBy] 
+  /// * [sortBy] - qualityScore | newestFirst | ratingHigh | ratingLow
   /// * [hl] 
-  /// * [nextPageToken] 
+  /// * [nextPageToken] - Cursor from the previous response's pagination.next; omit for page 1.
   /// * [results] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request

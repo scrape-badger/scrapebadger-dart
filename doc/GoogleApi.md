@@ -310,9 +310,9 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getGoogleApi();
 final String dataId = dataId_example; // String | Maps data ID
-final String sortBy = sortBy_example; // String | 
+final String sortBy = sortBy_example; // String | qualityScore | newestFirst | ratingHigh | ratingLow
 final String hl = hl_example; // String | 
-final String nextPageToken = nextPageToken_example; // String | 
+final String nextPageToken = nextPageToken_example; // String | Cursor from the previous response's pagination.next; omit for page 1.
 final int results = 56; // int | 
 
 try {
@@ -328,9 +328,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dataId** | **String**| Maps data ID | 
- **sortBy** | **String**|  | [optional] [default to 'qualityScore']
+ **sortBy** | **String**| qualityScore | newestFirst | ratingHigh | ratingLow | [optional] [default to 'qualityScore']
  **hl** | **String**|  | [optional] [default to 'en']
- **nextPageToken** | **String**|  | [optional] 
+ **nextPageToken** | **String**| Cursor from the previous response's pagination.next; omit for page 1. | [optional] 
  **results** | **int**|  | [optional] [default to 10]
 
 ### Return type
