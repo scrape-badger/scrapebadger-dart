@@ -12,6 +12,7 @@ doc/BaiduApi.md
 doc/BillingLogListResponse.md
 doc/BillingLogResponse.md
 doc/BingApi.md
+doc/BookingApi.md
 doc/ChatGPTApi.md
 doc/DepopApi.md
 doc/DuckDuckGoApi.md
@@ -73,6 +74,7 @@ lib/src/api/apartments_api.dart
 lib/src/api/app_store_api.dart
 lib/src/api/baidu_api.dart
 lib/src/api/bing_api.dart
+lib/src/api/booking_api.dart
 lib/src/api/chat_gpt_api.dart
 lib/src/api/depop_api.dart
 lib/src/api/duck_duck_go_api.dart
@@ -148,6 +150,7 @@ test/baidu_api_test.dart
 test/billing_log_list_response_test.dart
 test/billing_log_response_test.dart
 test/bing_api_test.dart
+test/booking_api_test.dart
 test/chat_gpt_api_test.dart
 test/depop_api_test.dart
 test/duck_duck_go_api_test.dart

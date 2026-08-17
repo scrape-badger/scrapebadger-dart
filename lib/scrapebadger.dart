@@ -17,6 +17,7 @@ export 'package:scrapebadger/src/api/apartments_api.dart';
 export 'package:scrapebadger/src/api/app_store_api.dart';
 export 'package:scrapebadger/src/api/baidu_api.dart';
 export 'package:scrapebadger/src/api/bing_api.dart';
+export 'package:scrapebadger/src/api/booking_api.dart';
 export 'package:scrapebadger/src/api/chat_gpt_api.dart';
 export 'package:scrapebadger/src/api/depop_api.dart';
 export 'package:scrapebadger/src/api/duck_duck_go_api.dart';

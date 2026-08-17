@@ -171,6 +171,12 @@ Class | Method | HTTP request | Description
 [*BingApi*](doc/BingApi.md) | [**bingSearchSuggestions**](doc/BingApi.md#bingsearchsuggestions) | **GET** /v1/bing/autocomplete | Search suggestions
 [*BingApi*](doc/BingApi.md) | [**bingVideoSearch**](doc/BingApi.md#bingvideosearch) | **GET** /v1/bing/videos | Video search
 [*BingApi*](doc/BingApi.md) | [**bingWebSearch**](doc/BingApi.md#bingwebsearch) | **GET** /v1/bing/search | Web search
+[*BookingApi*](doc/BookingApi.md) | [**bookingBookingScraperHealthCheck**](doc/BookingApi.md#bookingbookingscraperhealthcheck) | **GET** /v1/booking/health | Booking scraper health check
+[*BookingApi*](doc/BookingApi.md) | [**bookingBookingScraperHealthCheckHead**](doc/BookingApi.md#bookingbookingscraperhealthcheckhead) | **HEAD** /v1/booking/health | Booking scraper health check
+[*BookingApi*](doc/BookingApi.md) | [**bookingGetPropertyDetail**](doc/BookingApi.md#bookinggetpropertydetail) | **GET** /v1/booking/properties/{country_code}/{slug} | Get property detail
+[*BookingApi*](doc/BookingApi.md) | [**bookingGetPropertyReviews**](doc/BookingApi.md#bookinggetpropertyreviews) | **GET** /v1/booking/properties/{country_code}/{slug}/reviews | Get property reviews
+[*BookingApi*](doc/BookingApi.md) | [**bookingSearchDestinations**](doc/BookingApi.md#bookingsearchdestinations) | **GET** /v1/booking/destinations | Search destinations
+[*BookingApi*](doc/BookingApi.md) | [**bookingSearchProperties**](doc/BookingApi.md#bookingsearchproperties) | **GET** /v1/booking/search | Search properties
 [*ChatGPTApi*](doc/ChatGPTApi.md) | [**chatgptAskChatgptAQuestion**](doc/ChatGPTApi.md#chatgptaskchatgptaquestion) | **GET** /v1/chatgpt/ask | Ask ChatGPT a question
 [*ChatGPTApi*](doc/ChatGPTApi.md) | [**chatgptAskChatgptAQuestionPost**](doc/ChatGPTApi.md#chatgptaskchatgptaquestionpost) | **POST** /v1/chatgpt/ask | Ask ChatGPT a question (POST)
 [*ChatGPTApi*](doc/ChatGPTApi.md) | [**chatgptChatgptScraperHealthCheck**](doc/ChatGPTApi.md#chatgptchatgptscraperhealthcheck) | **GET** /v1/chatgpt/health | ChatGPT scraper health check
