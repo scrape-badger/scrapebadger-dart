@@ -175,6 +175,7 @@ Class | Method | HTTP request | Description
 [*BookingApi*](doc/BookingApi.md) | [**bookingBookingScraperHealthCheckHead**](doc/BookingApi.md#bookingbookingscraperhealthcheckhead) | **HEAD** /v1/booking/health | Booking scraper health check
 [*BookingApi*](doc/BookingApi.md) | [**bookingGetPropertyDetail**](doc/BookingApi.md#bookinggetpropertydetail) | **GET** /v1/booking/properties/{country_code}/{slug} | Get property detail
 [*BookingApi*](doc/BookingApi.md) | [**bookingGetPropertyReviews**](doc/BookingApi.md#bookinggetpropertyreviews) | **GET** /v1/booking/properties/{country_code}/{slug}/reviews | Get property reviews
+[*BookingApi*](doc/BookingApi.md) | [**bookingGetRoomTypesAndLiveRates**](doc/BookingApi.md#bookinggetroomtypesandliverates) | **GET** /v1/booking/properties/{country_code}/{slug}/rooms | Get room types and live rates
 [*BookingApi*](doc/BookingApi.md) | [**bookingSearchDestinations**](doc/BookingApi.md#bookingsearchdestinations) | **GET** /v1/booking/destinations | Search destinations
 [*BookingApi*](doc/BookingApi.md) | [**bookingSearchProperties**](doc/BookingApi.md#bookingsearchproperties) | **GET** /v1/booking/search | Search properties
 [*ChatGPTApi*](doc/ChatGPTApi.md) | [**chatgptAskChatgptAQuestion**](doc/ChatGPTApi.md#chatgptaskchatgptaquestion) | **GET** /v1/chatgpt/ask | Ask ChatGPT a question

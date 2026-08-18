@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**bookingBookingScraperHealthCheckHead**](BookingApi.md#bookingbookingscraperhealthcheckhead) | **HEAD** /v1/booking/health | Booking scraper health check
 [**bookingGetPropertyDetail**](BookingApi.md#bookinggetpropertydetail) | **GET** /v1/booking/properties/{country_code}/{slug} | Get property detail
 [**bookingGetPropertyReviews**](BookingApi.md#bookinggetpropertyreviews) | **GET** /v1/booking/properties/{country_code}/{slug}/reviews | Get property reviews
+[**bookingGetRoomTypesAndLiveRates**](BookingApi.md#bookinggetroomtypesandliverates) | **GET** /v1/booking/properties/{country_code}/{slug}/rooms | Get room types and live rates
 [**bookingSearchDestinations**](BookingApi.md#bookingsearchdestinations) | **GET** /v1/booking/destinations | Search destinations
 [**bookingSearchProperties**](BookingApi.md#bookingsearchproperties) | **GET** /v1/booking/search | Search properties
 
@@ -203,6 +204,69 @@ Name | Type | Description  | Notes
  **reviewLanguage** | **String**| Only reviews written in this language, e.g. 'fr' | [optional] 
  **guestType** | **String**| FAMILIES | COUPLES | GROUP_OF_FRIENDS | SOLO_TRAVELLERS | BUSINESS_TRAVELLERS | [optional] 
  **language** | **String**| Locale for labels, e.g. en-us | [optional] 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **bookingGetRoomTypesAndLiveRates**
+> JsonObject bookingGetRoomTypesAndLiveRates(countryCode, slug, checkin, checkout, adults, children, rooms, currency, language)
+
+Get room types and live rates
+
+Every room type at one property with every rate bookable on it for the given dates — price, price before discount, price per night, discounts and badges — plus per-room facilities, bed layouts, occupancy and photos. /search returns only the cheapest rate per property; this returns the whole table.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getBookingApi();
+final String countryCode = countryCode_example; // String | Two-letter country code, e.g. 'it'
+final String slug = slug_example; // String | Booking page name, e.g. 'hotel-artemide'
+final String checkin = checkin_example; // String | Check-in date YYYY-MM-DD
+final String checkout = checkout_example; // String | Check-out date YYYY-MM-DD
+final int adults = 56; // int | 
+final String children = children_example; // String | Comma-separated children ages, e.g. '4,9'
+final int rooms = 56; // int | 
+final String currency = currency_example; // String | ISO currency, e.g. EUR, USD, GBP
+final String language = language_example; // String | Locale, e.g. en-us, fr, de
+
+try {
+    final response = api.bookingGetRoomTypesAndLiveRates(countryCode, slug, checkin, checkout, adults, children, rooms, currency, language);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling BookingApi->bookingGetRoomTypesAndLiveRates: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countryCode** | **String**| Two-letter country code, e.g. 'it' | 
+ **slug** | **String**| Booking page name, e.g. 'hotel-artemide' | 
+ **checkin** | **String**| Check-in date YYYY-MM-DD | 
+ **checkout** | **String**| Check-out date YYYY-MM-DD | 
+ **adults** | **int**|  | [optional] [default to 2]
+ **children** | **String**| Comma-separated children ages, e.g. '4,9' | [optional] 
+ **rooms** | **int**|  | [optional] [default to 1]
+ **currency** | **String**| ISO currency, e.g. EUR, USD, GBP | [optional] 
+ **language** | **String**| Locale, e.g. en-us, fr, de | [optional] 
 
 ### Return type
 

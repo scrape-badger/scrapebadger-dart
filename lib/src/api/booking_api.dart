@@ -383,6 +383,115 @@ class BookingApi {
     );
   }
 
+  /// Get room types and live rates
+  /// Every room type at one property with every rate bookable on it for the given dates — price, price before discount, price per night, discounts and badges — plus per-room facilities, bed layouts, occupancy and photos. /search returns only the cheapest rate per property; this returns the whole table.
+  ///
+  /// Parameters:
+  /// * [countryCode] - Two-letter country code, e.g. 'it'
+  /// * [slug] - Booking page name, e.g. 'hotel-artemide'
+  /// * [checkin] - Check-in date YYYY-MM-DD
+  /// * [checkout] - Check-out date YYYY-MM-DD
+  /// * [adults] 
+  /// * [children] - Comma-separated children ages, e.g. '4,9'
+  /// * [rooms] 
+  /// * [currency] - ISO currency, e.g. EUR, USD, GBP
+  /// * [language] - Locale, e.g. en-us, fr, de
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<JsonObject>> bookingGetRoomTypesAndLiveRates({ 
+    required String countryCode,
+    required String slug,
+    required String checkin,
+    required String checkout,
+    int? adults = 2,
+    String? children,
+    int? rooms = 1,
+    String? currency,
+    String? language,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/booking/properties/{country_code}/{slug}/rooms'.replaceAll('{' r'country_code' '}', encodeQueryParameter(_serializers, countryCode, const FullType(String)).toString()).replaceAll('{' r'slug' '}', encodeQueryParameter(_serializers, slug, const FullType(String)).toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ApiKeyAuth',
+            'keyName': 'X-API-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'checkin': encodeQueryParameter(_serializers, checkin, const FullType(String)),
+      r'checkout': encodeQueryParameter(_serializers, checkout, const FullType(String)),
+      if (adults != null) r'adults': encodeQueryParameter(_serializers, adults, const FullType(int)),
+      r'children': encodeQueryParameter(_serializers, children, const FullType(String)),
+      if (rooms != null) r'rooms': encodeQueryParameter(_serializers, rooms, const FullType(int)),
+      r'currency': encodeQueryParameter(_serializers, currency, const FullType(String)),
+      r'language': encodeQueryParameter(_serializers, language, const FullType(String)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    JsonObject? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(JsonObject),
+      ) as JsonObject;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Search destinations
   /// Resolve a place name to Booking&#39;s &#x60;dest_id&#x60;/&#x60;dest_type&#x60;, with coordinates and country — feed the pair back into /search for an exact match.
   ///

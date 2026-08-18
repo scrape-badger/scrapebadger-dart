@@ -43,6 +43,15 @@ void main() {
       // TODO
     });
 
+    // Get room types and live rates
+    //
+    // Every room type at one property with every rate bookable on it for the given dates — price, price before discount, price per night, discounts and badges — plus per-room facilities, bed layouts, occupancy and photos. /search returns only the cheapest rate per property; this returns the whole table.
+    //
+    //Future<JsonObject> bookingGetRoomTypesAndLiveRates(String countryCode, String slug, String checkin, String checkout, { int adults, String children, int rooms, String currency, String language }) async
+    test('test bookingGetRoomTypesAndLiveRates', () async {
+      // TODO
+    });
+
     // Search destinations
     //
     // Resolve a place name to Booking's `dest_id`/`dest_type`, with coordinates and country — feed the pair back into /search for an exact match.
