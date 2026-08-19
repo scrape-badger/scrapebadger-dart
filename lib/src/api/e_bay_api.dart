@@ -124,8 +124,8 @@ class EBayApi {
     );
   }
 
-  /// Completed / sold listings
-  /// Search completed/sold listings — eBay&#39;s sold-price history.
+  /// Completed / sold listings (deprecated)
+  /// Deprecated — eBay requires a signed-in account for sold listings. Returns 410.
   ///
   /// Parameters:
   /// * [query] - Search keywords
@@ -146,7 +146,8 @@ class EBayApi {
   ///
   /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> ebayCompletedSoldListings({ 
+  @Deprecated('This operation has been deprecated')
+  Future<Response<JsonObject>> ebayCompletedSoldListingsDeprecated({ 
     required String query,
     String? domain = 'com',
     String? categoryId,

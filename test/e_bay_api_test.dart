@@ -16,12 +16,12 @@ void main() {
       // TODO
     });
 
-    // Completed / sold listings
+    // Completed / sold listings (deprecated)
     //
-    // Search completed/sold listings — eBay's sold-price history.
+    // Deprecated — eBay requires a signed-in account for sold listings. Returns 410.
     //
-    //Future<JsonObject> ebayCompletedSoldListings(String query, { String domain, String categoryId, int page, int perPage, String sortBy, String condition, num minPrice, num maxPrice }) async
-    test('test ebayCompletedSoldListings', () async {
+    //Future<JsonObject> ebayCompletedSoldListingsDeprecated(String query, { String domain, String categoryId, int page, int perPage, String sortBy, String condition, num minPrice, num maxPrice }) async
+    test('test ebayCompletedSoldListingsDeprecated', () async {
       // TODO
     });
 

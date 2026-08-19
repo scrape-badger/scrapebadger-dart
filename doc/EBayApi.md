@@ -10,7 +10,7 @@ All URIs are relative to *https://scrapebadger.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ebayBrowseACategory**](EBayApi.md#ebaybrowseacategory) | **GET** /v1/ebay/categories/{category_id}/items | Browse a category
-[**ebayCompletedSoldListings**](EBayApi.md#ebaycompletedsoldlistings) | **GET** /v1/ebay/completed | Completed / sold listings
+[**ebayCompletedSoldListingsDeprecated**](EBayApi.md#ebaycompletedsoldlistingsdeprecated) | **GET** /v1/ebay/completed | Completed / sold listings (deprecated)
 [**ebayEbayScraperHealthCheck**](EBayApi.md#ebayebayscraperhealthcheck) | **GET** /v1/ebay/health | eBay scraper health check
 [**ebayEbayScraperHealthCheckHead**](EBayApi.md#ebayebayscraperhealthcheckhead) | **HEAD** /v1/ebay/health | eBay scraper health check
 [**ebayGetItemDetail**](EBayApi.md#ebaygetitemdetail) | **GET** /v1/ebay/items/{item_id} | Get item detail
@@ -83,12 +83,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ebayCompletedSoldListings**
-> JsonObject ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice)
+# **ebayCompletedSoldListingsDeprecated**
+> JsonObject ebayCompletedSoldListingsDeprecated(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice)
 
-Completed / sold listings
+Completed / sold listings (deprecated)
 
-Search completed/sold listings — eBay's sold-price history.
+Deprecated — eBay requires a signed-in account for sold listings. Returns 410.
 
 ### Example
 ```dart
@@ -110,10 +110,10 @@ final num minPrice = 8.14; // num |
 final num maxPrice = 8.14; // num | 
 
 try {
-    final response = api.ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice);
+    final response = api.ebayCompletedSoldListingsDeprecated(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling EBayApi->ebayCompletedSoldListings: $e\n');
+    print('Exception when calling EBayApi->ebayCompletedSoldListingsDeprecated: $e\n');
 }
 ```
 
