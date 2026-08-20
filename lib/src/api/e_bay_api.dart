@@ -124,15 +124,15 @@ class EBayApi {
     );
   }
 
-  /// Completed / sold listings (deprecated)
-  /// Deprecated — eBay requires a signed-in account for sold listings. Returns 410.
+  /// Completed / sold listings
+  /// Search completed/sold listings — eBay&#39;s sold-price history.
   ///
   /// Parameters:
   /// * [query] - Search keywords
-  /// * [domain] 
-  /// * [categoryId] 
+  /// * [domain] - Marketplace domain (com, co.uk, de …)
+  /// * [categoryId] - Restrict to a category id
   /// * [page] 
-  /// * [perPage] 
+  /// * [perPage] - 60, 120 or 240
   /// * [sortBy] - best_match|ending_soonest|newly_listed|price_low_to_high|price_high_to_low
   /// * [condition] - new|open_box|refurbished|used|for_parts
   /// * [minPrice] 
@@ -146,8 +146,7 @@ class EBayApi {
   ///
   /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
-  @Deprecated('This operation has been deprecated')
-  Future<Response<JsonObject>> ebayCompletedSoldListingsDeprecated({ 
+  Future<Response<JsonObject>> ebayCompletedSoldListings({ 
     required String query,
     String? domain = 'com',
     String? categoryId,
