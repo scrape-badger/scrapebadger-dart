@@ -134,9 +134,10 @@ class EBayApi {
   /// * [page] 
   /// * [perPage] - 60, 120 or 240
   /// * [sortBy] - best_match|ending_soonest|newly_listed|price_low_to_high|price_high_to_low
-  /// * [condition] - new|open_box|refurbished|used|for_parts
+  /// * [condition] - new|open_box|refurbished|used|for_parts|graded|ungraded
   /// * [minPrice] 
   /// * [maxPrice] 
+  /// * [location] - domestic|worldwide
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -156,6 +157,7 @@ class EBayApi {
     String? condition,
     num? minPrice,
     num? maxPrice,
+    String? location,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -193,6 +195,7 @@ class EBayApi {
       r'condition': encodeQueryParameter(_serializers, condition, const FullType(String)),
       r'min_price': encodeQueryParameter(_serializers, minPrice, const FullType(num)),
       r'max_price': encodeQueryParameter(_serializers, maxPrice, const FullType(num)),
+      r'location': encodeQueryParameter(_serializers, location, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1115,11 +1118,12 @@ class EBayApi {
   /// * [page] 
   /// * [perPage] - 60, 120 or 240
   /// * [sortBy] - best_match|ending_soonest|newly_listed|price_low_to_high|price_high_to_low
-  /// * [condition] - new|open_box|refurbished|used|for_parts
+  /// * [condition] - new|open_box|refurbished|used|for_parts|graded|ungraded
   /// * [buyingFormat] - auction|buy_it_now|best_offer
   /// * [minPrice] 
   /// * [maxPrice] 
   /// * [freeShipping] 
+  /// * [location] - domestic|worldwide
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1141,6 +1145,7 @@ class EBayApi {
     num? minPrice,
     num? maxPrice,
     bool? freeShipping = false,
+    String? location,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1180,6 +1185,7 @@ class EBayApi {
       r'min_price': encodeQueryParameter(_serializers, minPrice, const FullType(num)),
       r'max_price': encodeQueryParameter(_serializers, maxPrice, const FullType(num)),
       if (freeShipping != null) r'free_shipping': encodeQueryParameter(_serializers, freeShipping, const FullType(bool)),
+      r'location': encodeQueryParameter(_serializers, location, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

@@ -20,7 +20,7 @@ void main() {
     //
     // Search completed/sold listings — eBay's sold-price history.
     //
-    //Future<JsonObject> ebayCompletedSoldListings(String query, { String domain, String categoryId, int page, int perPage, String sortBy, String condition, num minPrice, num maxPrice }) async
+    //Future<JsonObject> ebayCompletedSoldListings(String query, { String domain, String categoryId, int page, int perPage, String sortBy, String condition, num minPrice, num maxPrice, String location }) async
     test('test ebayCompletedSoldListings', () async {
       // TODO
     });
@@ -119,7 +119,7 @@ void main() {
     //
     // Search an eBay marketplace for active listings.
     //
-    //Future<JsonObject> ebaySearchListings(String query, { String domain, String categoryId, int page, int perPage, String sortBy, String condition, String buyingFormat, num minPrice, num maxPrice, bool freeShipping }) async
+    //Future<JsonObject> ebaySearchListings(String query, { String domain, String categoryId, int page, int perPage, String sortBy, String condition, String buyingFormat, num minPrice, num maxPrice, bool freeShipping, String location }) async
     test('test ebaySearchListings', () async {
       // TODO
     });

@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ebayCompletedSoldListings**
-> JsonObject ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice)
+> JsonObject ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice, location)
 
 Completed / sold listings
 
@@ -105,12 +105,13 @@ final String categoryId = categoryId_example; // String | Restrict to a category
 final int page = 56; // int | 
 final int perPage = 56; // int | 60, 120 or 240
 final String sortBy = sortBy_example; // String | best_match|ending_soonest|newly_listed|price_low_to_high|price_high_to_low
-final String condition = condition_example; // String | new|open_box|refurbished|used|for_parts
+final String condition = condition_example; // String | new|open_box|refurbished|used|for_parts|graded|ungraded
 final num minPrice = 8.14; // num | 
 final num maxPrice = 8.14; // num | 
+final String location = location_example; // String | domestic|worldwide
 
 try {
-    final response = api.ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice);
+    final response = api.ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice, location);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling EBayApi->ebayCompletedSoldListings: $e\n');
@@ -127,9 +128,10 @@ Name | Type | Description  | Notes
  **page** | **int**|  | [optional] [default to 1]
  **perPage** | **int**| 60, 120 or 240 | [optional] 
  **sortBy** | **String**| best_match|ending_soonest|newly_listed|price_low_to_high|price_high_to_low | [optional] [default to 'best_match']
- **condition** | **String**| new|open_box|refurbished|used|for_parts | [optional] 
+ **condition** | **String**| new|open_box|refurbished|used|for_parts|graded|ungraded | [optional] 
  **minPrice** | **num**|  | [optional] 
  **maxPrice** | **num**|  | [optional] 
+ **location** | **String**| domestic|worldwide | [optional] 
 
 ### Return type
 
@@ -623,7 +625,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ebaySearchListings**
-> JsonObject ebaySearchListings(query, domain, categoryId, page, perPage, sortBy, condition, buyingFormat, minPrice, maxPrice, freeShipping)
+> JsonObject ebaySearchListings(query, domain, categoryId, page, perPage, sortBy, condition, buyingFormat, minPrice, maxPrice, freeShipping, location)
 
 Search listings
 
@@ -644,14 +646,15 @@ final String categoryId = categoryId_example; // String | Restrict to a category
 final int page = 56; // int | 
 final int perPage = 56; // int | 60, 120 or 240
 final String sortBy = sortBy_example; // String | best_match|ending_soonest|newly_listed|price_low_to_high|price_high_to_low
-final String condition = condition_example; // String | new|open_box|refurbished|used|for_parts
+final String condition = condition_example; // String | new|open_box|refurbished|used|for_parts|graded|ungraded
 final String buyingFormat = buyingFormat_example; // String | auction|buy_it_now|best_offer
 final num minPrice = 8.14; // num | 
 final num maxPrice = 8.14; // num | 
 final bool freeShipping = true; // bool | 
+final String location = location_example; // String | domestic|worldwide
 
 try {
-    final response = api.ebaySearchListings(query, domain, categoryId, page, perPage, sortBy, condition, buyingFormat, minPrice, maxPrice, freeShipping);
+    final response = api.ebaySearchListings(query, domain, categoryId, page, perPage, sortBy, condition, buyingFormat, minPrice, maxPrice, freeShipping, location);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling EBayApi->ebaySearchListings: $e\n');
@@ -668,11 +671,12 @@ Name | Type | Description  | Notes
  **page** | **int**|  | [optional] [default to 1]
  **perPage** | **int**| 60, 120 or 240 | [optional] 
  **sortBy** | **String**| best_match|ending_soonest|newly_listed|price_low_to_high|price_high_to_low | [optional] [default to 'best_match']
- **condition** | **String**| new|open_box|refurbished|used|for_parts | [optional] 
+ **condition** | **String**| new|open_box|refurbished|used|for_parts|graded|ungraded | [optional] 
  **buyingFormat** | **String**| auction|buy_it_now|best_offer | [optional] 
  **minPrice** | **num**|  | [optional] 
  **maxPrice** | **num**|  | [optional] 
  **freeShipping** | **bool**|  | [optional] [default to false]
+ **location** | **String**| domestic|worldwide | [optional] 
 
 ### Return type
 
