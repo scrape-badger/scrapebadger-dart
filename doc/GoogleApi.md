@@ -1269,11 +1269,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **googleMultiSellerOffersByBarcode**
-> JsonObject googleMultiSellerOffersByBarcode(barcode, gl, hl)
+> JsonObject googleMultiSellerOffersByBarcode(barcode, catalogId, gl, hl, domain)
 
 Multi-seller offers by barcode
 
-Resolve a barcode to a product via Google web search, then return its Google Shopping seller offers (source + price per merchant).
+Google Shopping seller offers (source + price + link per merchant) for a product identified either by ``barcode`` (resolved via Google web search) or by its Google Shopping ``catalog_id`` (read straight off Google's product page, all seller pages fetched in parallel).
 
 ### Example
 ```dart
@@ -1285,11 +1285,13 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getGoogleApi();
 final String barcode = barcode_example; // String | Product barcode — GTIN-8 / UPC-A / EAN-13 / GTIN-14
+final String catalogId = catalogId_example; // String | Google Shopping catalogid (the `catalog_id` on /shopping/search tiles, or `prds=catalogid:<id>` in a Google Shopping URL). Alternative to `barcode`; exactly one of the two is required
 final String gl = gl_example; // String | Country code (ISO 3166 alpha-2)
 final String hl = hl_example; // String | Language code
+final String domain = domain_example; // String | Google domain
 
 try {
-    final response = api.googleMultiSellerOffersByBarcode(barcode, gl, hl);
+    final response = api.googleMultiSellerOffersByBarcode(barcode, catalogId, gl, hl, domain);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling GoogleApi->googleMultiSellerOffersByBarcode: $e\n');
@@ -1300,9 +1302,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **barcode** | **String**| Product barcode — GTIN-8 / UPC-A / EAN-13 / GTIN-14 | 
+ **barcode** | **String**| Product barcode — GTIN-8 / UPC-A / EAN-13 / GTIN-14 | [optional] 
+ **catalogId** | **String**| Google Shopping catalogid (the `catalog_id` on /shopping/search tiles, or `prds=catalogid:<id>` in a Google Shopping URL). Alternative to `barcode`; exactly one of the two is required | [optional] 
  **gl** | **String**| Country code (ISO 3166 alpha-2) | [optional] 
  **hl** | **String**| Language code | [optional] [default to 'en']
+ **domain** | **String**| Google domain | [optional] [default to 'google.com']
 
 ### Return type
 

@@ -193,9 +193,9 @@ void main() {
 
     // Multi-seller offers by barcode
     //
-    // Resolve a barcode to a product via Google web search, then return its Google Shopping seller offers (source + price per merchant).
+    // Google Shopping seller offers (source + price + link per merchant) for a product identified either by ``barcode`` (resolved via Google web search) or by its Google Shopping ``catalog_id`` (read straight off Google's product page, all seller pages fetched in parallel).
     //
-    //Future<JsonObject> googleMultiSellerOffersByBarcode(String barcode, { String gl, String hl }) async
+    //Future<JsonObject> googleMultiSellerOffersByBarcode({ String barcode, String catalogId, String gl, String hl, String domain }) async
     test('test googleMultiSellerOffersByBarcode', () async {
       // TODO
     });

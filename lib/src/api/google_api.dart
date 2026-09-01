@@ -2230,12 +2230,14 @@ class GoogleApi {
   }
 
   /// Multi-seller offers by barcode
-  /// Resolve a barcode to a product via Google web search, then return its Google Shopping seller offers (source + price per merchant).
+  /// Google Shopping seller offers (source + price + link per merchant) for a product identified either by &#x60;&#x60;barcode&#x60;&#x60; (resolved via Google web search) or by its Google Shopping &#x60;&#x60;catalog_id&#x60;&#x60; (read straight off Google&#39;s product page, all seller pages fetched in parallel).
   ///
   /// Parameters:
   /// * [barcode] - Product barcode — GTIN-8 / UPC-A / EAN-13 / GTIN-14
+  /// * [catalogId] - Google Shopping catalogid (the `catalog_id` on /shopping/search tiles, or `prds=catalogid:<id>` in a Google Shopping URL). Alternative to `barcode`; exactly one of the two is required
   /// * [gl] - Country code (ISO 3166 alpha-2)
   /// * [hl] - Language code
+  /// * [domain] - Google domain
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2246,9 +2248,11 @@ class GoogleApi {
   /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> googleMultiSellerOffersByBarcode({ 
-    required String barcode,
+    String? barcode,
+    String? catalogId,
     String? gl,
     String? hl = 'en',
+    String? domain = 'google.com',
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -2278,8 +2282,10 @@ class GoogleApi {
 
     final _queryParameters = <String, dynamic>{
       r'barcode': encodeQueryParameter(_serializers, barcode, const FullType(String)),
+      r'catalog_id': encodeQueryParameter(_serializers, catalogId, const FullType(String)),
       r'gl': encodeQueryParameter(_serializers, gl, const FullType(String)),
       if (hl != null) r'hl': encodeQueryParameter(_serializers, hl, const FullType(String)),
+      if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
