@@ -376,6 +376,7 @@ class AmazonApi {
   /// * [asin] 
   /// * [domain] 
   /// * [zip] 
+  /// * [page] - Offer page, 10 rows each
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -389,6 +390,7 @@ class AmazonApi {
     required String asin,
     String? domain = 'com',
     String? zip,
+    int? page = 1,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -419,6 +421,7 @@ class AmazonApi {
     final _queryParameters = <String, dynamic>{
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
       r'zip': encodeQueryParameter(_serializers, zip, const FullType(String)),
+      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(

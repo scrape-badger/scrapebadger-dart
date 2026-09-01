@@ -47,7 +47,7 @@ void main() {
     //
     // All third-party offers for an ASIN, including the Buy Box winner.
     //
-    //Future<JsonObject> amazonGetAllSellerOffersBuybox(String asin, { String domain, String zip }) async
+    //Future<JsonObject> amazonGetAllSellerOffersBuybox(String asin, { String domain, String zip, int page }) async
     test('test amazonGetAllSellerOffersBuybox', () async {
       // TODO
     });

@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **amazonGetAllSellerOffersBuybox**
-> JsonObject amazonGetAllSellerOffersBuybox(asin, domain, zip)
+> JsonObject amazonGetAllSellerOffersBuybox(asin, domain, zip, page)
 
 Get all seller offers (buybox)
 
@@ -236,9 +236,10 @@ final api = Scrapebadger().getAmazonApi();
 final String asin = asin_example; // String | 
 final String domain = domain_example; // String | 
 final String zip = zip_example; // String | 
+final int page = 56; // int | Offer page, 10 rows each
 
 try {
-    final response = api.amazonGetAllSellerOffersBuybox(asin, domain, zip);
+    final response = api.amazonGetAllSellerOffersBuybox(asin, domain, zip, page);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AmazonApi->amazonGetAllSellerOffersBuybox: $e\n');
@@ -252,6 +253,7 @@ Name | Type | Description  | Notes
  **asin** | **String**|  | 
  **domain** | **String**|  | [optional] [default to 'com']
  **zip** | **String**|  | [optional] 
+ **page** | **int**| Offer page, 10 rows each | [optional] [default to 1]
 
 ### Return type
 
