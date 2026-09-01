@@ -33,8 +33,13 @@ Method | HTTP request | Description
 [**tiktokSearchHashtags**](TikTokApi.md#tiktoksearchhashtags) | **GET** /v1/tiktok/search/hashtags | Search hashtags
 [**tiktokSearchTheTiktokAdLibrary**](TikTokApi.md#tiktoksearchthetiktokadlibrary) | **GET** /v1/tiktok/ads/search | Search the TikTok Ad Library
 [**tiktokSearchTiktokAdvertisers**](TikTokApi.md#tiktoksearchtiktokadvertisers) | **GET** /v1/tiktok/ads/advertisers | Search TikTok advertisers
+[**tiktokSearchTiktokShopProducts**](TikTokApi.md#tiktoksearchtiktokshopproducts) | **GET** /v1/tiktok/shop/search | Search TikTok Shop products
 [**tiktokSearchUsers**](TikTokApi.md#tiktoksearchusers) | **GET** /v1/tiktok/search/users | Search users
 [**tiktokSearchVideos**](TikTokApi.md#tiktoksearchvideos) | **GET** /v1/tiktok/search/videos | Search videos
+[**tiktokTiktokShopBestSellers**](TikTokApi.md#tiktoktiktokshopbestsellers) | **GET** /v1/tiktok/shop/ranking | TikTok Shop best sellers
+[**tiktokTiktokShopCategorySubcategoriesTopProducts**](TikTokApi.md#tiktoktiktokshopcategorysubcategoriestopproducts) | **GET** /v1/tiktok/shop/categories/{category_id} | TikTok Shop category: subcategories + top products
+[**tiktokTiktokShopProductDetail**](TikTokApi.md#tiktoktiktokshopproductdetail) | **GET** /v1/tiktok/shop/products/{product_id} | TikTok Shop product detail
+[**tiktokTiktokShopRootCategories**](TikTokApi.md#tiktoktiktokshoprootcategories) | **GET** /v1/tiktok/shop/categories | TikTok Shop root categories
 [**tiktokTrendingHashtags**](TikTokApi.md#tiktoktrendinghashtags) | **GET** /v1/tiktok/trending/hashtags | Trending hashtags
 [**tiktokTrendingSongs**](TikTokApi.md#tiktoktrendingsongs) | **GET** /v1/tiktok/trending/songs | Trending songs
 [**tiktokTrendingVideos**](TikTokApi.md#tiktoktrendingvideos) | **GET** /v1/tiktok/trending/videos | Trending videos
@@ -1254,6 +1259,53 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **tiktokSearchTiktokShopProducts**
+> JsonObject tiktokSearchTiktokShopProducts(q)
+
+Search TikTok Shop products
+
+Keyword search over TikTok Shop products (US): products with their bound video, matching shops, related searches and categories.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+final String q = q_example; // String | Keyword, e.g. 'wireless earbuds'
+
+try {
+    final response = api.tiktokSearchTiktokShopProducts(q);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokSearchTiktokShopProducts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **String**| Keyword, e.g. 'wireless earbuds' | 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **tiktokSearchUsers**
 > JsonObject tiktokSearchUsers(query, region, count, cursor)
 
@@ -1344,6 +1396,190 @@ Name | Type | Description  | Notes
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 20]
  **cursor** | **String**| Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor | [optional] 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tiktokTiktokShopBestSellers**
+> JsonObject tiktokTiktokShopBestSellers(count)
+
+TikTok Shop best sellers
+
+TikTok Shop's own ranking of the best-selling products of the past 30 days (US).
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+final int count = 56; // int | Max products to return
+
+try {
+    final response = api.tiktokTiktokShopBestSellers(count);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokTiktokShopBestSellers: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **count** | **int**| Max products to return | [optional] [default to 20]
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tiktokTiktokShopCategorySubcategoriesTopProducts**
+> JsonObject tiktokTiktokShopCategorySubcategoriesTopProducts(categoryId)
+
+TikTok Shop category: subcategories + top products
+
+A category's subcategories and its top products as TikTok Shop ranks them (US).
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+final String categoryId = categoryId_example; // String | 
+
+try {
+    final response = api.tiktokTiktokShopCategorySubcategoriesTopProducts(categoryId);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokTiktokShopCategorySubcategoriesTopProducts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **categoryId** | **String**|  | 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tiktokTiktokShopProductDetail**
+> JsonObject tiktokTiktokShopProductDetail(productId)
+
+TikTok Shop product detail
+
+Full TikTok Shop product page (US): description, images, price, SKUs with stock, reviews, shop and TikTok's AI summary.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+final String productId = productId_example; // String | 
+
+try {
+    final response = api.tiktokTiktokShopProductDetail(productId);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokTiktokShopProductDetail: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **productId** | **String**|  | 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tiktokTiktokShopRootCategories**
+> JsonObject tiktokTiktokShopRootCategories()
+
+TikTok Shop root categories
+
+Top-level TikTok Shop categories (US). Drill down with /shop/categories/{category_id}.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+
+try {
+    final response = api.tiktokTiktokShopRootCategories();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokTiktokShopRootCategories: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
 
 ### Return type
 

@@ -223,6 +223,15 @@ void main() {
       // TODO
     });
 
+    // Search TikTok Shop products
+    //
+    // Keyword search over TikTok Shop products (US): products with their bound video, matching shops, related searches and categories.
+    //
+    //Future<JsonObject> tiktokSearchTiktokShopProducts(String q) async
+    test('test tiktokSearchTiktokShopProducts', () async {
+      // TODO
+    });
+
     // Search users
     //
     // Search TikTok users by keyword.
@@ -238,6 +247,42 @@ void main() {
     //
     //Future<JsonObject> tiktokSearchVideos(String query, { String region, int count, String cursor }) async
     test('test tiktokSearchVideos', () async {
+      // TODO
+    });
+
+    // TikTok Shop best sellers
+    //
+    // TikTok Shop's own ranking of the best-selling products of the past 30 days (US).
+    //
+    //Future<JsonObject> tiktokTiktokShopBestSellers({ int count }) async
+    test('test tiktokTiktokShopBestSellers', () async {
+      // TODO
+    });
+
+    // TikTok Shop category: subcategories + top products
+    //
+    // A category's subcategories and its top products as TikTok Shop ranks them (US).
+    //
+    //Future<JsonObject> tiktokTiktokShopCategorySubcategoriesTopProducts(String categoryId) async
+    test('test tiktokTiktokShopCategorySubcategoriesTopProducts', () async {
+      // TODO
+    });
+
+    // TikTok Shop product detail
+    //
+    // Full TikTok Shop product page (US): description, images, price, SKUs with stock, reviews, shop and TikTok's AI summary.
+    //
+    //Future<JsonObject> tiktokTiktokShopProductDetail(String productId) async
+    test('test tiktokTiktokShopProductDetail', () async {
+      // TODO
+    });
+
+    // TikTok Shop root categories
+    //
+    // Top-level TikTok Shop categories (US). Drill down with /shop/categories/{category_id}.
+    //
+    //Future<JsonObject> tiktokTiktokShopRootCategories() async
+    test('test tiktokTiktokShopRootCategories', () async {
       // TODO
     });
 
