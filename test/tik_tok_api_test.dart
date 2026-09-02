@@ -225,9 +225,9 @@ void main() {
 
     // Search TikTok Shop products
     //
-    // Keyword search over TikTok Shop products (US): products with their bound video, matching shops, related searches and categories.
+    // Keyword search over TikTok Shop products: 30 per page with offset pagination (US); the first page also carries matching shops and related searches.
     //
-    //Future<JsonObject> tiktokSearchTiktokShopProducts(String q) async
+    //Future<JsonObject> tiktokSearchTiktokShopProducts(String q, { String region, int offset }) async
     test('test tiktokSearchTiktokShopProducts', () async {
       // TODO
     });
@@ -252,37 +252,64 @@ void main() {
 
     // TikTok Shop best sellers
     //
-    // TikTok Shop's own ranking of the best-selling products of the past 30 days (US).
+    // TikTok Shop's own ranking of the best-selling products of the past 30 days (US only).
     //
-    //Future<JsonObject> tiktokTiktokShopBestSellers({ int count }) async
+    //Future<JsonObject> tiktokTiktokShopBestSellers({ String region, int count }) async
     test('test tiktokTiktokShopBestSellers', () async {
       // TODO
     });
 
     // TikTok Shop category: subcategories + top products
     //
-    // A category's subcategories and its top products as TikTok Shop ranks them (US).
+    // A category's subcategories and its top products as TikTok Shop ranks them.
     //
-    //Future<JsonObject> tiktokTiktokShopCategorySubcategoriesTopProducts(String categoryId) async
+    //Future<JsonObject> tiktokTiktokShopCategorySubcategoriesTopProducts(String categoryId, { String region }) async
     test('test tiktokTiktokShopCategorySubcategoriesTopProducts', () async {
+      // TODO
+    });
+
+    // TikTok Shop deals feed
+    //
+    // A curated storefront feed: recommended-for-you, or premium-offers (US only).
+    //
+    //Future<JsonObject> tiktokTiktokShopDealsFeed(String deal, { String region }) async
+    test('test tiktokTiktokShopDealsFeed', () async {
       // TODO
     });
 
     // TikTok Shop product detail
     //
-    // Full TikTok Shop product page (US): description, images, price, SKUs with stock, reviews, shop and TikTok's AI summary.
+    // Full TikTok Shop product page: description, images, price, SKUs with stock, first reviews, shop and TikTok's AI summary.
     //
-    //Future<JsonObject> tiktokTiktokShopProductDetail(String productId) async
+    //Future<JsonObject> tiktokTiktokShopProductDetail(String productId, { String region }) async
     test('test tiktokTiktokShopProductDetail', () async {
+      // TODO
+    });
+
+    // TikTok Shop product reviews
+    //
+    // Paginated product reviews with the rating breakdown (US).
+    //
+    //Future<JsonObject> tiktokTiktokShopProductReviews(String productId, { String region, int page, int count, String sort, int rating, bool withMedia, bool verified }) async
+    test('test tiktokTiktokShopProductReviews', () async {
       // TODO
     });
 
     // TikTok Shop root categories
     //
-    // Top-level TikTok Shop categories (US). Drill down with /shop/categories/{category_id}.
+    // Top-level TikTok Shop categories of a market. Drill down with /shop/categories/{id}.
     //
-    //Future<JsonObject> tiktokTiktokShopRootCategories() async
+    //Future<JsonObject> tiktokTiktokShopRootCategories({ String region }) async
     test('test tiktokTiktokShopRootCategories', () async {
+      // TODO
+    });
+
+    // TikTok Shop store + products
+    //
+    // A store's stats and its cursor-paginated product catalogue (US).
+    //
+    //Future<JsonObject> tiktokTiktokShopStoreProducts(String sellerId, { String region, String cursor, int count }) async
+    test('test tiktokTiktokShopStoreProducts', () async {
       // TODO
     });
 

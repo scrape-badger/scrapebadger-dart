@@ -438,8 +438,11 @@ Class | Method | HTTP request | Description
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokSearchVideos**](doc/TikTokApi.md#tiktoksearchvideos) | **GET** /v1/tiktok/search/videos | Search videos
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopBestSellers**](doc/TikTokApi.md#tiktoktiktokshopbestsellers) | **GET** /v1/tiktok/shop/ranking | TikTok Shop best sellers
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopCategorySubcategoriesTopProducts**](doc/TikTokApi.md#tiktoktiktokshopcategorysubcategoriestopproducts) | **GET** /v1/tiktok/shop/categories/{category_id} | TikTok Shop category: subcategories + top products
+[*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopDealsFeed**](doc/TikTokApi.md#tiktoktiktokshopdealsfeed) | **GET** /v1/tiktok/shop/deals/{deal} | TikTok Shop deals feed
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopProductDetail**](doc/TikTokApi.md#tiktoktiktokshopproductdetail) | **GET** /v1/tiktok/shop/products/{product_id} | TikTok Shop product detail
+[*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopProductReviews**](doc/TikTokApi.md#tiktoktiktokshopproductreviews) | **GET** /v1/tiktok/shop/products/{product_id}/reviews | TikTok Shop product reviews
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopRootCategories**](doc/TikTokApi.md#tiktoktiktokshoprootcategories) | **GET** /v1/tiktok/shop/categories | TikTok Shop root categories
+[*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopStoreProducts**](doc/TikTokApi.md#tiktoktiktokshopstoreproducts) | **GET** /v1/tiktok/shop/stores/{seller_id} | TikTok Shop store + products
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTrendingHashtags**](doc/TikTokApi.md#tiktoktrendinghashtags) | **GET** /v1/tiktok/trending/hashtags | Trending hashtags
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTrendingSongs**](doc/TikTokApi.md#tiktoktrendingsongs) | **GET** /v1/tiktok/trending/songs | Trending songs
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTrendingVideos**](doc/TikTokApi.md#tiktoktrendingvideos) | **GET** /v1/tiktok/trending/videos | Trending videos
