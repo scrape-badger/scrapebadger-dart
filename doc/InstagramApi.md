@@ -39,7 +39,7 @@ Method | HTTP request | Description
 
 About this account
 
-Country, join date and former usernames.
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview. Country, join date and former usernames.
 
 ### Example
 ```dart
@@ -86,6 +86,8 @@ Name | Type | Description  | Notes
 
 Blended top search
 
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+
 ### Example
 ```dart
 import 'package:scrapebadger/api.dart';
@@ -131,7 +133,7 @@ Name | Type | Description  | Notes
 
 Get active stories
 
-Active stories (account pool only).
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview. Active stories (account pool only).
 
 ### Example
 ```dart
@@ -177,6 +179,8 @@ Name | Type | Description  | Notes
 > JsonObject instagramGetAudioTrack(audioId)
 
 Get audio track
+
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
 
 ### Example
 ```dart
@@ -272,7 +276,7 @@ Name | Type | Description  | Notes
 
 Get followers
 
-Followers list, paginated (account pool).
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview. Followers list, paginated (account pool).
 
 ### Example
 ```dart
@@ -325,6 +329,8 @@ Name | Type | Description  | Notes
 
 Get following
 
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+
 ### Example
 ```dart
 import 'package:scrapebadger/api.dart';
@@ -374,6 +380,8 @@ Name | Type | Description  | Notes
 
 Get hashtag info
 
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+
 ### Example
 ```dart
 import 'package:scrapebadger/api.dart';
@@ -418,6 +426,8 @@ Name | Type | Description  | Notes
 > JsonObject instagramGetHighlights(username)
 
 Get highlights
+
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
 
 ### Example
 ```dart
@@ -464,6 +474,8 @@ Name | Type | Description  | Notes
 
 Get likers
 
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+
 ### Example
 ```dart
 import 'package:scrapebadger/api.dart';
@@ -508,6 +520,8 @@ Name | Type | Description  | Notes
 > JsonObject instagramGetLocation(locationPk)
 
 Get location
+
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
 
 ### Example
 ```dart
@@ -648,6 +662,8 @@ Name | Type | Description  | Notes
 
 Get tagged posts
 
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+
 ### Example
 ```dart
 import 'package:scrapebadger/api.dart';
@@ -747,6 +763,8 @@ Name | Type | Description  | Notes
 > JsonObject instagramGetUserReels(username, amount, cursor)
 
 Get user reels
+
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
 
 ### Example
 ```dart
@@ -879,6 +897,8 @@ This endpoint does not need any parameter.
 
 Recent hashtag posts
 
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+
 ### Example
 ```dart
 import 'package:scrapebadger/api.dart';
@@ -928,6 +948,8 @@ Name | Type | Description  | Notes
 
 Related profiles
 
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+
 ### Example
 ```dart
 import 'package:scrapebadger/api.dart';
@@ -972,6 +994,8 @@ Name | Type | Description  | Notes
 > JsonObject instagramSearchHashtags(query)
 
 Search hashtags
+
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
 
 ### Example
 ```dart
@@ -1018,6 +1042,8 @@ Name | Type | Description  | Notes
 
 Search users
 
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+
 ### Example
 ```dart
 import 'package:scrapebadger/api.dart';
@@ -1062,6 +1088,8 @@ Name | Type | Description  | Notes
 > JsonObject instagramTopHashtagPosts(tag, amount, cursor)
 
 Top hashtag posts
+
+**Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
 
 ### Example
 ```dart

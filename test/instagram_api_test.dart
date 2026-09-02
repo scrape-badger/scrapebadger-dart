@@ -9,7 +9,7 @@ void main() {
   group(InstagramApi, () {
     // About this account
     //
-    // Country, join date and former usernames.
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview. Country, join date and former usernames.
     //
     //Future<JsonObject> instagramAboutThisAccount(String username) async
     test('test instagramAboutThisAccount', () async {
@@ -18,6 +18,8 @@ void main() {
 
     // Blended top search
     //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+    //
     //Future<JsonObject> instagramBlendedTopSearch(String query) async
     test('test instagramBlendedTopSearch', () async {
       // TODO
@@ -25,7 +27,7 @@ void main() {
 
     // Get active stories
     //
-    // Active stories (account pool only).
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview. Active stories (account pool only).
     //
     //Future<JsonObject> instagramGetActiveStories(String username) async
     test('test instagramGetActiveStories', () async {
@@ -33,6 +35,8 @@ void main() {
     });
 
     // Get audio track
+    //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
     //
     //Future<JsonObject> instagramGetAudioTrack(String audioId) async
     test('test instagramGetAudioTrack', () async {
@@ -48,7 +52,7 @@ void main() {
 
     // Get followers
     //
-    // Followers list, paginated (account pool).
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview. Followers list, paginated (account pool).
     //
     //Future<JsonObject> instagramGetFollowers(String username, { int amount, String cursor, String order }) async
     test('test instagramGetFollowers', () async {
@@ -57,12 +61,16 @@ void main() {
 
     // Get following
     //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+    //
     //Future<JsonObject> instagramGetFollowing(String username, { int amount, String cursor }) async
     test('test instagramGetFollowing', () async {
       // TODO
     });
 
     // Get hashtag info
+    //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
     //
     //Future<JsonObject> instagramGetHashtagInfo(String tag) async
     test('test instagramGetHashtagInfo', () async {
@@ -71,6 +79,8 @@ void main() {
 
     // Get highlights
     //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+    //
     //Future<JsonObject> instagramGetHighlights(String username) async
     test('test instagramGetHighlights', () async {
       // TODO
@@ -78,12 +88,16 @@ void main() {
 
     // Get likers
     //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+    //
     //Future<JsonObject> instagramGetLikers(String code) async
     test('test instagramGetLikers', () async {
       // TODO
     });
 
     // Get location
+    //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
     //
     //Future<JsonObject> instagramGetLocation(int locationPk) async
     test('test instagramGetLocation', () async {
@@ -110,6 +124,8 @@ void main() {
 
     // Get tagged posts
     //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+    //
     //Future<JsonObject> instagramGetTaggedPosts(String username, { int amount, String cursor }) async
     test('test instagramGetTaggedPosts', () async {
       // TODO
@@ -125,6 +141,8 @@ void main() {
     });
 
     // Get user reels
+    //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
     //
     //Future<JsonObject> instagramGetUserReels(String username, { int amount, String cursor }) async
     test('test instagramGetUserReels', () async {
@@ -147,12 +165,16 @@ void main() {
 
     // Recent hashtag posts
     //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+    //
     //Future<JsonObject> instagramRecentHashtagPosts(String tag, { int amount, String cursor }) async
     test('test instagramRecentHashtagPosts', () async {
       // TODO
     });
 
     // Related profiles
+    //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
     //
     //Future<JsonObject> instagramRelatedProfiles(String username) async
     test('test instagramRelatedProfiles', () async {
@@ -161,6 +183,8 @@ void main() {
 
     // Search hashtags
     //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+    //
     //Future<JsonObject> instagramSearchHashtags(String query) async
     test('test instagramSearchHashtags', () async {
       // TODO
@@ -168,12 +192,16 @@ void main() {
 
     // Search users
     //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
+    //
     //Future<JsonObject> instagramSearchUsers(String query) async
     test('test instagramSearchUsers', () async {
       // TODO
     });
 
     // Top hashtag posts
+    //
+    // **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns `503 temporarily_unavailable` (not billed, `Retry-After` set) — see https://docs.scrapebadger.com/instagram/overview.
     //
     //Future<JsonObject> instagramTopHashtagPosts(String tag, { int amount, String cursor }) async
     test('test instagramTopHashtagPosts', () async {

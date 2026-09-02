@@ -21,7 +21,7 @@ class InstagramApi {
   const InstagramApi(this._dio, this._serializers);
 
   /// About this account
-  /// Country, join date and former usernames.
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview. Country, join date and former usernames.
   ///
   /// Parameters:
   /// * [username] 
@@ -103,7 +103,7 @@ class InstagramApi {
   }
 
   /// Blended top search
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [query] 
@@ -190,7 +190,7 @@ class InstagramApi {
   }
 
   /// Get active stories
-  /// Active stories (account pool only).
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview. Active stories (account pool only).
   ///
   /// Parameters:
   /// * [username] 
@@ -272,7 +272,7 @@ class InstagramApi {
   }
 
   /// Get audio track
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [audioId] 
@@ -446,7 +446,7 @@ class InstagramApi {
   }
 
   /// Get followers
-  /// Followers list, paginated (account pool).
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview. Followers list, paginated (account pool).
   ///
   /// Parameters:
   /// * [username] 
@@ -541,7 +541,7 @@ class InstagramApi {
   }
 
   /// Get following
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [username] 
@@ -633,7 +633,7 @@ class InstagramApi {
   }
 
   /// Get hashtag info
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [tag] 
@@ -715,7 +715,7 @@ class InstagramApi {
   }
 
   /// Get highlights
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [username] 
@@ -797,7 +797,7 @@ class InstagramApi {
   }
 
   /// Get likers
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [code] 
@@ -879,7 +879,7 @@ class InstagramApi {
   }
 
   /// Get location
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [locationPk] 
@@ -1125,7 +1125,7 @@ class InstagramApi {
   }
 
   /// Get tagged posts
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [username] 
@@ -1309,7 +1309,7 @@ class InstagramApi {
   }
 
   /// Get user reels
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [username] 
@@ -1561,7 +1561,7 @@ class InstagramApi {
   }
 
   /// Recent hashtag posts
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [tag] 
@@ -1653,7 +1653,7 @@ class InstagramApi {
   }
 
   /// Related profiles
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [username] 
@@ -1735,7 +1735,7 @@ class InstagramApi {
   }
 
   /// Search hashtags
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [query] 
@@ -1822,7 +1822,7 @@ class InstagramApi {
   }
 
   /// Search users
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [query] 
@@ -1909,7 +1909,7 @@ class InstagramApi {
   }
 
   /// Top hashtag posts
-  /// 
+  /// **Temporarily unavailable.** The authenticated Instagram tier is offline, so this endpoint currently returns &#x60;503 temporarily_unavailable&#x60; (not billed, &#x60;Retry-After&#x60; set) — see https://docs.scrapebadger.com/instagram/overview.
   ///
   /// Parameters:
   /// * [tag] 
