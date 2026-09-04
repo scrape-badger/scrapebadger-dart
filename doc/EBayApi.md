@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ebayCompletedSoldListings**
-> JsonObject ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice, location)
+> JsonObject ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice, location, language)
 
 Completed / sold listings
 
@@ -109,9 +109,10 @@ final String condition = condition_example; // String | new|open_box|refurbished
 final num minPrice = 8.14; // num | 
 final num maxPrice = 8.14; // num | 
 final String location = location_example; // String | domestic|worldwide
+final String language = language_example; // String | english|japanese|chinese|korean
 
 try {
-    final response = api.ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice, location);
+    final response = api.ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice, location, language);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling EBayApi->ebayCompletedSoldListings: $e\n');
@@ -132,6 +133,7 @@ Name | Type | Description  | Notes
  **minPrice** | **num**|  | [optional] 
  **maxPrice** | **num**|  | [optional] 
  **location** | **String**| domestic|worldwide | [optional] 
+ **language** | **String**| english|japanese|chinese|korean | [optional] 
 
 ### Return type
 
@@ -625,7 +627,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ebaySearchListings**
-> JsonObject ebaySearchListings(query, domain, categoryId, page, perPage, sortBy, condition, buyingFormat, minPrice, maxPrice, freeShipping, location)
+> JsonObject ebaySearchListings(query, domain, categoryId, page, perPage, sortBy, condition, buyingFormat, minPrice, maxPrice, freeShipping, location, language)
 
 Search listings
 
@@ -652,9 +654,10 @@ final num minPrice = 8.14; // num |
 final num maxPrice = 8.14; // num | 
 final bool freeShipping = true; // bool | 
 final String location = location_example; // String | domestic|worldwide
+final String language = language_example; // String | english|japanese|chinese|korean
 
 try {
-    final response = api.ebaySearchListings(query, domain, categoryId, page, perPage, sortBy, condition, buyingFormat, minPrice, maxPrice, freeShipping, location);
+    final response = api.ebaySearchListings(query, domain, categoryId, page, perPage, sortBy, condition, buyingFormat, minPrice, maxPrice, freeShipping, location, language);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling EBayApi->ebaySearchListings: $e\n');
@@ -677,6 +680,7 @@ Name | Type | Description  | Notes
  **maxPrice** | **num**|  | [optional] 
  **freeShipping** | **bool**|  | [optional] [default to false]
  **location** | **String**| domestic|worldwide | [optional] 
+ **language** | **String**| english|japanese|chinese|korean | [optional] 
 
 ### Return type
 

@@ -138,6 +138,7 @@ class EBayApi {
   /// * [minPrice] 
   /// * [maxPrice] 
   /// * [location] - domestic|worldwide
+  /// * [language] - english|japanese|chinese|korean
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -158,6 +159,7 @@ class EBayApi {
     num? minPrice,
     num? maxPrice,
     String? location,
+    String? language,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -196,6 +198,7 @@ class EBayApi {
       r'min_price': encodeQueryParameter(_serializers, minPrice, const FullType(num)),
       r'max_price': encodeQueryParameter(_serializers, maxPrice, const FullType(num)),
       r'location': encodeQueryParameter(_serializers, location, const FullType(String)),
+      r'language': encodeQueryParameter(_serializers, language, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1124,6 +1127,7 @@ class EBayApi {
   /// * [maxPrice] 
   /// * [freeShipping] 
   /// * [location] - domestic|worldwide
+  /// * [language] - english|japanese|chinese|korean
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1146,6 +1150,7 @@ class EBayApi {
     num? maxPrice,
     bool? freeShipping = false,
     String? location,
+    String? language,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1186,6 +1191,7 @@ class EBayApi {
       r'max_price': encodeQueryParameter(_serializers, maxPrice, const FullType(num)),
       if (freeShipping != null) r'free_shipping': encodeQueryParameter(_serializers, freeShipping, const FullType(bool)),
       r'location': encodeQueryParameter(_serializers, location, const FullType(String)),
+      r'language': encodeQueryParameter(_serializers, language, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
