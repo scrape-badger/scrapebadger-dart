@@ -115,6 +115,15 @@ void main() {
       // TODO
     });
 
+    // Search by image
+    //
+    // Search active listings by image, the way eBay's camera icon does.  No ``sort_by``: eBay ignores it on a visual results page.
+    //
+    //Future<JsonObject> ebaySearchByImage(BuiltMap<String, JsonObject> requestBody) async
+    test('test ebaySearchByImage', () async {
+      // TODO
+    });
+
     // Search listings
     //
     // Search an eBay marketplace for active listings.

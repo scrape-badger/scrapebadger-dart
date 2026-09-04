@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**ebayKeywordSuggestions**](EBayApi.md#ebaykeywordsuggestions) | **GET** /v1/ebay/autocomplete | Keyword suggestions
 [**ebayListCategories**](EBayApi.md#ebaylistcategories) | **GET** /v1/ebay/categories | List categories
 [**ebayListMarkets**](EBayApi.md#ebaylistmarkets) | **GET** /v1/ebay/markets | List markets
+[**ebaySearchByImage**](EBayApi.md#ebaysearchbyimage) | **POST** /v1/ebay/search/by-image | Search by image
 [**ebaySearchListings**](EBayApi.md#ebaysearchlistings) | **GET** /v1/ebay/search | Search listings
 
 
@@ -622,6 +623,53 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ebaySearchByImage**
+> JsonObject ebaySearchByImage(requestBody)
+
+Search by image
+
+Search active listings by image, the way eBay's camera icon does.  No ``sort_by``: eBay ignores it on a visual results page.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getEBayApi();
+final BuiltMap<String, JsonObject> requestBody = Object; // BuiltMap<String, JsonObject> | 
+
+try {
+    final response = api.ebaySearchByImage(requestBody);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling EBayApi->ebaySearchByImage: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestBody** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md)|  | 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
