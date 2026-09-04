@@ -11,7 +11,7 @@ void main() {
     //
     // Send a prompt to Gemini and get the answer plus the web sources it cited.
     //
-    //Future<JsonObject> geminiAskGeminiAQuestion(String prompt, { String country, String webSearch }) async
+    //Future<JsonObject> geminiAskGeminiAQuestion(String prompt, { String country, String webSearch, String imageUrl }) async
     test('test geminiAskGeminiAQuestion', () async {
       // TODO
     });

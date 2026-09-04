@@ -27,6 +27,7 @@ class GeminiApi {
   /// * [prompt] - The prompt to send to Gemini (max 4096 characters).
   /// * [country] - ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'.
   /// * [webSearch] - auto (let Gemini decide) | force (ask it to browse) | off (answer from memory). `web_search_triggered` in the response always reports what actually happened.
+  /// * [imageUrl] - Public http(s) URL of an image to attach to the prompt. Gemini reads it and answers about it. POST also accepts `image_base64`. Exactly one of the two.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -40,6 +41,7 @@ class GeminiApi {
     required String prompt,
     String? country,
     String? webSearch = 'auto',
+    String? imageUrl,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -71,6 +73,7 @@ class GeminiApi {
       r'prompt': encodeQueryParameter(_serializers, prompt, const FullType(String)),
       r'country': encodeQueryParameter(_serializers, country, const FullType(String)),
       if (webSearch != null) r'web_search': encodeQueryParameter(_serializers, webSearch, const FullType(String)),
+      r'image_url': encodeQueryParameter(_serializers, imageUrl, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

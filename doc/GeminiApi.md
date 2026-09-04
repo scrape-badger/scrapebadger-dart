@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **geminiAskGeminiAQuestion**
-> JsonObject geminiAskGeminiAQuestion(prompt, country, webSearch)
+> JsonObject geminiAskGeminiAQuestion(prompt, country, webSearch, imageUrl)
 
 Ask Gemini a question
 
@@ -36,9 +36,10 @@ final api = Scrapebadger().getGeminiApi();
 final String prompt = prompt_example; // String | The prompt to send to Gemini (max 4096 characters).
 final String country = country_example; // String | ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'.
 final String webSearch = webSearch_example; // String | auto (let Gemini decide) | force (ask it to browse) | off (answer from memory). `web_search_triggered` in the response always reports what actually happened.
+final String imageUrl = imageUrl_example; // String | Public http(s) URL of an image to attach to the prompt. Gemini reads it and answers about it. POST also accepts `image_base64`. Exactly one of the two.
 
 try {
-    final response = api.geminiAskGeminiAQuestion(prompt, country, webSearch);
+    final response = api.geminiAskGeminiAQuestion(prompt, country, webSearch, imageUrl);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling GeminiApi->geminiAskGeminiAQuestion: $e\n');
@@ -52,6 +53,7 @@ Name | Type | Description  | Notes
  **prompt** | **String**| The prompt to send to Gemini (max 4096 characters). | 
  **country** | **String**| ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'. | [optional] 
  **webSearch** | **String**| auto (let Gemini decide) | force (ask it to browse) | off (answer from memory). `web_search_triggered` in the response always reports what actually happened. | [optional] [default to 'auto']
+ **imageUrl** | **String**| Public http(s) URL of an image to attach to the prompt. Gemini reads it and answers about it. POST also accepts `image_base64`. Exactly one of the two. | [optional] 
 
 ### Return type
 

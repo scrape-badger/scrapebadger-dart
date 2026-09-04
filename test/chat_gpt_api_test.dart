@@ -11,7 +11,7 @@ void main() {
     //
     // Send a prompt to ChatGPT and get the answer plus the web sources it cited.
     //
-    //Future<JsonObject> chatgptAskChatgptAQuestion(String prompt, { String country, String webSearch }) async
+    //Future<JsonObject> chatgptAskChatgptAQuestion(String prompt, { String country, String webSearch, String imageUrl }) async
     test('test chatgptAskChatgptAQuestion', () async {
       // TODO
     });
