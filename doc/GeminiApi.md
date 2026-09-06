@@ -36,7 +36,7 @@ final api = Scrapebadger().getGeminiApi();
 final String prompt = prompt_example; // String | The prompt to send to Gemini (max 4096 characters).
 final String country = country_example; // String | ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'.
 final String webSearch = webSearch_example; // String | auto (let Gemini decide) | force (ask it to browse) | off (answer from memory). `web_search_triggered` in the response always reports what actually happened.
-final String imageUrl = imageUrl_example; // String | Public http(s) URL of an image to attach to the prompt. Gemini reads it and answers about it. POST also accepts `image_base64`. Exactly one of the two.
+final String imageUrl = imageUrl_example; // String | UNAVAILABLE. Signed-out Gemini refuses image questions — it accepts the upload and then answers PERMISSION_DENIED to its own generate RPC, so this returns 422 immediately rather than charging for a render that cannot succeed. Use /v1/chatgpt/ask for image input.
 
 try {
     final response = api.geminiAskGeminiAQuestion(prompt, country, webSearch, imageUrl);
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
  **prompt** | **String**| The prompt to send to Gemini (max 4096 characters). | 
  **country** | **String**| ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'. | [optional] 
  **webSearch** | **String**| auto (let Gemini decide) | force (ask it to browse) | off (answer from memory). `web_search_triggered` in the response always reports what actually happened. | [optional] [default to 'auto']
- **imageUrl** | **String**| Public http(s) URL of an image to attach to the prompt. Gemini reads it and answers about it. POST also accepts `image_base64`. Exactly one of the two. | [optional] 
+ **imageUrl** | **String**| UNAVAILABLE. Signed-out Gemini refuses image questions — it accepts the upload and then answers PERMISSION_DENIED to its own generate RPC, so this returns 422 immediately rather than charging for a render that cannot succeed. Use /v1/chatgpt/ask for image input. | [optional] 
 
 ### Return type
 
