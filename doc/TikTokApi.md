@@ -36,9 +36,7 @@ Method | HTTP request | Description
 [**tiktokSearchTiktokShopProducts**](TikTokApi.md#tiktoksearchtiktokshopproducts) | **GET** /v1/tiktok/shop/search | Search TikTok Shop products
 [**tiktokSearchUsers**](TikTokApi.md#tiktoksearchusers) | **GET** /v1/tiktok/search/users | Search users
 [**tiktokSearchVideos**](TikTokApi.md#tiktoksearchvideos) | **GET** /v1/tiktok/search/videos | Search videos
-[**tiktokTiktokShopBestSellers**](TikTokApi.md#tiktoktiktokshopbestsellers) | **GET** /v1/tiktok/shop/ranking | TikTok Shop best sellers
 [**tiktokTiktokShopCategorySubcategoriesTopProducts**](TikTokApi.md#tiktoktiktokshopcategorysubcategoriestopproducts) | **GET** /v1/tiktok/shop/categories/{category_id} | TikTok Shop category: subcategories + top products
-[**tiktokTiktokShopDealsFeed**](TikTokApi.md#tiktoktiktokshopdealsfeed) | **GET** /v1/tiktok/shop/deals/{deal} | TikTok Shop deals feed
 [**tiktokTiktokShopProductDetail**](TikTokApi.md#tiktoktiktokshopproductdetail) | **GET** /v1/tiktok/shop/products/{product_id} | TikTok Shop product detail
 [**tiktokTiktokShopProductReviews**](TikTokApi.md#tiktoktiktokshopproductreviews) | **GET** /v1/tiktok/shop/products/{product_id}/reviews | TikTok Shop product reviews
 [**tiktokTiktokShopRootCategories**](TikTokApi.md#tiktoktiktokshoprootcategories) | **GET** /v1/tiktok/shop/categories | TikTok Shop root categories
@@ -1419,55 +1417,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **tiktokTiktokShopBestSellers**
-> JsonObject tiktokTiktokShopBestSellers(region, count)
-
-TikTok Shop best sellers
-
-TikTok Shop's own ranking of the best-selling products of the past 30 days (US only).
-
-### Example
-```dart
-import 'package:scrapebadger/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api = Scrapebadger().getTikTokApi();
-final String region = region_example; // String | Market: US, GB, ID
-final int count = 56; // int | Max products to return
-
-try {
-    final response = api.tiktokTiktokShopBestSellers(region, count);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling TikTokApi->tiktokTiktokShopBestSellers: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **region** | **String**| Market: US, GB, ID | [optional] [default to 'US']
- **count** | **int**| Max products to return | [optional] [default to 20]
-
-### Return type
-
-[**JsonObject**](JsonObject.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **tiktokTiktokShopCategorySubcategoriesTopProducts**
 > JsonObject tiktokTiktokShopCategorySubcategoriesTopProducts(categoryId, region)
 
@@ -1500,55 +1449,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryId** | **String**|  | 
- **region** | **String**| Market: US, GB, ID | [optional] [default to 'US']
-
-### Return type
-
-[**JsonObject**](JsonObject.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **tiktokTiktokShopDealsFeed**
-> JsonObject tiktokTiktokShopDealsFeed(deal, region)
-
-TikTok Shop deals feed
-
-A curated storefront feed: recommended-for-you, or premium-offers (US only).
-
-### Example
-```dart
-import 'package:scrapebadger/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api = Scrapebadger().getTikTokApi();
-final String deal = deal_example; // String | 
-final String region = region_example; // String | Market: US, GB, ID
-
-try {
-    final response = api.tiktokTiktokShopDealsFeed(deal, region);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling TikTokApi->tiktokTiktokShopDealsFeed: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deal** | **String**|  | 
  **region** | **String**| Market: US, GB, ID | [optional] [default to 'US']
 
 ### Return type

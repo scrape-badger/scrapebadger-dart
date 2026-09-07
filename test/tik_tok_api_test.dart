@@ -250,30 +250,12 @@ void main() {
       // TODO
     });
 
-    // TikTok Shop best sellers
-    //
-    // TikTok Shop's own ranking of the best-selling products of the past 30 days (US only).
-    //
-    //Future<JsonObject> tiktokTiktokShopBestSellers({ String region, int count }) async
-    test('test tiktokTiktokShopBestSellers', () async {
-      // TODO
-    });
-
     // TikTok Shop category: subcategories + top products
     //
     // A category's subcategories and its top products as TikTok Shop ranks them.
     //
     //Future<JsonObject> tiktokTiktokShopCategorySubcategoriesTopProducts(String categoryId, { String region }) async
     test('test tiktokTiktokShopCategorySubcategoriesTopProducts', () async {
-      // TODO
-    });
-
-    // TikTok Shop deals feed
-    //
-    // A curated storefront feed: recommended-for-you, or premium-offers (US only).
-    //
-    //Future<JsonObject> tiktokTiktokShopDealsFeed(String deal, { String region }) async
-    test('test tiktokTiktokShopDealsFeed', () async {
       // TODO
     });
 
