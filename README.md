@@ -586,6 +586,7 @@ Class | Method | HTTP request | Description
 [*YouTubeApi*](doc/YouTubeApi.md) | [**youtubeYoutubeScraperHealthCheck**](doc/YouTubeApi.md#youtubeyoutubescraperhealthcheck) | **GET** /v1/youtube/health | YouTube scraper health check
 [*YouTubeApi*](doc/YouTubeApi.md) | [**youtubeYoutubeScraperHealthCheckHead**](doc/YouTubeApi.md#youtubeyoutubescraperhealthcheckhead) | **HEAD** /v1/youtube/health | YouTube scraper health check
 [*ZillowApi*](doc/ZillowApi.md) | [**zillowGetAgentProfileListings**](doc/ZillowApi.md#zillowgetagentprofilelistings) | **GET** /v1/zillow/agent | Get agent profile + listings
+[*ZillowApi*](doc/ZillowApi.md) | [**zillowGetMultifamilyBuilding**](doc/ZillowApi.md#zillowgetmultifamilybuilding) | **GET** /v1/zillow/building | Get multifamily building
 [*ZillowApi*](doc/ZillowApi.md) | [**zillowGetPropertyDetail**](doc/ZillowApi.md#zillowgetpropertydetail) | **GET** /v1/zillow/property/{zpid} | Get property detail
 [*ZillowApi*](doc/ZillowApi.md) | [**zillowGetPropertyDetailByUrl**](doc/ZillowApi.md#zillowgetpropertydetailbyurl) | **GET** /v1/zillow/property | Get property detail by URL
 [*ZillowApi*](doc/ZillowApi.md) | [**zillowListCoverageMarkets**](doc/ZillowApi.md#zillowlistcoveragemarkets) | **GET** /v1/zillow/markets | List coverage markets

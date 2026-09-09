@@ -16,6 +16,15 @@ void main() {
       // TODO
     });
 
+    // Get multifamily building
+    //
+    // Get a Zillow apartment community with per-unit pricing and availability.  Multi-unit rentals are served on `/apartments/...` and `/b/...` pages, which `/property` cannot read — pass a `home_type=BUILDING` search result's `detail_url` here instead.
+    //
+    //Future<JsonObject> zillowGetMultifamilyBuilding(String url) async
+    test('test zillowGetMultifamilyBuilding', () async {
+      // TODO
+    });
+
     // Get property detail
     //
     // Get a single Zillow property's full detail by zpid.
