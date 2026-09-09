@@ -1589,17 +1589,18 @@ class FacebookApi {
   }
 
   /// Search Marketplace
-  /// Search Facebook Marketplace listings by keyword and location.
+  /// Search Facebook Marketplace listings by keyword and location.  &#x60;&#x60;location&#x60;&#x60; must be a Facebook location slug (&#x60;&#x60;london&#x60;&#x60;, &#x60;&#x60;newcastleupontyne&#x60;&#x60;) or a numeric Facebook place id — the &#x60;&#x60;city_page_id&#x60;&#x60; on any listing is one. Human-readable names such as &#x60;&#x60;Durham, UK&#x60;&#x60; are rejected with a 400 rather than silently searching Facebook&#39;s San Francisco default.
   ///
   /// Parameters:
   /// * [query] - Search keywords
-  /// * [location] - Marketplace location slug
+  /// * [location] - Marketplace location slug or numeric place id
   /// * [minPrice] 
   /// * [maxPrice] 
   /// * [daysSinceListed] 
   /// * [sortBy] 
   /// * [itemCondition] 
   /// * [deliveryMethod] 
+  /// * [radius] - Search radius around the location (km, or miles in the US)
   /// * [after] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -1619,6 +1620,7 @@ class FacebookApi {
     String? sortBy,
     String? itemCondition,
     String? deliveryMethod,
+    int? radius,
     String? after,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1656,6 +1658,7 @@ class FacebookApi {
       r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(String)),
       r'item_condition': encodeQueryParameter(_serializers, itemCondition, const FullType(String)),
       r'delivery_method': encodeQueryParameter(_serializers, deliveryMethod, const FullType(String)),
+      r'radius': encodeQueryParameter(_serializers, radius, const FullType(int)),
       r'after': encodeQueryParameter(_serializers, after, const FullType(String)),
     };
 

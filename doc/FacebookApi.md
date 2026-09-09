@@ -906,11 +906,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **facebookSearchMarketplace**
-> JsonObject facebookSearchMarketplace(query, location, minPrice, maxPrice, daysSinceListed, sortBy, itemCondition, deliveryMethod, after)
+> JsonObject facebookSearchMarketplace(query, location, minPrice, maxPrice, daysSinceListed, sortBy, itemCondition, deliveryMethod, radius, after)
 
 Search Marketplace
 
-Search Facebook Marketplace listings by keyword and location.
+Search Facebook Marketplace listings by keyword and location.  ``location`` must be a Facebook location slug (``london``, ``newcastleupontyne``) or a numeric Facebook place id — the ``city_page_id`` on any listing is one. Human-readable names such as ``Durham, UK`` are rejected with a 400 rather than silently searching Facebook's San Francisco default.
 
 ### Example
 ```dart
@@ -922,17 +922,18 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getFacebookApi();
 final String query = query_example; // String | Search keywords
-final String location = location_example; // String | Marketplace location slug
+final String location = location_example; // String | Marketplace location slug or numeric place id
 final int minPrice = 56; // int | 
 final int maxPrice = 56; // int | 
 final int daysSinceListed = 56; // int | 
 final String sortBy = sortBy_example; // String | 
 final String itemCondition = itemCondition_example; // String | 
 final String deliveryMethod = deliveryMethod_example; // String | 
+final int radius = 56; // int | Search radius around the location (km, or miles in the US)
 final String after = after_example; // String | 
 
 try {
-    final response = api.facebookSearchMarketplace(query, location, minPrice, maxPrice, daysSinceListed, sortBy, itemCondition, deliveryMethod, after);
+    final response = api.facebookSearchMarketplace(query, location, minPrice, maxPrice, daysSinceListed, sortBy, itemCondition, deliveryMethod, radius, after);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling FacebookApi->facebookSearchMarketplace: $e\n');
@@ -944,13 +945,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search keywords | 
- **location** | **String**| Marketplace location slug | [optional] [default to 'nyc']
+ **location** | **String**| Marketplace location slug or numeric place id | [optional] [default to 'nyc']
  **minPrice** | **int**|  | [optional] 
  **maxPrice** | **int**|  | [optional] 
  **daysSinceListed** | **int**|  | [optional] 
  **sortBy** | **String**|  | [optional] 
  **itemCondition** | **String**|  | [optional] 
  **deliveryMethod** | **String**|  | [optional] 
+ **radius** | **int**| Search radius around the location (km, or miles in the US) | [optional] 
  **after** | **String**|  | [optional] 
 
 ### Return type
