@@ -430,11 +430,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **facebookGetPostComments**
-> JsonObject facebookGetPostComments(postId, after, sort)
+> JsonObject facebookGetPostComments(postId, url, after, sort)
 
 Get post comments
 
-Get a Facebook post's comment thread (paginated).
+Get a Facebook post's comment thread, 10 per page.  ``sort`` is ``relevance`` (Facebook's ranked order, the default) or ``newest``. Follow ``end_cursor`` while ``has_next_page`` to walk the whole thread; ``total_count`` is how many the post has.
 
 ### Example
 ```dart
@@ -446,11 +446,12 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getFacebookApi();
 final String postId = postId_example; // String | 
+final String url = url_example; // String | Full post permalink/reel URL — overrides post_id
 final String after = after_example; // String | 
-final String sort = sort_example; // String | 
+final String sort = sort_example; // String | relevance | newest
 
 try {
-    final response = api.facebookGetPostComments(postId, after, sort);
+    final response = api.facebookGetPostComments(postId, url, after, sort);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling FacebookApi->facebookGetPostComments: $e\n');
@@ -462,8 +463,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **postId** | **String**|  | 
+ **url** | **String**| Full post permalink/reel URL — overrides post_id | [optional] 
  **after** | **String**|  | [optional] 
- **sort** | **String**|  | [optional] [default to 'relevance']
+ **sort** | **String**| relevance | newest | [optional] [default to 'relevance']
 
 ### Return type
 
@@ -481,11 +483,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **facebookGetPostDetail**
-> JsonObject facebookGetPostDetail(postId)
+> JsonObject facebookGetPostDetail(postId, url)
 
 Get post detail
 
-Get a Facebook post's detail plus its top comments.
+Get a Facebook post's detail: text, media, author, date and the reaction / comment / share counts. The comments themselves come from ``/posts/{post_id}/comments``.
 
 ### Example
 ```dart
@@ -497,9 +499,10 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getFacebookApi();
 final String postId = postId_example; // String | 
+final String url = url_example; // String | Full post permalink/reel URL — overrides post_id
 
 try {
-    final response = api.facebookGetPostDetail(postId);
+    final response = api.facebookGetPostDetail(postId, url);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling FacebookApi->facebookGetPostDetail: $e\n');
@@ -511,6 +514,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **postId** | **String**|  | 
+ **url** | **String**| Full post permalink/reel URL — overrides post_id | [optional] 
 
 ### Return type
 

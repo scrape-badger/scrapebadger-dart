@@ -81,18 +81,18 @@ void main() {
 
     // Get post comments
     //
-    // Get a Facebook post's comment thread (paginated).
+    // Get a Facebook post's comment thread, 10 per page.  ``sort`` is ``relevance`` (Facebook's ranked order, the default) or ``newest``. Follow ``end_cursor`` while ``has_next_page`` to walk the whole thread; ``total_count`` is how many the post has.
     //
-    //Future<JsonObject> facebookGetPostComments(String postId, { String after, String sort }) async
+    //Future<JsonObject> facebookGetPostComments(String postId, { String url, String after, String sort }) async
     test('test facebookGetPostComments', () async {
       // TODO
     });
 
     // Get post detail
     //
-    // Get a Facebook post's detail plus its top comments.
+    // Get a Facebook post's detail: text, media, author, date and the reaction / comment / share counts. The comments themselves come from ``/posts/{post_id}/comments``.
     //
-    //Future<JsonObject> facebookGetPostDetail(String postId) async
+    //Future<JsonObject> facebookGetPostDetail(String postId, { String url }) async
     test('test facebookGetPostDetail', () async {
       // TODO
     });

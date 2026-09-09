@@ -724,12 +724,13 @@ class FacebookApi {
   }
 
   /// Get post comments
-  /// Get a Facebook post&#39;s comment thread (paginated).
+  /// Get a Facebook post&#39;s comment thread, 10 per page.  &#x60;&#x60;sort&#x60;&#x60; is &#x60;&#x60;relevance&#x60;&#x60; (Facebook&#39;s ranked order, the default) or &#x60;&#x60;newest&#x60;&#x60;. Follow &#x60;&#x60;end_cursor&#x60;&#x60; while &#x60;&#x60;has_next_page&#x60;&#x60; to walk the whole thread; &#x60;&#x60;total_count&#x60;&#x60; is how many the post has.
   ///
   /// Parameters:
   /// * [postId] 
+  /// * [url] - Full post permalink/reel URL — overrides post_id
   /// * [after] 
-  /// * [sort] 
+  /// * [sort] - relevance | newest
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -741,6 +742,7 @@ class FacebookApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> facebookGetPostComments({ 
     required String postId,
+    String? url,
     String? after,
     String? sort = 'relevance',
     CancelToken? cancelToken,
@@ -771,6 +773,7 @@ class FacebookApi {
     );
 
     final _queryParameters = <String, dynamic>{
+      r'url': encodeQueryParameter(_serializers, url, const FullType(String)),
       r'after': encodeQueryParameter(_serializers, after, const FullType(String)),
       if (sort != null) r'sort': encodeQueryParameter(_serializers, sort, const FullType(String)),
     };
@@ -816,10 +819,11 @@ class FacebookApi {
   }
 
   /// Get post detail
-  /// Get a Facebook post&#39;s detail plus its top comments.
+  /// Get a Facebook post&#39;s detail: text, media, author, date and the reaction / comment / share counts. The comments themselves come from &#x60;&#x60;/posts/{post_id}/comments&#x60;&#x60;.
   ///
   /// Parameters:
   /// * [postId] 
+  /// * [url] - Full post permalink/reel URL — overrides post_id
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -831,6 +835,7 @@ class FacebookApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> facebookGetPostDetail({ 
     required String postId,
+    String? url,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -858,9 +863,14 @@ class FacebookApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      r'url': encodeQueryParameter(_serializers, url, const FullType(String)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
