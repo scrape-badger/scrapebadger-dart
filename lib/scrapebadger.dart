@@ -68,6 +68,7 @@ export 'package:scrapebadger/src/model/tweet_delivery_log_list_response.dart';
 export 'package:scrapebadger/src/model/tweet_delivery_log_response.dart';
 export 'package:scrapebadger/src/model/validation_error.dart';
 export 'package:scrapebadger/src/model/validation_error_loc_inner.dart';
+export 'package:scrapebadger/src/model/vinted_mobile_read_request.dart';
 export 'package:scrapebadger/src/model/webhook_create.dart';
 export 'package:scrapebadger/src/model/webhook_list_item.dart';
 export 'package:scrapebadger/src/model/webhook_list_response.dart';

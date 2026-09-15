@@ -61,6 +61,24 @@ void main() {
       // TODO
     });
 
+    // List public Vinted mobile operations
+    //
+    // Discover public read operations, parameters and runnable examples. Free.
+    //
+    //Future<JsonObject> vintedListPublicVintedMobileOperations() async
+    test('test vintedListPublicVintedMobileOperations', () async {
+      // TODO
+    });
+
+    // Read Vinted mobile data
+    //
+    // Read catalog, listing, seller, review, sold-comparable, pricing, reference, shipping-reference, homepage or help data. No Vinted account is required. This is an allowlisted read API, including read-only upstream POST queries. Returns operation, market, and the upstream JSON under data. One credit. Sold comparable prices are not guaranteed final negotiated sale prices.
+    //
+    //Future<JsonObject> vintedReadVintedMobileData(String operation, VintedMobileReadRequest vintedMobileReadRequest) async
+    test('test vintedReadVintedMobileData', () async {
+      // TODO
+    });
+
     // Search brands
     //
     // Search Vinted brands.
@@ -74,7 +92,7 @@ void main() {
     //
     // Search Vinted catalog items with filters.
     //
-    //Future<JsonObject> vintedSearchVintedItems(String query, { String market, String sellerCountry, int page, int perPage, num priceFrom, num priceTo, String brandIds, String catalogIds, String colorIds, String statusIds, String order }) async
+    //Future<JsonObject> vintedSearchVintedItems(String query, { String market, String sellerCountry, int page, int perPage, num priceFrom, num priceTo, String brandIds, String catalogIds, String colorIds, String sizeIds, String materialIds, int time, String searchSessionId, String statusIds, String order }) async
     test('test vintedSearchVintedItems', () async {
       // TODO
     });

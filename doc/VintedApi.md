@@ -15,6 +15,8 @@ Method | HTTP request | Description
 [**vintedListColors**](VintedApi.md#vintedlistcolors) | **GET** /v1/vinted/colors | List colors
 [**vintedListItemConditions**](VintedApi.md#vintedlistitemconditions) | **GET** /v1/vinted/statuses | List item conditions
 [**vintedListMarkets**](VintedApi.md#vintedlistmarkets) | **GET** /v1/vinted/markets | List markets
+[**vintedListPublicVintedMobileOperations**](VintedApi.md#vintedlistpublicvintedmobileoperations) | **GET** /v1/vinted/mobile/operations | List public Vinted mobile operations
+[**vintedReadVintedMobileData**](VintedApi.md#vintedreadvintedmobiledata) | **POST** /v1/vinted/mobile/{operation} | Read Vinted mobile data
 [**vintedSearchBrands**](VintedApi.md#vintedsearchbrands) | **GET** /v1/vinted/brands | Search brands
 [**vintedSearchVintedItems**](VintedApi.md#vintedsearchvinteditems) | **GET** /v1/vinted/search | Search Vinted items
 [**vintedVintedScraperHealthCheck**](VintedApi.md#vintedvintedscraperhealthcheck) | **GET** /v1/vinted/health | Vinted scraper health check
@@ -309,6 +311,98 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **vintedListPublicVintedMobileOperations**
+> JsonObject vintedListPublicVintedMobileOperations()
+
+List public Vinted mobile operations
+
+Discover public read operations, parameters and runnable examples. Free.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getVintedApi();
+
+try {
+    final response = api.vintedListPublicVintedMobileOperations();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling VintedApi->vintedListPublicVintedMobileOperations: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **vintedReadVintedMobileData**
+> JsonObject vintedReadVintedMobileData(operation, vintedMobileReadRequest)
+
+Read Vinted mobile data
+
+Read catalog, listing, seller, review, sold-comparable, pricing, reference, shipping-reference, homepage or help data. No Vinted account is required. This is an allowlisted read API, including read-only upstream POST queries. Returns operation, market, and the upstream JSON under data. One credit. Sold comparable prices are not guaranteed final negotiated sale prices.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getVintedApi();
+final String operation = operation_example; // String | 
+final VintedMobileReadRequest vintedMobileReadRequest = ; // VintedMobileReadRequest | 
+
+try {
+    final response = api.vintedReadVintedMobileData(operation, vintedMobileReadRequest);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling VintedApi->vintedReadVintedMobileData: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operation** | **String**|  | 
+ **vintedMobileReadRequest** | [**VintedMobileReadRequest**](VintedMobileReadRequest.md)|  | 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **vintedSearchBrands**
 > JsonObject vintedSearchBrands(keyword, market)
 
@@ -359,7 +453,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **vintedSearchVintedItems**
-> JsonObject vintedSearchVintedItems(query, market, sellerCountry, page, perPage, priceFrom, priceTo, brandIds, catalogIds, colorIds, statusIds, order)
+> JsonObject vintedSearchVintedItems(query, market, sellerCountry, page, perPage, priceFrom, priceTo, brandIds, catalogIds, colorIds, sizeIds, materialIds, time, searchSessionId, statusIds, order)
 
 Search Vinted items
 
@@ -384,11 +478,15 @@ final num priceTo = 8.14; // num |
 final String brandIds = brandIds_example; // String | 
 final String catalogIds = catalogIds_example; // String | Comma-separated Vinted catalog (category) IDs to restrict the search to, e.g. '1904' or '1904,79'. Vinted applies this before searching, so pagination totals reflect the filtered set. A catalog ID is the `catalog[]` value in a Vinted category URL (vinted.fr/catalog?catalog[]=1904).
 final String colorIds = colorIds_example; // String | Comma-separated color IDs
+final String sizeIds = sizeIds_example; // String | Comma-separated size IDs
+final String materialIds = materialIds_example; // String | Comma-separated material IDs
+final int time = 56; // int | Pagination time returned by the preceding page
+final String searchSessionId = searchSessionId_example; // String | Reuse across pages of one search
 final String statusIds = statusIds_example; // String | Comma-separated condition/status IDs
 final String order = order_example; // String | 
 
 try {
-    final response = api.vintedSearchVintedItems(query, market, sellerCountry, page, perPage, priceFrom, priceTo, brandIds, catalogIds, colorIds, statusIds, order);
+    final response = api.vintedSearchVintedItems(query, market, sellerCountry, page, perPage, priceFrom, priceTo, brandIds, catalogIds, colorIds, sizeIds, materialIds, time, searchSessionId, statusIds, order);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling VintedApi->vintedSearchVintedItems: $e\n');
@@ -409,6 +507,10 @@ Name | Type | Description  | Notes
  **brandIds** | **String**|  | [optional] 
  **catalogIds** | **String**| Comma-separated Vinted catalog (category) IDs to restrict the search to, e.g. '1904' or '1904,79'. Vinted applies this before searching, so pagination totals reflect the filtered set. A catalog ID is the `catalog[]` value in a Vinted category URL (vinted.fr/catalog?catalog[]=1904). | [optional] 
  **colorIds** | **String**| Comma-separated color IDs | [optional] 
+ **sizeIds** | **String**| Comma-separated size IDs | [optional] 
+ **materialIds** | **String**| Comma-separated material IDs | [optional] 
+ **time** | **int**| Pagination time returned by the preceding page | [optional] 
+ **searchSessionId** | **String**| Reuse across pages of one search | [optional] 
  **statusIds** | **String**| Comma-separated condition/status IDs | [optional] 
  **order** | **String**|  | [optional] 
 

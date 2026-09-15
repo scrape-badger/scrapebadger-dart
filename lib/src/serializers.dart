@@ -36,6 +36,7 @@ import 'package:scrapebadger/src/model/tweet_delivery_log_list_response.dart';
 import 'package:scrapebadger/src/model/tweet_delivery_log_response.dart';
 import 'package:scrapebadger/src/model/validation_error.dart';
 import 'package:scrapebadger/src/model/validation_error_loc_inner.dart';
+import 'package:scrapebadger/src/model/vinted_mobile_read_request.dart';
 import 'package:scrapebadger/src/model/webhook_create.dart';
 import 'package:scrapebadger/src/model/webhook_list_item.dart';
 import 'package:scrapebadger/src/model/webhook_list_response.dart';
@@ -68,6 +69,7 @@ part 'serializers.g.dart';
   TweetDeliveryLogResponse,
   ValidationError,
   ValidationErrorLocInner,
+  VintedMobileReadRequest,
   WebhookCreate,
   WebhookListItem,
   WebhookListResponse,

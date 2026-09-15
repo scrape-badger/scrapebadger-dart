@@ -11,6 +11,7 @@ import 'package:dio/dio.dart';
 import 'package:built_value/json_object.dart';
 import 'package:scrapebadger/src/api_util.dart';
 import 'package:scrapebadger/src/model/http_validation_error.dart';
+import 'package:scrapebadger/src/model/vinted_mobile_read_request.dart';
 
 class VintedApi {
 
@@ -547,6 +548,190 @@ class VintedApi {
     );
   }
 
+  /// List public Vinted mobile operations
+  /// Discover public read operations, parameters and runnable examples. Free.
+  ///
+  /// Parameters:
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<JsonObject>> vintedListPublicVintedMobileOperations({ 
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/vinted/mobile/operations';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ApiKeyAuth',
+            'keyName': 'X-API-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    JsonObject? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(JsonObject),
+      ) as JsonObject;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Read Vinted mobile data
+  /// Read catalog, listing, seller, review, sold-comparable, pricing, reference, shipping-reference, homepage or help data. No Vinted account is required. This is an allowlisted read API, including read-only upstream POST queries. Returns operation, market, and the upstream JSON under data. One credit. Sold comparable prices are not guaranteed final negotiated sale prices.
+  ///
+  /// Parameters:
+  /// * [operation] 
+  /// * [vintedMobileReadRequest] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<JsonObject>> vintedReadVintedMobileData({ 
+    required String operation,
+    required VintedMobileReadRequest vintedMobileReadRequest,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/vinted/mobile/{operation}'.replaceAll('{' r'operation' '}', encodeQueryParameter(_serializers, operation, const FullType(String)).toString());
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ApiKeyAuth',
+            'keyName': 'X-API-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(VintedMobileReadRequest);
+      _bodyData = _serializers.serialize(vintedMobileReadRequest, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    JsonObject? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(JsonObject),
+      ) as JsonObject;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Search brands
   /// Search Vinted brands.
   ///
@@ -651,6 +836,10 @@ class VintedApi {
   /// * [brandIds] 
   /// * [catalogIds] - Comma-separated Vinted catalog (category) IDs to restrict the search to, e.g. '1904' or '1904,79'. Vinted applies this before searching, so pagination totals reflect the filtered set. A catalog ID is the `catalog[]` value in a Vinted category URL (vinted.fr/catalog?catalog[]=1904).
   /// * [colorIds] - Comma-separated color IDs
+  /// * [sizeIds] - Comma-separated size IDs
+  /// * [materialIds] - Comma-separated material IDs
+  /// * [time] - Pagination time returned by the preceding page
+  /// * [searchSessionId] - Reuse across pages of one search
   /// * [statusIds] - Comma-separated condition/status IDs
   /// * [order] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -673,6 +862,10 @@ class VintedApi {
     String? brandIds,
     String? catalogIds,
     String? colorIds,
+    String? sizeIds,
+    String? materialIds,
+    int? time,
+    String? searchSessionId,
     String? statusIds,
     String? order,
     CancelToken? cancelToken,
@@ -713,6 +906,10 @@ class VintedApi {
       r'brand_ids': encodeQueryParameter(_serializers, brandIds, const FullType(String)),
       r'catalog_ids': encodeQueryParameter(_serializers, catalogIds, const FullType(String)),
       r'color_ids': encodeQueryParameter(_serializers, colorIds, const FullType(String)),
+      r'size_ids': encodeQueryParameter(_serializers, sizeIds, const FullType(String)),
+      r'material_ids': encodeQueryParameter(_serializers, materialIds, const FullType(String)),
+      r'time': encodeQueryParameter(_serializers, time, const FullType(int)),
+      r'search_session_id': encodeQueryParameter(_serializers, searchSessionId, const FullType(String)),
       r'status_ids': encodeQueryParameter(_serializers, statusIds, const FullType(String)),
       r'order': encodeQueryParameter(_serializers, order, const FullType(String)),
     };
