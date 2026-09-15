@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**vintedListPublicVintedMobileOperations**](VintedApi.md#vintedlistpublicvintedmobileoperations) | **GET** /v1/vinted/mobile/operations | List public Vinted mobile operations
 [**vintedReadVintedMobileData**](VintedApi.md#vintedreadvintedmobiledata) | **POST** /v1/vinted/mobile/{operation} | Read Vinted mobile data
 [**vintedSearchBrands**](VintedApi.md#vintedsearchbrands) | **GET** /v1/vinted/brands | Search brands
+[**vintedSearchByImage**](VintedApi.md#vintedsearchbyimage) | **POST** /v1/vinted/search_by_image | Search by image
 [**vintedSearchVintedItems**](VintedApi.md#vintedsearchvinteditems) | **GET** /v1/vinted/search | Search Vinted items
 [**vintedVintedScraperHealthCheck**](VintedApi.md#vintedvintedscraperhealthcheck) | **GET** /v1/vinted/health | Vinted scraper health check
 [**vintedVintedScraperHealthCheckHead**](VintedApi.md#vintedvintedscraperhealthcheckhead) | **HEAD** /v1/vinted/health | Vinted scraper health check
@@ -448,6 +449,53 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **vintedSearchByImage**
+> JsonObject vintedSearchByImage(vintedImageSearchRequest)
+
+Search by image
+
+Find active Vinted listings from a photo. 10 credits per successful request. Returns the usual items, pagination and market envelope. Visual ranking; no similarity score. Resend the same image and pagination time for subsequent pages. Structured brand data may be null.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getVintedApi();
+final VintedImageSearchRequest vintedImageSearchRequest = ; // VintedImageSearchRequest | 
+
+try {
+    final response = api.vintedSearchByImage(vintedImageSearchRequest);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling VintedApi->vintedSearchByImage: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **vintedImageSearchRequest** | [**VintedImageSearchRequest**](VintedImageSearchRequest.md)|  | 
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

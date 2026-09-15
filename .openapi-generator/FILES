@@ -53,6 +53,7 @@ doc/TwitterApi.md
 doc/ValidationError.md
 doc/ValidationErrorLocInner.md
 doc/VintedApi.md
+doc/VintedImageSearchRequest.md
 doc/VintedMobileReadRequest.md
 doc/WalmartApi.md
 doc/WebApi.md
@@ -133,6 +134,7 @@ lib/src/model/tweet_delivery_log_list_response.dart
 lib/src/model/tweet_delivery_log_response.dart
 lib/src/model/validation_error.dart
 lib/src/model/validation_error_loc_inner.dart
+lib/src/model/vinted_image_search_request.dart
 lib/src/model/vinted_mobile_read_request.dart
 lib/src/model/webhook_create.dart
 lib/src/model/webhook_list_item.dart
@@ -193,6 +195,7 @@ test/twitter_api_test.dart
 test/validation_error_loc_inner_test.dart
 test/validation_error_test.dart
 test/vinted_api_test.dart
+test/vinted_image_search_request_test.dart
 test/vinted_mobile_read_request_test.dart
 test/walmart_api_test.dart
 test/web_api_test.dart

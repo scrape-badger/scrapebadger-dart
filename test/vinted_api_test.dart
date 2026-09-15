@@ -88,6 +88,15 @@ void main() {
       // TODO
     });
 
+    // Search by image
+    //
+    // Find active Vinted listings from a photo. 10 credits per successful request. Returns the usual items, pagination and market envelope. Visual ranking; no similarity score. Resend the same image and pagination time for subsequent pages. Structured brand data may be null.
+    //
+    //Future<JsonObject> vintedSearchByImage(VintedImageSearchRequest vintedImageSearchRequest) async
+    test('test vintedSearchByImage', () async {
+      // TODO
+    });
+
     // Search Vinted items
     //
     // Search Vinted catalog items with filters.
