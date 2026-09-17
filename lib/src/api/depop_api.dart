@@ -548,7 +548,7 @@ class DepopApi {
   /// * [sizes] - Comma-separated size IDs
   /// * [conditions] - Comma-separated condition slugs (brand_new, used_excellent, ...)
   /// * [gender] - male | female
-  /// * [sort] - relevance | newlyListed | priceAscending | priceDescending
+  /// * [sort] - relevance (default) | priceAscending | priceDescending
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
