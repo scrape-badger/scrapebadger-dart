@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 Get product reviews
 
-Customer reviews for an ASIN (featured + paginated, with filters).
+Customer reviews for an ASIN, filtered, sorted and paginated.  Reviews come from the product page's public featured block, which is the only review surface Amazon serves anonymously — a subset of the full history (``ratings_total`` reports the true total). ``pagination`` gives the filtered count and the last page, so paging past it returns an empty list. An unrecognised ``star`` or ``sort_by`` is rejected with 422 rather than silently answered with unfiltered reviews.
 
 ### Example
 ```dart
@@ -341,9 +341,9 @@ import 'package:scrapebadger/api.dart';
 final api = Scrapebadger().getAmazonApi();
 final String asin = asin_example; // String | 
 final String domain = domain_example; // String | 
-final int page = 56; // int | Review page (1-100, ~10 reviews/page)
+final int page = 56; // int | Review page (10 reviews/page)
 final String sortBy = sortBy_example; // String | helpful | recent
-final String star = star_example; // String | one_star..five_star | positive | critical
+final String star = star_example; // String | 1-5 | one_star..five_star | positive | critical | all_stars
 final bool verifiedOnly = true; // bool | 
 final bool mediaOnly = true; // bool | 
 
@@ -361,9 +361,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **asin** | **String**|  | 
  **domain** | **String**|  | [optional] [default to 'com']
- **page** | **int**| Review page (1-100, ~10 reviews/page) | [optional] [default to 1]
+ **page** | **int**| Review page (10 reviews/page) | [optional] [default to 1]
  **sortBy** | **String**| helpful | recent | [optional] [default to 'helpful']
- **star** | **String**| one_star..five_star | positive | critical | [optional] 
+ **star** | **String**| 1-5 | one_star..five_star | positive | critical | all_stars | [optional] 
  **verifiedOnly** | **bool**|  | [optional] [default to false]
  **mediaOnly** | **bool**|  | [optional] [default to false]
 
