@@ -11,7 +11,7 @@ void main() {
     //
     // Get detailed information about a Vinted item.
     //
-    //Future<JsonObject> vintedGetItemDetails(int itemId, { String market }) async
+    //Future<ItemDetailResponse> vintedGetItemDetails(int itemId, { String market }) async
     test('test vintedGetItemDetails', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Get a Vinted user's profile.
     //
-    //Future<JsonObject> vintedGetUserProfile(int userId, { String market }) async
+    //Future<UserProfileResponse> vintedGetUserProfile(int userId, { String market }) async
     test('test vintedGetUserProfile', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Get items listed by a Vinted user.
     //
-    //Future<JsonObject> vintedGetUserSListedItems(int userId, { String market, int page, int perPage }) async
+    //Future<UserItemsResponse> vintedGetUserSListedItems(int userId, { String market, int page, int perPage }) async
     test('test vintedGetUserSListedItems', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Get available Vinted colors for filtering.
     //
-    //Future<JsonObject> vintedListColors({ String market }) async
+    //Future<ColorsResponse> vintedListColors({ String market }) async
     test('test vintedListColors', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Get available item condition statuses.
     //
-    //Future<JsonObject> vintedListItemConditions({ String market }) async
+    //Future<StatusesResponse> vintedListItemConditions({ String market }) async
     test('test vintedListItemConditions', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // List all supported Vinted markets.
     //
-    //Future<JsonObject> vintedListMarkets() async
+    //Future<MarketsResponse> vintedListMarkets() async
     test('test vintedListMarkets', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Search Vinted brands.
     //
-    //Future<JsonObject> vintedSearchBrands(String keyword, { String market }) async
+    //Future<BrandsResponse> vintedSearchBrands(String keyword, { String market }) async
     test('test vintedSearchBrands', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Find active Vinted listings from a photo. 10 credits per successful request. Returns the usual items, pagination and market envelope. Visual ranking. Each item carries `similarity_score` on the calls where Vinted returns a ranking, and null on the ones where it does not -- a null says nothing about the item. The score sits on an unbounded scale that Vinted changes without notice (0-1 in Sep 2026, ~36-44 since): compare it only with the other items in the SAME response, never to a fixed cut-off. Resend the same image and pagination time for subsequent pages. Structured brand data may be null.
     //
-    //Future<JsonObject> vintedSearchByImage(VintedImageSearchRequest vintedImageSearchRequest) async
+    //Future<SearchResponse> vintedSearchByImage(VintedImageSearchRequest vintedImageSearchRequest) async
     test('test vintedSearchByImage', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Search Vinted catalog items with filters.
     //
-    //Future<JsonObject> vintedSearchVintedItems(String query, { String market, String sellerCountry, int page, int perPage, num priceFrom, num priceTo, String brandIds, String catalogIds, String colorIds, String sizeIds, String materialIds, int time, String searchSessionId, String statusIds, String order }) async
+    //Future<SearchResponse> vintedSearchVintedItems(String query, { String market, String sellerCountry, int page, int perPage, num priceFrom, num priceTo, String brandIds, String catalogIds, String colorIds, String sizeIds, String materialIds, int time, String searchSessionId, String statusIds, String order }) async
     test('test vintedSearchVintedItems', () async {
       // TODO
     });

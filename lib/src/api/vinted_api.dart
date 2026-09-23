@@ -10,7 +10,15 @@ import 'package:dio/dio.dart';
 
 import 'package:built_value/json_object.dart';
 import 'package:scrapebadger/src/api_util.dart';
+import 'package:scrapebadger/src/model/brands_response.dart';
+import 'package:scrapebadger/src/model/colors_response.dart';
 import 'package:scrapebadger/src/model/http_validation_error.dart';
+import 'package:scrapebadger/src/model/item_detail_response.dart';
+import 'package:scrapebadger/src/model/markets_response.dart';
+import 'package:scrapebadger/src/model/search_response.dart';
+import 'package:scrapebadger/src/model/statuses_response.dart';
+import 'package:scrapebadger/src/model/user_items_response.dart';
+import 'package:scrapebadger/src/model/user_profile_response.dart';
 import 'package:scrapebadger/src/model/vinted_image_search_request.dart';
 import 'package:scrapebadger/src/model/vinted_mobile_read_request.dart';
 
@@ -35,9 +43,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [ItemDetailResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> vintedGetItemDetails({ 
+  Future<Response<ItemDetailResponse>> vintedGetItemDetails({ 
     required int itemId,
     String? market = 'fr',
     CancelToken? cancelToken,
@@ -80,14 +88,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    ItemDetailResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(ItemDetailResponse),
+      ) as ItemDetailResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -99,7 +107,7 @@ class VintedApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<ItemDetailResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -124,9 +132,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [UserProfileResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> vintedGetUserProfile({ 
+  Future<Response<UserProfileResponse>> vintedGetUserProfile({ 
     required int userId,
     String? market = 'fr',
     CancelToken? cancelToken,
@@ -169,14 +177,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    UserProfileResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(UserProfileResponse),
+      ) as UserProfileResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -188,7 +196,7 @@ class VintedApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<UserProfileResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -215,9 +223,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [UserItemsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> vintedGetUserSListedItems({ 
+  Future<Response<UserItemsResponse>> vintedGetUserSListedItems({ 
     required int userId,
     String? market = 'fr',
     int? page = 1,
@@ -264,14 +272,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    UserItemsResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(UserItemsResponse),
+      ) as UserItemsResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -283,7 +291,7 @@ class VintedApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<UserItemsResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -307,9 +315,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [ColorsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> vintedListColors({ 
+  Future<Response<ColorsResponse>> vintedListColors({ 
     String? market = 'fr',
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -351,14 +359,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    ColorsResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(ColorsResponse),
+      ) as ColorsResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -370,7 +378,7 @@ class VintedApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<ColorsResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -394,9 +402,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [StatusesResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> vintedListItemConditions({ 
+  Future<Response<StatusesResponse>> vintedListItemConditions({ 
     String? market = 'fr',
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -438,14 +446,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    StatusesResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(StatusesResponse),
+      ) as StatusesResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -457,7 +465,7 @@ class VintedApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<StatusesResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -480,9 +488,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [MarketsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> vintedListMarkets({ 
+  Future<Response<MarketsResponse>> vintedListMarkets({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -518,14 +526,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    MarketsResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(MarketsResponse),
+      ) as MarketsResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -537,7 +545,7 @@ class VintedApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<MarketsResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -746,9 +754,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [BrandsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> vintedSearchBrands({ 
+  Future<Response<BrandsResponse>> vintedSearchBrands({ 
     required String keyword,
     String? market = 'fr',
     CancelToken? cancelToken,
@@ -792,14 +800,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    BrandsResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(BrandsResponse),
+      ) as BrandsResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -811,7 +819,7 @@ class VintedApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<BrandsResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -835,9 +843,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [SearchResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> vintedSearchByImage({ 
+  Future<Response<SearchResponse>> vintedSearchByImage({ 
     required VintedImageSearchRequest vintedImageSearchRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -894,14 +902,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    SearchResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(SearchResponse),
+      ) as SearchResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -913,7 +921,7 @@ class VintedApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<SearchResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -952,9 +960,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [SearchResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> vintedSearchVintedItems({ 
+  Future<Response<SearchResponse>> vintedSearchVintedItems({ 
     required String query,
     String? market = 'fr',
     String? sellerCountry,
@@ -1026,14 +1034,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    SearchResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(SearchResponse),
+      ) as SearchResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -1045,7 +1053,7 @@ class VintedApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<SearchResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

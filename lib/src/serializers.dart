@@ -17,6 +17,8 @@ import 'package:scrapebadger/src/model/date.dart';
 import 'package:scrapebadger/src/model/account_info.dart';
 import 'package:scrapebadger/src/model/billing_log_list_response.dart';
 import 'package:scrapebadger/src/model/billing_log_response.dart';
+import 'package:scrapebadger/src/model/brands_response.dart';
+import 'package:scrapebadger/src/model/colors_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_create.dart';
 import 'package:scrapebadger/src/model/filter_rule_delivery_log_list_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_delivery_log_response.dart';
@@ -26,7 +28,11 @@ import 'package:scrapebadger/src/model/filter_rule_update.dart';
 import 'package:scrapebadger/src/model/filter_rule_validate_request.dart';
 import 'package:scrapebadger/src/model/filter_rule_validate_response.dart';
 import 'package:scrapebadger/src/model/http_validation_error.dart';
+import 'package:scrapebadger/src/model/item_detail_response.dart';
+import 'package:scrapebadger/src/model/markets_response.dart';
 import 'package:scrapebadger/src/model/portal_api_routers_v1_twitter_filter_rules_filter_rule_pricing_response.dart';
+import 'package:scrapebadger/src/model/search_response.dart';
+import 'package:scrapebadger/src/model/statuses_response.dart';
 import 'package:scrapebadger/src/model/stream_monitor_create.dart';
 import 'package:scrapebadger/src/model/stream_monitor_list_response.dart';
 import 'package:scrapebadger/src/model/stream_monitor_response.dart';
@@ -34,10 +40,23 @@ import 'package:scrapebadger/src/model/stream_monitor_update.dart';
 import 'package:scrapebadger/src/model/subscription_info.dart';
 import 'package:scrapebadger/src/model/tweet_delivery_log_list_response.dart';
 import 'package:scrapebadger/src/model/tweet_delivery_log_response.dart';
+import 'package:scrapebadger/src/model/user_items_response.dart';
+import 'package:scrapebadger/src/model/user_profile_response.dart';
 import 'package:scrapebadger/src/model/validation_error.dart';
 import 'package:scrapebadger/src/model/validation_error_loc_inner.dart';
+import 'package:scrapebadger/src/model/vinted_brand.dart';
+import 'package:scrapebadger/src/model/vinted_color.dart';
 import 'package:scrapebadger/src/model/vinted_image_search_request.dart';
+import 'package:scrapebadger/src/model/vinted_item_detail.dart';
+import 'package:scrapebadger/src/model/vinted_item_summary.dart';
 import 'package:scrapebadger/src/model/vinted_mobile_read_request.dart';
+import 'package:scrapebadger/src/model/vinted_pagination.dart';
+import 'package:scrapebadger/src/model/vinted_photo.dart';
+import 'package:scrapebadger/src/model/vinted_price.dart';
+import 'package:scrapebadger/src/model/vinted_seller_summary.dart';
+import 'package:scrapebadger/src/model/vinted_status.dart';
+import 'package:scrapebadger/src/model/vinted_user_profile.dart';
+import 'package:scrapebadger/src/model/vinted_user_summary.dart';
 import 'package:scrapebadger/src/model/webhook_create.dart';
 import 'package:scrapebadger/src/model/webhook_list_item.dart';
 import 'package:scrapebadger/src/model/webhook_list_response.dart';
@@ -51,6 +70,8 @@ part 'serializers.g.dart';
   AccountInfo,
   BillingLogListResponse,
   BillingLogResponse,
+  BrandsResponse,
+  ColorsResponse,
   FilterRuleCreate,
   FilterRuleDeliveryLogListResponse,
   FilterRuleDeliveryLogResponse,
@@ -60,7 +81,11 @@ part 'serializers.g.dart';
   FilterRuleValidateRequest,
   FilterRuleValidateResponse,
   HTTPValidationError,
+  ItemDetailResponse,
+  MarketsResponse,
   PortalApiRoutersV1TwitterFilterRulesFilterRulePricingResponse,
+  SearchResponse,
+  StatusesResponse,
   StreamMonitorCreate,
   StreamMonitorListResponse,
   StreamMonitorResponse,
@@ -68,10 +93,23 @@ part 'serializers.g.dart';
   SubscriptionInfo,
   TweetDeliveryLogListResponse,
   TweetDeliveryLogResponse,
+  UserItemsResponse,
+  UserProfileResponse,
   ValidationError,
   ValidationErrorLocInner,
+  VintedBrand,
+  VintedColor,
   VintedImageSearchRequest,
+  VintedItemDetail,
+  VintedItemSummary,
   VintedMobileReadRequest,
+  VintedPagination,
+  VintedPhoto,
+  VintedPrice,
+  VintedSellerSummary,
+  VintedStatus,
+  VintedUserProfile,
+  VintedUserSummary,
   WebhookCreate,
   WebhookListItem,
   WebhookListResponse,
