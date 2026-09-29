@@ -7,6 +7,15 @@ void main() {
   final instance = Scrapebadger().getTikTokApi();
 
   group(TikTokApi, () {
+    // Best-selling TikTok Shop products
+    //
+    // Sales-ranked best-selling products, available for every operating market.  Ranked by real sold_count (source: sales_ranked); works for SG/MY/JP where TikTok's curated /shop/rankings are not exposed. Omit category_id for a market-wide list.
+    //
+    //Future<JsonObject> tiktokBestSellingTiktokShopProducts({ String region, String categoryId, int pages, int limit }) async
+    test('test tiktokBestSellingTiktokShopProducts', () async {
+      // TODO
+    });
+
     // General search
     //
     // General TikTok search — video results from the Top feed.
@@ -227,7 +236,7 @@ void main() {
     //
     // Keyword search over TikTok Shop products: 30 per page with offset pagination (US); the first page also carries matching shops and related searches.
     //
-    //Future<JsonObject> tiktokSearchTiktokShopProducts(String q, { String region, int offset }) async
+    //Future<JsonObject> tiktokSearchTiktokShopProducts(String q, { String region, String pageToken, int offset }) async
     test('test tiktokSearchTiktokShopProducts', () async {
       // TODO
     });
@@ -247,6 +256,15 @@ void main() {
     //
     //Future<JsonObject> tiktokSearchVideos(String query, { String region, int count, String cursor }) async
     test('test tiktokSearchVideos', () async {
+      // TODO
+    });
+
+    // TikTok Shop category products
+    //
+    // Category recommendations. Pass accumulated exclusion IDs for the next page; these are not sales rankings.
+    //
+    //Future<JsonObject> tiktokTiktokShopCategoryProducts(String categoryId, { String region, int count, BuiltList<String> excludeProductIds }) async
+    test('test tiktokTiktokShopCategoryProducts', () async {
       // TODO
     });
 
@@ -270,10 +288,19 @@ void main() {
 
     // TikTok Shop product reviews
     //
-    // Paginated product reviews with the rating breakdown (US).
+    // Paginated product reviews with rating breakdown (US and ID). Indonesia supports recent/recommended ordering, star and media filters; verified=true is not supported.
     //
     //Future<JsonObject> tiktokTiktokShopProductReviews(String productId, { String region, int page, int count, String sort, int rating, bool withMedia, bool verified }) async
     test('test tiktokTiktokShopProductReviews', () async {
+      // TODO
+    });
+
+    // TikTok Shop regional mall feed
+    //
+    // Mall navigation and recommendations with a 15-minute continuation token.  ID, SG, MY, PH, TH, VN and JP are locally verified. Tabs are not a complete category taxonomy.
+    //
+    //Future<JsonObject> tiktokTiktokShopRegionalMallFeed({ String region, int tabId, String pageToken }) async
+    test('test tiktokTiktokShopRegionalMallFeed', () async {
       // TODO
     });
 
@@ -292,6 +319,15 @@ void main() {
     //
     //Future<JsonObject> tiktokTiktokShopStoreProducts(String sellerId, { String region, String cursor, int count }) async
     test('test tiktokTiktokShopStoreProducts', () async {
+      // TODO
+    });
+
+    // TikTok Shop theme ranking
+    //
+    // Native category/theme ranking. ID, PH, TH and VN are locally verified.  Types: 1 high seller, 2 trending, 3 ratings. Coverage depends on the configured guest profile; a category recommendation feed is not used as a substitute.
+    //
+    //Future<JsonObject> tiktokTiktokShopThemeRanking(String rankId, { String region, int rankType, int cursor, int count }) async
+    test('test tiktokTiktokShopThemeRanking', () async {
       // TODO
     });
 

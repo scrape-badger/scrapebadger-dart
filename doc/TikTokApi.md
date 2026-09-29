@@ -9,6 +9,7 @@ All URIs are relative to *https://scrapebadger.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**tiktokBestSellingTiktokShopProducts**](TikTokApi.md#tiktokbestsellingtiktokshopproducts) | **GET** /v1/tiktok/shop/bestsellers | Best-selling TikTok Shop products
 [**tiktokGeneralSearch**](TikTokApi.md#tiktokgeneralsearch) | **GET** /v1/tiktok/search | General search
 [**tiktokGetCommentReplies**](TikTokApi.md#tiktokgetcommentreplies) | **GET** /v1/tiktok/comments/{comment_id}/replies | Get comment replies
 [**tiktokGetComments**](TikTokApi.md#tiktokgetcomments) | **GET** /v1/tiktok/videos/{video_id}/comments | Get comments
@@ -36,15 +37,71 @@ Method | HTTP request | Description
 [**tiktokSearchTiktokShopProducts**](TikTokApi.md#tiktoksearchtiktokshopproducts) | **GET** /v1/tiktok/shop/search | Search TikTok Shop products
 [**tiktokSearchUsers**](TikTokApi.md#tiktoksearchusers) | **GET** /v1/tiktok/search/users | Search users
 [**tiktokSearchVideos**](TikTokApi.md#tiktoksearchvideos) | **GET** /v1/tiktok/search/videos | Search videos
+[**tiktokTiktokShopCategoryProducts**](TikTokApi.md#tiktoktiktokshopcategoryproducts) | **GET** /v1/tiktok/shop/categories/{category_id}/products | TikTok Shop category products
 [**tiktokTiktokShopCategorySubcategoriesTopProducts**](TikTokApi.md#tiktoktiktokshopcategorysubcategoriestopproducts) | **GET** /v1/tiktok/shop/categories/{category_id} | TikTok Shop category: subcategories + top products
 [**tiktokTiktokShopProductDetail**](TikTokApi.md#tiktoktiktokshopproductdetail) | **GET** /v1/tiktok/shop/products/{product_id} | TikTok Shop product detail
 [**tiktokTiktokShopProductReviews**](TikTokApi.md#tiktoktiktokshopproductreviews) | **GET** /v1/tiktok/shop/products/{product_id}/reviews | TikTok Shop product reviews
+[**tiktokTiktokShopRegionalMallFeed**](TikTokApi.md#tiktoktiktokshopregionalmallfeed) | **GET** /v1/tiktok/shop/mall | TikTok Shop regional mall feed
 [**tiktokTiktokShopRootCategories**](TikTokApi.md#tiktoktiktokshoprootcategories) | **GET** /v1/tiktok/shop/categories | TikTok Shop root categories
 [**tiktokTiktokShopStoreProducts**](TikTokApi.md#tiktoktiktokshopstoreproducts) | **GET** /v1/tiktok/shop/stores/{seller_id} | TikTok Shop store + products
+[**tiktokTiktokShopThemeRanking**](TikTokApi.md#tiktoktiktokshopthemeranking) | **GET** /v1/tiktok/shop/rankings/{rank_id} | TikTok Shop theme ranking
 [**tiktokTrendingHashtags**](TikTokApi.md#tiktoktrendinghashtags) | **GET** /v1/tiktok/trending/hashtags | Trending hashtags
 [**tiktokTrendingSongs**](TikTokApi.md#tiktoktrendingsongs) | **GET** /v1/tiktok/trending/songs | Trending songs
 [**tiktokTrendingVideos**](TikTokApi.md#tiktoktrendingvideos) | **GET** /v1/tiktok/trending/videos | Trending videos
 
+
+# **tiktokBestSellingTiktokShopProducts**
+> JsonObject tiktokBestSellingTiktokShopProducts(region, categoryId, pages, limit)
+
+Best-selling TikTok Shop products
+
+Sales-ranked best-selling products, available for every operating market.  Ranked by real sold_count (source: sales_ranked); works for SG/MY/JP where TikTok's curated /shop/rankings are not exposed. Omit category_id for a market-wide list.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+final String region = region_example; // String | Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
+final String categoryId = categoryId_example; // String | 
+final int pages = 56; // int | 
+final int limit = 56; // int | 
+
+try {
+    final response = api.tiktokBestSellingTiktokShopProducts(region, categoryId, pages, limit);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokBestSellingTiktokShopProducts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **region** | **String**| Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint | [optional] [default to 'US']
+ **categoryId** | **String**|  | [optional] 
+ **pages** | **int**|  | [optional] [default to 2]
+ **limit** | **int**|  | [optional] [default to 20]
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tiktokGeneralSearch**
 > JsonObject tiktokGeneralSearch(query, region, count, cursor)
@@ -1261,7 +1318,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tiktokSearchTiktokShopProducts**
-> JsonObject tiktokSearchTiktokShopProducts(q, region, offset)
+> JsonObject tiktokSearchTiktokShopProducts(q, region, pageToken, offset)
 
 Search TikTok Shop products
 
@@ -1277,11 +1334,12 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getTikTokApi();
 final String q = q_example; // String | Keyword, e.g. 'wireless earbuds'
-final String region = region_example; // String | Market: US, GB, ID
+final String region = region_example; // String | Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
+final String pageToken = pageToken_example; // String | 
 final int offset = 56; // int | Pass back next_offset for the next page (US)
 
 try {
-    final response = api.tiktokSearchTiktokShopProducts(q, region, offset);
+    final response = api.tiktokSearchTiktokShopProducts(q, region, pageToken, offset);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling TikTokApi->tiktokSearchTiktokShopProducts: $e\n');
@@ -1293,7 +1351,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **q** | **String**| Keyword, e.g. 'wireless earbuds' | 
- **region** | **String**| Market: US, GB, ID | [optional] [default to 'US']
+ **region** | **String**| Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint | [optional] [default to 'US']
+ **pageToken** | **String**|  | [optional] 
  **offset** | **int**| Pass back next_offset for the next page (US) | [optional] [default to 0]
 
 ### Return type
@@ -1417,6 +1476,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **tiktokTiktokShopCategoryProducts**
+> JsonObject tiktokTiktokShopCategoryProducts(categoryId, region, count, excludeProductIds)
+
+TikTok Shop category products
+
+Category recommendations. Pass accumulated exclusion IDs for the next page; these are not sales rankings.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+final String categoryId = categoryId_example; // String | 
+final String region = region_example; // String | Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
+final int count = 56; // int | 
+final BuiltList<String> excludeProductIds = ; // BuiltList<String> | Repeat for every next_exclude_product_ids value
+
+try {
+    final response = api.tiktokTiktokShopCategoryProducts(categoryId, region, count, excludeProductIds);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokTiktokShopCategoryProducts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **categoryId** | **String**|  | 
+ **region** | **String**| Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint | [optional] [default to 'US']
+ **count** | **int**|  | [optional] [default to 20]
+ **excludeProductIds** | [**BuiltList&lt;String&gt;**](String.md)| Repeat for every next_exclude_product_ids value | [optional] [default to ListBuilder()]
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **tiktokTiktokShopCategorySubcategoriesTopProducts**
 > JsonObject tiktokTiktokShopCategorySubcategoriesTopProducts(categoryId, region)
 
@@ -1434,7 +1546,7 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getTikTokApi();
 final String categoryId = categoryId_example; // String | 
-final String region = region_example; // String | Market: US, GB, ID
+final String region = region_example; // String | Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
 
 try {
     final response = api.tiktokTiktokShopCategorySubcategoriesTopProducts(categoryId, region);
@@ -1449,7 +1561,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryId** | **String**|  | 
- **region** | **String**| Market: US, GB, ID | [optional] [default to 'US']
+ **region** | **String**| Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint | [optional] [default to 'US']
 
 ### Return type
 
@@ -1483,7 +1595,7 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getTikTokApi();
 final String productId = productId_example; // String | 
-final String region = region_example; // String | Market: US, GB, ID
+final String region = region_example; // String | Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
 
 try {
     final response = api.tiktokTiktokShopProductDetail(productId, region);
@@ -1498,7 +1610,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productId** | **String**|  | 
- **region** | **String**| Market: US, GB, ID | [optional] [default to 'US']
+ **region** | **String**| Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint | [optional] [default to 'US']
 
 ### Return type
 
@@ -1520,7 +1632,7 @@ Name | Type | Description  | Notes
 
 TikTok Shop product reviews
 
-Paginated product reviews with the rating breakdown (US).
+Paginated product reviews with rating breakdown (US and ID). Indonesia supports recent/recommended ordering, star and media filters; verified=true is not supported.
 
 ### Example
 ```dart
@@ -1532,7 +1644,7 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getTikTokApi();
 final String productId = productId_example; // String | 
-final String region = region_example; // String | Market: US, GB, ID
+final String region = region_example; // String | Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
 final int page = 56; // int | 
 final int count = 56; // int | 
 final String sort = sort_example; // String | recommended | recent
@@ -1553,13 +1665,64 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productId** | **String**|  | 
- **region** | **String**| Market: US, GB, ID | [optional] [default to 'US']
+ **region** | **String**| Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint | [optional] [default to 'US']
  **page** | **int**|  | [optional] [default to 1]
  **count** | **int**|  | [optional] [default to 20]
  **sort** | **String**| recommended | recent | [optional] [default to 'recommended']
  **rating** | **int**| Only this star rating | [optional] 
  **withMedia** | **bool**| Only reviews with photos/videos | [optional] [default to false]
  **verified** | **bool**| Only verified purchases | [optional] [default to false]
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tiktokTiktokShopRegionalMallFeed**
+> JsonObject tiktokTiktokShopRegionalMallFeed(region, tabId, pageToken)
+
+TikTok Shop regional mall feed
+
+Mall navigation and recommendations with a 15-minute continuation token.  ID, SG, MY, PH, TH, VN and JP are locally verified. Tabs are not a complete category taxonomy.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+final String region = region_example; // String | Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
+final int tabId = 56; // int | 
+final String pageToken = pageToken_example; // String | 
+
+try {
+    final response = api.tiktokTiktokShopRegionalMallFeed(region, tabId, pageToken);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokTiktokShopRegionalMallFeed: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **region** | **String**| Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint | [optional] [default to 'US']
+ **tabId** | **int**|  | [optional] [default to 0]
+ **pageToken** | **String**|  | [optional] 
 
 ### Return type
 
@@ -1592,7 +1755,7 @@ import 'package:scrapebadger/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api = Scrapebadger().getTikTokApi();
-final String region = region_example; // String | Market: US, GB, ID
+final String region = region_example; // String | Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
 
 try {
     final response = api.tiktokTiktokShopRootCategories(region);
@@ -1606,7 +1769,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region** | **String**| Market: US, GB, ID | [optional] [default to 'US']
+ **region** | **String**| Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint | [optional] [default to 'US']
 
 ### Return type
 
@@ -1640,7 +1803,7 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getTikTokApi();
 final String sellerId = sellerId_example; // String | 
-final String region = region_example; // String | Market: US, GB, ID
+final String region = region_example; // String | Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
 final String cursor = cursor_example; // String | Pass back next_cursor for the next page
 final int count = 56; // int | 
 
@@ -1657,8 +1820,63 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sellerId** | **String**|  | 
- **region** | **String**| Market: US, GB, ID | [optional] [default to 'US']
+ **region** | **String**| Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint | [optional] [default to 'US']
  **cursor** | **String**| Pass back next_cursor for the next page | [optional] [default to '']
+ **count** | **int**|  | [optional] [default to 20]
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tiktokTiktokShopThemeRanking**
+> JsonObject tiktokTiktokShopThemeRanking(rankId, region, rankType, cursor, count)
+
+TikTok Shop theme ranking
+
+Native category/theme ranking. ID, PH, TH and VN are locally verified.  Types: 1 high seller, 2 trending, 3 ratings. Coverage depends on the configured guest profile; a category recommendation feed is not used as a substitute.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getTikTokApi();
+final String rankId = rankId_example; // String | 
+final String region = region_example; // String | Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
+final int rankType = 56; // int | 
+final int cursor = 56; // int | 
+final int count = 56; // int | 
+
+try {
+    final response = api.tiktokTiktokShopThemeRanking(rankId, region, rankType, cursor, count);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling TikTokApi->tiktokTiktokShopThemeRanking: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rankId** | **String**|  | 
+ **region** | **String**| Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint | [optional] [default to 'US']
+ **rankType** | **int**|  | [optional] [default to 1]
+ **cursor** | **int**|  | [optional] [default to 0]
  **count** | **int**|  | [optional] [default to 20]
 
 ### Return type

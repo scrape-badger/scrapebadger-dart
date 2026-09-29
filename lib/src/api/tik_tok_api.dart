@@ -8,6 +8,7 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:scrapebadger/src/api_util.dart';
 import 'package:scrapebadger/src/model/http_validation_error.dart';
@@ -19,6 +20,102 @@ class TikTokApi {
   final Serializers _serializers;
 
   const TikTokApi(this._dio, this._serializers);
+
+  /// Best-selling TikTok Shop products
+  /// Sales-ranked best-selling products, available for every operating market.  Ranked by real sold_count (source: sales_ranked); works for SG/MY/JP where TikTok&#39;s curated /shop/rankings are not exposed. Omit category_id for a market-wide list.
+  ///
+  /// Parameters:
+  /// * [region] - Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
+  /// * [categoryId] 
+  /// * [pages] 
+  /// * [limit] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<JsonObject>> tiktokBestSellingTiktokShopProducts({ 
+    String? region = 'US',
+    String? categoryId,
+    int? pages = 2,
+    int? limit = 20,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/tiktok/shop/bestsellers';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ApiKeyAuth',
+            'keyName': 'X-API-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
+      r'category_id': encodeQueryParameter(_serializers, categoryId, const FullType(String)),
+      if (pages != null) r'pages': encodeQueryParameter(_serializers, pages, const FullType(int)),
+      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    JsonObject? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(JsonObject),
+      ) as JsonObject;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
 
   /// General search
   /// General TikTok search — video results from the Top feed.
@@ -2226,7 +2323,8 @@ class TikTokApi {
   ///
   /// Parameters:
   /// * [q] - Keyword, e.g. 'wireless earbuds'
-  /// * [region] - Market: US, GB, ID
+  /// * [region] - Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
+  /// * [pageToken] 
   /// * [offset] - Pass back next_offset for the next page (US)
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -2240,6 +2338,7 @@ class TikTokApi {
   Future<Response<JsonObject>> tiktokSearchTiktokShopProducts({ 
     required String q,
     String? region = 'US',
+    String? pageToken,
     int? offset = 0,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -2271,6 +2370,7 @@ class TikTokApi {
     final _queryParameters = <String, dynamic>{
       r'q': encodeQueryParameter(_serializers, q, const FullType(String)),
       if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
+      r'page_token': encodeQueryParameter(_serializers, pageToken, const FullType(String)),
       if (offset != null) r'offset': encodeQueryParameter(_serializers, offset, const FullType(int)),
     };
 
@@ -2506,12 +2606,107 @@ class TikTokApi {
     );
   }
 
+  /// TikTok Shop category products
+  /// Category recommendations. Pass accumulated exclusion IDs for the next page; these are not sales rankings.
+  ///
+  /// Parameters:
+  /// * [categoryId] 
+  /// * [region] - Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
+  /// * [count] 
+  /// * [excludeProductIds] - Repeat for every next_exclude_product_ids value
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<JsonObject>> tiktokTiktokShopCategoryProducts({ 
+    required String categoryId,
+    String? region = 'US',
+    int? count = 20,
+    BuiltList<String>? excludeProductIds,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/tiktok/shop/categories/{category_id}/products'.replaceAll('{' r'category_id' '}', encodeQueryParameter(_serializers, categoryId, const FullType(String)).toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ApiKeyAuth',
+            'keyName': 'X-API-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
+      if (count != null) r'count': encodeQueryParameter(_serializers, count, const FullType(int)),
+      if (excludeProductIds != null) r'exclude_product_ids': encodeCollectionQueryParameter<String>(_serializers, excludeProductIds, const FullType(BuiltList, [FullType(String)]), format: ListFormat.multi,),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    JsonObject? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(JsonObject),
+      ) as JsonObject;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// TikTok Shop category: subcategories + top products
   /// A category&#39;s subcategories and its top products as TikTok Shop ranks them.
   ///
   /// Parameters:
   /// * [categoryId] 
-  /// * [region] - Market: US, GB, ID
+  /// * [region] - Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2600,7 +2795,7 @@ class TikTokApi {
   ///
   /// Parameters:
   /// * [productId] 
-  /// * [region] - Market: US, GB, ID
+  /// * [region] - Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2685,11 +2880,11 @@ class TikTokApi {
   }
 
   /// TikTok Shop product reviews
-  /// Paginated product reviews with the rating breakdown (US).
+  /// Paginated product reviews with rating breakdown (US and ID). Indonesia supports recent/recommended ordering, star and media filters; verified&#x3D;true is not supported.
   ///
   /// Parameters:
   /// * [productId] 
-  /// * [region] - Market: US, GB, ID
+  /// * [region] - Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
   /// * [page] 
   /// * [count] 
   /// * [sort] - recommended | recent
@@ -2791,11 +2986,104 @@ class TikTokApi {
     );
   }
 
+  /// TikTok Shop regional mall feed
+  /// Mall navigation and recommendations with a 15-minute continuation token.  ID, SG, MY, PH, TH, VN and JP are locally verified. Tabs are not a complete category taxonomy.
+  ///
+  /// Parameters:
+  /// * [region] - Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
+  /// * [tabId] 
+  /// * [pageToken] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<JsonObject>> tiktokTiktokShopRegionalMallFeed({ 
+    String? region = 'US',
+    int? tabId = 0,
+    String? pageToken,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/tiktok/shop/mall';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ApiKeyAuth',
+            'keyName': 'X-API-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
+      if (tabId != null) r'tab_id': encodeQueryParameter(_serializers, tabId, const FullType(int)),
+      r'page_token': encodeQueryParameter(_serializers, pageToken, const FullType(String)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    JsonObject? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(JsonObject),
+      ) as JsonObject;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// TikTok Shop root categories
   /// Top-level TikTok Shop categories of a market. Drill down with /shop/categories/{id}.
   ///
   /// Parameters:
-  /// * [region] - Market: US, GB, ID
+  /// * [region] - Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2883,7 +3171,7 @@ class TikTokApi {
   ///
   /// Parameters:
   /// * [sellerId] 
-  /// * [region] - Market: US, GB, ID
+  /// * [region] - Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
   /// * [cursor] - Pass back next_cursor for the next page
   /// * [count] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -2930,6 +3218,104 @@ class TikTokApi {
     final _queryParameters = <String, dynamic>{
       if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
       if (cursor != null) r'cursor': encodeQueryParameter(_serializers, cursor, const FullType(String)),
+      if (count != null) r'count': encodeQueryParameter(_serializers, count, const FullType(int)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    JsonObject? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(JsonObject),
+      ) as JsonObject;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// TikTok Shop theme ranking
+  /// Native category/theme ranking. ID, PH, TH and VN are locally verified.  Types: 1 high seller, 2 trending, 3 ratings. Coverage depends on the configured guest profile; a category recommendation feed is not used as a substitute.
+  ///
+  /// Parameters:
+  /// * [rankId] 
+  /// * [region] - Market: US, GB, ID, JP, MX, SG, MY, PH, TH, VN; coverage varies by endpoint
+  /// * [rankType] 
+  /// * [cursor] 
+  /// * [count] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<JsonObject>> tiktokTiktokShopThemeRanking({ 
+    required String rankId,
+    String? region = 'US',
+    int? rankType = 1,
+    int? cursor = 0,
+    int? count = 20,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/tiktok/shop/rankings/{rank_id}'.replaceAll('{' r'rank_id' '}', encodeQueryParameter(_serializers, rankId, const FullType(String)).toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ApiKeyAuth',
+            'keyName': 'X-API-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
+      if (rankType != null) r'rank_type': encodeQueryParameter(_serializers, rankType, const FullType(int)),
+      if (cursor != null) r'cursor': encodeQueryParameter(_serializers, cursor, const FullType(int)),
       if (count != null) r'count': encodeQueryParameter(_serializers, count, const FullType(int)),
     };
 

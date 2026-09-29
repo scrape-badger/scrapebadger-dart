@@ -410,6 +410,7 @@ Class | Method | HTTP request | Description
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinRedfinScraperHealthCheckHead**](doc/RedfinApi.md#redfinredfinscraperhealthcheckhead) | **HEAD** /v1/redfin/health | Redfin scraper health check
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinRegionAddressSuggestions**](doc/RedfinApi.md#redfinregionaddresssuggestions) | **GET** /v1/redfin/autocomplete | Region/address suggestions
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinSearchProperties**](doc/RedfinApi.md#redfinsearchproperties) | **GET** /v1/redfin/search | Search properties
+[*TikTokApi*](doc/TikTokApi.md) | [**tiktokBestSellingTiktokShopProducts**](doc/TikTokApi.md#tiktokbestsellingtiktokshopproducts) | **GET** /v1/tiktok/shop/bestsellers | Best-selling TikTok Shop products
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokGeneralSearch**](doc/TikTokApi.md#tiktokgeneralsearch) | **GET** /v1/tiktok/search | General search
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokGetCommentReplies**](doc/TikTokApi.md#tiktokgetcommentreplies) | **GET** /v1/tiktok/comments/{comment_id}/replies | Get comment replies
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokGetComments**](doc/TikTokApi.md#tiktokgetcomments) | **GET** /v1/tiktok/videos/{video_id}/comments | Get comments
@@ -437,11 +438,14 @@ Class | Method | HTTP request | Description
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokSearchTiktokShopProducts**](doc/TikTokApi.md#tiktoksearchtiktokshopproducts) | **GET** /v1/tiktok/shop/search | Search TikTok Shop products
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokSearchUsers**](doc/TikTokApi.md#tiktoksearchusers) | **GET** /v1/tiktok/search/users | Search users
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokSearchVideos**](doc/TikTokApi.md#tiktoksearchvideos) | **GET** /v1/tiktok/search/videos | Search videos
+[*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopCategoryProducts**](doc/TikTokApi.md#tiktoktiktokshopcategoryproducts) | **GET** /v1/tiktok/shop/categories/{category_id}/products | TikTok Shop category products
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopCategorySubcategoriesTopProducts**](doc/TikTokApi.md#tiktoktiktokshopcategorysubcategoriestopproducts) | **GET** /v1/tiktok/shop/categories/{category_id} | TikTok Shop category: subcategories + top products
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopProductDetail**](doc/TikTokApi.md#tiktoktiktokshopproductdetail) | **GET** /v1/tiktok/shop/products/{product_id} | TikTok Shop product detail
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopProductReviews**](doc/TikTokApi.md#tiktoktiktokshopproductreviews) | **GET** /v1/tiktok/shop/products/{product_id}/reviews | TikTok Shop product reviews
+[*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopRegionalMallFeed**](doc/TikTokApi.md#tiktoktiktokshopregionalmallfeed) | **GET** /v1/tiktok/shop/mall | TikTok Shop regional mall feed
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopRootCategories**](doc/TikTokApi.md#tiktoktiktokshoprootcategories) | **GET** /v1/tiktok/shop/categories | TikTok Shop root categories
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopStoreProducts**](doc/TikTokApi.md#tiktoktiktokshopstoreproducts) | **GET** /v1/tiktok/shop/stores/{seller_id} | TikTok Shop store + products
+[*TikTokApi*](doc/TikTokApi.md) | [**tiktokTiktokShopThemeRanking**](doc/TikTokApi.md#tiktoktiktokshopthemeranking) | **GET** /v1/tiktok/shop/rankings/{rank_id} | TikTok Shop theme ranking
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTrendingHashtags**](doc/TikTokApi.md#tiktoktrendinghashtags) | **GET** /v1/tiktok/trending/hashtags | Trending hashtags
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTrendingSongs**](doc/TikTokApi.md#tiktoktrendingsongs) | **GET** /v1/tiktok/trending/songs | Trending songs
 [*TikTokApi*](doc/TikTokApi.md) | [**tiktokTrendingVideos**](doc/TikTokApi.md#tiktoktrendingvideos) | **GET** /v1/tiktok/trending/videos | Trending videos
