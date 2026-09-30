@@ -43,21 +43,21 @@ void main() {
       // TODO
     });
 
-    // Get followers (deprecated)
+    // Get followers
     //
-    // DEPRECATED — TikTok followers require an authenticated account session. Returns HTTP 410.
+    // Get publicly visible followers without an account.
     //
-    //Future<JsonObject> tiktokGetFollowersDeprecated(String username, { String region, int count }) async
-    test('test tiktokGetFollowersDeprecated', () async {
+    //Future<JsonObject> tiktokGetFollowers(String username, { String region, int count, String cursor }) async
+    test('test tiktokGetFollowers', () async {
       // TODO
     });
 
-    // Get following (deprecated)
+    // Get following
     //
-    // DEPRECATED — TikTok following requires an authenticated account session. Returns HTTP 410.
+    // Get publicly visible followed accounts. Hidden lists return HTTP 403.
     //
-    //Future<JsonObject> tiktokGetFollowingDeprecated(String username, { String region, int count }) async
-    test('test tiktokGetFollowingDeprecated', () async {
+    //Future<JsonObject> tiktokGetFollowing(String username, { String region, int count, String cursor }) async
+    test('test tiktokGetFollowing', () async {
       // TODO
     });
 
@@ -79,12 +79,12 @@ void main() {
       // TODO
     });
 
-    // Get liked videos (deprecated)
+    // Get liked videos
     //
-    // DEPRECATED — TikTok liked videos require an authenticated account session. Returns HTTP 410.
+    // Get public liked videos. Hidden liked lists return HTTP 403.
     //
-    //Future<JsonObject> tiktokGetLikedVideosDeprecated(String username, { String region, int count }) async
-    test('test tiktokGetLikedVideosDeprecated', () async {
+    //Future<JsonObject> tiktokGetLikedVideos(String username, { String region, int count, String cursor }) async
+    test('test tiktokGetLikedVideos', () async {
       // TODO
     });
 
@@ -119,7 +119,7 @@ void main() {
     //
     // Get TikTok's related videos for a given video.
     //
-    //Future<JsonObject> tiktokGetRelatedVideos(String videoId, { String region, int count }) async
+    //Future<JsonObject> tiktokGetRelatedVideos(String videoId, { String region, int count, String cursor }) async
     test('test tiktokGetRelatedVideos', () async {
       // TODO
     });
@@ -128,7 +128,7 @@ void main() {
     //
     // Get videos a TikTok user has reposted.
     //
-    //Future<JsonObject> tiktokGetReposts(String username, { String region, int count }) async
+    //Future<JsonObject> tiktokGetReposts(String username, { String region, int count, String cursor }) async
     test('test tiktokGetReposts', () async {
       // TODO
     });

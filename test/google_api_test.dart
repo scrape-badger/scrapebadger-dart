@@ -109,7 +109,7 @@ void main() {
 
     // Google Lens visual search
     //
-    // Google Lens visual search.  Response carries ``lens_results`` (Scrapingdog parity alias) with ``title`` / ``source`` / ``source_favicon`` / ``thumbnail`` / ``original_thumbnail`` / ``rating`` / ``reviews`` / ``in_stock``, plus ``price`` (``{value, currency, extracted}``) and the raw ``tag`` chip it is parsed from, on shoppable matches. ``related_searches`` chips come alongside. Legacy ``results`` alias kept for backwards compat.
+    // Google Lens visual search.  Response carries ``lens_results`` (Scrapingdog parity alias) with ``title`` / ``source`` / ``source_favicon`` / ``thumbnail`` / ``original_thumbnail`` / ``rating`` / ``reviews`` / ``in_stock``, plus ``price`` (``{value, currency, extracted}``) and the raw ``tag`` chip it is parsed from, on shoppable matches. ``related_searches`` chips come alongside. Legacy ``results`` alias kept for backwards compat.  ``query`` refines the grid with text and is honoured. ``product`` and ``exact_matches`` are not yet supported, and ``visual_matches=false`` cannot be: visual matches are the only surface served. Setting any of the three adds a line to the ``warnings`` array on the response rather than changing the result — see SCR-177. The match grid still CONTAINS an image's exact matches; Google just does not label which they are.
     //
     //Future<JsonObject> googleGoogleLensVisualSearch(String url, { String query, String country, String language, String gl, String hl, bool product, bool visualMatches, bool exactMatches }) async
     test('test googleGoogleLensVisualSearch', () async {

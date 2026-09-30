@@ -13,11 +13,11 @@ Method | HTTP request | Description
 [**tiktokGeneralSearch**](TikTokApi.md#tiktokgeneralsearch) | **GET** /v1/tiktok/search | General search
 [**tiktokGetCommentReplies**](TikTokApi.md#tiktokgetcommentreplies) | **GET** /v1/tiktok/comments/{comment_id}/replies | Get comment replies
 [**tiktokGetComments**](TikTokApi.md#tiktokgetcomments) | **GET** /v1/tiktok/videos/{video_id}/comments | Get comments
-[**tiktokGetFollowersDeprecated**](TikTokApi.md#tiktokgetfollowersdeprecated) | **GET** /v1/tiktok/users/{username}/followers | Get followers (deprecated)
-[**tiktokGetFollowingDeprecated**](TikTokApi.md#tiktokgetfollowingdeprecated) | **GET** /v1/tiktok/users/{username}/following | Get following (deprecated)
+[**tiktokGetFollowers**](TikTokApi.md#tiktokgetfollowers) | **GET** /v1/tiktok/users/{username}/followers | Get followers
+[**tiktokGetFollowing**](TikTokApi.md#tiktokgetfollowing) | **GET** /v1/tiktok/users/{username}/following | Get following
 [**tiktokGetHashtagDetail**](TikTokApi.md#tiktokgethashtagdetail) | **GET** /v1/tiktok/hashtags/{name} | Get hashtag detail
 [**tiktokGetHashtagVideos**](TikTokApi.md#tiktokgethashtagvideos) | **GET** /v1/tiktok/hashtags/{name}/videos | Get hashtag videos
-[**tiktokGetLikedVideosDeprecated**](TikTokApi.md#tiktokgetlikedvideosdeprecated) | **GET** /v1/tiktok/users/{username}/liked | Get liked videos (deprecated)
+[**tiktokGetLikedVideos**](TikTokApi.md#tiktokgetlikedvideos) | **GET** /v1/tiktok/users/{username}/liked | Get liked videos
 [**tiktokGetMusicSoundDetail**](TikTokApi.md#tiktokgetmusicsounddetail) | **GET** /v1/tiktok/music/{music_id} | Get music/sound detail
 [**tiktokGetMusicVideos**](TikTokApi.md#tiktokgetmusicvideos) | **GET** /v1/tiktok/music/{music_id}/videos | Get music videos
 [**tiktokGetOembedMetadata**](TikTokApi.md#tiktokgetoembedmetadata) | **GET** /v1/tiktok/oembed | Get oEmbed metadata
@@ -122,7 +122,7 @@ final api = Scrapebadger().getTikTokApi();
 final String query = query_example; // String | Search keyword
 final String region = region_example; // String | 
 final int count = 56; // int | 
-final String cursor = cursor_example; // String | Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor
+final String cursor = cursor_example; // String | Opaque continuation cursor from a prior page's pagination.cursor
 
 try {
     final response = api.tiktokGeneralSearch(query, region, count, cursor);
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
  **query** | **String**| Search keyword | 
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 20]
- **cursor** | **String**| Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor | [optional] 
+ **cursor** | **String**| Opaque continuation cursor from a prior page's pagination.cursor | [optional] 
 
 ### Return type
 
@@ -264,12 +264,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **tiktokGetFollowersDeprecated**
-> JsonObject tiktokGetFollowersDeprecated(username, region, count)
+# **tiktokGetFollowers**
+> JsonObject tiktokGetFollowers(username, region, count, cursor)
 
-Get followers (deprecated)
+Get followers
 
-DEPRECATED — TikTok followers require an authenticated account session. Returns HTTP 410.
+Get publicly visible followers without an account.
 
 ### Example
 ```dart
@@ -283,12 +283,13 @@ final api = Scrapebadger().getTikTokApi();
 final String username = username_example; // String | 
 final String region = region_example; // String | 
 final int count = 56; // int | 
+final String cursor = cursor_example; // String | Continuation cursor from the previous page
 
 try {
-    final response = api.tiktokGetFollowersDeprecated(username, region, count);
+    final response = api.tiktokGetFollowers(username, region, count, cursor);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling TikTokApi->tiktokGetFollowersDeprecated: $e\n');
+    print('Exception when calling TikTokApi->tiktokGetFollowers: $e\n');
 }
 ```
 
@@ -299,6 +300,7 @@ Name | Type | Description  | Notes
  **username** | **String**|  | 
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 30]
+ **cursor** | **String**| Continuation cursor from the previous page | [optional] 
 
 ### Return type
 
@@ -315,12 +317,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **tiktokGetFollowingDeprecated**
-> JsonObject tiktokGetFollowingDeprecated(username, region, count)
+# **tiktokGetFollowing**
+> JsonObject tiktokGetFollowing(username, region, count, cursor)
 
-Get following (deprecated)
+Get following
 
-DEPRECATED — TikTok following requires an authenticated account session. Returns HTTP 410.
+Get publicly visible followed accounts. Hidden lists return HTTP 403.
 
 ### Example
 ```dart
@@ -334,12 +336,13 @@ final api = Scrapebadger().getTikTokApi();
 final String username = username_example; // String | 
 final String region = region_example; // String | 
 final int count = 56; // int | 
+final String cursor = cursor_example; // String | Continuation cursor from the previous page
 
 try {
-    final response = api.tiktokGetFollowingDeprecated(username, region, count);
+    final response = api.tiktokGetFollowing(username, region, count, cursor);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling TikTokApi->tiktokGetFollowingDeprecated: $e\n');
+    print('Exception when calling TikTokApi->tiktokGetFollowing: $e\n');
 }
 ```
 
@@ -350,6 +353,7 @@ Name | Type | Description  | Notes
  **username** | **String**|  | 
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 30]
+ **cursor** | **String**| Continuation cursor from the previous page | [optional] 
 
 ### Return type
 
@@ -468,12 +472,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **tiktokGetLikedVideosDeprecated**
-> JsonObject tiktokGetLikedVideosDeprecated(username, region, count)
+# **tiktokGetLikedVideos**
+> JsonObject tiktokGetLikedVideos(username, region, count, cursor)
 
-Get liked videos (deprecated)
+Get liked videos
 
-DEPRECATED — TikTok liked videos require an authenticated account session. Returns HTTP 410.
+Get public liked videos. Hidden liked lists return HTTP 403.
 
 ### Example
 ```dart
@@ -487,12 +491,13 @@ final api = Scrapebadger().getTikTokApi();
 final String username = username_example; // String | 
 final String region = region_example; // String | 
 final int count = 56; // int | 
+final String cursor = cursor_example; // String | Continuation cursor from the previous page
 
 try {
-    final response = api.tiktokGetLikedVideosDeprecated(username, region, count);
+    final response = api.tiktokGetLikedVideos(username, region, count, cursor);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling TikTokApi->tiktokGetLikedVideosDeprecated: $e\n');
+    print('Exception when calling TikTokApi->tiktokGetLikedVideos: $e\n');
 }
 ```
 
@@ -503,6 +508,7 @@ Name | Type | Description  | Notes
  **username** | **String**|  | 
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 30]
+ **cursor** | **String**| Continuation cursor from the previous page | [optional] 
 
 ### Return type
 
@@ -671,7 +677,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tiktokGetRelatedVideos**
-> JsonObject tiktokGetRelatedVideos(videoId, region, count)
+> JsonObject tiktokGetRelatedVideos(videoId, region, count, cursor)
 
 Get related videos
 
@@ -689,9 +695,10 @@ final api = Scrapebadger().getTikTokApi();
 final String videoId = videoId_example; // String | 
 final String region = region_example; // String | 
 final int count = 56; // int | 
+final String cursor = cursor_example; // String | Continuation cursor from the previous page
 
 try {
-    final response = api.tiktokGetRelatedVideos(videoId, region, count);
+    final response = api.tiktokGetRelatedVideos(videoId, region, count, cursor);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling TikTokApi->tiktokGetRelatedVideos: $e\n');
@@ -705,6 +712,7 @@ Name | Type | Description  | Notes
  **videoId** | **String**|  | 
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 16]
+ **cursor** | **String**| Continuation cursor from the previous page | [optional] 
 
 ### Return type
 
@@ -722,7 +730,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tiktokGetReposts**
-> JsonObject tiktokGetReposts(username, region, count)
+> JsonObject tiktokGetReposts(username, region, count, cursor)
 
 Get reposts
 
@@ -740,9 +748,10 @@ final api = Scrapebadger().getTikTokApi();
 final String username = username_example; // String | 
 final String region = region_example; // String | 
 final int count = 56; // int | 
+final String cursor = cursor_example; // String | Continuation cursor from the previous page
 
 try {
-    final response = api.tiktokGetReposts(username, region, count);
+    final response = api.tiktokGetReposts(username, region, count, cursor);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling TikTokApi->tiktokGetReposts: $e\n');
@@ -756,6 +765,7 @@ Name | Type | Description  | Notes
  **username** | **String**|  | 
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 30]
+ **cursor** | **String**| Continuation cursor from the previous page | [optional] 
 
 ### Return type
 
@@ -938,7 +948,7 @@ final api = Scrapebadger().getTikTokApi();
 final String username = username_example; // String | 
 final String region = region_example; // String | 
 final int count = 56; // int | 
-final String cursor = cursor_example; // String | Pagination cursor from a prior page's `pagination.cursor` (signer path only).
+final String cursor = cursor_example; // String | Pagination cursor from a prior page's `pagination.cursor` (opaque; expires after 15 minutes).
 
 try {
     final response = api.tiktokGetUserVideos(username, region, count, cursor);
@@ -955,7 +965,7 @@ Name | Type | Description  | Notes
  **username** | **String**|  | 
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 30]
- **cursor** | **String**| Pagination cursor from a prior page's `pagination.cursor` (signer path only). | [optional] 
+ **cursor** | **String**| Pagination cursor from a prior page's `pagination.cursor` (opaque; expires after 15 minutes). | [optional] 
 
 ### Return type
 
@@ -1171,7 +1181,7 @@ final api = Scrapebadger().getTikTokApi();
 final String query = query_example; // String | Search keyword
 final String region = region_example; // String | 
 final int count = 56; // int | 
-final String cursor = cursor_example; // String | Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor
+final String cursor = cursor_example; // String | Opaque continuation cursor from a prior page's pagination.cursor
 
 try {
     final response = api.tiktokSearchHashtags(query, region, count, cursor);
@@ -1188,7 +1198,7 @@ Name | Type | Description  | Notes
  **query** | **String**| Search keyword | 
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 20]
- **cursor** | **String**| Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor | [optional] 
+ **cursor** | **String**| Opaque continuation cursor from a prior page's pagination.cursor | [optional] 
 
 ### Return type
 
@@ -1389,7 +1399,7 @@ final api = Scrapebadger().getTikTokApi();
 final String query = query_example; // String | Search keyword
 final String region = region_example; // String | 
 final int count = 56; // int | 
-final String cursor = cursor_example; // String | Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor
+final String cursor = cursor_example; // String | Opaque continuation cursor from a prior page's pagination.cursor
 
 try {
     final response = api.tiktokSearchUsers(query, region, count, cursor);
@@ -1406,7 +1416,7 @@ Name | Type | Description  | Notes
  **query** | **String**| Search keyword | 
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 20]
- **cursor** | **String**| Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor | [optional] 
+ **cursor** | **String**| Opaque continuation cursor from a prior page's pagination.cursor | [optional] 
 
 ### Return type
 
@@ -1442,7 +1452,7 @@ final api = Scrapebadger().getTikTokApi();
 final String query = query_example; // String | Search keyword
 final String region = region_example; // String | 
 final int count = 56; // int | 
-final String cursor = cursor_example; // String | Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor
+final String cursor = cursor_example; // String | Opaque continuation cursor from a prior page's pagination.cursor
 
 try {
     final response = api.tiktokSearchVideos(query, region, count, cursor);
@@ -1459,7 +1469,7 @@ Name | Type | Description  | Notes
  **query** | **String**| Search keyword | 
  **region** | **String**|  | [optional] [default to 'US']
  **count** | **int**|  | [optional] [default to 20]
- **cursor** | **String**| Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor | [optional] 
+ **cursor** | **String**| Opaque continuation cursor from a prior page's pagination.cursor | [optional] 
 
 ### Return type
 
@@ -1911,7 +1921,7 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getTikTokApi();
 final String region = region_example; // String | 
-final int period = 56; // int | 
+final int period = 56; // int | Historical windows are unavailable; omit period
 final int count = 56; // int | 
 
 try {
@@ -1927,7 +1937,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region** | **String**|  | [optional] [default to 'US']
- **period** | **int**|  | [optional] [default to 7]
+ **period** | **int**| Historical windows are unavailable; omit period | [optional] 
  **count** | **int**|  | [optional] [default to 20]
 
 ### Return type
@@ -1962,7 +1972,7 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getTikTokApi();
 final String region = region_example; // String | 
-final int period = 56; // int | 
+final int period = 56; // int | Historical windows are unavailable; omit period
 final int count = 56; // int | 
 
 try {
@@ -1978,7 +1988,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region** | **String**|  | [optional] [default to 'US']
- **period** | **int**|  | [optional] [default to 7]
+ **period** | **int**| Historical windows are unavailable; omit period | [optional] 
  **count** | **int**|  | [optional] [default to 20]
 
 ### Return type

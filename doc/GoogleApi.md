@@ -713,7 +713,7 @@ Name | Type | Description  | Notes
 
 Google Lens visual search
 
-Google Lens visual search.  Response carries ``lens_results`` (Scrapingdog parity alias) with ``title`` / ``source`` / ``source_favicon`` / ``thumbnail`` / ``original_thumbnail`` / ``rating`` / ``reviews`` / ``in_stock``, plus ``price`` (``{value, currency, extracted}``) and the raw ``tag`` chip it is parsed from, on shoppable matches. ``related_searches`` chips come alongside. Legacy ``results`` alias kept for backwards compat.
+Google Lens visual search.  Response carries ``lens_results`` (Scrapingdog parity alias) with ``title`` / ``source`` / ``source_favicon`` / ``thumbnail`` / ``original_thumbnail`` / ``rating`` / ``reviews`` / ``in_stock``, plus ``price`` (``{value, currency, extracted}``) and the raw ``tag`` chip it is parsed from, on shoppable matches. ``related_searches`` chips come alongside. Legacy ``results`` alias kept for backwards compat.  ``query`` refines the grid with text and is honoured. ``product`` and ``exact_matches`` are not yet supported, and ``visual_matches=false`` cannot be: visual matches are the only surface served. Setting any of the three adds a line to the ``warnings`` array on the response rather than changing the result — see SCR-177. The match grid still CONTAINS an image's exact matches; Google just does not label which they are.
 
 ### Example
 ```dart
@@ -730,9 +730,9 @@ final String country = country_example; // String | ISO country code (alias for 
 final String language = language_example; // String | Language code (alias for hl)
 final String gl = gl_example; // String | Country code
 final String hl = hl_example; // String | Language code
-final bool product = true; // bool | Bias towards shoppable product matches
-final bool visualMatches = true; // bool | Include the visual-matches carousel
-final bool exactMatches = true; // bool | Restrict to exact-match results
+final bool product = true; // bool | NOT YET SUPPORTED — accepted, and reported back in `warnings`
+final bool visualMatches = true; // bool | Always true in practice — `false` is reported back in `warnings`
+final bool exactMatches = true; // bool | NOT YET SUPPORTED — accepted, and reported back in `warnings`
 
 try {
     final response = api.googleGoogleLensVisualSearch(url, query, country, language, gl, hl, product, visualMatches, exactMatches);
@@ -752,9 +752,9 @@ Name | Type | Description  | Notes
  **language** | **String**| Language code (alias for hl) | [optional] 
  **gl** | **String**| Country code | [optional] [default to 'us']
  **hl** | **String**| Language code | [optional] [default to 'en']
- **product** | **bool**| Bias towards shoppable product matches | [optional] [default to false]
- **visualMatches** | **bool**| Include the visual-matches carousel | [optional] [default to true]
- **exactMatches** | **bool**| Restrict to exact-match results | [optional] [default to false]
+ **product** | **bool**| NOT YET SUPPORTED — accepted, and reported back in `warnings` | [optional] [default to false]
+ **visualMatches** | **bool**| Always true in practice — `false` is reported back in `warnings` | [optional] [default to true]
+ **exactMatches** | **bool**| NOT YET SUPPORTED — accepted, and reported back in `warnings` | [optional] [default to false]
 
 ### Return type
 

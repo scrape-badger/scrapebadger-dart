@@ -1218,7 +1218,7 @@ class GoogleApi {
   }
 
   /// Google Lens visual search
-  /// Google Lens visual search.  Response carries &#x60;&#x60;lens_results&#x60;&#x60; (Scrapingdog parity alias) with &#x60;&#x60;title&#x60;&#x60; / &#x60;&#x60;source&#x60;&#x60; / &#x60;&#x60;source_favicon&#x60;&#x60; / &#x60;&#x60;thumbnail&#x60;&#x60; / &#x60;&#x60;original_thumbnail&#x60;&#x60; / &#x60;&#x60;rating&#x60;&#x60; / &#x60;&#x60;reviews&#x60;&#x60; / &#x60;&#x60;in_stock&#x60;&#x60;, plus &#x60;&#x60;price&#x60;&#x60; (&#x60;&#x60;{value, currency, extracted}&#x60;&#x60;) and the raw &#x60;&#x60;tag&#x60;&#x60; chip it is parsed from, on shoppable matches. &#x60;&#x60;related_searches&#x60;&#x60; chips come alongside. Legacy &#x60;&#x60;results&#x60;&#x60; alias kept for backwards compat.
+  /// Google Lens visual search.  Response carries &#x60;&#x60;lens_results&#x60;&#x60; (Scrapingdog parity alias) with &#x60;&#x60;title&#x60;&#x60; / &#x60;&#x60;source&#x60;&#x60; / &#x60;&#x60;source_favicon&#x60;&#x60; / &#x60;&#x60;thumbnail&#x60;&#x60; / &#x60;&#x60;original_thumbnail&#x60;&#x60; / &#x60;&#x60;rating&#x60;&#x60; / &#x60;&#x60;reviews&#x60;&#x60; / &#x60;&#x60;in_stock&#x60;&#x60;, plus &#x60;&#x60;price&#x60;&#x60; (&#x60;&#x60;{value, currency, extracted}&#x60;&#x60;) and the raw &#x60;&#x60;tag&#x60;&#x60; chip it is parsed from, on shoppable matches. &#x60;&#x60;related_searches&#x60;&#x60; chips come alongside. Legacy &#x60;&#x60;results&#x60;&#x60; alias kept for backwards compat.  &#x60;&#x60;query&#x60;&#x60; refines the grid with text and is honoured. &#x60;&#x60;product&#x60;&#x60; and &#x60;&#x60;exact_matches&#x60;&#x60; are not yet supported, and &#x60;&#x60;visual_matches&#x3D;false&#x60;&#x60; cannot be: visual matches are the only surface served. Setting any of the three adds a line to the &#x60;&#x60;warnings&#x60;&#x60; array on the response rather than changing the result — see SCR-177. The match grid still CONTAINS an image&#39;s exact matches; Google just does not label which they are.
   ///
   /// Parameters:
   /// * [url] - Public URL of the image to search visually
@@ -1227,9 +1227,9 @@ class GoogleApi {
   /// * [language] - Language code (alias for hl)
   /// * [gl] - Country code
   /// * [hl] - Language code
-  /// * [product] - Bias towards shoppable product matches
-  /// * [visualMatches] - Include the visual-matches carousel
-  /// * [exactMatches] - Restrict to exact-match results
+  /// * [product] - NOT YET SUPPORTED — accepted, and reported back in `warnings`
+  /// * [visualMatches] - Always true in practice — `false` is reported back in `warnings`
+  /// * [exactMatches] - NOT YET SUPPORTED — accepted, and reported back in `warnings`
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request

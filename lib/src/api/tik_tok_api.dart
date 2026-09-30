@@ -124,7 +124,7 @@ class TikTokApi {
   /// * [query] - Search keyword
   /// * [region] 
   /// * [count] 
-  /// * [cursor] - Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor
+  /// * [cursor] - Opaque continuation cursor from a prior page's pagination.cursor
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -406,13 +406,14 @@ class TikTokApi {
     );
   }
 
-  /// Get followers (deprecated)
-  /// DEPRECATED — TikTok followers require an authenticated account session. Returns HTTP 410.
+  /// Get followers
+  /// Get publicly visible followers without an account.
   ///
   /// Parameters:
   /// * [username] 
   /// * [region] 
   /// * [count] 
+  /// * [cursor] - Continuation cursor from the previous page
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -422,11 +423,11 @@ class TikTokApi {
   ///
   /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
-  @Deprecated('This operation has been deprecated')
-  Future<Response<JsonObject>> tiktokGetFollowersDeprecated({ 
+  Future<Response<JsonObject>> tiktokGetFollowers({ 
     required String username,
     String? region = 'US',
     int? count = 30,
+    String? cursor,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -457,6 +458,7 @@ class TikTokApi {
     final _queryParameters = <String, dynamic>{
       if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
       if (count != null) r'count': encodeQueryParameter(_serializers, count, const FullType(int)),
+      r'cursor': encodeQueryParameter(_serializers, cursor, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -499,13 +501,14 @@ class TikTokApi {
     );
   }
 
-  /// Get following (deprecated)
-  /// DEPRECATED — TikTok following requires an authenticated account session. Returns HTTP 410.
+  /// Get following
+  /// Get publicly visible followed accounts. Hidden lists return HTTP 403.
   ///
   /// Parameters:
   /// * [username] 
   /// * [region] 
   /// * [count] 
+  /// * [cursor] - Continuation cursor from the previous page
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -515,11 +518,11 @@ class TikTokApi {
   ///
   /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
-  @Deprecated('This operation has been deprecated')
-  Future<Response<JsonObject>> tiktokGetFollowingDeprecated({ 
+  Future<Response<JsonObject>> tiktokGetFollowing({ 
     required String username,
     String? region = 'US',
     int? count = 30,
+    String? cursor,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -550,6 +553,7 @@ class TikTokApi {
     final _queryParameters = <String, dynamic>{
       if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
       if (count != null) r'count': encodeQueryParameter(_serializers, count, const FullType(int)),
+      r'cursor': encodeQueryParameter(_serializers, cursor, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -776,13 +780,14 @@ class TikTokApi {
     );
   }
 
-  /// Get liked videos (deprecated)
-  /// DEPRECATED — TikTok liked videos require an authenticated account session. Returns HTTP 410.
+  /// Get liked videos
+  /// Get public liked videos. Hidden liked lists return HTTP 403.
   ///
   /// Parameters:
   /// * [username] 
   /// * [region] 
   /// * [count] 
+  /// * [cursor] - Continuation cursor from the previous page
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -792,11 +797,11 @@ class TikTokApi {
   ///
   /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
-  @Deprecated('This operation has been deprecated')
-  Future<Response<JsonObject>> tiktokGetLikedVideosDeprecated({ 
+  Future<Response<JsonObject>> tiktokGetLikedVideos({ 
     required String username,
     String? region = 'US',
     int? count = 30,
+    String? cursor,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -827,6 +832,7 @@ class TikTokApi {
     final _queryParameters = <String, dynamic>{
       if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
       if (count != null) r'count': encodeQueryParameter(_serializers, count, const FullType(int)),
+      r'cursor': encodeQueryParameter(_serializers, cursor, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1150,6 +1156,7 @@ class TikTokApi {
   /// * [videoId] 
   /// * [region] 
   /// * [count] 
+  /// * [cursor] - Continuation cursor from the previous page
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1163,6 +1170,7 @@ class TikTokApi {
     required String videoId,
     String? region = 'US',
     int? count = 16,
+    String? cursor,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1193,6 +1201,7 @@ class TikTokApi {
     final _queryParameters = <String, dynamic>{
       if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
       if (count != null) r'count': encodeQueryParameter(_serializers, count, const FullType(int)),
+      r'cursor': encodeQueryParameter(_serializers, cursor, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1242,6 +1251,7 @@ class TikTokApi {
   /// * [username] 
   /// * [region] 
   /// * [count] 
+  /// * [cursor] - Continuation cursor from the previous page
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1255,6 +1265,7 @@ class TikTokApi {
     required String username,
     String? region = 'US',
     int? count = 30,
+    String? cursor,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1285,6 +1296,7 @@ class TikTokApi {
     final _queryParameters = <String, dynamic>{
       if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
       if (count != null) r'count': encodeQueryParameter(_serializers, count, const FullType(int)),
+      r'cursor': encodeQueryParameter(_serializers, cursor, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1601,7 +1613,7 @@ class TikTokApi {
   /// * [username] 
   /// * [region] 
   /// * [count] 
-  /// * [cursor] - Pagination cursor from a prior page's `pagination.cursor` (signer path only).
+  /// * [cursor] - Pagination cursor from a prior page's `pagination.cursor` (opaque; expires after 15 minutes).
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2028,7 +2040,7 @@ class TikTokApi {
   /// * [query] - Search keyword
   /// * [region] 
   /// * [count] 
-  /// * [cursor] - Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor
+  /// * [cursor] - Opaque continuation cursor from a prior page's pagination.cursor
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2421,7 +2433,7 @@ class TikTokApi {
   /// * [query] - Search keyword
   /// * [region] 
   /// * [count] 
-  /// * [cursor] - Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor
+  /// * [cursor] - Opaque continuation cursor from a prior page's pagination.cursor
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2517,7 +2529,7 @@ class TikTokApi {
   /// * [query] - Search keyword
   /// * [region] 
   /// * [count] 
-  /// * [cursor] - Composite pagination cursor (offset.search_id) from a prior page's pagination.cursor
+  /// * [cursor] - Opaque continuation cursor from a prior page's pagination.cursor
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3364,7 +3376,7 @@ class TikTokApi {
   ///
   /// Parameters:
   /// * [region] 
-  /// * [period] 
+  /// * [period] - Historical windows are unavailable; omit period
   /// * [count] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -3377,7 +3389,7 @@ class TikTokApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> tiktokTrendingHashtags({ 
     String? region = 'US',
-    int? period = 7,
+    int? period,
     int? count = 20,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3408,7 +3420,7 @@ class TikTokApi {
 
     final _queryParameters = <String, dynamic>{
       if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
-      if (period != null) r'period': encodeQueryParameter(_serializers, period, const FullType(int)),
+      r'period': encodeQueryParameter(_serializers, period, const FullType(int)),
       if (count != null) r'count': encodeQueryParameter(_serializers, count, const FullType(int)),
     };
 
@@ -3457,7 +3469,7 @@ class TikTokApi {
   ///
   /// Parameters:
   /// * [region] 
-  /// * [period] 
+  /// * [period] - Historical windows are unavailable; omit period
   /// * [count] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -3470,7 +3482,7 @@ class TikTokApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> tiktokTrendingSongs({ 
     String? region = 'US',
-    int? period = 7,
+    int? period,
     int? count = 20,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3501,7 +3513,7 @@ class TikTokApi {
 
     final _queryParameters = <String, dynamic>{
       if (region != null) r'region': encodeQueryParameter(_serializers, region, const FullType(String)),
-      if (period != null) r'period': encodeQueryParameter(_serializers, period, const FullType(int)),
+      r'period': encodeQueryParameter(_serializers, period, const FullType(int)),
       if (count != null) r'count': encodeQueryParameter(_serializers, count, const FullType(int)),
     };
 
