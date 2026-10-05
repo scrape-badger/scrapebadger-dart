@@ -1218,7 +1218,7 @@ class GoogleApi {
   }
 
   /// Google Lens visual search
-  /// Google Lens visual search.  Response carries &#x60;&#x60;lens_results&#x60;&#x60; (Scrapingdog parity alias) with &#x60;&#x60;title&#x60;&#x60; / &#x60;&#x60;source&#x60;&#x60; / &#x60;&#x60;source_favicon&#x60;&#x60; / &#x60;&#x60;thumbnail&#x60;&#x60; / &#x60;&#x60;original_thumbnail&#x60;&#x60; / &#x60;&#x60;rating&#x60;&#x60; / &#x60;&#x60;reviews&#x60;&#x60; / &#x60;&#x60;in_stock&#x60;&#x60;, plus &#x60;&#x60;price&#x60;&#x60; (&#x60;&#x60;{value, currency, extracted}&#x60;&#x60;) and the raw &#x60;&#x60;tag&#x60;&#x60; chip it is parsed from, on shoppable matches. &#x60;&#x60;related_searches&#x60;&#x60; chips come alongside. Legacy &#x60;&#x60;results&#x60;&#x60; alias kept for backwards compat.  &#x60;&#x60;query&#x60;&#x60; refines the grid with text. &#x60;&#x60;exact_matches&#x3D;true&#x60;&#x60; returns just the pages hosting the image, each flagged &#x60;&#x60;exact_match: true&#x60;&#x60;, instead of the broad grid — available for most images (7 of 10 in sampling) and falling back to the grid otherwise. &#x60;&#x60;product&#x60;&#x60; is not supported, and &#x60;&#x60;visual_matches&#x3D;false&#x60;&#x60; cannot be: visual matches are the only grid served. Anything that could not be applied — including an exact-match lookup that came back empty — is named in the &#x60;&#x60;warnings&#x60;&#x60; array rather than silently dropped (SCR-177, SCR-180).
+  /// Google Lens visual search.  Response carries &#x60;&#x60;lens_results&#x60;&#x60; (Scrapingdog parity alias) with &#x60;&#x60;title&#x60;&#x60; / &#x60;&#x60;source&#x60;&#x60; / &#x60;&#x60;source_favicon&#x60;&#x60; / &#x60;&#x60;thumbnail&#x60;&#x60; / &#x60;&#x60;original_thumbnail&#x60;&#x60; / &#x60;&#x60;rating&#x60;&#x60; / &#x60;&#x60;reviews&#x60;&#x60; / &#x60;&#x60;in_stock&#x60;&#x60;, plus &#x60;&#x60;price&#x60;&#x60; (&#x60;&#x60;{value, currency, extracted}&#x60;&#x60;) and the raw &#x60;&#x60;tag&#x60;&#x60; chip it is parsed from, on shoppable matches. &#x60;&#x60;related_searches&#x60;&#x60; chips come alongside. Legacy &#x60;&#x60;results&#x60;&#x60; alias kept for backwards compat.  &#x60;&#x60;query&#x60;&#x60; refines the grid with text. &#x60;&#x60;exact_matches&#x3D;true&#x60;&#x60; returns just the pages hosting the image, each flagged &#x60;&#x60;exact_match: true&#x60;&#x60;, instead of the broad grid — available for most images (8 of 10 in sampling) and falling back to the grid otherwise. &#x60;&#x60;product&#x3D;true&#x60;&#x60; narrows the grid to the tiles Google marked buyable. &#x60;&#x60;visual_matches&#x3D;false&#x60;&#x60; cannot be honoured: &#x60;&#x60;visual_matches&#x3D;false&#x60;&#x60; cannot be: visual matches are the only grid served. Anything that could not be applied — including an exact-match lookup that came back empty — is named in the &#x60;&#x60;warnings&#x60;&#x60; array rather than silently dropped (SCR-177, SCR-180).
   ///
   /// Parameters:
   /// * [url] - Public URL of the image to search visually
@@ -1227,9 +1227,9 @@ class GoogleApi {
   /// * [language] - Language code (alias for hl)
   /// * [gl] - Country code
   /// * [hl] - Language code
-  /// * [product] - NOT YET SUPPORTED — accepted, and reported back in `warnings`
+  /// * [product] - Only the tiles Google marked buyable (price + stock), drawn from the same grid
   /// * [visualMatches] - Always true in practice — `false` is reported back in `warnings`
-  /// * [exactMatches] - Return only the pages hosting this image, flagged exact_match. Available for most images (7/10 in sampling); falls back to the full grid otherwise, saying so in warnings
+  /// * [exactMatches] - Return only the pages hosting this image, flagged exact_match. Available for most images (8/10 in sampling); falls back to the full grid otherwise, saying so in warnings
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
