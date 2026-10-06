@@ -40,6 +40,7 @@ doc/LeboncoinApi.md
 doc/LinkedInApi.md
 doc/LoopNetApi.md
 doc/MarketsResponse.md
+doc/NaverApi.md
 doc/PerplexityApi.md
 doc/PortalApiRoutersV1TwitterFilterRulesFilterRulePricingResponse.md
 doc/RealtorApi.md
@@ -110,6 +111,7 @@ lib/src/api/instagram_api.dart
 lib/src/api/leboncoin_api.dart
 lib/src/api/linked_in_api.dart
 lib/src/api/loop_net_api.dart
+lib/src/api/naver_api.dart
 lib/src/api/perplexity_api.dart
 lib/src/api/realtor_api.dart
 lib/src/api/reddit_api.dart
@@ -220,6 +222,7 @@ test/leboncoin_api_test.dart
 test/linked_in_api_test.dart
 test/loop_net_api_test.dart
 test/markets_response_test.dart
+test/naver_api_test.dart
 test/perplexity_api_test.dart
 test/portal_api_routers_v1_twitter_filter_rules_filter_rule_pricing_response_test.dart
 test/realtor_api_test.dart

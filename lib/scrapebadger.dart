@@ -32,6 +32,7 @@ export 'package:scrapebadger/src/api/instagram_api.dart';
 export 'package:scrapebadger/src/api/leboncoin_api.dart';
 export 'package:scrapebadger/src/api/linked_in_api.dart';
 export 'package:scrapebadger/src/api/loop_net_api.dart';
+export 'package:scrapebadger/src/api/naver_api.dart';
 export 'package:scrapebadger/src/api/perplexity_api.dart';
 export 'package:scrapebadger/src/api/realtor_api.dart';
 export 'package:scrapebadger/src/api/reddit_api.dart';
