@@ -641,8 +641,8 @@ class BingApi {
   /// Parameters:
   /// * [query] - Search keywords, e.g. 'coffee machine'
   /// * [market] - Bing market code, e.g. 'en-US', 'en-GB', 'de-DE'. See /markets.
-  /// * [count] - Results per page (1-50)
-  /// * [offset] - Zero-based result offset for pagination
+  /// * [count] - Organic results to return (1-50), merged from Bing's following pages when one page is short. May return fewer.
+  /// * [offset] - Organic results to skip in Bing's ranking. Paginate with offset += count.
   /// * [safeSearch] - off | moderate | strict (default moderate)
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request

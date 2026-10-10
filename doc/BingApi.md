@@ -372,8 +372,8 @@ import 'package:scrapebadger/api.dart';
 final api = Scrapebadger().getBingApi();
 final String query = query_example; // String | Search keywords, e.g. 'coffee machine'
 final String market = market_example; // String | Bing market code, e.g. 'en-US', 'en-GB', 'de-DE'. See /markets.
-final int count = 56; // int | Results per page (1-50)
-final int offset = 56; // int | Zero-based result offset for pagination
+final int count = 56; // int | Organic results to return (1-50), merged from Bing's following pages when one page is short. May return fewer.
+final int offset = 56; // int | Organic results to skip in Bing's ranking. Paginate with offset += count.
 final String safeSearch = safeSearch_example; // String | off | moderate | strict (default moderate)
 
 try {
@@ -390,8 +390,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search keywords, e.g. 'coffee machine' | 
  **market** | **String**| Bing market code, e.g. 'en-US', 'en-GB', 'de-DE'. See /markets. | [optional] [default to 'en-US']
- **count** | **int**| Results per page (1-50) | [optional] [default to 10]
- **offset** | **int**| Zero-based result offset for pagination | [optional] [default to 0]
+ **count** | **int**| Organic results to return (1-50), merged from Bing's following pages when one page is short. May return fewer. | [optional] [default to 10]
+ **offset** | **int**| Organic results to skip in Bing's ranking. Paginate with offset += count. | [optional] [default to 0]
  **safeSearch** | **String**| off | moderate | strict (default moderate) | [optional] 
 
 ### Return type
