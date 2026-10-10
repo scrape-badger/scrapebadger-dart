@@ -18,19 +18,10 @@ void main() {
 
     // Extract structured data
     //
-    // Extract structured data from a URL using CSS or XPath selectors. (Phase 6)
+    // Scrape a URL and extract fields with CSS/XPath selectors and/or AI.  ``extract_rules`` maps a field to a selector and returns ``data``; ``ai_extract_rules`` (field -> description) and ``ai_query`` return ``ai_extraction``. Billed as a scrape, plus the AI extraction credits when AI is asked for and succeeds.
     //
-    //Future<JsonObject> webExtractStructuredData() async
+    //Future<JsonObject> webExtractStructuredData(ExtractRequest extractRequest) async
     test('test webExtractStructuredData', () async {
-      // TODO
-    });
-
-    // Get batch job status
-    //
-    // Get the status of a batch scraping job. (Phase 6)
-    //
-    //Future<JsonObject> webGetBatchJobStatus(String jobId) async
-    test('test webGetBatchJobStatus', () async {
       // TODO
     });
 
@@ -52,20 +43,11 @@ void main() {
       // TODO
     });
 
-    // Submit batch scraping job
-    //
-    // Submit a batch of URLs for scraping. (Phase 6)
-    //
-    //Future<JsonObject> webSubmitBatchScrapingJob() async
-    test('test webSubmitBatchScrapingJob', () async {
-      // TODO
-    });
-
     // Take a screenshot
     //
-    // Take a screenshot of a URL. (browser engine)
+    // Render a URL in the browser engine and return a PNG screenshot.  ``screenshot`` is the PNG, base64-encoded. ``width``/``height`` set the viewport; ``full_page`` captures the whole scrollable page. Billed as a browser scrape (plus the proxy tier); a page that loads without a screenshot is a 502 and costs nothing.
     //
-    //Future<JsonObject> webTakeAScreenshot() async
+    //Future<JsonObject> webTakeAScreenshot(ScreenshotRequest screenshotRequest) async
     test('test webTakeAScreenshot', () async {
       // TODO
     });

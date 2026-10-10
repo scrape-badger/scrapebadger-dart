@@ -19,6 +19,9 @@ import 'package:scrapebadger/src/model/billing_log_list_response.dart';
 import 'package:scrapebadger/src/model/billing_log_response.dart';
 import 'package:scrapebadger/src/model/brands_response.dart';
 import 'package:scrapebadger/src/model/colors_response.dart';
+import 'package:scrapebadger/src/model/extract_request.dart';
+import 'package:scrapebadger/src/model/extract_request_extract_rules_value.dart';
+import 'package:scrapebadger/src/model/extract_rule.dart';
 import 'package:scrapebadger/src/model/filter_rule_create.dart';
 import 'package:scrapebadger/src/model/filter_rule_delivery_log_list_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_delivery_log_response.dart';
@@ -31,6 +34,7 @@ import 'package:scrapebadger/src/model/http_validation_error.dart';
 import 'package:scrapebadger/src/model/item_detail_response.dart';
 import 'package:scrapebadger/src/model/markets_response.dart';
 import 'package:scrapebadger/src/model/portal_api_routers_v1_twitter_filter_rules_filter_rule_pricing_response.dart';
+import 'package:scrapebadger/src/model/screenshot_request.dart';
 import 'package:scrapebadger/src/model/search_response.dart';
 import 'package:scrapebadger/src/model/statuses_response.dart';
 import 'package:scrapebadger/src/model/stream_monitor_create.dart';
@@ -72,6 +76,9 @@ part 'serializers.g.dart';
   BillingLogResponse,
   BrandsResponse,
   ColorsResponse,
+  ExtractRequest,
+  ExtractRequestExtractRulesValue,
+  ExtractRule,
   FilterRuleCreate,
   FilterRuleDeliveryLogListResponse,
   FilterRuleDeliveryLogResponse,
@@ -84,6 +91,7 @@ part 'serializers.g.dart';
   ItemDetailResponse,
   MarketsResponse,
   PortalApiRoutersV1TwitterFilterRulesFilterRulePricingResponse,
+  ScreenshotRequest,
   SearchResponse,
   StatusesResponse,
   StreamMonitorCreate,

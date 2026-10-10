@@ -11,10 +11,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**webDetectAntiBotAndCaptchaSystems**](WebApi.md#webdetectantibotandcaptchasystems) | **POST** /v1/web/detect | Detect anti-bot and CAPTCHA systems
 [**webExtractStructuredData**](WebApi.md#webextractstructureddata) | **POST** /v1/web/extract | Extract structured data
-[**webGetBatchJobStatus**](WebApi.md#webgetbatchjobstatus) | **GET** /v1/web/batch/{job_id} | Get batch job status
 [**webPollAnAutoUnblockDiscoveryJob**](WebApi.md#webpollanautounblockdiscoveryjob) | **GET** /v1/web/unblock/{job_id} | Poll an auto-unblock discovery job
 [**webScrapeAUrl**](WebApi.md#webscrapeaurl) | **POST** /v1/web/scrape | Scrape a URL
-[**webSubmitBatchScrapingJob**](WebApi.md#websubmitbatchscrapingjob) | **POST** /v1/web/batch | Submit batch scraping job
 [**webTakeAScreenshot**](WebApi.md#webtakeascreenshot) | **POST** /v1/web/screenshot | Take a screenshot
 [**webWebScraperHealthCheck**](WebApi.md#webwebscraperhealthcheck) | **GET** /v1/web/health | Web scraper health check
 [**webWebScraperHealthCheckHead**](WebApi.md#webwebscraperhealthcheckhead) | **HEAD** /v1/web/health | Web scraper health check
@@ -64,11 +62,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **webExtractStructuredData**
-> JsonObject webExtractStructuredData()
+> JsonObject webExtractStructuredData(extractRequest)
 
 Extract structured data
 
-Extract structured data from a URL using CSS or XPath selectors. (Phase 6)
+Scrape a URL and extract fields with CSS/XPath selectors and/or AI.  ``extract_rules`` maps a field to a selector and returns ``data``; ``ai_extract_rules`` (field -> description) and ``ai_query`` return ``ai_extraction``. Billed as a scrape, plus the AI extraction credits when AI is asked for and succeeds.
 
 ### Example
 ```dart
@@ -79,9 +77,10 @@ import 'package:scrapebadger/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api = Scrapebadger().getWebApi();
+final ExtractRequest extractRequest = ; // ExtractRequest | 
 
 try {
-    final response = api.webExtractStructuredData();
+    final response = api.webExtractStructuredData(extractRequest);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling WebApi->webExtractStructuredData: $e\n');
@@ -89,54 +88,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**JsonObject**](JsonObject.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **webGetBatchJobStatus**
-> JsonObject webGetBatchJobStatus(jobId)
-
-Get batch job status
-
-Get the status of a batch scraping job. (Phase 6)
-
-### Example
-```dart
-import 'package:scrapebadger/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api = Scrapebadger().getWebApi();
-final String jobId = jobId_example; // String | 
-
-try {
-    final response = api.webGetBatchJobStatus(jobId);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling WebApi->webGetBatchJobStatus: $e\n');
-}
-```
-
-### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobId** | **String**|  | 
+ **extractRequest** | [**ExtractRequest**](ExtractRequest.md)|  | 
 
 ### Return type
 
@@ -148,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -243,55 +198,12 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **webSubmitBatchScrapingJob**
-> JsonObject webSubmitBatchScrapingJob()
-
-Submit batch scraping job
-
-Submit a batch of URLs for scraping. (Phase 6)
-
-### Example
-```dart
-import 'package:scrapebadger/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api = Scrapebadger().getWebApi();
-
-try {
-    final response = api.webSubmitBatchScrapingJob();
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling WebApi->webSubmitBatchScrapingJob: $e\n');
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**JsonObject**](JsonObject.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **webTakeAScreenshot**
-> JsonObject webTakeAScreenshot()
+> JsonObject webTakeAScreenshot(screenshotRequest)
 
 Take a screenshot
 
-Take a screenshot of a URL. (browser engine)
+Render a URL in the browser engine and return a PNG screenshot.  ``screenshot`` is the PNG, base64-encoded. ``width``/``height`` set the viewport; ``full_page`` captures the whole scrollable page. Billed as a browser scrape (plus the proxy tier); a page that loads without a screenshot is a 502 and costs nothing.
 
 ### Example
 ```dart
@@ -302,9 +214,10 @@ import 'package:scrapebadger/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api = Scrapebadger().getWebApi();
+final ScreenshotRequest screenshotRequest = ; // ScreenshotRequest | 
 
 try {
-    final response = api.webTakeAScreenshot();
+    final response = api.webTakeAScreenshot(screenshotRequest);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling WebApi->webTakeAScreenshot: $e\n');
@@ -312,7 +225,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **screenshotRequest** | [**ScreenshotRequest**](ScreenshotRequest.md)|  | 
 
 ### Return type
 
@@ -324,7 +240,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
