@@ -464,11 +464,12 @@ class FacebookApi {
   }
 
   /// Get group posts
-  /// Get a Facebook group&#39;s post feed.
+  /// Get a public Facebook group&#39;s post feed.  &#x60;&#x60;sort&#x60;&#x60; is &#x60;&#x60;newest&#x60;&#x60; (newest first by post time, the default) or &#x60;&#x60;relevance&#x60;&#x60; (Facebook&#39;s \&quot;top posts\&quot; ranking, which moves posts with fresh comments up). Facebook serves 3 posts per page to logged-out visitors; follow &#x60;&#x60;end_cursor&#x60;&#x60; while &#x60;&#x60;has_next_page&#x60;&#x60; for older posts.
   ///
   /// Parameters:
   /// * [groupId] 
   /// * [after] 
+  /// * [sort] - newest | relevance
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -481,6 +482,7 @@ class FacebookApi {
   Future<Response<JsonObject>> facebookGetGroupPosts({ 
     required String groupId,
     String? after,
+    String? sort = 'newest',
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -510,6 +512,7 @@ class FacebookApi {
 
     final _queryParameters = <String, dynamic>{
       r'after': encodeQueryParameter(_serializers, after, const FullType(String)),
+      if (sort != null) r'sort': encodeQueryParameter(_serializers, sort, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

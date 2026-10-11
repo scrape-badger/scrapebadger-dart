@@ -285,11 +285,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **facebookGetGroupPosts**
-> JsonObject facebookGetGroupPosts(groupId, after)
+> JsonObject facebookGetGroupPosts(groupId, after, sort)
 
 Get group posts
 
-Get a Facebook group's post feed.
+Get a public Facebook group's post feed.  ``sort`` is ``newest`` (newest first by post time, the default) or ``relevance`` (Facebook's \"top posts\" ranking, which moves posts with fresh comments up). Facebook serves 3 posts per page to logged-out visitors; follow ``end_cursor`` while ``has_next_page`` for older posts.
 
 ### Example
 ```dart
@@ -302,9 +302,10 @@ import 'package:scrapebadger/api.dart';
 final api = Scrapebadger().getFacebookApi();
 final String groupId = groupId_example; // String | 
 final String after = after_example; // String | 
+final String sort = sort_example; // String | newest | relevance
 
 try {
-    final response = api.facebookGetGroupPosts(groupId, after);
+    final response = api.facebookGetGroupPosts(groupId, after, sort);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling FacebookApi->facebookGetGroupPosts: $e\n');
@@ -317,6 +318,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
  **after** | **String**|  | [optional] 
+ **sort** | **String**| newest | relevance | [optional] [default to 'newest']
 
 ### Return type
 

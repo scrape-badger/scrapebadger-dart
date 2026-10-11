@@ -54,9 +54,9 @@ void main() {
 
     // Get group posts
     //
-    // Get a Facebook group's post feed.
+    // Get a public Facebook group's post feed.  ``sort`` is ``newest`` (newest first by post time, the default) or ``relevance`` (Facebook's \"top posts\" ranking, which moves posts with fresh comments up). Facebook serves 3 posts per page to logged-out visitors; follow ``end_cursor`` while ``has_next_page`` for older posts.
     //
-    //Future<JsonObject> facebookGetGroupPosts(String groupId, { String after }) async
+    //Future<JsonObject> facebookGetGroupPosts(String groupId, { String after, String sort }) async
     test('test facebookGetGroupPosts', () async {
       // TODO
     });
