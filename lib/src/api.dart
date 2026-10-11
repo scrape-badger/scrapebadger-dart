@@ -39,6 +39,7 @@ import 'package:scrapebadger/src/api/redfin_api.dart';
 import 'package:scrapebadger/src/api/tik_tok_api.dart';
 import 'package:scrapebadger/src/api/twitter_api.dart';
 import 'package:scrapebadger/src/api/vinted_api.dart';
+import 'package:scrapebadger/src/api/wallapop_api.dart';
 import 'package:scrapebadger/src/api/walmart_api.dart';
 import 'package:scrapebadger/src/api/web_api.dart';
 import 'package:scrapebadger/src/api/yahoo_api.dart';
@@ -278,6 +279,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   VintedApi getVintedApi() {
     return VintedApi(dio, serializers);
+  }
+
+  /// Get WallapopApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  WallapopApi getWallapopApi() {
+    return WallapopApi(dio, serializers);
   }
 
   /// Get WalmartApi instance, base route and serializer can be overridden by a given but be careful,

@@ -79,6 +79,7 @@ doc/VintedSellerSummary.md
 doc/VintedStatus.md
 doc/VintedUserProfile.md
 doc/VintedUserSummary.md
+doc/WallapopApi.md
 doc/WalmartApi.md
 doc/WebApi.md
 doc/WebhookCreate.md
@@ -123,6 +124,7 @@ lib/src/api/redfin_api.dart
 lib/src/api/tik_tok_api.dart
 lib/src/api/twitter_api.dart
 lib/src/api/vinted_api.dart
+lib/src/api/wallapop_api.dart
 lib/src/api/walmart_api.dart
 lib/src/api/web_api.dart
 lib/src/api/yahoo_api.dart
@@ -269,6 +271,7 @@ test/vinted_seller_summary_test.dart
 test/vinted_status_test.dart
 test/vinted_user_profile_test.dart
 test/vinted_user_summary_test.dart
+test/wallapop_api_test.dart
 test/walmart_api_test.dart
 test/web_api_test.dart
 test/webhook_create_test.dart

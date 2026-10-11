@@ -40,6 +40,7 @@ export 'package:scrapebadger/src/api/redfin_api.dart';
 export 'package:scrapebadger/src/api/tik_tok_api.dart';
 export 'package:scrapebadger/src/api/twitter_api.dart';
 export 'package:scrapebadger/src/api/vinted_api.dart';
+export 'package:scrapebadger/src/api/wallapop_api.dart';
 export 'package:scrapebadger/src/api/walmart_api.dart';
 export 'package:scrapebadger/src/api/web_api.dart';
 export 'package:scrapebadger/src/api/yahoo_api.dart';
