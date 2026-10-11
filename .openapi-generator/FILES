@@ -34,6 +34,7 @@ doc/FilterRuleValidateResponse.md
 doc/GeminiApi.md
 doc/GoogleApi.md
 doc/GooglePlayApi.md
+doc/GumtreeApi.md
 doc/HTTPValidationError.md
 doc/IdealistaApi.md
 doc/ImmobiliareApi.md
@@ -110,6 +111,7 @@ lib/src/api/facebook_api.dart
 lib/src/api/gemini_api.dart
 lib/src/api/google_api.dart
 lib/src/api/google_play_api.dart
+lib/src/api/gumtree_api.dart
 lib/src/api/idealista_api.dart
 lib/src/api/immobiliare_api.dart
 lib/src/api/instagram_api.dart
@@ -226,6 +228,7 @@ test/filter_rule_validate_response_test.dart
 test/gemini_api_test.dart
 test/google_api_test.dart
 test/google_play_api_test.dart
+test/gumtree_api_test.dart
 test/http_validation_error_test.dart
 test/idealista_api_test.dart
 test/immobiliare_api_test.dart

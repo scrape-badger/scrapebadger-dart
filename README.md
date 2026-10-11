@@ -294,6 +294,16 @@ Class | Method | HTTP request | Description
 [*GooglePlayApi*](doc/GooglePlayApi.md) | [**googlePlayListMarkets**](doc/GooglePlayApi.md#googleplaylistmarkets) | **GET** /v1/google-play/markets | List markets
 [*GooglePlayApi*](doc/GooglePlayApi.md) | [**googlePlaySearchApps**](doc/GooglePlayApi.md#googleplaysearchapps) | **GET** /v1/google-play/search | Search apps
 [*GooglePlayApi*](doc/GooglePlayApi.md) | [**googlePlayTopCharts**](doc/GooglePlayApi.md#googleplaytopcharts) | **GET** /v1/google-play/collections/{collection} | Top charts
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeGetListing**](doc/GumtreeApi.md#gumtreegetlisting) | **GET** /v1/gumtree/listings/{listing_id} | Get listing
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeGetSearchFilters**](doc/GumtreeApi.md#gumtreegetsearchfilters) | **GET** /v1/gumtree/search/filters | Get search filters
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeGetSellerListings**](doc/GumtreeApi.md#gumtreegetsellerlistings) | **GET** /v1/gumtree/listings/{listing_id}/seller-listings | Get seller listings
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeGumtreeScraperHealthCheck**](doc/GumtreeApi.md#gumtreegumtreescraperhealthcheck) | **GET** /v1/gumtree/health | Gumtree scraper health check
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeGumtreeScraperHealthCheckHead**](doc/GumtreeApi.md#gumtreegumtreescraperhealthcheckhead) | **HEAD** /v1/gumtree/health | Gumtree scraper health check
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeListCategories**](doc/GumtreeApi.md#gumtreelistcategories) | **GET** /v1/gumtree/categories | List categories
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeListLocations**](doc/GumtreeApi.md#gumtreelistlocations) | **GET** /v1/gumtree/locations | List locations
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeLocationSuggestions**](doc/GumtreeApi.md#gumtreelocationsuggestions) | **GET** /v1/gumtree/locations/autocomplete | Location suggestions
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeSearchListings**](doc/GumtreeApi.md#gumtreesearchlistings) | **GET** /v1/gumtree/search | Search listings
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeSearchSuggestions**](doc/GumtreeApi.md#gumtreesearchsuggestions) | **GET** /v1/gumtree/autocomplete | Search suggestions
 [*IdealistaApi*](doc/IdealistaApi.md) | [**idealistaAgencyByPhone**](doc/IdealistaApi.md#idealistaagencybyphone) | **GET** /v1/idealista/agency/by-phone/{phone} | Agency by phone
 [*IdealistaApi*](doc/IdealistaApi.md) | [**idealistaAgencyProfileListings**](doc/IdealistaApi.md#idealistaagencyprofilelistings) | **GET** /v1/idealista/agency/{short_name} | Agency profile + listings
 [*IdealistaApi*](doc/IdealistaApi.md) | [**idealistaGetListingEngagementStats**](doc/IdealistaApi.md#idealistagetlistingengagementstats) | **GET** /v1/idealista/properties/{property_code}/stats | Get listing engagement stats

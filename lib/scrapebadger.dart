@@ -26,6 +26,7 @@ export 'package:scrapebadger/src/api/facebook_api.dart';
 export 'package:scrapebadger/src/api/gemini_api.dart';
 export 'package:scrapebadger/src/api/google_api.dart';
 export 'package:scrapebadger/src/api/google_play_api.dart';
+export 'package:scrapebadger/src/api/gumtree_api.dart';
 export 'package:scrapebadger/src/api/idealista_api.dart';
 export 'package:scrapebadger/src/api/immobiliare_api.dart';
 export 'package:scrapebadger/src/api/instagram_api.dart';
