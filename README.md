@@ -301,6 +301,7 @@ Class | Method | HTTP request | Description
 [*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeGumtreeScraperHealthCheckHead**](doc/GumtreeApi.md#gumtreegumtreescraperhealthcheckhead) | **HEAD** /v1/gumtree/health | Gumtree scraper health check
 [*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeListCategories**](doc/GumtreeApi.md#gumtreelistcategories) | **GET** /v1/gumtree/categories | List categories
 [*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeListLocations**](doc/GumtreeApi.md#gumtreelistlocations) | **GET** /v1/gumtree/locations | List locations
+[*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeListMarkets**](doc/GumtreeApi.md#gumtreelistmarkets) | **GET** /v1/gumtree/markets | List markets
 [*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeLocationSuggestions**](doc/GumtreeApi.md#gumtreelocationsuggestions) | **GET** /v1/gumtree/locations/autocomplete | Location suggestions
 [*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeSearchListings**](doc/GumtreeApi.md#gumtreesearchlistings) | **GET** /v1/gumtree/search | Search listings
 [*GumtreeApi*](doc/GumtreeApi.md) | [**gumtreeSearchSuggestions**](doc/GumtreeApi.md#gumtreesearchsuggestions) | **GET** /v1/gumtree/autocomplete | Search suggestions
