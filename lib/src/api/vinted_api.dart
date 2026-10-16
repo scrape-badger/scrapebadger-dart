@@ -15,7 +15,7 @@ import 'package:scrapebadger/src/model/colors_response.dart';
 import 'package:scrapebadger/src/model/http_validation_error.dart';
 import 'package:scrapebadger/src/model/item_detail_response.dart';
 import 'package:scrapebadger/src/model/markets_response.dart';
-import 'package:scrapebadger/src/model/search_response.dart';
+import 'package:scrapebadger/src/model/portal_api_routers_vinted_schemas_search_response.dart';
 import 'package:scrapebadger/src/model/statuses_response.dart';
 import 'package:scrapebadger/src/model/user_items_response.dart';
 import 'package:scrapebadger/src/model/user_profile_response.dart';
@@ -843,9 +843,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SearchResponse] as data
+  /// Returns a [Future] containing a [Response] with a [PortalApiRoutersVintedSchemasSearchResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SearchResponse>> vintedSearchByImage({ 
+  Future<Response<PortalApiRoutersVintedSchemasSearchResponse>> vintedSearchByImage({ 
     required VintedImageSearchRequest vintedImageSearchRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -902,14 +902,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SearchResponse? _responseData;
+    PortalApiRoutersVintedSchemasSearchResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SearchResponse),
-      ) as SearchResponse;
+        specifiedType: const FullType(PortalApiRoutersVintedSchemasSearchResponse),
+      ) as PortalApiRoutersVintedSchemasSearchResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -921,7 +921,7 @@ class VintedApi {
       );
     }
 
-    return Response<SearchResponse>(
+    return Response<PortalApiRoutersVintedSchemasSearchResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -960,9 +960,9 @@ class VintedApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SearchResponse] as data
+  /// Returns a [Future] containing a [Response] with a [PortalApiRoutersVintedSchemasSearchResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SearchResponse>> vintedSearchVintedItems({ 
+  Future<Response<PortalApiRoutersVintedSchemasSearchResponse>> vintedSearchVintedItems({ 
     required String query,
     String? market = 'fr',
     String? sellerCountry,
@@ -1034,14 +1034,14 @@ class VintedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SearchResponse? _responseData;
+    PortalApiRoutersVintedSchemasSearchResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SearchResponse),
-      ) as SearchResponse;
+        specifiedType: const FullType(PortalApiRoutersVintedSchemasSearchResponse),
+      ) as PortalApiRoutersVintedSchemasSearchResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -1053,7 +1053,7 @@ class VintedApi {
       );
     }
 
-    return Response<SearchResponse>(
+    return Response<PortalApiRoutersVintedSchemasSearchResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

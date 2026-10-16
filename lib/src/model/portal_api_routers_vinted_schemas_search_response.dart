@@ -9,7 +9,7 @@ import 'package:scrapebadger/src/model/vinted_pagination.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'search_response.g.dart';
+part 'portal_api_routers_vinted_schemas_search_response.g.dart';
 
 /// Envelope returned by search and search_by_image.
 ///
@@ -19,7 +19,7 @@ part 'search_response.g.dart';
 /// * [market] 
 /// * [sellerCountry] 
 @BuiltValue()
-abstract class SearchResponse implements Built<SearchResponse, SearchResponseBuilder> {
+abstract class PortalApiRoutersVintedSchemasSearchResponse implements Built<PortalApiRoutersVintedSchemasSearchResponse, PortalApiRoutersVintedSchemasSearchResponseBuilder> {
   @BuiltValueField(wireName: r'items')
   BuiltList<VintedItemSummary> get items;
 
@@ -32,27 +32,27 @@ abstract class SearchResponse implements Built<SearchResponse, SearchResponseBui
   @BuiltValueField(wireName: r'seller_country')
   String? get sellerCountry;
 
-  SearchResponse._();
+  PortalApiRoutersVintedSchemasSearchResponse._();
 
-  factory SearchResponse([void updates(SearchResponseBuilder b)]) = _$SearchResponse;
+  factory PortalApiRoutersVintedSchemasSearchResponse([void updates(PortalApiRoutersVintedSchemasSearchResponseBuilder b)]) = _$PortalApiRoutersVintedSchemasSearchResponse;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SearchResponseBuilder b) => b;
+  static void _defaults(PortalApiRoutersVintedSchemasSearchResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SearchResponse> get serializer => _$SearchResponseSerializer();
+  static Serializer<PortalApiRoutersVintedSchemasSearchResponse> get serializer => _$PortalApiRoutersVintedSchemasSearchResponseSerializer();
 }
 
-class _$SearchResponseSerializer implements PrimitiveSerializer<SearchResponse> {
+class _$PortalApiRoutersVintedSchemasSearchResponseSerializer implements PrimitiveSerializer<PortalApiRoutersVintedSchemasSearchResponse> {
   @override
-  final Iterable<Type> types = const [SearchResponse, _$SearchResponse];
+  final Iterable<Type> types = const [PortalApiRoutersVintedSchemasSearchResponse, _$PortalApiRoutersVintedSchemasSearchResponse];
 
   @override
-  final String wireName = r'SearchResponse';
+  final String wireName = r'PortalApiRoutersVintedSchemasSearchResponse';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    SearchResponse object, {
+    PortalApiRoutersVintedSchemasSearchResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'items';
@@ -82,7 +82,7 @@ class _$SearchResponseSerializer implements PrimitiveSerializer<SearchResponse> 
   @override
   Object serialize(
     Serializers serializers,
-    SearchResponse object, {
+    PortalApiRoutersVintedSchemasSearchResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -93,7 +93,7 @@ class _$SearchResponseSerializer implements PrimitiveSerializer<SearchResponse> 
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required SearchResponseBuilder result,
+    required PortalApiRoutersVintedSchemasSearchResponseBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -138,12 +138,12 @@ class _$SearchResponseSerializer implements PrimitiveSerializer<SearchResponse> 
   }
 
   @override
-  SearchResponse deserialize(
+  PortalApiRoutersVintedSchemasSearchResponse deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = SearchResponseBuilder();
+    final result = PortalApiRoutersVintedSchemasSearchResponseBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

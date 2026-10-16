@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
 import 'package:scrapebadger/scrapebadger.dart';
 
-// tests for SearchResponse
+// tests for PortalApiRoutersVintedSchemasSearchResponse
 void main() {
-  final instance = SearchResponseBuilder();
+  final instance = PortalApiRoutersVintedSchemasSearchResponseBuilder();
   // TODO add properties to the builder and call build()
 
-  group(SearchResponse, () {
+  group(PortalApiRoutersVintedSchemasSearchResponse, () {
     // BuiltList<VintedItemSummary> items
     test('to test the property `items`', () async {
       // TODO

@@ -92,7 +92,7 @@ void main() {
     //
     // Find active Vinted listings from a photo. 10 credits per successful request. Returns the usual items, pagination and market envelope. Visual ranking. Each item carries `similarity_score` on the calls where Vinted returns a ranking, and null on the ones where it does not -- a null says nothing about the item. The score sits on an unbounded scale that Vinted changes without notice (0-1 in Sep 2026, ~36-44 since): compare it only with the other items in the SAME response, never to a fixed cut-off. Resend the same image and pagination time for subsequent pages. Structured brand data may be null.
     //
-    //Future<SearchResponse> vintedSearchByImage(VintedImageSearchRequest vintedImageSearchRequest) async
+    //Future<PortalApiRoutersVintedSchemasSearchResponse> vintedSearchByImage(VintedImageSearchRequest vintedImageSearchRequest) async
     test('test vintedSearchByImage', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Search Vinted catalog items with filters.
     //
-    //Future<SearchResponse> vintedSearchVintedItems(String query, { String market, String sellerCountry, int page, int perPage, num priceFrom, num priceTo, String brandIds, String catalogIds, String colorIds, String sizeIds, String materialIds, int time, String searchSessionId, String statusIds, String order }) async
+    //Future<PortalApiRoutersVintedSchemasSearchResponse> vintedSearchVintedItems(String query, { String market, String sellerCountry, int page, int perPage, num priceFrom, num priceTo, String brandIds, String catalogIds, String colorIds, String sizeIds, String materialIds, int time, String searchSessionId, String statusIds, String order }) async
     test('test vintedSearchVintedItems', () async {
       // TODO
     });

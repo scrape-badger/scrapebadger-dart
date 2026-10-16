@@ -9,18 +9,22 @@ import 'package:scrapebadger/src/auth/api_key_auth.dart';
 import 'package:scrapebadger/src/auth/basic_auth.dart';
 import 'package:scrapebadger/src/auth/bearer_auth.dart';
 import 'package:scrapebadger/src/auth/oauth.dart';
+import 'package:scrapebadger/src/api/asos_api.dart';
 import 'package:scrapebadger/src/api/account_api.dart';
 import 'package:scrapebadger/src/api/airbnb_api.dart';
+import 'package:scrapebadger/src/api/ali_express_api.dart';
 import 'package:scrapebadger/src/api/amazon_api.dart';
 import 'package:scrapebadger/src/api/apartments_api.dart';
 import 'package:scrapebadger/src/api/app_store_api.dart';
 import 'package:scrapebadger/src/api/baidu_api.dart';
+import 'package:scrapebadger/src/api/best_buy_api.dart';
 import 'package:scrapebadger/src/api/bing_api.dart';
 import 'package:scrapebadger/src/api/booking_api.dart';
 import 'package:scrapebadger/src/api/chat_gpt_api.dart';
 import 'package:scrapebadger/src/api/depop_api.dart';
 import 'package:scrapebadger/src/api/duck_duck_go_api.dart';
 import 'package:scrapebadger/src/api/e_bay_api.dart';
+import 'package:scrapebadger/src/api/etsy_api.dart';
 import 'package:scrapebadger/src/api/facebook_api.dart';
 import 'package:scrapebadger/src/api/gemini_api.dart';
 import 'package:scrapebadger/src/api/google_api.dart';
@@ -37,6 +41,7 @@ import 'package:scrapebadger/src/api/perplexity_api.dart';
 import 'package:scrapebadger/src/api/realtor_api.dart';
 import 'package:scrapebadger/src/api/reddit_api.dart';
 import 'package:scrapebadger/src/api/redfin_api.dart';
+import 'package:scrapebadger/src/api/target_api.dart';
 import 'package:scrapebadger/src/api/tik_tok_api.dart';
 import 'package:scrapebadger/src/api/twitter_api.dart';
 import 'package:scrapebadger/src/api/vinted_api.dart';
@@ -102,6 +107,12 @@ class Scrapebadger {
     }
   }
 
+  /// Get ASOSApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ASOSApi getASOSApi() {
+    return ASOSApi(dio, serializers);
+  }
+
   /// Get AccountApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   AccountApi getAccountApi() {
@@ -112,6 +123,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   AirbnbApi getAirbnbApi() {
     return AirbnbApi(dio, serializers);
+  }
+
+  /// Get AliExpressApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  AliExpressApi getAliExpressApi() {
+    return AliExpressApi(dio, serializers);
   }
 
   /// Get AmazonApi instance, base route and serializer can be overridden by a given but be careful,
@@ -136,6 +153,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   BaiduApi getBaiduApi() {
     return BaiduApi(dio, serializers);
+  }
+
+  /// Get BestBuyApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  BestBuyApi getBestBuyApi() {
+    return BestBuyApi(dio, serializers);
   }
 
   /// Get BingApi instance, base route and serializer can be overridden by a given but be careful,
@@ -172,6 +195,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   EBayApi getEBayApi() {
     return EBayApi(dio, serializers);
+  }
+
+  /// Get EtsyApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  EtsyApi getEtsyApi() {
+    return EtsyApi(dio, serializers);
   }
 
   /// Get FacebookApi instance, base route and serializer can be overridden by a given but be careful,
@@ -268,6 +297,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   RedfinApi getRedfinApi() {
     return RedfinApi(dio, serializers);
+  }
+
+  /// Get TargetApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  TargetApi getTargetApi() {
+    return TargetApi(dio, serializers);
   }
 
   /// Get TikTokApi instance, base route and serializer can be overridden by a given but be careful,
