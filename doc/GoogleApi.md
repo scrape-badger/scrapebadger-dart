@@ -1004,7 +1004,7 @@ final String kgmid = kgmid_example; // String | Knowledge Graph entity ID
 final String si = si_example; // String | Cached search params
 final String ibp = ibp_example; // String | Layout control
 final String uds = uds_example; // String | Google filter string
-final bool aiOverview = true; // bool | Chase deferred AI Overview page_token with a follow-up fetch and merge the result. Adds ~1s and 1 credit when the SERP defers the overview.
+final bool aiOverview = true; // bool | Chase deferred AI Overview page_token with a follow-up fetch and merge the result. Adds ~1s when the SERP defers the overview; the request price is unchanged.
 
 try {
     final response = api.googleGoogleWebSearch(q, gl, hl, num_, start, domain, device, userAgent, output, location, lr, tbs, safe, uule, filter, nfpr, cr, ludocid, lsig, kgmid, si, ibp, uds, aiOverview);
@@ -1041,7 +1041,7 @@ Name | Type | Description  | Notes
  **si** | **String**| Cached search params | [optional] 
  **ibp** | **String**| Layout control | [optional] 
  **uds** | **String**| Google filter string | [optional] 
- **aiOverview** | **bool**| Chase deferred AI Overview page_token with a follow-up fetch and merge the result. Adds ~1s and 1 credit when the SERP defers the overview. | [optional] [default to false]
+ **aiOverview** | **bool**| Chase deferred AI Overview page_token with a follow-up fetch and merge the result. Adds ~1s when the SERP defers the overview; the request price is unchanged. | [optional] [default to false]
 
 ### Return type
 

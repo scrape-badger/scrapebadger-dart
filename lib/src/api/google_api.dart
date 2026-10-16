@@ -1710,7 +1710,7 @@ class GoogleApi {
   /// * [si] - Cached search params
   /// * [ibp] - Layout control
   /// * [uds] - Google filter string
-  /// * [aiOverview] - Chase deferred AI Overview page_token with a follow-up fetch and merge the result. Adds ~1s and 1 credit when the SERP defers the overview.
+  /// * [aiOverview] - Chase deferred AI Overview page_token with a follow-up fetch and merge the result. Adds ~1s when the SERP defers the overview; the request price is unchanged.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
