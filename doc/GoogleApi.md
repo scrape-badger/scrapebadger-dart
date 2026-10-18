@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**googleGoogleFlightsCalendarCheapestFarePerDate**](GoogleApi.md#googlegoogleflightscalendarcheapestfareperdate) | **GET** /v1/google/flights/calendar | Google Flights calendar — cheapest fare per date
 [**googleGoogleFlightsSearch**](GoogleApi.md#googlegoogleflightssearch) | **GET** /v1/google/flights/search | Google Flights search
 [**googleGoogleLensVisualSearch**](GoogleApi.md#googlegooglelensvisualsearch) | **GET** /v1/google/lens/search | Google Lens visual search
+[**googleGoogleLightWebSearch**](GoogleApi.md#googlegooglelightwebsearch) | **GET** /v1/google/light/search | Google Light web search
 [**googleGoogleScraperHealthCheck**](GoogleApi.md#googlegooglescraperhealthcheck) | **GET** /v1/google/health | Google scraper health check
 [**googleGoogleScraperHealthCheckHead**](GoogleApi.md#googlegooglescraperhealthcheckhead) | **HEAD** /v1/google/health | Google scraper health check
 [**googleGoogleSearchSuggestions**](GoogleApi.md#googlegooglesearchsuggestions) | **GET** /v1/google/autocomplete | Google search suggestions
@@ -755,6 +756,79 @@ Name | Type | Description  | Notes
  **product** | **bool**| Only the tiles Google marked buyable (price + stock), drawn from the same grid | [optional] [default to false]
  **visualMatches** | **bool**| Always true in practice — `false` is reported back in `warnings` | [optional] [default to true]
  **exactMatches** | **bool**| Return only the pages hosting this image, flagged exact_match. Available for most images (8/10 in sampling); falls back to the full grid otherwise, saying so in warnings | [optional] [default to false]
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **googleGoogleLightWebSearch**
+> JsonObject googleGoogleLightWebSearch(q, gl, hl, num_, start, domain, location, uule, lr, tbs, safe, filter, nfpr, output)
+
+Google Light web search
+
+Organic results and related searches only. Costs 10 credits per successful uncached request, compared with 20 credits for regular Google Search. Light always skips rich SERP blocks; mode and ai_overview cannot enable them.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getGoogleApi();
+final String q = q_example; // String | Search query (supports Google operators)
+final String gl = gl_example; // String | Country code
+final String hl = hl_example; // String | Language code
+final int num_ = 56; // int | 
+final int start = 56; // int | Page offset (0, 10, 20...)
+final String domain = domain_example; // String | Google domain
+final String location = location_example; // String | City-level geo-targeting
+final String uule = uule_example; // String | Encoded location
+final String lr = lr_example; // String | Language restrict (e.g. lang_en)
+final String tbs = tbs_example; // String | Time filter (e.g. qdr:d)
+final String safe = safe_example; // String | Safe search: off or active
+final int filter = 56; // int | 
+final int nfpr = 56; // int | Disable auto-correction
+final String output = output_example; // String | 
+
+try {
+    final response = api.googleGoogleLightWebSearch(q, gl, hl, num_, start, domain, location, uule, lr, tbs, safe, filter, nfpr, output);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling GoogleApi->googleGoogleLightWebSearch: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **String**| Search query (supports Google operators) | 
+ **gl** | **String**| Country code | [optional] [default to 'us']
+ **hl** | **String**| Language code | [optional] [default to 'en']
+ **num_** | **int**|  | [optional] [default to 10]
+ **start** | **int**| Page offset (0, 10, 20...) | [optional] [default to 0]
+ **domain** | **String**| Google domain | [optional] [default to 'google.com']
+ **location** | **String**| City-level geo-targeting | [optional] 
+ **uule** | **String**| Encoded location | [optional] 
+ **lr** | **String**| Language restrict (e.g. lang_en) | [optional] 
+ **tbs** | **String**| Time filter (e.g. qdr:d) | [optional] 
+ **safe** | **String**| Safe search: off or active | [optional] [default to 'off']
+ **filter** | **int**|  | [optional] 
+ **nfpr** | **int**| Disable auto-correction | [optional] [default to 0]
+ **output** | **String**|  | [optional] [default to 'json']
 
 ### Return type
 

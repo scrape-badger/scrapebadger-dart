@@ -297,6 +297,7 @@ Class | Method | HTTP request | Description
 [*GoogleApi*](doc/GoogleApi.md) | [**googleGoogleFlightsCalendarCheapestFarePerDate**](doc/GoogleApi.md#googlegoogleflightscalendarcheapestfareperdate) | **GET** /v1/google/flights/calendar | Google Flights calendar — cheapest fare per date
 [*GoogleApi*](doc/GoogleApi.md) | [**googleGoogleFlightsSearch**](doc/GoogleApi.md#googlegoogleflightssearch) | **GET** /v1/google/flights/search | Google Flights search
 [*GoogleApi*](doc/GoogleApi.md) | [**googleGoogleLensVisualSearch**](doc/GoogleApi.md#googlegooglelensvisualsearch) | **GET** /v1/google/lens/search | Google Lens visual search
+[*GoogleApi*](doc/GoogleApi.md) | [**googleGoogleLightWebSearch**](doc/GoogleApi.md#googlegooglelightwebsearch) | **GET** /v1/google/light/search | Google Light web search
 [*GoogleApi*](doc/GoogleApi.md) | [**googleGoogleScraperHealthCheck**](doc/GoogleApi.md#googlegooglescraperhealthcheck) | **GET** /v1/google/health | Google scraper health check
 [*GoogleApi*](doc/GoogleApi.md) | [**googleGoogleScraperHealthCheckHead**](doc/GoogleApi.md#googlegooglescraperhealthcheckhead) | **HEAD** /v1/google/health | Google scraper health check
 [*GoogleApi*](doc/GoogleApi.md) | [**googleGoogleSearchSuggestions**](doc/GoogleApi.md#googlegooglesearchsuggestions) | **GET** /v1/google/autocomplete | Google search suggestions

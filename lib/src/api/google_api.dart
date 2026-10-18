@@ -1328,6 +1328,132 @@ class GoogleApi {
     );
   }
 
+  /// Google Light web search
+  /// Organic results and related searches only. Costs 10 credits per successful uncached request, compared with 20 credits for regular Google Search. Light always skips rich SERP blocks; mode and ai_overview cannot enable them.
+  ///
+  /// Parameters:
+  /// * [q] - Search query (supports Google operators)
+  /// * [gl] - Country code
+  /// * [hl] - Language code
+  /// * [num_] 
+  /// * [start] - Page offset (0, 10, 20...)
+  /// * [domain] - Google domain
+  /// * [location] - City-level geo-targeting
+  /// * [uule] - Encoded location
+  /// * [lr] - Language restrict (e.g. lang_en)
+  /// * [tbs] - Time filter (e.g. qdr:d)
+  /// * [safe] - Safe search: off or active
+  /// * [filter] 
+  /// * [nfpr] - Disable auto-correction
+  /// * [output] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<JsonObject>> googleGoogleLightWebSearch({ 
+    required String q,
+    String? gl = 'us',
+    String? hl = 'en',
+    int? num_ = 10,
+    int? start = 0,
+    String? domain = 'google.com',
+    String? location,
+    String? uule,
+    String? lr,
+    String? tbs,
+    String? safe = 'off',
+    int? filter,
+    int? nfpr = 0,
+    String? output = 'json',
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/google/light/search';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ApiKeyAuth',
+            'keyName': 'X-API-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'q': encodeQueryParameter(_serializers, q, const FullType(String)),
+      if (gl != null) r'gl': encodeQueryParameter(_serializers, gl, const FullType(String)),
+      if (hl != null) r'hl': encodeQueryParameter(_serializers, hl, const FullType(String)),
+      if (num_ != null) r'num': encodeQueryParameter(_serializers, num_, const FullType(int)),
+      if (start != null) r'start': encodeQueryParameter(_serializers, start, const FullType(int)),
+      if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
+      r'location': encodeQueryParameter(_serializers, location, const FullType(String)),
+      r'uule': encodeQueryParameter(_serializers, uule, const FullType(String)),
+      r'lr': encodeQueryParameter(_serializers, lr, const FullType(String)),
+      r'tbs': encodeQueryParameter(_serializers, tbs, const FullType(String)),
+      if (safe != null) r'safe': encodeQueryParameter(_serializers, safe, const FullType(String)),
+      r'filter': encodeQueryParameter(_serializers, filter, const FullType(int)),
+      if (nfpr != null) r'nfpr': encodeQueryParameter(_serializers, nfpr, const FullType(int)),
+      if (output != null) r'output': encodeQueryParameter(_serializers, output, const FullType(String)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    JsonObject? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(JsonObject),
+      ) as JsonObject;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Google scraper health check
   /// Check health of the Google scraper service.  Accepts &#x60;&#x60;HEAD&#x60;&#x60; so external uptime checkers (UptimeRobot uses HEAD by default for HTTP monitors) don&#39;t get a 405 Method Not Allowed.
   ///

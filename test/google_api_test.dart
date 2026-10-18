@@ -116,6 +116,15 @@ void main() {
       // TODO
     });
 
+    // Google Light web search
+    //
+    // Organic results and related searches only. Costs 10 credits per successful uncached request, compared with 20 credits for regular Google Search. Light always skips rich SERP blocks; mode and ai_overview cannot enable them.
+    //
+    //Future<JsonObject> googleGoogleLightWebSearch(String q, { String gl, String hl, int num_, int start, String domain, String location, String uule, String lr, String tbs, String safe, int filter, int nfpr, String output }) async
+    test('test googleGoogleLightWebSearch', () async {
+      // TODO
+    });
+
     // Google scraper health check
     //
     // Check health of the Google scraper service.  Accepts ``HEAD`` so external uptime checkers (UptimeRobot uses HEAD by default for HTTP monitors) don't get a 405 Method Not Allowed.
