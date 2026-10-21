@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ebayCompletedSoldListings**
-> JsonObject ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice, location, language)
+> JsonObject ebayCompletedSoldListings(query, seller, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice, location, language)
 
 Completed / sold listings
 
-Search completed/sold listings — eBay's sold-price history.  eBay pads a short result set with \"results matching fewer words\" and counts only the exact ones in ``pagination.total_results``. Results come back in eBay's own ranking order with the exact matches first, and each one carries ``exact_match`` (true/false) so a price series can be built without parsing titles. An empty ``results`` with ``total_results: 0`` is eBay's own answer and costs 0 credits — a fetch failure is never a 200.  ``price`` is what the listing sold for, including the market's buyer-protection fee, as a local buyer sees it. It is ``null`` on one shape: an auction that also accepted offers (``bids`` set). eBay's sold index answers those with either the listing's start/Buy-It-Now price or the price it sold at, varying between identical requests with nothing to say which, so no number there is trustworthy — ``/v1/ebay/items/{item_id}`` carries the winning bid for them (before the fee). A listing that closed purely on an accepted Best Offer prices normally: eBay never publishes the accepted amount, so ``price`` is the listed one, exactly as its own item page shows.
+Search completed/sold listings — eBay's sold-price history.  Pass ``query``, ``seller`` or both. ``seller`` alone returns everything that seller sold, page by page, with no keyword needed.  eBay pads a short result set with \"results matching fewer words\" and counts only the exact ones in ``pagination.total_results``. Results come back in eBay's own ranking order with the exact matches first, and each one carries ``exact_match`` (true/false) so a price series can be built without parsing titles. An empty ``results`` with ``total_results: 0`` is eBay's own answer and costs 0 credits — a fetch failure is never a 200.  ``price`` is what the listing sold for, including the market's buyer-protection fee, as a local buyer sees it. It is ``null`` on one shape: an auction that also accepted offers (``bids`` set). eBay's sold index answers those with either the listing's start/Buy-It-Now price or the price it sold at, varying between identical requests with nothing to say which, so no number there is trustworthy — ``/v1/ebay/items/{item_id}`` carries the winning bid for them (before the fee). A listing that closed purely on an accepted Best Offer prices normally: eBay never publishes the accepted amount, so ``price`` is the listed one, exactly as its own item page shows.
 
 ### Example
 ```dart
@@ -100,7 +100,8 @@ import 'package:scrapebadger/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api = Scrapebadger().getEBayApi();
-final String query = query_example; // String | Search keywords
+final String query = query_example; // String | Search keywords. Optional when `seller` is set.
+final String seller = seller_example; // String | Only this seller's sold listings (eBay username). Works without `query`.
 final String domain = domain_example; // String | Marketplace domain (com, co.uk, de …)
 final String categoryId = categoryId_example; // String | Restrict to a category id
 final int page = 56; // int | 
@@ -113,7 +114,7 @@ final String location = location_example; // String | domestic|worldwide
 final String language = language_example; // String | english|japanese|chinese|korean
 
 try {
-    final response = api.ebayCompletedSoldListings(query, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice, location, language);
+    final response = api.ebayCompletedSoldListings(query, seller, domain, categoryId, page, perPage, sortBy, condition, minPrice, maxPrice, location, language);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling EBayApi->ebayCompletedSoldListings: $e\n');
@@ -124,7 +125,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | **String**| Search keywords | 
+ **query** | **String**| Search keywords. Optional when `seller` is set. | [optional] 
+ **seller** | **String**| Only this seller's sold listings (eBay username). Works without `query`. | [optional] 
  **domain** | **String**| Marketplace domain (com, co.uk, de …) | [optional] [default to 'com']
  **categoryId** | **String**| Restrict to a category id | [optional] 
  **page** | **int**|  | [optional] [default to 1]
