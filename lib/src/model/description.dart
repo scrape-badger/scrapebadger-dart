@@ -60,7 +60,7 @@ class _$DescriptionSerializer implements PrimitiveSerializer<Description> {
   }) {
     final result = DescriptionBuilder();
     Object? anyOfDataSrc;
-    final targetType = const FullType(AnyOf, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]), FullType.nullable(JsonObject), ]);
+    final targetType = const FullType(AnyOf, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]), FullType.nullable(JsonObject), ]);
     anyOfDataSrc = serialized;
     result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
     return result.build();

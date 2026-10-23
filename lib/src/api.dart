@@ -26,6 +26,7 @@ import 'package:scrapebadger/src/api/duck_duck_go_api.dart';
 import 'package:scrapebadger/src/api/e_bay_api.dart';
 import 'package:scrapebadger/src/api/etsy_api.dart';
 import 'package:scrapebadger/src/api/facebook_api.dart';
+import 'package:scrapebadger/src/api/feedback_api.dart';
 import 'package:scrapebadger/src/api/gemini_api.dart';
 import 'package:scrapebadger/src/api/google_api.dart';
 import 'package:scrapebadger/src/api/google_play_api.dart';
@@ -38,9 +39,12 @@ import 'package:scrapebadger/src/api/linked_in_api.dart';
 import 'package:scrapebadger/src/api/loop_net_api.dart';
 import 'package:scrapebadger/src/api/naver_api.dart';
 import 'package:scrapebadger/src/api/perplexity_api.dart';
+import 'package:scrapebadger/src/api/quote_api.dart';
 import 'package:scrapebadger/src/api/realtor_api.dart';
 import 'package:scrapebadger/src/api/reddit_api.dart';
 import 'package:scrapebadger/src/api/redfin_api.dart';
+import 'package:scrapebadger/src/api/requests_api.dart';
+import 'package:scrapebadger/src/api/results_api.dart';
 import 'package:scrapebadger/src/api/target_api.dart';
 import 'package:scrapebadger/src/api/tik_tok_api.dart';
 import 'package:scrapebadger/src/api/twitter_api.dart';
@@ -209,6 +213,12 @@ class Scrapebadger {
     return FacebookApi(dio, serializers);
   }
 
+  /// Get FeedbackApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  FeedbackApi getFeedbackApi() {
+    return FeedbackApi(dio, serializers);
+  }
+
   /// Get GeminiApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   GeminiApi getGeminiApi() {
@@ -281,6 +291,12 @@ class Scrapebadger {
     return PerplexityApi(dio, serializers);
   }
 
+  /// Get QuoteApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  QuoteApi getQuoteApi() {
+    return QuoteApi(dio, serializers);
+  }
+
   /// Get RealtorApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   RealtorApi getRealtorApi() {
@@ -297,6 +313,18 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   RedfinApi getRedfinApi() {
     return RedfinApi(dio, serializers);
+  }
+
+  /// Get RequestsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  RequestsApi getRequestsApi() {
+    return RequestsApi(dio, serializers);
+  }
+
+  /// Get ResultsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ResultsApi getResultsApi() {
+    return ResultsApi(dio, serializers);
   }
 
   /// Get TargetApi instance, base route and serializer can be overridden by a given but be careful,

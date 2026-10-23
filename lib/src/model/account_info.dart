@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:scrapebadger/src/model/subscription_info.dart';
+import 'package:scrapebadger/src/model/agent_trial_info.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,6 +19,7 @@ part 'account_info.g.dart';
 /// * [tier] 
 /// * [rateLimitPerMinute] 
 /// * [subscription] 
+/// * [agentTrial] 
 @BuiltValue()
 abstract class AccountInfo implements Built<AccountInfo, AccountInfoBuilder> {
   @BuiltValueField(wireName: r'credits_balance')
@@ -37,6 +39,9 @@ abstract class AccountInfo implements Built<AccountInfo, AccountInfoBuilder> {
 
   @BuiltValueField(wireName: r'subscription')
   SubscriptionInfo? get subscription;
+
+  @BuiltValueField(wireName: r'agent_trial')
+  AgentTrialInfo? get agentTrial;
 
   AccountInfo._();
 
@@ -91,6 +96,13 @@ class _$AccountInfoSerializer implements PrimitiveSerializer<AccountInfo> {
       yield serializers.serialize(
         object.subscription,
         specifiedType: const FullType.nullable(SubscriptionInfo),
+      );
+    }
+    if (object.agentTrial != null) {
+      yield r'agent_trial';
+      yield serializers.serialize(
+        object.agentTrial,
+        specifiedType: const FullType.nullable(AgentTrialInfo),
       );
     }
   }
@@ -160,6 +172,14 @@ class _$AccountInfoSerializer implements PrimitiveSerializer<AccountInfo> {
           ) as SubscriptionInfo?;
           if (valueDes == null) continue;
           result.subscription.replace(valueDes);
+          break;
+        case r'agent_trial':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(AgentTrialInfo),
+          ) as AgentTrialInfo?;
+          if (valueDes == null) continue;
+          result.agentTrial.replace(valueDes);
           break;
         default:
           unhandled.add(key);

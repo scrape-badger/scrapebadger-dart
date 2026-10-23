@@ -53,7 +53,7 @@ abstract class PortalApiRoutersV1AsosSearchResponse implements Built<PortalApiRo
   BuiltList<Product> get products;
 
   @BuiltValueField(wireName: r'facets')
-  BuiltList<BuiltMap<String, JsonObject?>>? get facets;
+  BuiltList<BuiltMap<String, JsonObject?>?>? get facets;
 
   PortalApiRoutersV1AsosSearchResponse._();
 
@@ -128,7 +128,7 @@ class _$PortalApiRoutersV1AsosSearchResponseSerializer implements PrimitiveSeria
       yield r'facets';
       yield serializers.serialize(
         object.facets,
-        specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+        specifiedType: const FullType(BuiltList, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
       );
     }
   }
@@ -213,8 +213,8 @@ class _$PortalApiRoutersV1AsosSearchResponseSerializer implements PrimitiveSeria
         case r'facets':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
-          ) as BuiltList<BuiltMap<String, JsonObject?>>;
+            specifiedType: const FullType(BuiltList, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+          ) as BuiltList<BuiltMap<String, JsonObject?>?>;
           result.facets.replace(valueDes);
           break;
         default:

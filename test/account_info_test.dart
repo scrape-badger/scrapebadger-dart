@@ -37,5 +37,10 @@ void main() {
       // TODO
     });
 
+    // AgentTrialInfo agentTrial
+    test('to test the property `agentTrial`', () async {
+      // TODO
+    });
+
   });
 }

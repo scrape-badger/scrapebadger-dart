@@ -84,7 +84,7 @@ abstract class Product implements Built<Product, ProductBuilder> {
   BuiltList<String>? get additionalImageUrls;
 
   @BuiltValueField(wireName: r'images')
-  BuiltList<BuiltMap<String, JsonObject?>>? get images;
+  BuiltList<BuiltMap<String, JsonObject?>?>? get images;
 
   @BuiltValueField(wireName: r'variants')
   BuiltList<Variant>? get variants;
@@ -108,7 +108,7 @@ abstract class Product implements Built<Product, ProductBuilder> {
   Ratings? get ratings;
 
   @BuiltValueField(wireName: r'breadcrumbs')
-  BuiltList<BuiltMap<String, JsonObject?>>? get breadcrumbs;
+  BuiltList<BuiltMap<String, JsonObject?>?>? get breadcrumbs;
 
   Product._();
 
@@ -210,7 +210,7 @@ class _$ProductSerializer implements PrimitiveSerializer<Product> {
       yield r'images';
       yield serializers.serialize(
         object.images,
-        specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+        specifiedType: const FullType(BuiltList, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
       );
     }
     if (object.variants != null) {
@@ -266,7 +266,7 @@ class _$ProductSerializer implements PrimitiveSerializer<Product> {
       yield r'breadcrumbs';
       yield serializers.serialize(
         object.breadcrumbs,
-        specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+        specifiedType: const FullType(BuiltList, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
       );
     }
   }
@@ -373,8 +373,8 @@ class _$ProductSerializer implements PrimitiveSerializer<Product> {
         case r'images':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
-          ) as BuiltList<BuiltMap<String, JsonObject?>>;
+            specifiedType: const FullType(BuiltList, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+          ) as BuiltList<BuiltMap<String, JsonObject?>?>;
           result.images.replace(valueDes);
           break;
         case r'variants':
@@ -429,8 +429,8 @@ class _$ProductSerializer implements PrimitiveSerializer<Product> {
         case r'breadcrumbs':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
-          ) as BuiltList<BuiltMap<String, JsonObject?>>;
+            specifiedType: const FullType(BuiltList, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+          ) as BuiltList<BuiltMap<String, JsonObject?>?>;
           result.breadcrumbs.replace(valueDes);
           break;
         default:

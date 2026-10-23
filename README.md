@@ -278,6 +278,7 @@ Class | Method | HTTP request | Description
 [*FacebookApi*](doc/FacebookApi.md) | [**facebookSearchPlaces**](doc/FacebookApi.md#facebooksearchplaces) | **GET** /v1/facebook/search/places | Search places
 [*FacebookApi*](doc/FacebookApi.md) | [**facebookSearchPosts**](doc/FacebookApi.md#facebooksearchposts) | **GET** /v1/facebook/search/posts | Search posts
 [*FacebookApi*](doc/FacebookApi.md) | [**facebookSearchTheAdLibrary**](doc/FacebookApi.md#facebooksearchtheadlibrary) | **GET** /v1/facebook/ads/search | Search the Ad Library
+[*FeedbackApi*](doc/FeedbackApi.md) | [**feedbackReportABugOrSendFeedback**](doc/FeedbackApi.md#feedbackreportabugorsendfeedback) | **POST** /v1/feedback | Report a bug or send feedback
 [*GeminiApi*](doc/GeminiApi.md) | [**geminiAskGeminiAQuestion**](doc/GeminiApi.md#geminiaskgeminiaquestion) | **GET** /v1/gemini/ask | Ask Gemini a question
 [*GeminiApi*](doc/GeminiApi.md) | [**geminiAskGeminiAQuestionPost**](doc/GeminiApi.md#geminiaskgeminiaquestionpost) | **POST** /v1/gemini/ask | Ask Gemini a question (POST)
 [*GeminiApi*](doc/GeminiApi.md) | [**geminiGeminiScraperHealthCheck**](doc/GeminiApi.md#geminigeminiscraperhealthcheck) | **GET** /v1/gemini/health | Gemini scraper health check
@@ -438,6 +439,7 @@ Class | Method | HTTP request | Description
 [*PerplexityApi*](doc/PerplexityApi.md) | [**perplexityMeasureABrandSVisibilityInAPerplexityAnswerPost**](doc/PerplexityApi.md#perplexitymeasureabrandsvisibilityinaperplexityanswerpost) | **POST** /v1/perplexity/brand-visibility | Measure a brand&#39;s visibility in a Perplexity answer (POST)
 [*PerplexityApi*](doc/PerplexityApi.md) | [**perplexityPerplexityScraperHealthCheck**](doc/PerplexityApi.md#perplexityperplexityscraperhealthcheck) | **GET** /v1/perplexity/health | Perplexity scraper health check
 [*PerplexityApi*](doc/PerplexityApi.md) | [**perplexityPerplexityScraperHealthCheckHead**](doc/PerplexityApi.md#perplexityperplexityscraperhealthcheckhead) | **HEAD** /v1/perplexity/health | Perplexity scraper health check
+[*QuoteApi*](doc/QuoteApi.md) | [**quoteQuoteACall**](doc/QuoteApi.md#quotequoteacall) | **POST** /v1/quote | Quote a call
 [*RealtorApi*](doc/RealtorApi.md) | [**realtorGetFullPropertyDetail**](doc/RealtorApi.md#realtorgetfullpropertydetail) | **GET** /v1/realtor/properties/{property_id} | Get full property detail
 [*RealtorApi*](doc/RealtorApi.md) | [**realtorListMarkets**](doc/RealtorApi.md#realtorlistmarkets) | **GET** /v1/realtor/markets | List markets
 [*RealtorApi*](doc/RealtorApi.md) | [**realtorLocationAutocomplete**](doc/RealtorApi.md#realtorlocationautocomplete) | **GET** /v1/realtor/autocomplete | Location autocomplete
@@ -474,6 +476,8 @@ Class | Method | HTTP request | Description
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinRedfinScraperHealthCheckHead**](doc/RedfinApi.md#redfinredfinscraperhealthcheckhead) | **HEAD** /v1/redfin/health | Redfin scraper health check
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinRegionAddressSuggestions**](doc/RedfinApi.md#redfinregionaddresssuggestions) | **GET** /v1/redfin/autocomplete | Region/address suggestions
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinSearchProperties**](doc/RedfinApi.md#redfinsearchproperties) | **GET** /v1/redfin/search | Search properties
+[*RequestsApi*](doc/RequestsApi.md) | [**requestsPollAnAsyncRequest**](doc/RequestsApi.md#requestspollanasyncrequest) | **GET** /v1/requests/{request_id} | Poll an async request
+[*ResultsApi*](doc/ResultsApi.md) | [**resultsReReadAResult**](doc/ResultsApi.md#resultsrereadaresult) | **GET** /v1/results/{result_id} | Re-read a result
 [*TargetApi*](doc/TargetApi.md) | [**targetBrowseACategory**](doc/TargetApi.md#targetbrowseacategory) | **GET** /v1/target/category | Browse a category
 [*TargetApi*](doc/TargetApi.md) | [**targetFindNearbyStores**](doc/TargetApi.md#targetfindnearbystores) | **GET** /v1/target/stores | Find nearby stores
 [*TargetApi*](doc/TargetApi.md) | [**targetGetCategories**](doc/TargetApi.md#targetgetcategories) | **GET** /v1/target/categories | Get categories
@@ -691,6 +695,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AccountInfo](doc/AccountInfo.md)
+ - [AgentTrialInfo](doc/AgentTrialInfo.md)
  - [BillingLogListResponse](doc/BillingLogListResponse.md)
  - [BillingLogResponse](doc/BillingLogResponse.md)
  - [Brandid](doc/Brandid.md)
@@ -704,6 +709,7 @@ Class | Method | HTTP request | Description
  - [ExtractRequest](doc/ExtractRequest.md)
  - [ExtractRequestExtractRulesValue](doc/ExtractRequestExtractRulesValue.md)
  - [ExtractRule](doc/ExtractRule.md)
+ - [FeedbackRequest](doc/FeedbackRequest.md)
  - [FilterRuleCreate](doc/FilterRuleCreate.md)
  - [FilterRuleDeliveryLogListResponse](doc/FilterRuleDeliveryLogListResponse.md)
  - [FilterRuleDeliveryLogResponse](doc/FilterRuleDeliveryLogResponse.md)
@@ -730,6 +736,7 @@ Class | Method | HTTP request | Description
  - [ProductPrice](doc/ProductPrice.md)
  - [ProductResponse](doc/ProductResponse.md)
  - [Productcode](doc/Productcode.md)
+ - [QuoteRequest](doc/QuoteRequest.md)
  - [Ratings](doc/Ratings.md)
  - [ScreenshotRequest](doc/ScreenshotRequest.md)
  - [Searchterm](doc/Searchterm.md)

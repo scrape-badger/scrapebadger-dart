@@ -15,6 +15,7 @@ import 'package:scrapebadger/src/date_serializer.dart';
 import 'package:scrapebadger/src/model/date.dart';
 
 import 'package:scrapebadger/src/model/account_info.dart';
+import 'package:scrapebadger/src/model/agent_trial_info.dart';
 import 'package:scrapebadger/src/model/billing_log_list_response.dart';
 import 'package:scrapebadger/src/model/billing_log_response.dart';
 import 'package:scrapebadger/src/model/brandid.dart';
@@ -28,6 +29,7 @@ import 'package:scrapebadger/src/model/description.dart';
 import 'package:scrapebadger/src/model/extract_request.dart';
 import 'package:scrapebadger/src/model/extract_request_extract_rules_value.dart';
 import 'package:scrapebadger/src/model/extract_rule.dart';
+import 'package:scrapebadger/src/model/feedback_request.dart';
 import 'package:scrapebadger/src/model/filter_rule_create.dart';
 import 'package:scrapebadger/src/model/filter_rule_delivery_log_list_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_delivery_log_response.dart';
@@ -54,6 +56,7 @@ import 'package:scrapebadger/src/model/product.dart';
 import 'package:scrapebadger/src/model/product_price.dart';
 import 'package:scrapebadger/src/model/product_response.dart';
 import 'package:scrapebadger/src/model/productcode.dart';
+import 'package:scrapebadger/src/model/quote_request.dart';
 import 'package:scrapebadger/src/model/ratings.dart';
 import 'package:scrapebadger/src/model/screenshot_request.dart';
 import 'package:scrapebadger/src/model/searchterm.dart';
@@ -97,6 +100,7 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   AccountInfo,
+  AgentTrialInfo,
   BillingLogListResponse,
   BillingLogResponse,
   Brandid,
@@ -110,6 +114,7 @@ part 'serializers.g.dart';
   ExtractRequest,
   ExtractRequestExtractRulesValue,
   ExtractRule,
+  FeedbackRequest,
   FilterRuleCreate,
   FilterRuleDeliveryLogListResponse,
   FilterRuleDeliveryLogResponse,
@@ -136,6 +141,7 @@ part 'serializers.g.dart';
   ProductPrice,
   ProductResponse,
   Productcode,
+  QuoteRequest,
   Ratings,
   ScreenshotRequest,
   Searchterm,
