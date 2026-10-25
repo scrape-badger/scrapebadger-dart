@@ -11,7 +11,7 @@ void main() {
     //
     // Browse Marketplace listings in a category (vehicles, electronics, ...).
     //
-    //Future<JsonObject> facebookBrowseAMarketplaceCategory(String category, { String location, int minPrice, int maxPrice, String sortBy, String after }) async
+    //Future<JsonObject> facebookBrowseAMarketplaceCategory(String category, { String location, int minPrice, int maxPrice, String sortBy, int radius, String after }) async
     test('test facebookBrowseAMarketplaceCategory', () async {
       // TODO
     });

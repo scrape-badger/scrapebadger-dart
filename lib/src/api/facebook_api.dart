@@ -29,6 +29,7 @@ class FacebookApi {
   /// * [minPrice] 
   /// * [maxPrice] 
   /// * [sortBy] 
+  /// * [radius] - Radius around the location (km, or miles in the US)
   /// * [after] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -45,6 +46,7 @@ class FacebookApi {
     int? minPrice,
     int? maxPrice,
     String? sortBy,
+    int? radius,
     String? after,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -78,6 +80,7 @@ class FacebookApi {
       r'min_price': encodeQueryParameter(_serializers, minPrice, const FullType(int)),
       r'max_price': encodeQueryParameter(_serializers, maxPrice, const FullType(int)),
       r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(String)),
+      r'radius': encodeQueryParameter(_serializers, radius, const FullType(int)),
       r'after': encodeQueryParameter(_serializers, after, const FullType(String)),
     };
 

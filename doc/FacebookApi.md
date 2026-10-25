@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 
 # **facebookBrowseAMarketplaceCategory**
-> JsonObject facebookBrowseAMarketplaceCategory(category, location, minPrice, maxPrice, sortBy, after)
+> JsonObject facebookBrowseAMarketplaceCategory(category, location, minPrice, maxPrice, sortBy, radius, after)
 
 Browse a Marketplace category
 
@@ -56,10 +56,11 @@ final String location = location_example; // String |
 final int minPrice = 56; // int | 
 final int maxPrice = 56; // int | 
 final String sortBy = sortBy_example; // String | 
+final int radius = 56; // int | Radius around the location (km, or miles in the US)
 final String after = after_example; // String | 
 
 try {
-    final response = api.facebookBrowseAMarketplaceCategory(category, location, minPrice, maxPrice, sortBy, after);
+    final response = api.facebookBrowseAMarketplaceCategory(category, location, minPrice, maxPrice, sortBy, radius, after);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling FacebookApi->facebookBrowseAMarketplaceCategory: $e\n');
@@ -75,6 +76,7 @@ Name | Type | Description  | Notes
  **minPrice** | **int**|  | [optional] 
  **maxPrice** | **int**|  | [optional] 
  **sortBy** | **String**|  | [optional] 
+ **radius** | **int**| Radius around the location (km, or miles in the US) | [optional] 
  **after** | **String**|  | [optional] 
 
 ### Return type
