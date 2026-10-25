@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**facebookGetProfilePosts**](FacebookApi.md#facebookgetprofileposts) | **GET** /v1/facebook/profiles/{identifier}/posts | Get profile posts
 [**facebookListCategories**](FacebookApi.md#facebooklistcategories) | **GET** /v1/facebook/marketplace/categories | List categories
 [**facebookListLocations**](FacebookApi.md#facebooklistlocations) | **GET** /v1/facebook/marketplace/locations | List locations
+[**facebookResolveATownPostcodeToAMarketplaceLocation**](FacebookApi.md#facebookresolveatownpostcodetoamarketplacelocation) | **GET** /v1/facebook/marketplace/locations/resolve | Resolve a town/postcode to a Marketplace location
 [**facebookSearchAdvertiserPages**](FacebookApi.md#facebooksearchadvertiserpages) | **GET** /v1/facebook/ads/pages/search | Search advertiser pages
 [**facebookSearchEvents**](FacebookApi.md#facebooksearchevents) | **GET** /v1/facebook/search/events | Search events
 [**facebookSearchEverything**](FacebookApi.md#facebooksearcheverything) | **GET** /v1/facebook/search | Search everything
@@ -701,6 +702,59 @@ try {
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **facebookResolveATownPostcodeToAMarketplaceLocation**
+> JsonObject facebookResolveATownPostcodeToAMarketplaceLocation(query, latitude, longitude, country)
+
+Resolve a town/postcode to a Marketplace location
+
+Resolve a town, postcode or coordinates to a Facebook Marketplace place id.  Facebook keys Marketplace by place, not coordinates, and only a place slug or numeric place id works as ``location``. Pass the returned ``place_id`` as ``location`` on Marketplace search/category to centre results anywhere, not just the preset catalogue. Postcodes resolve exactly; a bare town name in an ambiguous country is best paired with ``country`` (e.g. ``gb``).
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getFacebookApi();
+final String query = query_example; // String | Town, city, postcode or address (e.g. 'Durham', 'DH1 3LE')
+final num latitude = 8.14; // num | Resolve this exact point instead
+final num longitude = 8.14; // num | 
+final String country = country_example; // String | ISO country code hint for an ambiguous name (e.g. gb)
+
+try {
+    final response = api.facebookResolveATownPostcodeToAMarketplaceLocation(query, latitude, longitude, country);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling FacebookApi->facebookResolveATownPostcodeToAMarketplaceLocation: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **query** | **String**| Town, city, postcode or address (e.g. 'Durham', 'DH1 3LE') | [optional] 
+ **latitude** | **num**| Resolve this exact point instead | [optional] 
+ **longitude** | **num**|  | [optional] 
+ **country** | **String**| ISO country code hint for an ambiguous name (e.g. gb) | [optional] 
 
 ### Return type
 

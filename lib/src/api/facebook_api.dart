@@ -1244,6 +1244,102 @@ class FacebookApi {
     );
   }
 
+  /// Resolve a town/postcode to a Marketplace location
+  /// Resolve a town, postcode or coordinates to a Facebook Marketplace place id.  Facebook keys Marketplace by place, not coordinates, and only a place slug or numeric place id works as &#x60;&#x60;location&#x60;&#x60;. Pass the returned &#x60;&#x60;place_id&#x60;&#x60; as &#x60;&#x60;location&#x60;&#x60; on Marketplace search/category to centre results anywhere, not just the preset catalogue. Postcodes resolve exactly; a bare town name in an ambiguous country is best paired with &#x60;&#x60;country&#x60;&#x60; (e.g. &#x60;&#x60;gb&#x60;&#x60;).
+  ///
+  /// Parameters:
+  /// * [query] - Town, city, postcode or address (e.g. 'Durham', 'DH1 3LE')
+  /// * [latitude] - Resolve this exact point instead
+  /// * [longitude] 
+  /// * [country] - ISO country code hint for an ambiguous name (e.g. gb)
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<JsonObject>> facebookResolveATownPostcodeToAMarketplaceLocation({ 
+    String? query,
+    num? latitude,
+    num? longitude,
+    String? country,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/facebook/marketplace/locations/resolve';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ApiKeyAuth',
+            'keyName': 'X-API-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
+      r'latitude': encodeQueryParameter(_serializers, latitude, const FullType(num)),
+      r'longitude': encodeQueryParameter(_serializers, longitude, const FullType(num)),
+      r'country': encodeQueryParameter(_serializers, country, const FullType(String)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    JsonObject? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(JsonObject),
+      ) as JsonObject;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Search advertiser pages
   /// Search advertiser Pages in the Ad Library — returns page ids, categories, likes/followers, verification and Instagram handles.
   ///

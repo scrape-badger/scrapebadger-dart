@@ -133,6 +133,15 @@ void main() {
       // TODO
     });
 
+    // Resolve a town/postcode to a Marketplace location
+    //
+    // Resolve a town, postcode or coordinates to a Facebook Marketplace place id.  Facebook keys Marketplace by place, not coordinates, and only a place slug or numeric place id works as ``location``. Pass the returned ``place_id`` as ``location`` on Marketplace search/category to centre results anywhere, not just the preset catalogue. Postcodes resolve exactly; a bare town name in an ambiguous country is best paired with ``country`` (e.g. ``gb``).
+    //
+    //Future<JsonObject> facebookResolveATownPostcodeToAMarketplaceLocation({ String query, num latitude, num longitude, String country }) async
+    test('test facebookResolveATownPostcodeToAMarketplaceLocation', () async {
+      // TODO
+    });
+
     // Search advertiser pages
     //
     // Search advertiser Pages in the Ad Library — returns page ids, categories, likes/followers, verification and Instagram handles.
