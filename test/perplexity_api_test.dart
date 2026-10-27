@@ -11,7 +11,7 @@ void main() {
     //
     // Send a prompt to Perplexity and get the answer plus the web sources it cited.
     //
-    //Future<JsonObject> perplexityAskPerplexityAQuestion(String prompt, { String country }) async
+    //Future<JsonObject> perplexityAskPerplexityAQuestion(String prompt, { String country, bool strictCountry }) async
     test('test perplexityAskPerplexityAQuestion', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Ask Perplexity, then report whether the brand is mentioned, cited and how prominently.
     //
-    //Future<JsonObject> perplexityMeasureABrandSVisibilityInAPerplexityAnswer(String prompt, String brand, { String domain, String aliases, String competitors, String country }) async
+    //Future<JsonObject> perplexityMeasureABrandSVisibilityInAPerplexityAnswer(String prompt, String brand, { String domain, String aliases, String competitors, String country, bool strictCountry }) async
     test('test perplexityMeasureABrandSVisibilityInAPerplexityAnswer', () async {
       // TODO
     });

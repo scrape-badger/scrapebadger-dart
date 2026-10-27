@@ -26,6 +26,7 @@ class PerplexityApi {
   /// Parameters:
   /// * [prompt] - The prompt to send to Perplexity (max 4096 characters).
   /// * [country] - ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'.
+  /// * [strictCountry] - Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -38,6 +39,7 @@ class PerplexityApi {
   Future<Response<JsonObject>> perplexityAskPerplexityAQuestion({ 
     required String prompt,
     String? country,
+    bool? strictCountry = false,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -68,6 +70,7 @@ class PerplexityApi {
     final _queryParameters = <String, dynamic>{
       r'prompt': encodeQueryParameter(_serializers, prompt, const FullType(String)),
       r'country': encodeQueryParameter(_serializers, country, const FullType(String)),
+      if (strictCountry != null) r'strict_country': encodeQueryParameter(_serializers, strictCountry, const FullType(bool)),
     };
 
     final _response = await _dio.request<Object>(
@@ -200,6 +203,7 @@ class PerplexityApi {
   /// * [aliases] - Comma-separated alternative names.
   /// * [competitors] - Comma-separated competitor names.
   /// * [country] - ISO-3166 alpha-2 egress country.
+  /// * [strictCountry] - Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -216,6 +220,7 @@ class PerplexityApi {
     String? aliases,
     String? competitors,
     String? country,
+    bool? strictCountry = false,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -250,6 +255,7 @@ class PerplexityApi {
       r'aliases': encodeQueryParameter(_serializers, aliases, const FullType(String)),
       r'competitors': encodeQueryParameter(_serializers, competitors, const FullType(String)),
       r'country': encodeQueryParameter(_serializers, country, const FullType(String)),
+      if (strictCountry != null) r'strict_country': encodeQueryParameter(_serializers, strictCountry, const FullType(bool)),
     };
 
     final _response = await _dio.request<Object>(

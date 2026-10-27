@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **perplexityAskPerplexityAQuestion**
-> JsonObject perplexityAskPerplexityAQuestion(prompt, country)
+> JsonObject perplexityAskPerplexityAQuestion(prompt, country, strictCountry)
 
 Ask Perplexity a question
 
@@ -35,9 +35,10 @@ import 'package:scrapebadger/api.dart';
 final api = Scrapebadger().getPerplexityApi();
 final String prompt = prompt_example; // String | The prompt to send to Perplexity (max 4096 characters).
 final String country = country_example; // String | ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'.
+final bool strictCountry = true; // bool | Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`.
 
 try {
-    final response = api.perplexityAskPerplexityAQuestion(prompt, country);
+    final response = api.perplexityAskPerplexityAQuestion(prompt, country, strictCountry);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling PerplexityApi->perplexityAskPerplexityAQuestion: $e\n');
@@ -50,6 +51,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **prompt** | **String**| The prompt to send to Perplexity (max 4096 characters). | 
  **country** | **String**| ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'. | [optional] 
+ **strictCountry** | **bool**| Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`. | [optional] [default to false]
 
 ### Return type
 
@@ -110,7 +112,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **perplexityMeasureABrandSVisibilityInAPerplexityAnswer**
-> JsonObject perplexityMeasureABrandSVisibilityInAPerplexityAnswer(prompt, brand, domain, aliases, competitors, country)
+> JsonObject perplexityMeasureABrandSVisibilityInAPerplexityAnswer(prompt, brand, domain, aliases, competitors, country, strictCountry)
 
 Measure a brand's visibility in a Perplexity answer
 
@@ -131,9 +133,10 @@ final String domain = domain_example; // String | Brand domain, for citation mat
 final String aliases = aliases_example; // String | Comma-separated alternative names.
 final String competitors = competitors_example; // String | Comma-separated competitor names.
 final String country = country_example; // String | ISO-3166 alpha-2 egress country.
+final bool strictCountry = true; // bool | Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`.
 
 try {
-    final response = api.perplexityMeasureABrandSVisibilityInAPerplexityAnswer(prompt, brand, domain, aliases, competitors, country);
+    final response = api.perplexityMeasureABrandSVisibilityInAPerplexityAnswer(prompt, brand, domain, aliases, competitors, country, strictCountry);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling PerplexityApi->perplexityMeasureABrandSVisibilityInAPerplexityAnswer: $e\n');
@@ -150,6 +153,7 @@ Name | Type | Description  | Notes
  **aliases** | **String**| Comma-separated alternative names. | [optional] 
  **competitors** | **String**| Comma-separated competitor names. | [optional] 
  **country** | **String**| ISO-3166 alpha-2 egress country. | [optional] 
+ **strictCountry** | **bool**| Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`. | [optional] [default to false]
 
 ### Return type
 
