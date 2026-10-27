@@ -16,6 +16,10 @@ import 'package:scrapebadger/src/model/date.dart';
 
 import 'package:scrapebadger/src/model/account_info.dart';
 import 'package:scrapebadger/src/model/agent_trial_info.dart';
+import 'package:scrapebadger/src/model/batch_item.dart';
+import 'package:scrapebadger/src/model/batch_item_query_value.dart';
+import 'package:scrapebadger/src/model/batch_item_query_value_any_of_inner.dart';
+import 'package:scrapebadger/src/model/batch_request.dart';
 import 'package:scrapebadger/src/model/billing_log_list_response.dart';
 import 'package:scrapebadger/src/model/billing_log_response.dart';
 import 'package:scrapebadger/src/model/brandid.dart';
@@ -93,6 +97,7 @@ import 'package:scrapebadger/src/model/webhook_create.dart';
 import 'package:scrapebadger/src/model/webhook_list_item.dart';
 import 'package:scrapebadger/src/model/webhook_list_response.dart';
 import 'package:scrapebadger/src/model/webhook_response.dart';
+import 'package:scrapebadger/src/model/webhook_secret.dart';
 import 'package:scrapebadger/src/model/webhook_test_request.dart';
 import 'package:scrapebadger/src/model/webhook_test_response.dart';
 
@@ -101,6 +106,10 @@ part 'serializers.g.dart';
 @SerializersFor([
   AccountInfo,
   AgentTrialInfo,
+  BatchItem,
+  BatchItemQueryValue,
+  BatchItemQueryValueAnyOfInner,
+  BatchRequest,
   BillingLogListResponse,
   BillingLogResponse,
   Brandid,
@@ -178,6 +187,7 @@ part 'serializers.g.dart';
   WebhookListItem,
   WebhookListResponse,
   WebhookResponse,
+  WebhookSecret,
   WebhookTestRequest,
   WebhookTestResponse,
 ])

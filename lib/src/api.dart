@@ -17,6 +17,7 @@ import 'package:scrapebadger/src/api/amazon_api.dart';
 import 'package:scrapebadger/src/api/apartments_api.dart';
 import 'package:scrapebadger/src/api/app_store_api.dart';
 import 'package:scrapebadger/src/api/baidu_api.dart';
+import 'package:scrapebadger/src/api/batch_api.dart';
 import 'package:scrapebadger/src/api/best_buy_api.dart';
 import 'package:scrapebadger/src/api/bing_api.dart';
 import 'package:scrapebadger/src/api/booking_api.dart';
@@ -157,6 +158,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   BaiduApi getBaiduApi() {
     return BaiduApi(dio, serializers);
+  }
+
+  /// Get BatchApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  BatchApi getBatchApi() {
+    return BatchApi(dio, serializers);
   }
 
   /// Get BestBuyApi instance, base route and serializer can be overridden by a given but be careful,

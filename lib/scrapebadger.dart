@@ -18,6 +18,7 @@ export 'package:scrapebadger/src/api/amazon_api.dart';
 export 'package:scrapebadger/src/api/apartments_api.dart';
 export 'package:scrapebadger/src/api/app_store_api.dart';
 export 'package:scrapebadger/src/api/baidu_api.dart';
+export 'package:scrapebadger/src/api/batch_api.dart';
 export 'package:scrapebadger/src/api/best_buy_api.dart';
 export 'package:scrapebadger/src/api/bing_api.dart';
 export 'package:scrapebadger/src/api/booking_api.dart';
@@ -60,6 +61,10 @@ export 'package:scrapebadger/src/api/zillow_api.dart';
 
 export 'package:scrapebadger/src/model/account_info.dart';
 export 'package:scrapebadger/src/model/agent_trial_info.dart';
+export 'package:scrapebadger/src/model/batch_item.dart';
+export 'package:scrapebadger/src/model/batch_item_query_value.dart';
+export 'package:scrapebadger/src/model/batch_item_query_value_any_of_inner.dart';
+export 'package:scrapebadger/src/model/batch_request.dart';
 export 'package:scrapebadger/src/model/billing_log_list_response.dart';
 export 'package:scrapebadger/src/model/billing_log_response.dart';
 export 'package:scrapebadger/src/model/brandid.dart';
@@ -137,6 +142,7 @@ export 'package:scrapebadger/src/model/webhook_create.dart';
 export 'package:scrapebadger/src/model/webhook_list_item.dart';
 export 'package:scrapebadger/src/model/webhook_list_response.dart';
 export 'package:scrapebadger/src/model/webhook_response.dart';
+export 'package:scrapebadger/src/model/webhook_secret.dart';
 export 'package:scrapebadger/src/model/webhook_test_request.dart';
 export 'package:scrapebadger/src/model/webhook_test_response.dart';
 

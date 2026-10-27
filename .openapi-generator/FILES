@@ -12,6 +12,11 @@ doc/AmazonApi.md
 doc/ApartmentsApi.md
 doc/AppStoreApi.md
 doc/BaiduApi.md
+doc/BatchApi.md
+doc/BatchItem.md
+doc/BatchItemQueryValue.md
+doc/BatchItemQueryValueAnyOfInner.md
+doc/BatchRequest.md
 doc/BestBuyApi.md
 doc/BillingLogListResponse.md
 doc/BillingLogResponse.md
@@ -124,6 +129,7 @@ doc/WebhookCreate.md
 doc/WebhookListItem.md
 doc/WebhookListResponse.md
 doc/WebhookResponse.md
+doc/WebhookSecret.md
 doc/WebhookTestRequest.md
 doc/WebhookTestResponse.md
 doc/YahooApi.md
@@ -140,6 +146,7 @@ lib/src/api/apartments_api.dart
 lib/src/api/app_store_api.dart
 lib/src/api/asos_api.dart
 lib/src/api/baidu_api.dart
+lib/src/api/batch_api.dart
 lib/src/api/best_buy_api.dart
 lib/src/api/bing_api.dart
 lib/src/api/booking_api.dart
@@ -188,6 +195,10 @@ lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
 lib/src/model/account_info.dart
 lib/src/model/agent_trial_info.dart
+lib/src/model/batch_item.dart
+lib/src/model/batch_item_query_value.dart
+lib/src/model/batch_item_query_value_any_of_inner.dart
+lib/src/model/batch_request.dart
 lib/src/model/billing_log_list_response.dart
 lib/src/model/billing_log_response.dart
 lib/src/model/brandid.dart
@@ -266,6 +277,7 @@ lib/src/model/webhook_create.dart
 lib/src/model/webhook_list_item.dart
 lib/src/model/webhook_list_response.dart
 lib/src/model/webhook_response.dart
+lib/src/model/webhook_secret.dart
 lib/src/model/webhook_test_request.dart
 lib/src/model/webhook_test_response.dart
 lib/src/serializers.dart
@@ -280,6 +292,11 @@ test/apartments_api_test.dart
 test/app_store_api_test.dart
 test/asos_api_test.dart
 test/baidu_api_test.dart
+test/batch_api_test.dart
+test/batch_item_query_value_any_of_inner_test.dart
+test/batch_item_query_value_test.dart
+test/batch_item_test.dart
+test/batch_request_test.dart
 test/best_buy_api_test.dart
 test/billing_log_list_response_test.dart
 test/billing_log_response_test.dart
@@ -392,6 +409,7 @@ test/webhook_create_test.dart
 test/webhook_list_item_test.dart
 test/webhook_list_response_test.dart
 test/webhook_response_test.dart
+test/webhook_secret_test.dart
 test/webhook_test_request_test.dart
 test/webhook_test_response_test.dart
 test/yahoo_api_test.dart
