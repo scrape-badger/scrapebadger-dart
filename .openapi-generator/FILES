@@ -30,6 +30,7 @@ doc/ChatGPTApi.md
 doc/ColorsResponse.md
 doc/Colour.md
 doc/Colourwayid.md
+doc/CopilotApi.md
 doc/DepopApi.md
 doc/Description.md
 doc/DuckDuckGoApi.md
@@ -151,6 +152,7 @@ lib/src/api/best_buy_api.dart
 lib/src/api/bing_api.dart
 lib/src/api/booking_api.dart
 lib/src/api/chat_gpt_api.dart
+lib/src/api/copilot_api.dart
 lib/src/api/depop_api.dart
 lib/src/api/duck_duck_go_api.dart
 lib/src/api/e_bay_api.dart
@@ -310,6 +312,7 @@ test/chat_gpt_api_test.dart
 test/colors_response_test.dart
 test/colour_test.dart
 test/colourwayid_test.dart
+test/copilot_api_test.dart
 test/depop_api_test.dart
 test/description_test.dart
 test/duck_duck_go_api_test.dart

@@ -23,6 +23,7 @@ export 'package:scrapebadger/src/api/best_buy_api.dart';
 export 'package:scrapebadger/src/api/bing_api.dart';
 export 'package:scrapebadger/src/api/booking_api.dart';
 export 'package:scrapebadger/src/api/chat_gpt_api.dart';
+export 'package:scrapebadger/src/api/copilot_api.dart';
 export 'package:scrapebadger/src/api/depop_api.dart';
 export 'package:scrapebadger/src/api/duck_duck_go_api.dart';
 export 'package:scrapebadger/src/api/e_bay_api.dart';

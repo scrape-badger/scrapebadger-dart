@@ -22,6 +22,7 @@ import 'package:scrapebadger/src/api/best_buy_api.dart';
 import 'package:scrapebadger/src/api/bing_api.dart';
 import 'package:scrapebadger/src/api/booking_api.dart';
 import 'package:scrapebadger/src/api/chat_gpt_api.dart';
+import 'package:scrapebadger/src/api/copilot_api.dart';
 import 'package:scrapebadger/src/api/depop_api.dart';
 import 'package:scrapebadger/src/api/duck_duck_go_api.dart';
 import 'package:scrapebadger/src/api/e_bay_api.dart';
@@ -188,6 +189,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   ChatGPTApi getChatGPTApi() {
     return ChatGPTApi(dio, serializers);
+  }
+
+  /// Get CopilotApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  CopilotApi getCopilotApi() {
+    return CopilotApi(dio, serializers);
   }
 
   /// Get DepopApi instance, base route and serializer can be overridden by a given but be careful,

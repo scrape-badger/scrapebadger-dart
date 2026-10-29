@@ -219,6 +219,13 @@ Class | Method | HTTP request | Description
 [*ChatGPTApi*](doc/ChatGPTApi.md) | [**chatgptListChatgptModels**](doc/ChatGPTApi.md#chatgptlistchatgptmodels) | **GET** /v1/chatgpt/models | List ChatGPT models
 [*ChatGPTApi*](doc/ChatGPTApi.md) | [**chatgptMeasureABrandSVisibilityInAChatgptAnswer**](doc/ChatGPTApi.md#chatgptmeasureabrandsvisibilityinachatgptanswer) | **GET** /v1/chatgpt/brand-visibility | Measure a brand&#39;s visibility in a ChatGPT answer
 [*ChatGPTApi*](doc/ChatGPTApi.md) | [**chatgptMeasureABrandSVisibilityInAChatgptAnswerPost**](doc/ChatGPTApi.md#chatgptmeasureabrandsvisibilityinachatgptanswerpost) | **POST** /v1/chatgpt/brand-visibility | Measure a brand&#39;s visibility in a ChatGPT answer (POST)
+[*CopilotApi*](doc/CopilotApi.md) | [**copilotAskCopilotAQuestion**](doc/CopilotApi.md#copilotaskcopilotaquestion) | **GET** /v1/copilot/ask | Ask Copilot a question
+[*CopilotApi*](doc/CopilotApi.md) | [**copilotAskCopilotAQuestionPost**](doc/CopilotApi.md#copilotaskcopilotaquestionpost) | **POST** /v1/copilot/ask | Ask Copilot a question (POST)
+[*CopilotApi*](doc/CopilotApi.md) | [**copilotCopilotScraperHealthCheck**](doc/CopilotApi.md#copilotcopilotscraperhealthcheck) | **GET** /v1/copilot/health | Copilot scraper health check
+[*CopilotApi*](doc/CopilotApi.md) | [**copilotCopilotScraperHealthCheckHead**](doc/CopilotApi.md#copilotcopilotscraperhealthcheckhead) | **HEAD** /v1/copilot/health | Copilot scraper health check
+[*CopilotApi*](doc/CopilotApi.md) | [**copilotListCopilotMarkets**](doc/CopilotApi.md#copilotlistcopilotmarkets) | **GET** /v1/copilot/markets | List Copilot markets
+[*CopilotApi*](doc/CopilotApi.md) | [**copilotMeasureABrandSVisibilityInACopilotAnswer**](doc/CopilotApi.md#copilotmeasureabrandsvisibilityinacopilotanswer) | **GET** /v1/copilot/brand-visibility | Measure a brand&#39;s visibility in a Copilot answer
+[*CopilotApi*](doc/CopilotApi.md) | [**copilotMeasureABrandSVisibilityInACopilotAnswerPost**](doc/CopilotApi.md#copilotmeasureabrandsvisibilityinacopilotanswerpost) | **POST** /v1/copilot/brand-visibility | Measure a brand&#39;s visibility in a Copilot answer (POST)
 [*DepopApi*](doc/DepopApi.md) | [**depopDepopScraperHealthCheck**](doc/DepopApi.md#depopdepopscraperhealthcheck) | **GET** /v1/depop/health | Depop scraper health check
 [*DepopApi*](doc/DepopApi.md) | [**depopDepopScraperHealthCheckHead**](doc/DepopApi.md#depopdepopscraperhealthcheckhead) | **HEAD** /v1/depop/health | Depop scraper health check
 [*DepopApi*](doc/DepopApi.md) | [**depopGetAUserSProducts**](doc/DepopApi.md#depopgetausersproducts) | **GET** /v1/depop/users/{username}/products | Get a user&#39;s products
