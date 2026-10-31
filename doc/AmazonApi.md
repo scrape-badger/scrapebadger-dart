@@ -324,11 +324,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **amazonGetProductReviews**
-> JsonObject amazonGetProductReviews(asin, domain, page, sortBy, star, verifiedOnly, mediaOnly)
+> JsonObject amazonGetProductReviews(asin, domain, page, sortBy, star, verifiedOnly, mediaOnly, mode, maxPages, perStar, limit, wootOffer)
 
 Get product reviews
 
-Customer reviews for an ASIN, filtered, sorted and paginated.  Reviews come from the product page's public featured block, which is the only review surface Amazon serves anonymously — a subset of the full history (``ratings_total`` reports the true total). ``pagination`` gives the filtered count and the last page, so paging past it returns an empty list. An unrecognised ``star`` or ``sort_by`` is rejected with 422 rather than silently answered with unfiltered reviews.
+Customer reviews for an ASIN, filtered, sorted and paginated.  Reviews come from the product page's public featured block, which is the only review surface Amazon serves anonymously — a subset of the full history (``ratings_total`` reports the true total). ``pagination`` gives the filtered count and the last page, so paging past it returns an empty list. An unrecognised ``star`` or ``sort_by`` is rejected with 422 rather than silently answered with unfiltered reviews.  ``mode=full`` serves the rest, pool first and woot second: one pool account is leased and the authenticated review pages are walked until Amazon stops returning new rows (a gate, the review-limit banner or an expired session rotates the lease), then — when ``woot_offer`` names a current woot.com offer page carrying the ASIN (.com only) — Amazon-owned woot.com's anonymous reviews endpoint is fanned out as a bonus and merged in, deduped by review id. The same filter / sort / pagination contract applies to the collected set. When no source produced rows the answer is 503 (``pool_exhausted``, or ``reviews_unavailable`` when both paths ran) — never an empty 200 that reads as \"no reviews\". Auth, rate limits, credits and usage logging are the gateway's, exactly as for every other mode of this endpoint.
 
 ### Example
 ```dart
@@ -346,9 +346,14 @@ final String sortBy = sortBy_example; // String | helpful | recent
 final String star = star_example; // String | 1-5 | one_star..five_star | positive | critical | all_stars
 final bool verifiedOnly = true; // bool | 
 final bool mediaOnly = true; // bool | 
+final String mode = mode_example; // String | public (anonymous featured block) | full (authenticated account pool)
+final int maxPages = 56; // int | full mode: pages to walk per star sweep
+final bool perStar = true; // bool | full mode: sweep each star filter and merge + dedupe
+final int limit = 56; // int | full mode: stop at this many distinct reviews
+final String wootOffer = wootOffer_example; // String | full mode + .com: URL (or slug) of a CURRENT woot.com offer page carrying the ASIN — unlocks the anonymous woot reviews endpoint as a bonus transport after the account pool
 
 try {
-    final response = api.amazonGetProductReviews(asin, domain, page, sortBy, star, verifiedOnly, mediaOnly);
+    final response = api.amazonGetProductReviews(asin, domain, page, sortBy, star, verifiedOnly, mediaOnly, mode, maxPages, perStar, limit, wootOffer);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AmazonApi->amazonGetProductReviews: $e\n');
@@ -366,6 +371,11 @@ Name | Type | Description  | Notes
  **star** | **String**| 1-5 | one_star..five_star | positive | critical | all_stars | [optional] 
  **verifiedOnly** | **bool**|  | [optional] [default to false]
  **mediaOnly** | **bool**|  | [optional] [default to false]
+ **mode** | **String**| public (anonymous featured block) | full (authenticated account pool) | [optional] [default to 'public']
+ **maxPages** | **int**| full mode: pages to walk per star sweep | [optional] [default to 10]
+ **perStar** | **bool**| full mode: sweep each star filter and merge + dedupe | [optional] [default to false]
+ **limit** | **int**| full mode: stop at this many distinct reviews | [optional] 
+ **wootOffer** | **String**| full mode + .com: URL (or slug) of a CURRENT woot.com offer page carrying the ASIN — unlocks the anonymous woot reviews endpoint as a bonus transport after the account pool | [optional] 
 
 ### Return type
 
