@@ -186,7 +186,7 @@ class AirbnbApi {
   /// Parameters:
   /// * [roomId] 
   /// * [month] - Start month (1-12)
-  /// * [year] - Start year
+  /// * [year] - Start year (current UTC year when omitted)
   /// * [months] - Number of months (max 12)
   /// * [currency] 
   /// * [locale] 
@@ -202,7 +202,7 @@ class AirbnbApi {
   Future<Response<JsonObject>> airbnbGetAvailabilityCalendar({ 
     required String roomId,
     int? month = 1,
-    int? year = 2026,
+    int? year,
     int? months = 12,
     String? currency,
     String? locale,
@@ -235,7 +235,7 @@ class AirbnbApi {
 
     final _queryParameters = <String, dynamic>{
       if (month != null) r'month': encodeQueryParameter(_serializers, month, const FullType(int)),
-      if (year != null) r'year': encodeQueryParameter(_serializers, year, const FullType(int)),
+      r'year': encodeQueryParameter(_serializers, year, const FullType(int)),
       if (months != null) r'months': encodeQueryParameter(_serializers, months, const FullType(int)),
       r'currency': encodeQueryParameter(_serializers, currency, const FullType(String)),
       r'locale': encodeQueryParameter(_serializers, locale, const FullType(String)),

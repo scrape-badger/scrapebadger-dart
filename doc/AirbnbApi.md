@@ -123,7 +123,7 @@ import 'package:scrapebadger/api.dart';
 final api = Scrapebadger().getAirbnbApi();
 final String roomId = roomId_example; // String | 
 final int month = 56; // int | Start month (1-12)
-final int year = 56; // int | Start year
+final int year = 56; // int | Start year (current UTC year when omitted)
 final int months = 56; // int | Number of months (max 12)
 final String currency = currency_example; // String | 
 final String locale = locale_example; // String | 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **roomId** | **String**|  | 
  **month** | **int**| Start month (1-12) | [optional] [default to 1]
- **year** | **int**| Start year | [optional] [default to 2026]
+ **year** | **int**| Start year (current UTC year when omitted) | [optional] 
  **months** | **int**| Number of months (max 12) | [optional] [default to 12]
  **currency** | **String**|  | [optional] 
  **locale** | **String**|  | [optional] 
