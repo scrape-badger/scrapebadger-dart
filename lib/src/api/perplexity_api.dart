@@ -27,6 +27,7 @@ class PerplexityApi {
   /// * [prompt] - The prompt to send to Perplexity (max 4096 characters).
   /// * [country] - ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'.
   /// * [strictCountry] - Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`.
+  /// * [location] - Where the asker is: a city (tokyo, osaka, seoul, new-york, london, ...) or 'lat,lng' in decimal degrees. Perplexity answers a local-sounding question for it instead of the exit IP's city. It does not pick the egress: `country` does.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -40,6 +41,7 @@ class PerplexityApi {
     required String prompt,
     String? country,
     bool? strictCountry = false,
+    String? location,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -71,6 +73,7 @@ class PerplexityApi {
       r'prompt': encodeQueryParameter(_serializers, prompt, const FullType(String)),
       r'country': encodeQueryParameter(_serializers, country, const FullType(String)),
       if (strictCountry != null) r'strict_country': encodeQueryParameter(_serializers, strictCountry, const FullType(bool)),
+      r'location': encodeQueryParameter(_serializers, location, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -204,6 +207,7 @@ class PerplexityApi {
   /// * [competitors] - Comma-separated competitor names.
   /// * [country] - ISO-3166 alpha-2 egress country.
   /// * [strictCountry] - Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`.
+  /// * [location] - Where the asker is: a city (tokyo, osaka, seoul, new-york, london, ...) or 'lat,lng' in decimal degrees. Perplexity answers a local-sounding question for it instead of the exit IP's city. It does not pick the egress: `country` does.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -221,6 +225,7 @@ class PerplexityApi {
     String? competitors,
     String? country,
     bool? strictCountry = false,
+    String? location,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -256,6 +261,7 @@ class PerplexityApi {
       r'competitors': encodeQueryParameter(_serializers, competitors, const FullType(String)),
       r'country': encodeQueryParameter(_serializers, country, const FullType(String)),
       if (strictCountry != null) r'strict_country': encodeQueryParameter(_serializers, strictCountry, const FullType(bool)),
+      r'location': encodeQueryParameter(_serializers, location, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
