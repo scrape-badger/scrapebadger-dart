@@ -1346,13 +1346,16 @@ class GoogleApi {
   /// * [filter] 
   /// * [nfpr] - Disable auto-correction
   /// * [output] 
+  /// * [oq] - Original query sent to Google. Defaults to q; an empty string omits it.
+  /// * [sourceid] - Google source identifier. Defaults to chrome; an empty string omits it.
+  /// * [ie] - Google input encoding hint. Defaults to UTF-8; an empty string omits it.
   /// * [googleDomain] - Alias for domain; Google requests use google.com with country targeting.
   /// * [lat] - Latitude; supply together with lon instead of location or uule.
   /// * [lon] - Longitude; supply together with lat.
   /// * [radius] - Location accuracy in meters; requires lat/lon or a named city with a known center.
   /// * [colorScheme] - Google color scheme.
   /// * [tbm] - Google search type. Use output=html for verticals; dedicated APIs provide parsed vertical results.
-  /// * [udm] - Google result filter: 14 web, 18 forums. Other verticals require output=html.
+  /// * [udm] - Google result filter: web or 14 for web, 18 for forums. Other verticals require output=html.
   /// * [noCache] - Bypass result caches and request a fresh Google fetch.
   /// * [asDt] - Site restriction mode: i includes, e excludes as_sitesearch.
   /// * [asEpq] - Exact phrase.
@@ -1398,6 +1401,9 @@ class GoogleApi {
     int? filter,
     int? nfpr = 0,
     String? output = 'json',
+    String? oq,
+    String? sourceid,
+    String? ie,
     String? googleDomain,
     num? lat,
     num? lon,
@@ -1468,6 +1474,9 @@ class GoogleApi {
       r'filter': encodeQueryParameter(_serializers, filter, const FullType(int)),
       if (nfpr != null) r'nfpr': encodeQueryParameter(_serializers, nfpr, const FullType(int)),
       if (output != null) r'output': encodeQueryParameter(_serializers, output, const FullType(String)),
+      r'oq': encodeQueryParameter(_serializers, oq, const FullType(String)),
+      r'sourceid': encodeQueryParameter(_serializers, sourceid, const FullType(String)),
+      r'ie': encodeQueryParameter(_serializers, ie, const FullType(String)),
       r'google_domain': encodeQueryParameter(_serializers, googleDomain, const FullType(String)),
       r'lat': encodeQueryParameter(_serializers, lat, const FullType(num)),
       r'lon': encodeQueryParameter(_serializers, lon, const FullType(num)),
@@ -1923,13 +1932,16 @@ class GoogleApi {
   /// * [aiOverview] - Chase deferred AI Overview page_token with a follow-up fetch and merge the result. Adds ~1s when the SERP defers the overview; the request price is unchanged.
   /// * [mode] 
   /// * [expandRelatedQuestions] - Open all People Also Ask answers (true) or the first N (0-99).
+  /// * [oq] - Original query sent to Google. Defaults to q; an empty string omits it.
+  /// * [sourceid] - Google source identifier. Defaults to chrome; an empty string omits it.
+  /// * [ie] - Google input encoding hint. Defaults to UTF-8; an empty string omits it.
   /// * [googleDomain] - Alias for domain; Google requests use google.com with country targeting.
   /// * [lat] - Latitude; supply together with lon instead of location or uule.
   /// * [lon] - Longitude; supply together with lat.
   /// * [radius] - Location accuracy in meters; requires lat/lon or a named city with a known center.
   /// * [colorScheme] - Google color scheme.
   /// * [tbm] - Google search type. Use output=html for verticals; dedicated APIs provide parsed vertical results.
-  /// * [udm] - Google result filter: 14 web, 18 forums. Other verticals require output=html.
+  /// * [udm] - Google result filter: web or 14 for web, 18 for forums. Other verticals require output=html.
   /// * [noCache] - Bypass result caches and request a fresh Google fetch.
   /// * [asDt] - Site restriction mode: i includes, e excludes as_sitesearch.
   /// * [asEpq] - Exact phrase.
@@ -1978,6 +1990,9 @@ class GoogleApi {
     bool? aiOverview = false,
     String? mode = 'full',
     String? expandRelatedQuestions,
+    String? oq,
+    String? sourceid,
+    String? ie,
     String? googleDomain,
     num? lat,
     num? lon,
@@ -2051,6 +2066,9 @@ class GoogleApi {
       if (aiOverview != null) r'ai_overview': encodeQueryParameter(_serializers, aiOverview, const FullType(bool)),
       if (mode != null) r'mode': encodeQueryParameter(_serializers, mode, const FullType(String)),
       r'expand_related_questions': encodeQueryParameter(_serializers, expandRelatedQuestions, const FullType(String)),
+      r'oq': encodeQueryParameter(_serializers, oq, const FullType(String)),
+      r'sourceid': encodeQueryParameter(_serializers, sourceid, const FullType(String)),
+      r'ie': encodeQueryParameter(_serializers, ie, const FullType(String)),
       r'google_domain': encodeQueryParameter(_serializers, googleDomain, const FullType(String)),
       r'lat': encodeQueryParameter(_serializers, lat, const FullType(num)),
       r'lon': encodeQueryParameter(_serializers, lon, const FullType(num)),
