@@ -20,6 +20,8 @@ import 'package:scrapebadger/src/model/agent_trial_info.dart';
 import 'package:scrapebadger/src/model/article.dart';
 import 'package:scrapebadger/src/model/auto_scout24_filters_response.dart';
 import 'package:scrapebadger/src/model/auto_scout24_listing.dart';
+import 'package:scrapebadger/src/model/auto_scout24_listing_detail.dart';
+import 'package:scrapebadger/src/model/auto_scout24_listing_response.dart';
 import 'package:scrapebadger/src/model/auto_scout24_market.dart';
 import 'package:scrapebadger/src/model/auto_scout24_markets_response.dart';
 import 'package:scrapebadger/src/model/auto_scout24_search_response.dart';
@@ -179,6 +181,8 @@ part 'serializers.g.dart';
   Article,
   AutoScout24FiltersResponse,
   AutoScout24Listing,
+  AutoScout24ListingDetail,
+  AutoScout24ListingResponse,
   AutoScout24Market,
   AutoScout24MarketsResponse,
   AutoScout24SearchResponse,

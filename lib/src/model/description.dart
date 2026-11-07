@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:scrapebadger/src/model/model_null.dart';
 import 'dart:core';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -14,7 +13,7 @@ part 'description.g.dart';
 /// Description
 @BuiltValue()
 abstract class Description implements Built<Description, DescriptionBuilder> {
-  /// Any Of [ModelNull], [String]
+  /// Any Of [String]
   AnyOf get anyOf;
 
   Description._();
@@ -60,7 +59,7 @@ class _$DescriptionSerializer implements PrimitiveSerializer<Description> {
   }) {
     final result = DescriptionBuilder();
     Object? anyOfDataSrc;
-    final targetType = const FullType(AnyOf, [FullType(String), FullType(ModelNull), ]);
+    final targetType = const FullType(AnyOf, [FullType.nullable(String), ]);
     anyOfDataSrc = serialized;
     result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
     return result.build();

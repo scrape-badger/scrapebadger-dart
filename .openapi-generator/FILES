@@ -16,6 +16,8 @@ doc/Article.md
 doc/AutoScout24Api.md
 doc/AutoScout24FiltersResponse.md
 doc/AutoScout24Listing.md
+doc/AutoScout24ListingDetail.md
+doc/AutoScout24ListingResponse.md
 doc/AutoScout24Market.md
 doc/AutoScout24MarketsResponse.md
 doc/AutoScout24SearchResponse.md
@@ -276,6 +278,8 @@ lib/src/model/agent_trial_info.dart
 lib/src/model/article.dart
 lib/src/model/auto_scout24_filters_response.dart
 lib/src/model/auto_scout24_listing.dart
+lib/src/model/auto_scout24_listing_detail.dart
+lib/src/model/auto_scout24_listing_response.dart
 lib/src/model/auto_scout24_market.dart
 lib/src/model/auto_scout24_markets_response.dart
 lib/src/model/auto_scout24_search_response.dart
@@ -441,6 +445,8 @@ test/article_test.dart
 test/asos_api_test.dart
 test/auto_scout24_api_test.dart
 test/auto_scout24_filters_response_test.dart
+test/auto_scout24_listing_detail_test.dart
+test/auto_scout24_listing_response_test.dart
 test/auto_scout24_listing_test.dart
 test/auto_scout24_market_test.dart
 test/auto_scout24_markets_response_test.dart

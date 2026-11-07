@@ -270,7 +270,7 @@ class _$BraveResultSerializer implements PrimitiveSerializer<BraveResult> {
       yield r'description';
       yield serializers.serialize(
         object.description,
-        specifiedType: const FullType(Description),
+        specifiedType: const FullType.nullable(Description),
       );
     }
     if (object.displayUrl != null) {
@@ -586,8 +586,9 @@ class _$BraveResultSerializer implements PrimitiveSerializer<BraveResult> {
         case r'description':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Description),
-          ) as Description;
+            specifiedType: const FullType.nullable(Description),
+          ) as Description?;
+          if (valueDes == null) continue;
           result.description.replace(valueDes);
           break;
         case r'display_url':

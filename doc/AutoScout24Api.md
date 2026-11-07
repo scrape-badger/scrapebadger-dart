@@ -10,6 +10,7 @@ All URIs are relative to *https://scrapebadger.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**autoscout24CheckAutoscout24Health**](AutoScout24Api.md#autoscout24checkautoscout24health) | **GET** /v1/autoscout24/health | Check AutoScout24 health
+[**autoscout24GetListing**](AutoScout24Api.md#autoscout24getlisting) | **GET** /v1/autoscout24/listing | Get listing
 [**autoscout24ListMarkets**](AutoScout24Api.md#autoscout24listmarkets) | **GET** /v1/autoscout24/markets | List markets
 [**autoscout24ListSearchFilters**](AutoScout24Api.md#autoscout24listsearchfilters) | **GET** /v1/autoscout24/filters | List search filters
 [**autoscout24SearchVehicles**](AutoScout24Api.md#autoscout24searchvehicles) | **GET** /v1/autoscout24/search | Search vehicles
@@ -44,6 +45,57 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **autoscout24GetListing**
+> AutoScout24ListingResponse autoscout24GetListing(url, listingId, market)
+
+Get listing
+
+Full public vehicle specifications, equipment, photos, price and seller data.  Exactly one of url or listing_id is required. Supported markets match /markets. Successful detail costs 10 credits; removed or missing listings return an unbilled 404. Invalid inputs return 422 and source failures 503.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getAutoScout24Api();
+final String url = url_example; // String | Full HTTPS listing URL from search results. Supply url or listing_id, not both.
+final String listingId = listingId_example; // String | Listing UUID from search results; requires no SEO slug.
+final String market = market_example; // String | Inferred from URL, otherwise de. Explicit market must match the URL host.
+
+try {
+    final response = api.autoscout24GetListing(url, listingId, market);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AutoScout24Api->autoscout24GetListing: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **url** | **String**| Full HTTPS listing URL from search results. Supply url or listing_id, not both. | [optional] 
+ **listingId** | **String**| Listing UUID from search results; requires no SEO slug. | [optional] 
+ **market** | **String**| Inferred from URL, otherwise de. Explicit market must match the URL host. | [optional] 
+
+### Return type
+
+[**AutoScout24ListingResponse**](AutoScout24ListingResponse.md)
 
 ### Authorization
 
@@ -153,7 +205,7 @@ Name | Type | Description  | Notes
 
 Search vehicles
 
-Search live vehicle cards, seller/location information and current filter taxonomy.  Browsing is capped at 200 pages (normally 20 cards each). Narrow the query to reach more inventory. Empty results cost zero credits. Listing detail is not included in this API.
+Search live vehicle cards, seller/location information and current filter taxonomy.  Browsing is capped at 200 pages (normally 20 cards each). Narrow the query to reach more inventory. Empty results cost zero credits. Pass a result's url or id to /listing for its full specifications and equipment.
 
 ### Example
 ```dart

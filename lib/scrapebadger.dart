@@ -69,6 +69,8 @@ export 'package:scrapebadger/src/model/agent_trial_info.dart';
 export 'package:scrapebadger/src/model/article.dart';
 export 'package:scrapebadger/src/model/auto_scout24_filters_response.dart';
 export 'package:scrapebadger/src/model/auto_scout24_listing.dart';
+export 'package:scrapebadger/src/model/auto_scout24_listing_detail.dart';
+export 'package:scrapebadger/src/model/auto_scout24_listing_response.dart';
 export 'package:scrapebadger/src/model/auto_scout24_market.dart';
 export 'package:scrapebadger/src/model/auto_scout24_markets_response.dart';
 export 'package:scrapebadger/src/model/auto_scout24_search_response.dart';
