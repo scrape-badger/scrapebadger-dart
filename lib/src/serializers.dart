@@ -75,14 +75,31 @@ import 'package:scrapebadger/src/model/git_hub_activity_block.dart';
 import 'package:scrapebadger/src/model/git_hub_activity_overview.dart';
 import 'package:scrapebadger/src/model/git_hub_activity_row.dart';
 import 'package:scrapebadger/src/model/git_hub_calendar_day.dart';
+import 'package:scrapebadger/src/model/git_hub_commit_actor.dart';
+import 'package:scrapebadger/src/model/git_hub_commit_checks.dart';
+import 'package:scrapebadger/src/model/git_hub_community_file.dart';
 import 'package:scrapebadger/src/model/git_hub_contributions.dart';
+import 'package:scrapebadger/src/model/git_hub_fork_comparison.dart';
+import 'package:scrapebadger/src/model/git_hub_funding_link.dart';
 import 'package:scrapebadger/src/model/git_hub_language.dart';
+import 'package:scrapebadger/src/model/git_hub_latest_commit.dart';
 import 'package:scrapebadger/src/model/git_hub_named_link.dart';
 import 'package:scrapebadger/src/model/git_hub_pagination.dart';
 import 'package:scrapebadger/src/model/git_hub_profile.dart';
 import 'package:scrapebadger/src/model/git_hub_profile_response.dart';
 import 'package:scrapebadger/src/model/git_hub_readme.dart';
+import 'package:scrapebadger/src/model/git_hub_readme_heading.dart';
 import 'package:scrapebadger/src/model/git_hub_repository.dart';
+import 'package:scrapebadger/src/model/git_hub_repository_account.dart';
+import 'package:scrapebadger/src/model/git_hub_repository_file.dart';
+import 'package:scrapebadger/src/model/git_hub_repository_funding.dart';
+import 'package:scrapebadger/src/model/git_hub_repository_identity.dart';
+import 'package:scrapebadger/src/model/git_hub_repository_language.dart';
+import 'package:scrapebadger/src/model/git_hub_repository_license.dart';
+import 'package:scrapebadger/src/model/git_hub_repository_readme.dart';
+import 'package:scrapebadger/src/model/git_hub_repository_reference.dart';
+import 'package:scrapebadger/src/model/git_hub_repository_release.dart';
+import 'package:scrapebadger/src/model/git_hub_repository_response.dart';
 import 'package:scrapebadger/src/model/git_hub_social_account.dart';
 import 'package:scrapebadger/src/model/git_hub_status.dart';
 import 'package:scrapebadger/src/model/git_hub_text_link.dart';
@@ -236,14 +253,31 @@ part 'serializers.g.dart';
   GitHubActivityOverview,
   GitHubActivityRow,
   GitHubCalendarDay,
+  GitHubCommitActor,
+  GitHubCommitChecks,
+  GitHubCommunityFile,
   GitHubContributions,
+  GitHubForkComparison,
+  GitHubFundingLink,
   GitHubLanguage,
+  GitHubLatestCommit,
   GitHubNamedLink,
   GitHubPagination,
   GitHubProfile,
   GitHubProfileResponse,
   GitHubReadme,
+  GitHubReadmeHeading,
   GitHubRepository,
+  GitHubRepositoryAccount,
+  GitHubRepositoryFile,
+  GitHubRepositoryFunding,
+  GitHubRepositoryIdentity,
+  GitHubRepositoryLanguage,
+  GitHubRepositoryLicense,
+  GitHubRepositoryReadme,
+  GitHubRepositoryReference,
+  GitHubRepositoryRelease,
+  GitHubRepositoryResponse,
   GitHubSocialAccount,
   GitHubStatus,
   GitHubTextLink,

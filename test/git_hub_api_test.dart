@@ -16,5 +16,14 @@ void main() {
       // TODO
     });
 
+    // Get repository
+    //
+    // Public default-branch repository detail, native README, files and latest commit.  Use owner.login and name from a profile repository summary. Root file and contributor previews are not exhaustive recursive trees or membership lists. No GitHub token, market, ref, search or pagination parameter is accepted.
+    //
+    //Future<GitHubRepositoryResponse> githubGetRepository(String owner, String repo) async
+    test('test githubGetRepository', () async {
+      // TODO
+    });
+
   });
 }

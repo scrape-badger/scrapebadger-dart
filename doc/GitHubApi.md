@@ -10,6 +10,7 @@ All URIs are relative to *https://scrapebadger.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**githubGetProfile**](GitHubApi.md#githubgetprofile) | **GET** /v1/github/profiles/{username} | Get profile
+[**githubGetRepository**](GitHubApi.md#githubgetrepository) | **GET** /v1/github/repositories/{owner}/{repo} | Get repository
 
 
 # **githubGetProfile**
@@ -55,6 +56,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GitHubProfileResponse**](GitHubProfileResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **githubGetRepository**
+> GitHubRepositoryResponse githubGetRepository(owner, repo)
+
+Get repository
+
+Public default-branch repository detail, native README, files and latest commit.  Use owner.login and name from a profile repository summary. Root file and contributor previews are not exhaustive recursive trees or membership lists. No GitHub token, market, ref, search or pagination parameter is accepted.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getGitHubApi();
+final String owner = owner_example; // String | 
+final String repo = repo_example; // String | 
+
+try {
+    final response = api.githubGetRepository(owner, repo);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling GitHubApi->githubGetRepository: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **String**|  | 
+ **repo** | **String**|  | 
+
+### Return type
+
+[**GitHubRepositoryResponse**](GitHubRepositoryResponse.md)
 
 ### Authorization
 
