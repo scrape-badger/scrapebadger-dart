@@ -60,6 +60,7 @@ export 'package:scrapebadger/src/api/walmart_api.dart';
 export 'package:scrapebadger/src/api/web_api.dart';
 export 'package:scrapebadger/src/api/yahoo_api.dart';
 export 'package:scrapebadger/src/api/yandex_api.dart';
+export 'package:scrapebadger/src/api/yelp_api.dart';
 export 'package:scrapebadger/src/api/you_tube_api.dart';
 export 'package:scrapebadger/src/api/zillow_api.dart';
 
@@ -237,4 +238,14 @@ export 'package:scrapebadger/src/model/webhook_response.dart';
 export 'package:scrapebadger/src/model/webhook_secret.dart';
 export 'package:scrapebadger/src/model/webhook_test_request.dart';
 export 'package:scrapebadger/src/model/webhook_test_response.dart';
+export 'package:scrapebadger/src/model/yelp_business.dart';
+export 'package:scrapebadger/src/model/yelp_category.dart';
+export 'package:scrapebadger/src/model/yelp_filter_group.dart';
+export 'package:scrapebadger/src/model/yelp_filter_option.dart';
+export 'package:scrapebadger/src/model/yelp_hours.dart';
+export 'package:scrapebadger/src/model/yelp_link.dart';
+export 'package:scrapebadger/src/model/yelp_market.dart';
+export 'package:scrapebadger/src/model/yelp_markets_response.dart';
+export 'package:scrapebadger/src/model/yelp_resolved_location.dart';
+export 'package:scrapebadger/src/model/yelp_search_response.dart';
 

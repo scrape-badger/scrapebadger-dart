@@ -59,6 +59,7 @@ import 'package:scrapebadger/src/api/walmart_api.dart';
 import 'package:scrapebadger/src/api/web_api.dart';
 import 'package:scrapebadger/src/api/yahoo_api.dart';
 import 'package:scrapebadger/src/api/yandex_api.dart';
+import 'package:scrapebadger/src/api/yelp_api.dart';
 import 'package:scrapebadger/src/api/you_tube_api.dart';
 import 'package:scrapebadger/src/api/zillow_api.dart';
 
@@ -414,6 +415,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   YandexApi getYandexApi() {
     return YandexApi(dio, serializers);
+  }
+
+  /// Get YelpApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  YelpApi getYelpApi() {
+    return YelpApi(dio, serializers);
   }
 
   /// Get YouTubeApi instance, base route and serializer can be overridden by a given but be careful,

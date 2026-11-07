@@ -188,6 +188,16 @@ import 'package:scrapebadger/src/model/webhook_response.dart';
 import 'package:scrapebadger/src/model/webhook_secret.dart';
 import 'package:scrapebadger/src/model/webhook_test_request.dart';
 import 'package:scrapebadger/src/model/webhook_test_response.dart';
+import 'package:scrapebadger/src/model/yelp_business.dart';
+import 'package:scrapebadger/src/model/yelp_category.dart';
+import 'package:scrapebadger/src/model/yelp_filter_group.dart';
+import 'package:scrapebadger/src/model/yelp_filter_option.dart';
+import 'package:scrapebadger/src/model/yelp_hours.dart';
+import 'package:scrapebadger/src/model/yelp_link.dart';
+import 'package:scrapebadger/src/model/yelp_market.dart';
+import 'package:scrapebadger/src/model/yelp_markets_response.dart';
+import 'package:scrapebadger/src/model/yelp_resolved_location.dart';
+import 'package:scrapebadger/src/model/yelp_search_response.dart';
 
 part 'serializers.g.dart';
 
@@ -366,6 +376,16 @@ part 'serializers.g.dart';
   WebhookSecret,
   WebhookTestRequest,
   WebhookTestResponse,
+  YelpBusiness,
+  YelpCategory,
+  YelpFilterGroup,
+  YelpFilterOption,
+  YelpHours,
+  YelpLink,
+  YelpMarket,
+  YelpMarketsResponse,
+  YelpResolvedLocation,
+  YelpSearchResponse,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
