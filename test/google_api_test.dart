@@ -120,7 +120,7 @@ void main() {
     //
     // Organic results and related searches only. Costs 10 credits per successful uncached request, compared with 20 credits for regular Google Search. Light always skips rich SERP blocks; mode and ai_overview cannot enable them.
     //
-    //Future<JsonObject> googleGoogleLightWebSearch(String q, { String gl, String hl, int num_, int start, String domain, String location, String uule, String lr, String tbs, String safe, int filter, int nfpr, String output }) async
+    //Future<JsonObject> googleGoogleLightWebSearch(String q, { String gl, String hl, int num_, int start, String domain, String location, String uule, String lr, String tbs, String safe, int filter, int nfpr, String output, String googleDomain, num lat, num lon, num radius, String colorScheme, String tbm, String udm, bool noCache, String asDt, String asEpq, String asEq, String asLq, String asNlo, String asNhi, String asOq, String asQ, String asQdr, String asRq, String asSitesearch, String device, String userAgent, String cr, String ludocid, String lsig, String kgmid, String si, String ibp, String uds }) async
     test('test googleGoogleLightWebSearch', () async {
       // TODO
     });
@@ -165,7 +165,7 @@ void main() {
     //
     // Search Google and get structured results (organic, ads, KG, AI overview, PAA).
     //
-    //Future<JsonObject> googleGoogleWebSearch(String q, { String gl, String hl, int num_, int start, String domain, String device, String userAgent, String output, String location, String lr, String tbs, String safe, String uule, int filter, int nfpr, String cr, String ludocid, String lsig, String kgmid, String si, String ibp, String uds, bool aiOverview }) async
+    //Future<JsonObject> googleGoogleWebSearch(String q, { String gl, String hl, int num_, int start, String domain, String device, String userAgent, String output, String location, String lr, String tbs, String safe, String uule, int filter, int nfpr, String cr, String ludocid, String lsig, String kgmid, String si, String ibp, String uds, bool aiOverview, String mode, String expandRelatedQuestions, String googleDomain, num lat, num lon, num radius, String colorScheme, String tbm, String udm, bool noCache, String asDt, String asEpq, String asEq, String asLq, String asNlo, String asNhi, String asOq, String asQ, String asQdr, String asRq, String asSitesearch }) async
     test('test googleGoogleWebSearch', () async {
       // TODO
     });

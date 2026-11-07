@@ -773,7 +773,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **googleGoogleLightWebSearch**
-> JsonObject googleGoogleLightWebSearch(q, gl, hl, num_, start, domain, location, uule, lr, tbs, safe, filter, nfpr, output)
+> JsonObject googleGoogleLightWebSearch(q, gl, hl, num_, start, domain, location, uule, lr, tbs, safe, filter, nfpr, output, googleDomain, lat, lon, radius, colorScheme, tbm, udm, noCache, asDt, asEpq, asEq, asLq, asNlo, asNhi, asOq, asQ, asQdr, asRq, asSitesearch, device, userAgent, cr, ludocid, lsig, kgmid, si, ibp, uds)
 
 Google Light web search
 
@@ -802,9 +802,37 @@ final String safe = safe_example; // String | Safe search: off or active
 final int filter = 56; // int | 
 final int nfpr = 56; // int | Disable auto-correction
 final String output = output_example; // String | 
+final String googleDomain = googleDomain_example; // String | Alias for domain; Google requests use google.com with country targeting.
+final num lat = 8.14; // num | Latitude; supply together with lon instead of location or uule.
+final num lon = 8.14; // num | Longitude; supply together with lat.
+final num radius = 8.14; // num | Location accuracy in meters; requires lat/lon or a named city with a known center.
+final String colorScheme = colorScheme_example; // String | Google color scheme.
+final String tbm = tbm_example; // String | Google search type. Use output=html for verticals; dedicated APIs provide parsed vertical results.
+final String udm = udm_example; // String | Google result filter: 14 web, 18 forums. Other verticals require output=html.
+final bool noCache = true; // bool | Bypass result caches and request a fresh Google fetch.
+final String asDt = asDt_example; // String | Site restriction mode: i includes, e excludes as_sitesearch.
+final String asEpq = asEpq_example; // String | Exact phrase.
+final String asEq = asEq_example; // String | Words to exclude.
+final String asLq = asLq_example; // String | Find pages linking to this URL; availability depends on Google.
+final String asNlo = asNlo_example; // String | Numeric range minimum.
+final String asNhi = asNhi_example; // String | Numeric range maximum.
+final String asOq = asOq_example; // String | Match any of these words.
+final String asQ = asQ_example; // String | Additional query words.
+final String asQdr = asQdr_example; // String | Time range, such as d, w, m or y1.
+final String asRq = asRq_example; // String | Related URL; availability depends on Google.
+final String asSitesearch = asSitesearch_example; // String | Restrict results to a site.
+final String device = device_example; // String | Device target.
+final String userAgent = userAgent_example; // String | Custom User-Agent.
+final String cr = cr_example; // String | Country restrict.
+final String ludocid = ludocid_example; // String | Place CID.
+final String lsig = lsig_example; // String | Map view ID.
+final String kgmid = kgmid_example; // String | Knowledge Graph entity ID.
+final String si = si_example; // String | Cached Google parameters.
+final String ibp = ibp_example; // String | Layout control.
+final String uds = uds_example; // String | Google filter string.
 
 try {
-    final response = api.googleGoogleLightWebSearch(q, gl, hl, num_, start, domain, location, uule, lr, tbs, safe, filter, nfpr, output);
+    final response = api.googleGoogleLightWebSearch(q, gl, hl, num_, start, domain, location, uule, lr, tbs, safe, filter, nfpr, output, googleDomain, lat, lon, radius, colorScheme, tbm, udm, noCache, asDt, asEpq, asEq, asLq, asNlo, asNhi, asOq, asQ, asQdr, asRq, asSitesearch, device, userAgent, cr, ludocid, lsig, kgmid, si, ibp, uds);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling GoogleApi->googleGoogleLightWebSearch: $e\n');
@@ -829,6 +857,34 @@ Name | Type | Description  | Notes
  **filter** | **int**|  | [optional] 
  **nfpr** | **int**| Disable auto-correction | [optional] [default to 0]
  **output** | **String**|  | [optional] [default to 'json']
+ **googleDomain** | **String**| Alias for domain; Google requests use google.com with country targeting. | [optional] 
+ **lat** | **num**| Latitude; supply together with lon instead of location or uule. | [optional] 
+ **lon** | **num**| Longitude; supply together with lat. | [optional] 
+ **radius** | **num**| Location accuracy in meters; requires lat/lon or a named city with a known center. | [optional] 
+ **colorScheme** | **String**| Google color scheme. | [optional] 
+ **tbm** | **String**| Google search type. Use output=html for verticals; dedicated APIs provide parsed vertical results. | [optional] 
+ **udm** | **String**| Google result filter: 14 web, 18 forums. Other verticals require output=html. | [optional] 
+ **noCache** | **bool**| Bypass result caches and request a fresh Google fetch. | [optional] [default to false]
+ **asDt** | **String**| Site restriction mode: i includes, e excludes as_sitesearch. | [optional] 
+ **asEpq** | **String**| Exact phrase. | [optional] 
+ **asEq** | **String**| Words to exclude. | [optional] 
+ **asLq** | **String**| Find pages linking to this URL; availability depends on Google. | [optional] 
+ **asNlo** | **String**| Numeric range minimum. | [optional] 
+ **asNhi** | **String**| Numeric range maximum. | [optional] 
+ **asOq** | **String**| Match any of these words. | [optional] 
+ **asQ** | **String**| Additional query words. | [optional] 
+ **asQdr** | **String**| Time range, such as d, w, m or y1. | [optional] 
+ **asRq** | **String**| Related URL; availability depends on Google. | [optional] 
+ **asSitesearch** | **String**| Restrict results to a site. | [optional] 
+ **device** | **String**| Device target. | [optional] 
+ **userAgent** | **String**| Custom User-Agent. | [optional] 
+ **cr** | **String**| Country restrict. | [optional] 
+ **ludocid** | **String**| Place CID. | [optional] 
+ **lsig** | **String**| Map view ID. | [optional] 
+ **kgmid** | **String**| Knowledge Graph entity ID. | [optional] 
+ **si** | **String**| Cached Google parameters. | [optional] 
+ **ibp** | **String**| Layout control. | [optional] 
+ **uds** | **String**| Google filter string. | [optional] 
 
 ### Return type
 
@@ -1040,7 +1096,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **googleGoogleWebSearch**
-> JsonObject googleGoogleWebSearch(q, gl, hl, num_, start, domain, device, userAgent, output, location, lr, tbs, safe, uule, filter, nfpr, cr, ludocid, lsig, kgmid, si, ibp, uds, aiOverview)
+> JsonObject googleGoogleWebSearch(q, gl, hl, num_, start, domain, device, userAgent, output, location, lr, tbs, safe, uule, filter, nfpr, cr, ludocid, lsig, kgmid, si, ibp, uds, aiOverview, mode, expandRelatedQuestions, googleDomain, lat, lon, radius, colorScheme, tbm, udm, noCache, asDt, asEpq, asEq, asLq, asNlo, asNhi, asOq, asQ, asQdr, asRq, asSitesearch)
 
 Google web search
 
@@ -1079,9 +1135,30 @@ final String si = si_example; // String | Cached search params
 final String ibp = ibp_example; // String | Layout control
 final String uds = uds_example; // String | Google filter string
 final bool aiOverview = true; // bool | Chase deferred AI Overview page_token with a follow-up fetch and merge the result. Adds ~1s when the SERP defers the overview; the request price is unchanged.
+final String mode = mode_example; // String | 
+final String expandRelatedQuestions = expandRelatedQuestions_example; // String | Open all People Also Ask answers (true) or the first N (0-99).
+final String googleDomain = googleDomain_example; // String | Alias for domain; Google requests use google.com with country targeting.
+final num lat = 8.14; // num | Latitude; supply together with lon instead of location or uule.
+final num lon = 8.14; // num | Longitude; supply together with lat.
+final num radius = 8.14; // num | Location accuracy in meters; requires lat/lon or a named city with a known center.
+final String colorScheme = colorScheme_example; // String | Google color scheme.
+final String tbm = tbm_example; // String | Google search type. Use output=html for verticals; dedicated APIs provide parsed vertical results.
+final String udm = udm_example; // String | Google result filter: 14 web, 18 forums. Other verticals require output=html.
+final bool noCache = true; // bool | Bypass result caches and request a fresh Google fetch.
+final String asDt = asDt_example; // String | Site restriction mode: i includes, e excludes as_sitesearch.
+final String asEpq = asEpq_example; // String | Exact phrase.
+final String asEq = asEq_example; // String | Words to exclude.
+final String asLq = asLq_example; // String | Find pages linking to this URL; availability depends on Google.
+final String asNlo = asNlo_example; // String | Numeric range minimum.
+final String asNhi = asNhi_example; // String | Numeric range maximum.
+final String asOq = asOq_example; // String | Match any of these words.
+final String asQ = asQ_example; // String | Additional query words.
+final String asQdr = asQdr_example; // String | Time range, such as d, w, m or y1.
+final String asRq = asRq_example; // String | Related URL; availability depends on Google.
+final String asSitesearch = asSitesearch_example; // String | Restrict results to a site.
 
 try {
-    final response = api.googleGoogleWebSearch(q, gl, hl, num_, start, domain, device, userAgent, output, location, lr, tbs, safe, uule, filter, nfpr, cr, ludocid, lsig, kgmid, si, ibp, uds, aiOverview);
+    final response = api.googleGoogleWebSearch(q, gl, hl, num_, start, domain, device, userAgent, output, location, lr, tbs, safe, uule, filter, nfpr, cr, ludocid, lsig, kgmid, si, ibp, uds, aiOverview, mode, expandRelatedQuestions, googleDomain, lat, lon, radius, colorScheme, tbm, udm, noCache, asDt, asEpq, asEq, asLq, asNlo, asNhi, asOq, asQ, asQdr, asRq, asSitesearch);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling GoogleApi->googleGoogleWebSearch: $e\n');
@@ -1116,6 +1193,27 @@ Name | Type | Description  | Notes
  **ibp** | **String**| Layout control | [optional] 
  **uds** | **String**| Google filter string | [optional] 
  **aiOverview** | **bool**| Chase deferred AI Overview page_token with a follow-up fetch and merge the result. Adds ~1s when the SERP defers the overview; the request price is unchanged. | [optional] [default to false]
+ **mode** | **String**|  | [optional] [default to 'full']
+ **expandRelatedQuestions** | **String**| Open all People Also Ask answers (true) or the first N (0-99). | [optional] 
+ **googleDomain** | **String**| Alias for domain; Google requests use google.com with country targeting. | [optional] 
+ **lat** | **num**| Latitude; supply together with lon instead of location or uule. | [optional] 
+ **lon** | **num**| Longitude; supply together with lat. | [optional] 
+ **radius** | **num**| Location accuracy in meters; requires lat/lon or a named city with a known center. | [optional] 
+ **colorScheme** | **String**| Google color scheme. | [optional] 
+ **tbm** | **String**| Google search type. Use output=html for verticals; dedicated APIs provide parsed vertical results. | [optional] 
+ **udm** | **String**| Google result filter: 14 web, 18 forums. Other verticals require output=html. | [optional] 
+ **noCache** | **bool**| Bypass result caches and request a fresh Google fetch. | [optional] [default to false]
+ **asDt** | **String**| Site restriction mode: i includes, e excludes as_sitesearch. | [optional] 
+ **asEpq** | **String**| Exact phrase. | [optional] 
+ **asEq** | **String**| Words to exclude. | [optional] 
+ **asLq** | **String**| Find pages linking to this URL; availability depends on Google. | [optional] 
+ **asNlo** | **String**| Numeric range minimum. | [optional] 
+ **asNhi** | **String**| Numeric range maximum. | [optional] 
+ **asOq** | **String**| Match any of these words. | [optional] 
+ **asQ** | **String**| Additional query words. | [optional] 
+ **asQdr** | **String**| Time range, such as d, w, m or y1. | [optional] 
+ **asRq** | **String**| Related URL; availability depends on Google. | [optional] 
+ **asSitesearch** | **String**| Restrict results to a site. | [optional] 
 
 ### Return type
 

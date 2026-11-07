@@ -1346,6 +1346,34 @@ class GoogleApi {
   /// * [filter] 
   /// * [nfpr] - Disable auto-correction
   /// * [output] 
+  /// * [googleDomain] - Alias for domain; Google requests use google.com with country targeting.
+  /// * [lat] - Latitude; supply together with lon instead of location or uule.
+  /// * [lon] - Longitude; supply together with lat.
+  /// * [radius] - Location accuracy in meters; requires lat/lon or a named city with a known center.
+  /// * [colorScheme] - Google color scheme.
+  /// * [tbm] - Google search type. Use output=html for verticals; dedicated APIs provide parsed vertical results.
+  /// * [udm] - Google result filter: 14 web, 18 forums. Other verticals require output=html.
+  /// * [noCache] - Bypass result caches and request a fresh Google fetch.
+  /// * [asDt] - Site restriction mode: i includes, e excludes as_sitesearch.
+  /// * [asEpq] - Exact phrase.
+  /// * [asEq] - Words to exclude.
+  /// * [asLq] - Find pages linking to this URL; availability depends on Google.
+  /// * [asNlo] - Numeric range minimum.
+  /// * [asNhi] - Numeric range maximum.
+  /// * [asOq] - Match any of these words.
+  /// * [asQ] - Additional query words.
+  /// * [asQdr] - Time range, such as d, w, m or y1.
+  /// * [asRq] - Related URL; availability depends on Google.
+  /// * [asSitesearch] - Restrict results to a site.
+  /// * [device] - Device target.
+  /// * [userAgent] - Custom User-Agent.
+  /// * [cr] - Country restrict.
+  /// * [ludocid] - Place CID.
+  /// * [lsig] - Map view ID.
+  /// * [kgmid] - Knowledge Graph entity ID.
+  /// * [si] - Cached Google parameters.
+  /// * [ibp] - Layout control.
+  /// * [uds] - Google filter string.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1370,6 +1398,34 @@ class GoogleApi {
     int? filter,
     int? nfpr = 0,
     String? output = 'json',
+    String? googleDomain,
+    num? lat,
+    num? lon,
+    num? radius,
+    String? colorScheme,
+    String? tbm,
+    String? udm,
+    bool? noCache = false,
+    String? asDt,
+    String? asEpq,
+    String? asEq,
+    String? asLq,
+    String? asNlo,
+    String? asNhi,
+    String? asOq,
+    String? asQ,
+    String? asQdr,
+    String? asRq,
+    String? asSitesearch,
+    String? device,
+    String? userAgent,
+    String? cr,
+    String? ludocid,
+    String? lsig,
+    String? kgmid,
+    String? si,
+    String? ibp,
+    String? uds,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1412,6 +1468,34 @@ class GoogleApi {
       r'filter': encodeQueryParameter(_serializers, filter, const FullType(int)),
       if (nfpr != null) r'nfpr': encodeQueryParameter(_serializers, nfpr, const FullType(int)),
       if (output != null) r'output': encodeQueryParameter(_serializers, output, const FullType(String)),
+      r'google_domain': encodeQueryParameter(_serializers, googleDomain, const FullType(String)),
+      r'lat': encodeQueryParameter(_serializers, lat, const FullType(num)),
+      r'lon': encodeQueryParameter(_serializers, lon, const FullType(num)),
+      r'radius': encodeQueryParameter(_serializers, radius, const FullType(num)),
+      r'color_scheme': encodeQueryParameter(_serializers, colorScheme, const FullType(String)),
+      r'tbm': encodeQueryParameter(_serializers, tbm, const FullType(String)),
+      r'udm': encodeQueryParameter(_serializers, udm, const FullType(String)),
+      if (noCache != null) r'no_cache': encodeQueryParameter(_serializers, noCache, const FullType(bool)),
+      r'as_dt': encodeQueryParameter(_serializers, asDt, const FullType(String)),
+      r'as_epq': encodeQueryParameter(_serializers, asEpq, const FullType(String)),
+      r'as_eq': encodeQueryParameter(_serializers, asEq, const FullType(String)),
+      r'as_lq': encodeQueryParameter(_serializers, asLq, const FullType(String)),
+      r'as_nlo': encodeQueryParameter(_serializers, asNlo, const FullType(String)),
+      r'as_nhi': encodeQueryParameter(_serializers, asNhi, const FullType(String)),
+      r'as_oq': encodeQueryParameter(_serializers, asOq, const FullType(String)),
+      r'as_q': encodeQueryParameter(_serializers, asQ, const FullType(String)),
+      r'as_qdr': encodeQueryParameter(_serializers, asQdr, const FullType(String)),
+      r'as_rq': encodeQueryParameter(_serializers, asRq, const FullType(String)),
+      r'as_sitesearch': encodeQueryParameter(_serializers, asSitesearch, const FullType(String)),
+      r'device': encodeQueryParameter(_serializers, device, const FullType(String)),
+      r'user_agent': encodeQueryParameter(_serializers, userAgent, const FullType(String)),
+      r'cr': encodeQueryParameter(_serializers, cr, const FullType(String)),
+      r'ludocid': encodeQueryParameter(_serializers, ludocid, const FullType(String)),
+      r'lsig': encodeQueryParameter(_serializers, lsig, const FullType(String)),
+      r'kgmid': encodeQueryParameter(_serializers, kgmid, const FullType(String)),
+      r'si': encodeQueryParameter(_serializers, si, const FullType(String)),
+      r'ibp': encodeQueryParameter(_serializers, ibp, const FullType(String)),
+      r'uds': encodeQueryParameter(_serializers, uds, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1837,6 +1921,27 @@ class GoogleApi {
   /// * [ibp] - Layout control
   /// * [uds] - Google filter string
   /// * [aiOverview] - Chase deferred AI Overview page_token with a follow-up fetch and merge the result. Adds ~1s when the SERP defers the overview; the request price is unchanged.
+  /// * [mode] 
+  /// * [expandRelatedQuestions] - Open all People Also Ask answers (true) or the first N (0-99).
+  /// * [googleDomain] - Alias for domain; Google requests use google.com with country targeting.
+  /// * [lat] - Latitude; supply together with lon instead of location or uule.
+  /// * [lon] - Longitude; supply together with lat.
+  /// * [radius] - Location accuracy in meters; requires lat/lon or a named city with a known center.
+  /// * [colorScheme] - Google color scheme.
+  /// * [tbm] - Google search type. Use output=html for verticals; dedicated APIs provide parsed vertical results.
+  /// * [udm] - Google result filter: 14 web, 18 forums. Other verticals require output=html.
+  /// * [noCache] - Bypass result caches and request a fresh Google fetch.
+  /// * [asDt] - Site restriction mode: i includes, e excludes as_sitesearch.
+  /// * [asEpq] - Exact phrase.
+  /// * [asEq] - Words to exclude.
+  /// * [asLq] - Find pages linking to this URL; availability depends on Google.
+  /// * [asNlo] - Numeric range minimum.
+  /// * [asNhi] - Numeric range maximum.
+  /// * [asOq] - Match any of these words.
+  /// * [asQ] - Additional query words.
+  /// * [asQdr] - Time range, such as d, w, m or y1.
+  /// * [asRq] - Related URL; availability depends on Google.
+  /// * [asSitesearch] - Restrict results to a site.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1871,6 +1976,27 @@ class GoogleApi {
     String? ibp,
     String? uds,
     bool? aiOverview = false,
+    String? mode = 'full',
+    String? expandRelatedQuestions,
+    String? googleDomain,
+    num? lat,
+    num? lon,
+    num? radius,
+    String? colorScheme,
+    String? tbm,
+    String? udm,
+    bool? noCache = false,
+    String? asDt,
+    String? asEpq,
+    String? asEq,
+    String? asLq,
+    String? asNlo,
+    String? asNhi,
+    String? asOq,
+    String? asQ,
+    String? asQdr,
+    String? asRq,
+    String? asSitesearch,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1923,6 +2049,27 @@ class GoogleApi {
       r'ibp': encodeQueryParameter(_serializers, ibp, const FullType(String)),
       r'uds': encodeQueryParameter(_serializers, uds, const FullType(String)),
       if (aiOverview != null) r'ai_overview': encodeQueryParameter(_serializers, aiOverview, const FullType(bool)),
+      if (mode != null) r'mode': encodeQueryParameter(_serializers, mode, const FullType(String)),
+      r'expand_related_questions': encodeQueryParameter(_serializers, expandRelatedQuestions, const FullType(String)),
+      r'google_domain': encodeQueryParameter(_serializers, googleDomain, const FullType(String)),
+      r'lat': encodeQueryParameter(_serializers, lat, const FullType(num)),
+      r'lon': encodeQueryParameter(_serializers, lon, const FullType(num)),
+      r'radius': encodeQueryParameter(_serializers, radius, const FullType(num)),
+      r'color_scheme': encodeQueryParameter(_serializers, colorScheme, const FullType(String)),
+      r'tbm': encodeQueryParameter(_serializers, tbm, const FullType(String)),
+      r'udm': encodeQueryParameter(_serializers, udm, const FullType(String)),
+      if (noCache != null) r'no_cache': encodeQueryParameter(_serializers, noCache, const FullType(bool)),
+      r'as_dt': encodeQueryParameter(_serializers, asDt, const FullType(String)),
+      r'as_epq': encodeQueryParameter(_serializers, asEpq, const FullType(String)),
+      r'as_eq': encodeQueryParameter(_serializers, asEq, const FullType(String)),
+      r'as_lq': encodeQueryParameter(_serializers, asLq, const FullType(String)),
+      r'as_nlo': encodeQueryParameter(_serializers, asNlo, const FullType(String)),
+      r'as_nhi': encodeQueryParameter(_serializers, asNhi, const FullType(String)),
+      r'as_oq': encodeQueryParameter(_serializers, asOq, const FullType(String)),
+      r'as_q': encodeQueryParameter(_serializers, asQ, const FullType(String)),
+      r'as_qdr': encodeQueryParameter(_serializers, asQdr, const FullType(String)),
+      r'as_rq': encodeQueryParameter(_serializers, asRq, const FullType(String)),
+      r'as_sitesearch': encodeQueryParameter(_serializers, asSitesearch, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
