@@ -819,7 +819,7 @@ class _$GitHubProfileSerializer implements PrimitiveSerializer<GitHubProfile> {
             specifiedType: const FullType.nullable(GitHubStatus),
           ) as GitHubStatus?;
           if (valueDes == null) continue;
-          result.status = valueDes;
+          result.status.replace(valueDes);
           break;
         case r'followers':
           final valueDes = serializers.deserialize(

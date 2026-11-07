@@ -92,7 +92,7 @@ class _$ProductResponseSerializer implements PrimitiveSerializer<ProductResponse
             value,
             specifiedType: const FullType(Product),
           ) as Product;
-          result.product = valueDes;
+          result.product.replace(valueDes);
           break;
         default:
           unhandled.add(key);

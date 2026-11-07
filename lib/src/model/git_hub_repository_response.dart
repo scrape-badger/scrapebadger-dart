@@ -216,7 +216,7 @@ class _$GitHubRepositoryResponseSerializer implements PrimitiveSerializer<GitHub
             value,
             specifiedType: const FullType(GitHubRepositoryIdentity),
           ) as GitHubRepositoryIdentity;
-          result.repository = valueDes;
+          result.repository.replace(valueDes);
           break;
         case r'latest_commit':
           final valueDes = serializers.deserialize(
@@ -224,7 +224,7 @@ class _$GitHubRepositoryResponseSerializer implements PrimitiveSerializer<GitHub
             specifiedType: const FullType.nullable(GitHubLatestCommit),
           ) as GitHubLatestCommit?;
           if (valueDes == null) continue;
-          result.latestCommit = valueDes;
+          result.latestCommit.replace(valueDes);
           break;
         case r'readme':
           final valueDes = serializers.deserialize(
@@ -232,7 +232,7 @@ class _$GitHubRepositoryResponseSerializer implements PrimitiveSerializer<GitHub
             specifiedType: const FullType.nullable(GitHubRepositoryReadme),
           ) as GitHubRepositoryReadme?;
           if (valueDes == null) continue;
-          result.readme = valueDes;
+          result.readme.replace(valueDes);
           break;
         case r'files':
           final valueDes = serializers.deserialize(
@@ -256,7 +256,7 @@ class _$GitHubRepositoryResponseSerializer implements PrimitiveSerializer<GitHub
             specifiedType: const FullType.nullable(GitHubRepositoryRelease),
           ) as GitHubRepositoryRelease?;
           if (valueDes == null) continue;
-          result.latestRelease = valueDes;
+          result.latestRelease.replace(valueDes);
           break;
         case r'contributors':
           final valueDes = serializers.deserialize(
@@ -296,7 +296,7 @@ class _$GitHubRepositoryResponseSerializer implements PrimitiveSerializer<GitHub
             specifiedType: const FullType.nullable(GitHubRepositoryFunding),
           ) as GitHubRepositoryFunding?;
           if (valueDes == null) continue;
-          result.funding = valueDes;
+          result.funding.replace(valueDes);
           break;
         case r'community_files':
           final valueDes = serializers.deserialize(

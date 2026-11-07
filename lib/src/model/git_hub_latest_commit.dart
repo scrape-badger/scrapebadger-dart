@@ -313,7 +313,7 @@ class _$GitHubLatestCommitSerializer implements PrimitiveSerializer<GitHubLatest
             specifiedType: const FullType.nullable(GitHubCommitActor),
           ) as GitHubCommitActor?;
           if (valueDes == null) continue;
-          result.committer = valueDes;
+          result.committer.replace(valueDes);
           break;
         case r'pusher':
           final valueDes = serializers.deserialize(
@@ -321,7 +321,7 @@ class _$GitHubLatestCommitSerializer implements PrimitiveSerializer<GitHubLatest
             specifiedType: const FullType.nullable(GitHubCommitActor),
           ) as GitHubCommitActor?;
           if (valueDes == null) continue;
-          result.pusher = valueDes;
+          result.pusher.replace(valueDes);
           break;
         case r'checks':
           final valueDes = serializers.deserialize(
@@ -329,7 +329,7 @@ class _$GitHubLatestCommitSerializer implements PrimitiveSerializer<GitHubLatest
             specifiedType: const FullType.nullable(GitHubCommitChecks),
           ) as GitHubCommitChecks?;
           if (valueDes == null) continue;
-          result.checks = valueDes;
+          result.checks.replace(valueDes);
           break;
         case r'is_spoofed':
           final valueDes = serializers.deserialize(

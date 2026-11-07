@@ -162,7 +162,7 @@ class _$GitHubRepositoryFileSerializer implements PrimitiveSerializer<GitHubRepo
             specifiedType: const FullType.nullable(GitHubLatestCommit),
           ) as GitHubLatestCommit?;
           if (valueDes == null) continue;
-          result.latestCommit = valueDes;
+          result.latestCommit.replace(valueDes);
           break;
         default:
           unhandled.add(key);

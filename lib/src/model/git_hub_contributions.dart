@@ -212,7 +212,7 @@ class _$GitHubContributionsSerializer implements PrimitiveSerializer<GitHubContr
             specifiedType: const FullType.nullable(GitHubActivityOverview),
           ) as GitHubActivityOverview?;
           if (valueDes == null) continue;
-          result.activityOverview = valueDes;
+          result.activityOverview.replace(valueDes);
           break;
         case r'activity':
           final valueDes = serializers.deserialize(

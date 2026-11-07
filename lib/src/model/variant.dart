@@ -307,7 +307,7 @@ class _$VariantSerializer implements PrimitiveSerializer<Variant> {
             specifiedType: const FullType.nullable(Price),
           ) as Price?;
           if (valueDes == null) continue;
-          result.price = valueDes;
+          result.price.replace(valueDes);
           break;
         default:
           unhandled.add(key);

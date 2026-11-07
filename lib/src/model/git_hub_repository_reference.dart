@@ -179,7 +179,7 @@ class _$GitHubRepositoryReferenceSerializer implements PrimitiveSerializer<GitHu
             specifiedType: const FullType.nullable(GitHubRepositoryAccount),
           ) as GitHubRepositoryAccount?;
           if (valueDes == null) continue;
-          result.owner = valueDes;
+          result.owner.replace(valueDes);
           break;
         case r'description':
           final valueDes = serializers.deserialize(

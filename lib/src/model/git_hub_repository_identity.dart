@@ -961,7 +961,7 @@ class _$GitHubRepositoryIdentitySerializer implements PrimitiveSerializer<GitHub
             value,
             specifiedType: const FullType(GitHubRepositoryAccount),
           ) as GitHubRepositoryAccount;
-          result.owner = valueDes;
+          result.owner.replace(valueDes);
           break;
         case r'is_empty':
           final valueDes = serializers.deserialize(
@@ -1056,7 +1056,7 @@ class _$GitHubRepositoryIdentitySerializer implements PrimitiveSerializer<GitHub
             specifiedType: const FullType.nullable(GitHubRepositoryReference),
           ) as GitHubRepositoryReference?;
           if (valueDes == null) continue;
-          result.parent = valueDes;
+          result.parent.replace(valueDes);
           break;
         case r'source':
           final valueDes = serializers.deserialize(
@@ -1064,7 +1064,7 @@ class _$GitHubRepositoryIdentitySerializer implements PrimitiveSerializer<GitHub
             specifiedType: const FullType.nullable(GitHubRepositoryReference),
           ) as GitHubRepositoryReference?;
           if (valueDes == null) continue;
-          result.source_ = valueDes;
+          result.source_.replace(valueDes);
           break;
         case r'fork_comparison':
           final valueDes = serializers.deserialize(
@@ -1072,7 +1072,7 @@ class _$GitHubRepositoryIdentitySerializer implements PrimitiveSerializer<GitHub
             specifiedType: const FullType.nullable(GitHubForkComparison),
           ) as GitHubForkComparison?;
           if (valueDes == null) continue;
-          result.forkComparison = valueDes;
+          result.forkComparison.replace(valueDes);
           break;
         case r'is_archived':
           final valueDes = serializers.deserialize(
@@ -1128,7 +1128,7 @@ class _$GitHubRepositoryIdentitySerializer implements PrimitiveSerializer<GitHub
             specifiedType: const FullType.nullable(GitHubRepositoryLicense),
           ) as GitHubRepositoryLicense?;
           if (valueDes == null) continue;
-          result.license = valueDes;
+          result.license.replace(valueDes);
           break;
         case r'topics':
           final valueDes = serializers.deserialize(
