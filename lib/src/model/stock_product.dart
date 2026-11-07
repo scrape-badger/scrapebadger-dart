@@ -116,7 +116,7 @@ class _$StockProductSerializer implements PrimitiveSerializer<StockProduct> {
             specifiedType: const FullType.nullable(Price),
           ) as Price?;
           if (valueDes == null) continue;
-          result.productPrice = valueDes;
+          result.productPrice.replace(valueDes);
           break;
         case r'isInStock':
           final valueDes = serializers.deserialize(

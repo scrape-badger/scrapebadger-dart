@@ -269,7 +269,7 @@ class _$YelpSearchResponseSerializer implements PrimitiveSerializer<YelpSearchRe
             value,
             specifiedType: const FullType(YelpResolvedLocation),
           ) as YelpResolvedLocation;
-          result.locationResolved = valueDes;
+          result.locationResolved.replace(valueDes);
           break;
         case r'did_you_mean':
           final valueDes = serializers.deserialize(

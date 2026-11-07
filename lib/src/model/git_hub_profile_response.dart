@@ -294,7 +294,7 @@ class _$GitHubProfileResponseSerializer implements PrimitiveSerializer<GitHubPro
             value,
             specifiedType: const FullType(GitHubProfile),
           ) as GitHubProfile;
-          result.profile = valueDes;
+          result.profile.replace(valueDes);
           break;
         case r'pinned_repositories':
           final valueDes = serializers.deserialize(
@@ -318,7 +318,7 @@ class _$GitHubProfileResponseSerializer implements PrimitiveSerializer<GitHubPro
             specifiedType: const FullType.nullable(GitHubReadme),
           ) as GitHubReadme?;
           if (valueDes == null) continue;
-          result.readme = valueDes;
+          result.readme.replace(valueDes);
           break;
         case r'organizations':
           final valueDes = serializers.deserialize(
@@ -382,7 +382,7 @@ class _$GitHubProfileResponseSerializer implements PrimitiveSerializer<GitHubPro
             specifiedType: const FullType.nullable(GitHubContributions),
           ) as GitHubContributions?;
           if (valueDes == null) continue;
-          result.contributions = valueDes;
+          result.contributions.replace(valueDes);
           break;
         case r'repositories':
           final valueDes = serializers.deserialize(
@@ -414,7 +414,7 @@ class _$GitHubProfileResponseSerializer implements PrimitiveSerializer<GitHubPro
             specifiedType: const FullType.nullable(GitHubPagination),
           ) as GitHubPagination?;
           if (valueDes == null) continue;
-          result.pagination = valueDes;
+          result.pagination.replace(valueDes);
           break;
         case r'top_languages':
           final valueDes = serializers.deserialize(

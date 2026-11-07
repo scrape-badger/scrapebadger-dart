@@ -147,7 +147,7 @@ class _$PriceSerializer implements PrimitiveSerializer<Price> {
             specifiedType: const FullType.nullable(PriceValue),
           ) as PriceValue?;
           if (valueDes == null) continue;
-          result.current = valueDes;
+          result.current.replace(valueDes);
           break;
         case r'previous':
           final valueDes = serializers.deserialize(
@@ -155,7 +155,7 @@ class _$PriceSerializer implements PrimitiveSerializer<Price> {
             specifiedType: const FullType.nullable(PriceValue),
           ) as PriceValue?;
           if (valueDes == null) continue;
-          result.previous = valueDes;
+          result.previous.replace(valueDes);
           break;
         case r'rrp':
           final valueDes = serializers.deserialize(
@@ -163,7 +163,7 @@ class _$PriceSerializer implements PrimitiveSerializer<Price> {
             specifiedType: const FullType.nullable(PriceValue),
           ) as PriceValue?;
           if (valueDes == null) continue;
-          result.rrp = valueDes;
+          result.rrp.replace(valueDes);
           break;
         case r'currency':
           final valueDes = serializers.deserialize(

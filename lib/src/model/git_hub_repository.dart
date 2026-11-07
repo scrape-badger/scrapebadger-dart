@@ -342,7 +342,7 @@ class _$GitHubRepositorySerializer implements PrimitiveSerializer<GitHubReposito
             value,
             specifiedType: const FullType(GitHubAccountPreview),
           ) as GitHubAccountPreview;
-          result.owner = valueDes;
+          result.owner.replace(valueDes);
           break;
         case r'link':
           final valueDes = serializers.deserialize(
