@@ -16,11 +16,13 @@ import 'package:scrapebadger/src/api/ali_express_api.dart';
 import 'package:scrapebadger/src/api/amazon_api.dart';
 import 'package:scrapebadger/src/api/apartments_api.dart';
 import 'package:scrapebadger/src/api/app_store_api.dart';
+import 'package:scrapebadger/src/api/auto_scout24_api.dart';
 import 'package:scrapebadger/src/api/baidu_api.dart';
 import 'package:scrapebadger/src/api/batch_api.dart';
 import 'package:scrapebadger/src/api/best_buy_api.dart';
 import 'package:scrapebadger/src/api/bing_api.dart';
 import 'package:scrapebadger/src/api/booking_api.dart';
+import 'package:scrapebadger/src/api/brave_api.dart';
 import 'package:scrapebadger/src/api/chat_gpt_api.dart';
 import 'package:scrapebadger/src/api/copilot_api.dart';
 import 'package:scrapebadger/src/api/depop_api.dart';
@@ -30,6 +32,7 @@ import 'package:scrapebadger/src/api/etsy_api.dart';
 import 'package:scrapebadger/src/api/facebook_api.dart';
 import 'package:scrapebadger/src/api/feedback_api.dart';
 import 'package:scrapebadger/src/api/gemini_api.dart';
+import 'package:scrapebadger/src/api/git_hub_api.dart';
 import 'package:scrapebadger/src/api/google_api.dart';
 import 'package:scrapebadger/src/api/google_play_api.dart';
 import 'package:scrapebadger/src/api/gumtree_api.dart';
@@ -155,6 +158,12 @@ class Scrapebadger {
     return AppStoreApi(dio, serializers);
   }
 
+  /// Get AutoScout24Api instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  AutoScout24Api getAutoScout24Api() {
+    return AutoScout24Api(dio, serializers);
+  }
+
   /// Get BaiduApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   BaiduApi getBaiduApi() {
@@ -183,6 +192,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   BookingApi getBookingApi() {
     return BookingApi(dio, serializers);
+  }
+
+  /// Get BraveApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  BraveApi getBraveApi() {
+    return BraveApi(dio, serializers);
   }
 
   /// Get ChatGPTApi instance, base route and serializer can be overridden by a given but be careful,
@@ -237,6 +252,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   GeminiApi getGeminiApi() {
     return GeminiApi(dio, serializers);
+  }
+
+  /// Get GitHubApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  GitHubApi getGitHubApi() {
+    return GitHubApi(dio, serializers);
   }
 
   /// Get GoogleApi instance, base route and serializer can be overridden by a given but be careful,

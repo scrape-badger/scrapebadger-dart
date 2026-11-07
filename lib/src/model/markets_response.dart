@@ -17,7 +17,7 @@ part 'markets_response.g.dart';
 @BuiltValue()
 abstract class MarketsResponse implements Built<MarketsResponse, MarketsResponseBuilder> {
   @BuiltValueField(wireName: r'markets')
-  BuiltList<BuiltMap<String, JsonObject?>> get markets;
+  BuiltList<BuiltMap<String, JsonObject?>?> get markets;
 
   MarketsResponse._();
 
@@ -45,7 +45,7 @@ class _$MarketsResponseSerializer implements PrimitiveSerializer<MarketsResponse
     yield r'markets';
     yield serializers.serialize(
       object.markets,
-      specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+      specifiedType: const FullType(BuiltList, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
     );
   }
 
@@ -73,8 +73,8 @@ class _$MarketsResponseSerializer implements PrimitiveSerializer<MarketsResponse
         case r'markets':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
-          ) as BuiltList<BuiltMap<String, JsonObject?>>;
+            specifiedType: const FullType(BuiltList, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+          ) as BuiltList<BuiltMap<String, JsonObject?>?>;
           result.markets.replace(valueDes);
           break;
         default:

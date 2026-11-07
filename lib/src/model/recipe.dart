@@ -1,0 +1,69 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+
+// ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:one_of/any_of.dart';
+
+part 'recipe.g.dart';
+
+/// Recipe
+@BuiltValue()
+abstract class Recipe implements Built<Recipe, RecipeBuilder> {
+  /// Any Of [BuiltMap<String, JsonObject>], [JsonObject]
+  AnyOf get anyOf;
+
+  Recipe._();
+
+  factory Recipe([void updates(RecipeBuilder b)]) = _$Recipe;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(RecipeBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<Recipe> get serializer => _$RecipeSerializer();
+}
+
+class _$RecipeSerializer implements PrimitiveSerializer<Recipe> {
+  @override
+  final Iterable<Type> types = const [Recipe, _$Recipe];
+
+  @override
+  final String wireName = r'Recipe';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    Recipe object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+  }
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    Recipe object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final anyOf = object.anyOf;
+    return serializers.serialize(anyOf, specifiedType: FullType(AnyOf, anyOf.valueTypes.map((type) => FullType(type)).toList()))!;
+  }
+
+  @override
+  Recipe deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = RecipeBuilder();
+    Object? anyOfDataSrc;
+    final targetType = const FullType(AnyOf, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]), FullType.nullable(JsonObject), ]);
+    anyOfDataSrc = serialized;
+    result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
+    return result.build();
+  }
+}
+

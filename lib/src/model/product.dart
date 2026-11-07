@@ -13,8 +13,8 @@ import 'package:scrapebadger/src/model/brandid.dart';
 import 'package:scrapebadger/src/model/variant.dart';
 import 'package:scrapebadger/src/model/brandname.dart';
 import 'package:scrapebadger/src/model/colourwayid.dart';
+import 'package:scrapebadger/src/model/description1.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:scrapebadger/src/model/description.dart';
 import 'package:scrapebadger/src/model/product_price.dart';
 import 'package:scrapebadger/src/model/productcode.dart';
 import 'package:scrapebadger/src/model/ratings.dart';
@@ -102,7 +102,7 @@ abstract class Product implements Built<Product, ProductBuilder> {
   Gender? get gender;
 
   @BuiltValueField(wireName: r'description')
-  Description? get description;
+  Description1? get description;
 
   @BuiltValueField(wireName: r'ratings')
   Ratings? get ratings;
@@ -252,7 +252,7 @@ class _$ProductSerializer implements PrimitiveSerializer<Product> {
       yield r'description';
       yield serializers.serialize(
         object.description,
-        specifiedType: const FullType(Description),
+        specifiedType: const FullType(Description1),
       );
     }
     if (object.ratings != null) {
@@ -415,8 +415,8 @@ class _$ProductSerializer implements PrimitiveSerializer<Product> {
         case r'description':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Description),
-          ) as Description;
+            specifiedType: const FullType(Description1),
+          ) as Description1;
           result.description.replace(valueDes);
           break;
         case r'ratings':

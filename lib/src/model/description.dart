@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
+import 'package:scrapebadger/src/model/model_null.dart';
+import 'dart:core';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/any_of.dart';
@@ -14,7 +14,7 @@ part 'description.g.dart';
 /// Description
 @BuiltValue()
 abstract class Description implements Built<Description, DescriptionBuilder> {
-  /// Any Of [BuiltMap<String, JsonObject>], [JsonObject]
+  /// Any Of [ModelNull], [String]
   AnyOf get anyOf;
 
   Description._();
@@ -60,7 +60,7 @@ class _$DescriptionSerializer implements PrimitiveSerializer<Description> {
   }) {
     final result = DescriptionBuilder();
     Object? anyOfDataSrc;
-    final targetType = const FullType(AnyOf, [FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]), FullType.nullable(JsonObject), ]);
+    final targetType = const FullType(AnyOf, [FullType(String), FullType(ModelNull), ]);
     anyOfDataSrc = serialized;
     result.anyOf = serializers.deserialize(anyOfDataSrc, specifiedType: targetType) as AnyOf;
     return result.build();
