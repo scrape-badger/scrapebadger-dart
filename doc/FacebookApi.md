@@ -968,11 +968,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **facebookSearchMarketplace**
-> JsonObject facebookSearchMarketplace(query, location, minPrice, maxPrice, daysSinceListed, sortBy, itemCondition, deliveryMethod, radius, after)
+> JsonObject facebookSearchMarketplace(query, location, minPrice, maxPrice, daysSinceListed, sortBy, itemCondition, deliveryMethod, radius, after, strictFilters, includeDetails)
 
 Search Marketplace
 
-Search Facebook Marketplace listings by keyword and location.  ``location`` must be a Facebook location slug (``london``, ``newcastleupontyne``) or a numeric Facebook place id — the ``city_page_id`` on any listing is one. Human-readable names such as ``Durham, UK`` are rejected with a 400 rather than silently searching Facebook's San Francisco default.
+Search Facebook Marketplace listings by keyword and location.  ``location`` must be a Facebook location slug (``london``, ``newcastleupontyne``) or a numeric Facebook place id — the ``city_page_id`` on any listing is one. Human-readable names such as ``Durham, UK`` are rejected with a 400 rather than silently searching Facebook's San Francisco default.  Set strict_filters=true for locally enforced radius (always km) and age. Public price-range continuations are bounded to eight pages; sort the full collected set for newest-first monitoring. Coverage and freshness are partial.
 
 ### Example
 ```dart
@@ -993,9 +993,11 @@ final String itemCondition = itemCondition_example; // String |
 final String deliveryMethod = deliveryMethod_example; // String | 
 final int radius = 56; // int | Search radius around the location (km, or miles in the US)
 final String after = after_example; // String | 
+final bool strictFilters = true; // bool | Verify radius in km and age locally; use bounded public search continuations with partial-coverage diagnostics
+final bool includeDetails = true; // bool | Enrich returned listings with full public descriptions and photos; enables verified search
 
 try {
-    final response = api.facebookSearchMarketplace(query, location, minPrice, maxPrice, daysSinceListed, sortBy, itemCondition, deliveryMethod, radius, after);
+    final response = api.facebookSearchMarketplace(query, location, minPrice, maxPrice, daysSinceListed, sortBy, itemCondition, deliveryMethod, radius, after, strictFilters, includeDetails);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling FacebookApi->facebookSearchMarketplace: $e\n');
@@ -1016,6 +1018,8 @@ Name | Type | Description  | Notes
  **deliveryMethod** | **String**|  | [optional] 
  **radius** | **int**| Search radius around the location (km, or miles in the US) | [optional] 
  **after** | **String**|  | [optional] 
+ **strictFilters** | **bool**| Verify radius in km and age locally; use bounded public search continuations with partial-coverage diagnostics | [optional] [default to false]
+ **includeDetails** | **bool**| Enrich returned listings with full public descriptions and photos; enables verified search | [optional] [default to false]
 
 ### Return type
 

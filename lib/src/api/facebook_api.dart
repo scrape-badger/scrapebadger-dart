@@ -1701,7 +1701,7 @@ class FacebookApi {
   }
 
   /// Search Marketplace
-  /// Search Facebook Marketplace listings by keyword and location.  &#x60;&#x60;location&#x60;&#x60; must be a Facebook location slug (&#x60;&#x60;london&#x60;&#x60;, &#x60;&#x60;newcastleupontyne&#x60;&#x60;) or a numeric Facebook place id — the &#x60;&#x60;city_page_id&#x60;&#x60; on any listing is one. Human-readable names such as &#x60;&#x60;Durham, UK&#x60;&#x60; are rejected with a 400 rather than silently searching Facebook&#39;s San Francisco default.
+  /// Search Facebook Marketplace listings by keyword and location.  &#x60;&#x60;location&#x60;&#x60; must be a Facebook location slug (&#x60;&#x60;london&#x60;&#x60;, &#x60;&#x60;newcastleupontyne&#x60;&#x60;) or a numeric Facebook place id — the &#x60;&#x60;city_page_id&#x60;&#x60; on any listing is one. Human-readable names such as &#x60;&#x60;Durham, UK&#x60;&#x60; are rejected with a 400 rather than silently searching Facebook&#39;s San Francisco default.  Set strict_filters&#x3D;true for locally enforced radius (always km) and age. Public price-range continuations are bounded to eight pages; sort the full collected set for newest-first monitoring. Coverage and freshness are partial.
   ///
   /// Parameters:
   /// * [query] - Search keywords
@@ -1714,6 +1714,8 @@ class FacebookApi {
   /// * [deliveryMethod] 
   /// * [radius] - Search radius around the location (km, or miles in the US)
   /// * [after] 
+  /// * [strictFilters] - Verify radius in km and age locally; use bounded public search continuations with partial-coverage diagnostics
+  /// * [includeDetails] - Enrich returned listings with full public descriptions and photos; enables verified search
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1734,6 +1736,8 @@ class FacebookApi {
     String? deliveryMethod,
     int? radius,
     String? after,
+    bool? strictFilters = false,
+    bool? includeDetails = false,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1772,6 +1776,8 @@ class FacebookApi {
       r'delivery_method': encodeQueryParameter(_serializers, deliveryMethod, const FullType(String)),
       r'radius': encodeQueryParameter(_serializers, radius, const FullType(int)),
       r'after': encodeQueryParameter(_serializers, after, const FullType(String)),
+      if (strictFilters != null) r'strict_filters': encodeQueryParameter(_serializers, strictFilters, const FullType(bool)),
+      if (includeDetails != null) r'include_details': encodeQueryParameter(_serializers, includeDetails, const FullType(bool)),
     };
 
     final _response = await _dio.request<Object>(

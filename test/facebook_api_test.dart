@@ -180,9 +180,9 @@ void main() {
 
     // Search Marketplace
     //
-    // Search Facebook Marketplace listings by keyword and location.  ``location`` must be a Facebook location slug (``london``, ``newcastleupontyne``) or a numeric Facebook place id — the ``city_page_id`` on any listing is one. Human-readable names such as ``Durham, UK`` are rejected with a 400 rather than silently searching Facebook's San Francisco default.
+    // Search Facebook Marketplace listings by keyword and location.  ``location`` must be a Facebook location slug (``london``, ``newcastleupontyne``) or a numeric Facebook place id — the ``city_page_id`` on any listing is one. Human-readable names such as ``Durham, UK`` are rejected with a 400 rather than silently searching Facebook's San Francisco default.  Set strict_filters=true for locally enforced radius (always km) and age. Public price-range continuations are bounded to eight pages; sort the full collected set for newest-first monitoring. Coverage and freshness are partial.
     //
-    //Future<JsonObject> facebookSearchMarketplace(String query, { String location, int minPrice, int maxPrice, int daysSinceListed, String sortBy, String itemCondition, String deliveryMethod, int radius, String after }) async
+    //Future<JsonObject> facebookSearchMarketplace(String query, { String location, int minPrice, int maxPrice, int daysSinceListed, String sortBy, String itemCondition, String deliveryMethod, int radius, String after, bool strictFilters, bool includeDetails }) async
     test('test facebookSearchMarketplace', () async {
       // TODO
     });
