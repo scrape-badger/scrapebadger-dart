@@ -1936,11 +1936,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **twitterListDeliveryLogsForAFilterRule**
-> FilterRuleDeliveryLogListResponse twitterListDeliveryLogsForAFilterRule(ruleId, deliveryStatus, authorUsername, page, pageSize, sort)
+> twitterListDeliveryLogsForAFilterRule(ruleId)
 
 List delivery logs for a filter rule
 
-List tweet delivery logs for a specific filter rule.
+Removed on 2026-11-09 (SCR-396): ScrapeBadger no longer stores delivered tweets.  Always answers ``410 Gone`` with ``error: delivery_logs_removed``.
 
 ### Example
 ```dart
@@ -1952,15 +1952,9 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getTwitterApi();
 final String ruleId = ruleId_example; // String | 
-final String deliveryStatus = deliveryStatus_example; // String | 
-final String authorUsername = authorUsername_example; // String | 
-final int page = 56; // int | 
-final int pageSize = 56; // int | 
-final String sort = sort_example; // String | 
 
 try {
-    final response = api.twitterListDeliveryLogsForAFilterRule(ruleId, deliveryStatus, authorUsername, page, pageSize, sort);
-    print(response);
+    api.twitterListDeliveryLogsForAFilterRule(ruleId);
 } catch on DioException (e) {
     print('Exception when calling TwitterApi->twitterListDeliveryLogsForAFilterRule: $e\n');
 }
@@ -1971,15 +1965,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ruleId** | **String**|  | 
- **deliveryStatus** | **String**|  | [optional] 
- **authorUsername** | **String**|  | [optional] 
- **page** | **int**|  | [optional] [default to 1]
- **pageSize** | **int**|  | [optional] [default to 20]
- **sort** | **String**|  | [optional] [default to 'desc']
 
 ### Return type
 
-[**FilterRuleDeliveryLogListResponse**](FilterRuleDeliveryLogListResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -2095,11 +2084,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **twitterListTweetDeliveryLogs**
-> TweetDeliveryLogListResponse twitterListTweetDeliveryLogs(monitorId, authorUsername, deliveryStatus, page, pageSize, sort)
+> twitterListTweetDeliveryLogs()
 
 List tweet delivery logs
 
-List tweet delivery logs for the authenticated API key's monitors.
+Removed on 2026-11-09 (SCR-396): ScrapeBadger no longer stores delivered tweets.  Always answers ``410 Gone`` with ``error: delivery_logs_removed``. Each tweet is delivered to your webhook or WebSocket only; keep your own log there.
 
 ### Example
 ```dart
@@ -2110,35 +2099,20 @@ import 'package:scrapebadger/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api = Scrapebadger().getTwitterApi();
-final String monitorId = monitorId_example; // String | 
-final String authorUsername = authorUsername_example; // String | 
-final String deliveryStatus = deliveryStatus_example; // String | 
-final int page = 56; // int | 
-final int pageSize = 56; // int | 
-final String sort = sort_example; // String | 
 
 try {
-    final response = api.twitterListTweetDeliveryLogs(monitorId, authorUsername, deliveryStatus, page, pageSize, sort);
-    print(response);
+    api.twitterListTweetDeliveryLogs();
 } catch on DioException (e) {
     print('Exception when calling TwitterApi->twitterListTweetDeliveryLogs: $e\n');
 }
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **monitorId** | **String**|  | [optional] 
- **authorUsername** | **String**|  | [optional] 
- **deliveryStatus** | **String**|  | [optional] 
- **page** | **int**|  | [optional] [default to 1]
- **pageSize** | **int**|  | [optional] [default to 20]
- **sort** | **String**|  | [optional] [default to 'desc']
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**TweetDeliveryLogListResponse**](TweetDeliveryLogListResponse.md)
+void (empty response body)
 
 ### Authorization
 

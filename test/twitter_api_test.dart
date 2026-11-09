@@ -360,9 +360,9 @@ void main() {
 
     // List delivery logs for a filter rule
     //
-    // List tweet delivery logs for a specific filter rule.
+    // Removed on 2026-11-09 (SCR-396): ScrapeBadger no longer stores delivered tweets.  Always answers ``410 Gone`` with ``error: delivery_logs_removed``.
     //
-    //Future<FilterRuleDeliveryLogListResponse> twitterListDeliveryLogsForAFilterRule(String ruleId, { String deliveryStatus, String authorUsername, int page, int pageSize, String sort }) async
+    //Future twitterListDeliveryLogsForAFilterRule(String ruleId) async
     test('test twitterListDeliveryLogsForAFilterRule', () async {
       // TODO
     });
@@ -387,9 +387,9 @@ void main() {
 
     // List tweet delivery logs
     //
-    // List tweet delivery logs for the authenticated API key's monitors.
+    // Removed on 2026-11-09 (SCR-396): ScrapeBadger no longer stores delivered tweets.  Always answers ``410 Gone`` with ``error: delivery_logs_removed``. Each tweet is delivered to your webhook or WebSocket only; keep your own log there.
     //
-    //Future<TweetDeliveryLogListResponse> twitterListTweetDeliveryLogs({ String monitorId, String authorUsername, String deliveryStatus, int page, int pageSize, String sort }) async
+    //Future twitterListTweetDeliveryLogs() async
     test('test twitterListTweetDeliveryLogs', () async {
       // TODO
     });

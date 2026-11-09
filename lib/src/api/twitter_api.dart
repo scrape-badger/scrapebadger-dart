@@ -12,7 +12,6 @@ import 'package:built_value/json_object.dart';
 import 'package:scrapebadger/src/api_util.dart';
 import 'package:scrapebadger/src/model/billing_log_list_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_create.dart';
-import 'package:scrapebadger/src/model/filter_rule_delivery_log_list_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_list_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_update.dart';
@@ -24,7 +23,6 @@ import 'package:scrapebadger/src/model/stream_monitor_create.dart';
 import 'package:scrapebadger/src/model/stream_monitor_list_response.dart';
 import 'package:scrapebadger/src/model/stream_monitor_response.dart';
 import 'package:scrapebadger/src/model/stream_monitor_update.dart';
-import 'package:scrapebadger/src/model/tweet_delivery_log_list_response.dart';
 import 'package:scrapebadger/src/model/webhook_create.dart';
 import 'package:scrapebadger/src/model/webhook_list_response.dart';
 import 'package:scrapebadger/src/model/webhook_response.dart';
@@ -3385,15 +3383,10 @@ class TwitterApi {
   }
 
   /// List delivery logs for a filter rule
-  /// List tweet delivery logs for a specific filter rule.
+  /// Removed on 2026-11-09 (SCR-396): ScrapeBadger no longer stores delivered tweets.  Always answers &#x60;&#x60;410 Gone&#x60;&#x60; with &#x60;&#x60;error: delivery_logs_removed&#x60;&#x60;.
   ///
   /// Parameters:
   /// * [ruleId] 
-  /// * [deliveryStatus] 
-  /// * [authorUsername] 
-  /// * [page] 
-  /// * [pageSize] 
-  /// * [sort] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3401,15 +3394,11 @@ class TwitterApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [FilterRuleDeliveryLogListResponse] as data
+  /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FilterRuleDeliveryLogListResponse>> twitterListDeliveryLogsForAFilterRule({ 
+  @Deprecated('This operation has been deprecated')
+  Future<Response<void>> twitterListDeliveryLogsForAFilterRule({ 
     required String ruleId,
-    String? deliveryStatus,
-    String? authorUsername,
-    int? page = 1,
-    int? pageSize = 20,
-    String? sort = 'desc',
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -3437,52 +3426,15 @@ class TwitterApi {
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      r'delivery_status': encodeQueryParameter(_serializers, deliveryStatus, const FullType(String)),
-      r'author_username': encodeQueryParameter(_serializers, authorUsername, const FullType(String)),
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (sort != null) r'sort': encodeQueryParameter(_serializers, sort, const FullType(String)),
-    };
-
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
-      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    FilterRuleDeliveryLogListResponse? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(FilterRuleDeliveryLogListResponse),
-      ) as FilterRuleDeliveryLogListResponse;
-
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<FilterRuleDeliveryLogListResponse>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    return _response;
   }
 
   /// List filter rules
@@ -3672,15 +3624,9 @@ class TwitterApi {
   }
 
   /// List tweet delivery logs
-  /// List tweet delivery logs for the authenticated API key&#39;s monitors.
+  /// Removed on 2026-11-09 (SCR-396): ScrapeBadger no longer stores delivered tweets.  Always answers &#x60;&#x60;410 Gone&#x60;&#x60; with &#x60;&#x60;error: delivery_logs_removed&#x60;&#x60;. Each tweet is delivered to your webhook or WebSocket only; keep your own log there.
   ///
   /// Parameters:
-  /// * [monitorId] 
-  /// * [authorUsername] 
-  /// * [deliveryStatus] 
-  /// * [page] 
-  /// * [pageSize] 
-  /// * [sort] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3688,15 +3634,10 @@ class TwitterApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [TweetDeliveryLogListResponse] as data
+  /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<TweetDeliveryLogListResponse>> twitterListTweetDeliveryLogs({ 
-    String? monitorId,
-    String? authorUsername,
-    String? deliveryStatus,
-    int? page = 1,
-    int? pageSize = 20,
-    String? sort = 'desc',
+  @Deprecated('This operation has been deprecated')
+  Future<Response<void>> twitterListTweetDeliveryLogs({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -3724,53 +3665,15 @@ class TwitterApi {
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      r'monitor_id': encodeQueryParameter(_serializers, monitorId, const FullType(String)),
-      r'author_username': encodeQueryParameter(_serializers, authorUsername, const FullType(String)),
-      r'delivery_status': encodeQueryParameter(_serializers, deliveryStatus, const FullType(String)),
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (sort != null) r'sort': encodeQueryParameter(_serializers, sort, const FullType(String)),
-    };
-
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
-      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    TweetDeliveryLogListResponse? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(TweetDeliveryLogListResponse),
-      ) as TweetDeliveryLogListResponse;
-
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<TweetDeliveryLogListResponse>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    return _response;
   }
 
   /// List webhooks

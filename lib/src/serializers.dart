@@ -61,8 +61,6 @@ import 'package:scrapebadger/src/model/family_friendly.dart';
 import 'package:scrapebadger/src/model/faq.dart';
 import 'package:scrapebadger/src/model/feedback_request.dart';
 import 'package:scrapebadger/src/model/filter_rule_create.dart';
-import 'package:scrapebadger/src/model/filter_rule_delivery_log_list_response.dart';
-import 'package:scrapebadger/src/model/filter_rule_delivery_log_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_list_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_response.dart';
 import 'package:scrapebadger/src/model/filter_rule_update.dart';
@@ -158,8 +156,6 @@ import 'package:scrapebadger/src/model/stream_monitor_update.dart';
 import 'package:scrapebadger/src/model/subscription_info.dart';
 import 'package:scrapebadger/src/model/subtype.dart';
 import 'package:scrapebadger/src/model/thumbnail.dart';
-import 'package:scrapebadger/src/model/tweet_delivery_log_list_response.dart';
-import 'package:scrapebadger/src/model/tweet_delivery_log_response.dart';
 import 'package:scrapebadger/src/model/type.dart';
 import 'package:scrapebadger/src/model/url.dart';
 import 'package:scrapebadger/src/model/user_items_response.dart';
@@ -249,8 +245,6 @@ part 'serializers.g.dart';
   Faq,
   FeedbackRequest,
   FilterRuleCreate,
-  FilterRuleDeliveryLogListResponse,
-  FilterRuleDeliveryLogResponse,
   FilterRuleListResponse,
   FilterRuleResponse,
   FilterRuleUpdate,
@@ -346,8 +340,6 @@ part 'serializers.g.dart';
   SubscriptionInfo,
   Subtype,
   Thumbnail,
-  TweetDeliveryLogListResponse,
-  TweetDeliveryLogResponse,
   Type,
   Url,
   UserItemsResponse,

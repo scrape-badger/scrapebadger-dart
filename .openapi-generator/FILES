@@ -71,8 +71,6 @@ doc/Faq.md
 doc/FeedbackApi.md
 doc/FeedbackRequest.md
 doc/FilterRuleCreate.md
-doc/FilterRuleDeliveryLogListResponse.md
-doc/FilterRuleDeliveryLogResponse.md
 doc/FilterRuleListResponse.md
 doc/FilterRuleResponse.md
 doc/FilterRuleUpdate.md
@@ -189,8 +187,6 @@ doc/Subtype.md
 doc/TargetApi.md
 doc/Thumbnail.md
 doc/TikTokApi.md
-doc/TweetDeliveryLogListResponse.md
-doc/TweetDeliveryLogResponse.md
 doc/TwitterApi.md
 doc/Type.md
 doc/Url.md
@@ -349,8 +345,6 @@ lib/src/model/family_friendly.dart
 lib/src/model/faq.dart
 lib/src/model/feedback_request.dart
 lib/src/model/filter_rule_create.dart
-lib/src/model/filter_rule_delivery_log_list_response.dart
-lib/src/model/filter_rule_delivery_log_response.dart
 lib/src/model/filter_rule_list_response.dart
 lib/src/model/filter_rule_response.dart
 lib/src/model/filter_rule_update.dart
@@ -446,8 +440,6 @@ lib/src/model/stream_monitor_update.dart
 lib/src/model/subscription_info.dart
 lib/src/model/subtype.dart
 lib/src/model/thumbnail.dart
-lib/src/model/tweet_delivery_log_list_response.dart
-lib/src/model/tweet_delivery_log_response.dart
 lib/src/model/type.dart
 lib/src/model/url.dart
 lib/src/model/user_items_response.dart
@@ -557,8 +549,6 @@ test/faq_test.dart
 test/feedback_api_test.dart
 test/feedback_request_test.dart
 test/filter_rule_create_test.dart
-test/filter_rule_delivery_log_list_response_test.dart
-test/filter_rule_delivery_log_response_test.dart
 test/filter_rule_list_response_test.dart
 test/filter_rule_response_test.dart
 test/filter_rule_update_test.dart
@@ -675,8 +665,6 @@ test/subtype_test.dart
 test/target_api_test.dart
 test/thumbnail_test.dart
 test/tik_tok_api_test.dart
-test/tweet_delivery_log_list_response_test.dart
-test/tweet_delivery_log_response_test.dart
 test/twitter_api_test.dart
 test/type_test.dart
 test/url_test.dart
