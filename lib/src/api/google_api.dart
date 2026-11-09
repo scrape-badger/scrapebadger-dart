@@ -1356,7 +1356,7 @@ class GoogleApi {
   /// * [colorScheme] - Google color scheme.
   /// * [tbm] - Google search type. Use output=html for verticals; dedicated APIs provide parsed vertical results.
   /// * [udm] - Google result filter: web or 14 for web, 18 for forums. Other verticals require output=html.
-  /// * [noCache] - Bypass result caches and request a fresh Google fetch.
+  /// * [noCache] - Ignored: responses are never cached.
   /// * [asDt] - Site restriction mode: i includes, e excludes as_sitesearch.
   /// * [asEpq] - Exact phrase.
   /// * [asEq] - Words to exclude.
@@ -1942,7 +1942,7 @@ class GoogleApi {
   /// * [colorScheme] - Google color scheme.
   /// * [tbm] - Google search type. Use output=html for verticals; dedicated APIs provide parsed vertical results.
   /// * [udm] - Google result filter: web or 14 for web, 18 for forums. Other verticals require output=html.
-  /// * [noCache] - Bypass result caches and request a fresh Google fetch.
+  /// * [noCache] - Ignored: responses are never cached.
   /// * [asDt] - Site restriction mode: i includes, e excludes as_sitesearch.
   /// * [asEpq] - Exact phrase.
   /// * [asEq] - Words to exclude.
