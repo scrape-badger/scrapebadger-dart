@@ -7,12 +7,12 @@ void main() {
   final instance = Scrapebadger().getResultsApi();
 
   group(ResultsApi, () {
-    // Re-read a result
+    // Re-read a result (removed)
     //
-    // Replay a billed result (X-Result-ID) for free for ~15 minutes, optionally trimmed with jq / fields / max_items / summary. Never re-run a paid call just to reshape it.
+    // Removed (SCR-396): ScrapeBadger no longer stores results, so there is nothing to re-read. Always 410. Narrow a call with _jq / _fields / _max_items instead.
     //
-    //Future<JsonObject> resultsReReadAResult(String resultId) async
-    test('test resultsReReadAResult', () async {
+    //Future<JsonObject> resultsReReadAResultRemoved(String resultId) async
+    test('test resultsReReadAResultRemoved', () async {
       // TODO
     });
 

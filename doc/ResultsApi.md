@@ -9,15 +9,15 @@ All URIs are relative to *https://scrapebadger.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**resultsReReadAResult**](ResultsApi.md#resultsrereadaresult) | **GET** /v1/results/{result_id} | Re-read a result
+[**resultsReReadAResultRemoved**](ResultsApi.md#resultsrereadaresultremoved) | **GET** /v1/results/{result_id} | Re-read a result (removed)
 
 
-# **resultsReReadAResult**
-> JsonObject resultsReReadAResult(resultId)
+# **resultsReReadAResultRemoved**
+> JsonObject resultsReReadAResultRemoved(resultId)
 
-Re-read a result
+Re-read a result (removed)
 
-Replay a billed result (X-Result-ID) for free for ~15 minutes, optionally trimmed with jq / fields / max_items / summary. Never re-run a paid call just to reshape it.
+Removed (SCR-396): ScrapeBadger no longer stores results, so there is nothing to re-read. Always 410. Narrow a call with _jq / _fields / _max_items instead.
 
 ### Example
 ```dart
@@ -31,10 +31,10 @@ final api = Scrapebadger().getResultsApi();
 final String resultId = resultId_example; // String | 
 
 try {
-    final response = api.resultsReReadAResult(resultId);
+    final response = api.resultsReReadAResultRemoved(resultId);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling ResultsApi->resultsReReadAResult: $e\n');
+    print('Exception when calling ResultsApi->resultsReReadAResultRemoved: $e\n');
 }
 ```
 

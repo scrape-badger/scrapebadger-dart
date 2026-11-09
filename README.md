@@ -501,7 +501,7 @@ Class | Method | HTTP request | Description
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinRegionAddressSuggestions**](doc/RedfinApi.md#redfinregionaddresssuggestions) | **GET** /v1/redfin/autocomplete | Region/address suggestions
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinSearchProperties**](doc/RedfinApi.md#redfinsearchproperties) | **GET** /v1/redfin/search | Search properties
 [*RequestsApi*](doc/RequestsApi.md) | [**requestsPollAnAsyncRequest**](doc/RequestsApi.md#requestspollanasyncrequest) | **GET** /v1/requests/{request_id} | Poll an async request
-[*ResultsApi*](doc/ResultsApi.md) | [**resultsReReadAResult**](doc/ResultsApi.md#resultsrereadaresult) | **GET** /v1/results/{result_id} | Re-read a result
+[*ResultsApi*](doc/ResultsApi.md) | [**resultsReReadAResultRemoved**](doc/ResultsApi.md#resultsrereadaresultremoved) | **GET** /v1/results/{result_id} | Re-read a result (removed)
 [*TargetApi*](doc/TargetApi.md) | [**targetBrowseACategory**](doc/TargetApi.md#targetbrowseacategory) | **GET** /v1/target/category | Browse a category
 [*TargetApi*](doc/TargetApi.md) | [**targetFindNearbyStores**](doc/TargetApi.md#targetfindnearbystores) | **GET** /v1/target/stores | Find nearby stores
 [*TargetApi*](doc/TargetApi.md) | [**targetGetCategories**](doc/TargetApi.md#targetgetcategories) | **GET** /v1/target/categories | Get categories

@@ -20,8 +20,8 @@ class ResultsApi {
 
   const ResultsApi(this._dio, this._serializers);
 
-  /// Re-read a result
-  /// Replay a billed result (X-Result-ID) for free for ~15 minutes, optionally trimmed with jq / fields / max_items / summary. Never re-run a paid call just to reshape it.
+  /// Re-read a result (removed)
+  /// Removed (SCR-396): ScrapeBadger no longer stores results, so there is nothing to re-read. Always 410. Narrow a call with _jq / _fields / _max_items instead.
   ///
   /// Parameters:
   /// * [resultId] 
@@ -34,7 +34,7 @@ class ResultsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> resultsReReadAResult({ 
+  Future<Response<JsonObject>> resultsReReadAResultRemoved({ 
     required String resultId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
