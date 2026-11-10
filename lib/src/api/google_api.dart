@@ -765,13 +765,17 @@ class GoogleApi {
   }
 
   /// Google AI Mode search
-  /// Get AI-generated search results from Google AI Mode.  Returns the structured &#x60;text_blocks&#x60; (paragraphs, headings, comparison &#x60;table&#x60; blocks and lists), a flat &#x60;references&#x60; source list, a compact &#x60;markdown&#x60; rendering of the whole answer and — unless &#x60;include_html&#x60; is false — the raw &#x60;answer_html&#x60; body.
+  /// Get AI-generated search results from Google AI Mode.  Returns the structured &#x60;text_blocks&#x60; (paragraphs, headings, comparison &#x60;table&#x60; blocks and lists), a flat &#x60;references&#x60; source list, a compact &#x60;markdown&#x60; rendering of the whole answer and — unless &#x60;include_html&#x60; is false — the raw &#x60;answer_html&#x60; body.  &#x60;location&#x60;, &#x60;uule&#x60; or &#x60;lat&#x60;/&#x60;lon&#x60; localise the answer (\&quot;near me\&quot;, local results) to that place, down to the city or district, wherever the request exits from. Located answers echo a &#x60;location&#x60; object.
   ///
   /// Parameters:
   /// * [q] - Search query for AI-generated response
-  /// * [gl] - Country code
+  /// * [gl] - Google country (market) code. It shapes the answer; it does not pick the exit IP's country. Defaults to the `location`'s country when `location` is set.
   /// * [hl] - Language code
   /// * [includeHtml] - Include the raw `answer_html` (full answer body HTML) in the response for maximum parity. It can be 100s of KB — set false when you only need the structured `text_blocks` + `markdown`.
+  /// * [location] - Answer as if the user were here: a Google canonical location name (e.g. `Wonju-si,Gangwon-do,South Korea`), a Google criteria ID, or an unambiguous short name within `gl`. Use only one of location, uule, or lat/lon.
+  /// * [uule] - A Google UULE value in its `w+` (canonical name) or `j+` (coordinates) form.
+  /// * [lat] - Latitude of the user's location (with lon).
+  /// * [lon] - Longitude of the user's location (with lat).
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -786,6 +790,10 @@ class GoogleApi {
     String? gl = 'us',
     String? hl = 'en',
     bool? includeHtml = true,
+    String? location,
+    String? uule,
+    num? lat,
+    num? lon,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -818,6 +826,10 @@ class GoogleApi {
       if (gl != null) r'gl': encodeQueryParameter(_serializers, gl, const FullType(String)),
       if (hl != null) r'hl': encodeQueryParameter(_serializers, hl, const FullType(String)),
       if (includeHtml != null) r'include_html': encodeQueryParameter(_serializers, includeHtml, const FullType(bool)),
+      r'location': encodeQueryParameter(_serializers, location, const FullType(String)),
+      r'uule': encodeQueryParameter(_serializers, uule, const FullType(String)),
+      r'lat': encodeQueryParameter(_serializers, lat, const FullType(num)),
+      r'lon': encodeQueryParameter(_serializers, lon, const FullType(num)),
     };
 
     final _response = await _dio.request<Object>(

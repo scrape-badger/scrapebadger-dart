@@ -73,9 +73,9 @@ void main() {
 
     // Google AI Mode search
     //
-    // Get AI-generated search results from Google AI Mode.  Returns the structured `text_blocks` (paragraphs, headings, comparison `table` blocks and lists), a flat `references` source list, a compact `markdown` rendering of the whole answer and — unless `include_html` is false — the raw `answer_html` body.
+    // Get AI-generated search results from Google AI Mode.  Returns the structured `text_blocks` (paragraphs, headings, comparison `table` blocks and lists), a flat `references` source list, a compact `markdown` rendering of the whole answer and — unless `include_html` is false — the raw `answer_html` body.  `location`, `uule` or `lat`/`lon` localise the answer (\"near me\", local results) to that place, down to the city or district, wherever the request exits from. Located answers echo a `location` object.
     //
-    //Future<JsonObject> googleGoogleAiModeSearch(String q, { String gl, String hl, bool includeHtml }) async
+    //Future<JsonObject> googleGoogleAiModeSearch(String q, { String gl, String hl, bool includeHtml, String location, String uule, num lat, num lon }) async
     test('test googleGoogleAiModeSearch', () async {
       // TODO
     });

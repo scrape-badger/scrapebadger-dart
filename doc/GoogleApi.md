@@ -452,11 +452,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **googleGoogleAiModeSearch**
-> JsonObject googleGoogleAiModeSearch(q, gl, hl, includeHtml)
+> JsonObject googleGoogleAiModeSearch(q, gl, hl, includeHtml, location, uule, lat, lon)
 
 Google AI Mode search
 
-Get AI-generated search results from Google AI Mode.  Returns the structured `text_blocks` (paragraphs, headings, comparison `table` blocks and lists), a flat `references` source list, a compact `markdown` rendering of the whole answer and — unless `include_html` is false — the raw `answer_html` body.
+Get AI-generated search results from Google AI Mode.  Returns the structured `text_blocks` (paragraphs, headings, comparison `table` blocks and lists), a flat `references` source list, a compact `markdown` rendering of the whole answer and — unless `include_html` is false — the raw `answer_html` body.  `location`, `uule` or `lat`/`lon` localise the answer (\"near me\", local results) to that place, down to the city or district, wherever the request exits from. Located answers echo a `location` object.
 
 ### Example
 ```dart
@@ -468,12 +468,16 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getGoogleApi();
 final String q = q_example; // String | Search query for AI-generated response
-final String gl = gl_example; // String | Country code
+final String gl = gl_example; // String | Google country (market) code. It shapes the answer; it does not pick the exit IP's country. Defaults to the `location`'s country when `location` is set.
 final String hl = hl_example; // String | Language code
 final bool includeHtml = true; // bool | Include the raw `answer_html` (full answer body HTML) in the response for maximum parity. It can be 100s of KB — set false when you only need the structured `text_blocks` + `markdown`.
+final String location = location_example; // String | Answer as if the user were here: a Google canonical location name (e.g. `Wonju-si,Gangwon-do,South Korea`), a Google criteria ID, or an unambiguous short name within `gl`. Use only one of location, uule, or lat/lon.
+final String uule = uule_example; // String | A Google UULE value in its `w+` (canonical name) or `j+` (coordinates) form.
+final num lat = 8.14; // num | Latitude of the user's location (with lon).
+final num lon = 8.14; // num | Longitude of the user's location (with lat).
 
 try {
-    final response = api.googleGoogleAiModeSearch(q, gl, hl, includeHtml);
+    final response = api.googleGoogleAiModeSearch(q, gl, hl, includeHtml, location, uule, lat, lon);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling GoogleApi->googleGoogleAiModeSearch: $e\n');
@@ -485,9 +489,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **q** | **String**| Search query for AI-generated response | 
- **gl** | **String**| Country code | [optional] [default to 'us']
+ **gl** | **String**| Google country (market) code. It shapes the answer; it does not pick the exit IP's country. Defaults to the `location`'s country when `location` is set. | [optional] [default to 'us']
  **hl** | **String**| Language code | [optional] [default to 'en']
  **includeHtml** | **bool**| Include the raw `answer_html` (full answer body HTML) in the response for maximum parity. It can be 100s of KB — set false when you only need the structured `text_blocks` + `markdown`. | [optional] [default to true]
+ **location** | **String**| Answer as if the user were here: a Google canonical location name (e.g. `Wonju-si,Gangwon-do,South Korea`), a Google criteria ID, or an unambiguous short name within `gl`. Use only one of location, uule, or lat/lon. | [optional] 
+ **uule** | **String**| A Google UULE value in its `w+` (canonical name) or `j+` (coordinates) form. | [optional] 
+ **lat** | **num**| Latitude of the user's location (with lon). | [optional] 
+ **lon** | **num**| Longitude of the user's location (with lat). | [optional] 
 
 ### Return type
 
