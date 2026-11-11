@@ -132,6 +132,7 @@ doc/LinkedInApi.md
 doc/Location.md
 doc/LoopNetApi.md
 doc/MarketsResponse.md
+doc/MetaAiApi.md
 doc/MetaUrl.md
 doc/ModelSource.md
 doc/NaverApi.md
@@ -270,6 +271,7 @@ lib/src/api/instagram_api.dart
 lib/src/api/leboncoin_api.dart
 lib/src/api/linked_in_api.dart
 lib/src/api/loop_net_api.dart
+lib/src/api/meta_ai_api.dart
 lib/src/api/naver_api.dart
 lib/src/api/perplexity_api.dart
 lib/src/api/quote_api.dart
@@ -610,6 +612,7 @@ test/linked_in_api_test.dart
 test/location_test.dart
 test/loop_net_api_test.dart
 test/markets_response_test.dart
+test/meta_ai_api_test.dart
 test/meta_url_test.dart
 test/model_source_test.dart
 test/naver_api_test.dart

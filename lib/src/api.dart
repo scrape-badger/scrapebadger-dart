@@ -42,6 +42,7 @@ import 'package:scrapebadger/src/api/instagram_api.dart';
 import 'package:scrapebadger/src/api/leboncoin_api.dart';
 import 'package:scrapebadger/src/api/linked_in_api.dart';
 import 'package:scrapebadger/src/api/loop_net_api.dart';
+import 'package:scrapebadger/src/api/meta_ai_api.dart';
 import 'package:scrapebadger/src/api/naver_api.dart';
 import 'package:scrapebadger/src/api/perplexity_api.dart';
 import 'package:scrapebadger/src/api/quote_api.dart';
@@ -313,6 +314,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   LoopNetApi getLoopNetApi() {
     return LoopNetApi(dio, serializers);
+  }
+
+  /// Get MetaAiApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  MetaAiApi getMetaAiApi() {
+    return MetaAiApi(dio, serializers);
   }
 
   /// Get NaverApi instance, base route and serializer can be overridden by a given but be careful,
