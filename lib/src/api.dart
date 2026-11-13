@@ -35,6 +35,7 @@ import 'package:scrapebadger/src/api/gemini_api.dart';
 import 'package:scrapebadger/src/api/git_hub_api.dart';
 import 'package:scrapebadger/src/api/google_api.dart';
 import 'package:scrapebadger/src/api/google_play_api.dart';
+import 'package:scrapebadger/src/api/grok_api.dart';
 import 'package:scrapebadger/src/api/gumtree_api.dart';
 import 'package:scrapebadger/src/api/idealista_api.dart';
 import 'package:scrapebadger/src/api/immobiliare_api.dart';
@@ -272,6 +273,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   GooglePlayApi getGooglePlayApi() {
     return GooglePlayApi(dio, serializers);
+  }
+
+  /// Get GrokApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  GrokApi getGrokApi() {
+    return GrokApi(dio, serializers);
   }
 
   /// Get GumtreeApi instance, base route and serializer can be overridden by a given but be careful,

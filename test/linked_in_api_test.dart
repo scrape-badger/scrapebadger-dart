@@ -52,6 +52,15 @@ void main() {
       // TODO
     });
 
+    // Get full profile through the authenticated projection
+    //
+    // Full profile using the server-owned authenticated LinkedIn session.
+    //
+    //Future<JsonObject> linkedinGetFullProfileThroughTheAuthenticatedProjection(String publicId, { String country }) async
+    test('test linkedinGetFullProfileThroughTheAuthenticatedProjection', () async {
+      // TODO
+    });
+
     // Get job detail
     //
     // Full detail for one job posting (guest API, no login).

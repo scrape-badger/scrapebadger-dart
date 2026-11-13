@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**linkedinGetAPublicArticle**](LinkedInApi.md#linkedingetapublicarticle) | **GET** /v1/linkedin/articles/{article_slug} | Get a public article
 [**linkedinGetAPublicPost**](LinkedInApi.md#linkedingetapublicpost) | **GET** /v1/linkedin/posts/{post_slug} | Get a public post
 [**linkedinGetCompany**](LinkedInApi.md#linkedingetcompany) | **GET** /v1/linkedin/companies/{universal_name} | Get company
+[**linkedinGetFullProfileThroughTheAuthenticatedProjection**](LinkedInApi.md#linkedingetfullprofilethroughtheauthenticatedprojection) | **GET** /v1/linkedin/profiles/{public_id}/full | Get full profile through the authenticated projection
 [**linkedinGetJobDetail**](LinkedInApi.md#linkedingetjobdetail) | **GET** /v1/linkedin/jobs/{job_id} | Get job detail
 [**linkedinGetPublicProfile**](LinkedInApi.md#linkedingetpublicprofile) | **GET** /v1/linkedin/profiles/{public_id} | Get public profile
 [**linkedinGetSchool**](LinkedInApi.md#linkedingetschool) | **GET** /v1/linkedin/schools/{universal_name} | Get school
@@ -253,6 +254,55 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **universalName** | **String**|  | 
+ **country** | **String**| Residential proxy country | [optional] [default to 'us']
+
+### Return type
+
+[**JsonObject**](JsonObject.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **linkedinGetFullProfileThroughTheAuthenticatedProjection**
+> JsonObject linkedinGetFullProfileThroughTheAuthenticatedProjection(publicId, country)
+
+Get full profile through the authenticated projection
+
+Full profile using the server-owned authenticated LinkedIn session.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getLinkedInApi();
+final String publicId = publicId_example; // String | 
+final String country = country_example; // String | Residential proxy country
+
+try {
+    final response = api.linkedinGetFullProfileThroughTheAuthenticatedProjection(publicId, country);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling LinkedInApi->linkedinGetFullProfileThroughTheAuthenticatedProjection: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **publicId** | **String**|  | 
  **country** | **String**| Residential proxy country | [optional] [default to 'us']
 
 ### Return type
