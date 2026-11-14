@@ -141,6 +141,7 @@ import 'package:scrapebadger/src/model/rating.dart';
 import 'package:scrapebadger/src/model/ratings.dart';
 import 'package:scrapebadger/src/model/recipe.dart';
 import 'package:scrapebadger/src/model/review.dart';
+import 'package:scrapebadger/src/model/rufus_ask_request.dart';
 import 'package:scrapebadger/src/model/screenshot_request.dart';
 import 'package:scrapebadger/src/model/searchterm.dart';
 import 'package:scrapebadger/src/model/site_name.dart';
@@ -325,6 +326,7 @@ part 'serializers.g.dart';
   Ratings,
   Recipe,
   Review,
+  RufusAskRequest,
   ScreenshotRequest,
   Searchterm,
   SiteName,

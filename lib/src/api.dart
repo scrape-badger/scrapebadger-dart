@@ -52,6 +52,7 @@ import 'package:scrapebadger/src/api/reddit_api.dart';
 import 'package:scrapebadger/src/api/redfin_api.dart';
 import 'package:scrapebadger/src/api/requests_api.dart';
 import 'package:scrapebadger/src/api/results_api.dart';
+import 'package:scrapebadger/src/api/rufus_api.dart';
 import 'package:scrapebadger/src/api/target_api.dart';
 import 'package:scrapebadger/src/api/tik_tok_api.dart';
 import 'package:scrapebadger/src/api/twitter_api.dart';
@@ -375,6 +376,12 @@ class Scrapebadger {
   /// by doing that all interceptors will not be executed
   ResultsApi getResultsApi() {
     return ResultsApi(dio, serializers);
+  }
+
+  /// Get RufusApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  RufusApi getRufusApi() {
+    return RufusApi(dio, serializers);
   }
 
   /// Get TargetApi instance, base route and serializer can be overridden by a given but be careful,

@@ -516,6 +516,11 @@ Class | Method | HTTP request | Description
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinSearchProperties**](doc/RedfinApi.md#redfinsearchproperties) | **GET** /v1/redfin/search | Search properties
 [*RequestsApi*](doc/RequestsApi.md) | [**requestsPollAnAsyncRequest**](doc/RequestsApi.md#requestspollanasyncrequest) | **GET** /v1/requests/{request_id} | Poll an async request
 [*ResultsApi*](doc/ResultsApi.md) | [**resultsReReadAResultRemoved**](doc/ResultsApi.md#resultsrereadaresultremoved) | **GET** /v1/results/{result_id} | Re-read a result (removed)
+[*RufusApi*](doc/RufusApi.md) | [**rufusAmazonRufusScraperHealthCheck**](doc/RufusApi.md#rufusamazonrufusscraperhealthcheck) | **GET** /v1/rufus/health | Amazon Rufus scraper health check
+[*RufusApi*](doc/RufusApi.md) | [**rufusAmazonRufusScraperHealthCheckHead**](doc/RufusApi.md#rufusamazonrufusscraperhealthcheckhead) | **HEAD** /v1/rufus/health | Amazon Rufus scraper health check
+[*RufusApi*](doc/RufusApi.md) | [**rufusAskAmazonRufusAQuestion**](doc/RufusApi.md#rufusaskamazonrufusaquestion) | **GET** /v1/rufus/ask | Ask Amazon Rufus a question
+[*RufusApi*](doc/RufusApi.md) | [**rufusAskAmazonRufusAQuestionPost**](doc/RufusApi.md#rufusaskamazonrufusaquestionpost) | **POST** /v1/rufus/ask | Ask Amazon Rufus a question (POST)
+[*RufusApi*](doc/RufusApi.md) | [**rufusListAmazonRufusModels**](doc/RufusApi.md#rufuslistamazonrufusmodels) | **GET** /v1/rufus/models | List Amazon Rufus models
 [*TargetApi*](doc/TargetApi.md) | [**targetBrowseACategory**](doc/TargetApi.md#targetbrowseacategory) | **GET** /v1/target/category | Browse a category
 [*TargetApi*](doc/TargetApi.md) | [**targetFindNearbyStores**](doc/TargetApi.md#targetfindnearbystores) | **GET** /v1/target/stores | Find nearby stores
 [*TargetApi*](doc/TargetApi.md) | [**targetGetCategories**](doc/TargetApi.md#targetgetcategories) | **GET** /v1/target/categories | Get categories
@@ -861,6 +866,7 @@ Class | Method | HTTP request | Description
  - [Ratings](doc/Ratings.md)
  - [Recipe](doc/Recipe.md)
  - [Review](doc/Review.md)
+ - [RufusAskRequest](doc/RufusAskRequest.md)
  - [ScreenshotRequest](doc/ScreenshotRequest.md)
  - [Searchterm](doc/Searchterm.md)
  - [SiteName](doc/SiteName.md)

@@ -172,6 +172,8 @@ doc/RedfinApi.md
 doc/RequestsApi.md
 doc/ResultsApi.md
 doc/Review.md
+doc/RufusApi.md
+doc/RufusAskRequest.md
 doc/ScreenshotRequest.md
 doc/Searchterm.md
 doc/SiteName.md
@@ -282,6 +284,7 @@ lib/src/api/reddit_api.dart
 lib/src/api/redfin_api.dart
 lib/src/api/requests_api.dart
 lib/src/api/results_api.dart
+lib/src/api/rufus_api.dart
 lib/src/api/target_api.dart
 lib/src/api/tik_tok_api.dart
 lib/src/api/twitter_api.dart
@@ -429,6 +432,7 @@ lib/src/model/rating.dart
 lib/src/model/ratings.dart
 lib/src/model/recipe.dart
 lib/src/model/review.dart
+lib/src/model/rufus_ask_request.dart
 lib/src/model/screenshot_request.dart
 lib/src/model/searchterm.dart
 lib/src/model/site_name.dart
@@ -654,6 +658,8 @@ test/redfin_api_test.dart
 test/requests_api_test.dart
 test/results_api_test.dart
 test/review_test.dart
+test/rufus_api_test.dart
+test/rufus_ask_request_test.dart
 test/screenshot_request_test.dart
 test/searchterm_test.dart
 test/site_name_test.dart
