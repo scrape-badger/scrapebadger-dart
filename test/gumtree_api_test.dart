@@ -11,7 +11,7 @@ void main() {
     //
     // Full listing — description, attributes, images, seller, similar listings.
     //
-    //Future<JsonObject> gumtreeGetListing(String listingId, { String market }) async
+    //Future<JsonObject> gumtreeGetListing(String listingId, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test gumtreeGetListing', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Filters, sort orders and radius options for a category, with live counts.  Feed a `key` and a `value` back into `/search` as `filters=key:value`.
     //
-    //Future<JsonObject> gumtreeGetSearchFilters({ String category, String location, String query, String filters, String market }) async
+    //Future<JsonObject> gumtreeGetSearchFilters({ String category, String location, String query, String filters, String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test gumtreeGetSearchFilters', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Every live listing by the seller of the given listing.
     //
-    //Future<JsonObject> gumtreeGetSellerListings(String listingId, { int page, String market }) async
+    //Future<JsonObject> gumtreeGetSellerListings(String listingId, { int page, String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test gumtreeGetSellerListings', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Browse Gumtree's category tree.  A node's `slug` (uk) or `id` (au/za) is the `/search` category.
     //
-    //Future<JsonObject> gumtreeListCategories({ int parentId, String market }) async
+    //Future<JsonObject> gumtreeListCategories({ int parentId, String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test gumtreeListCategories', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Browse Gumtree's location tree.  uk: UK -> nations -> counties -> towns. au: states -> regions -> areas, each with its live ad count. za: provinces -> towns.
     //
-    //Future<JsonObject> gumtreeListLocations({ int parentId, String market }) async
+    //Future<JsonObject> gumtreeListLocations({ int parentId, String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test gumtreeListLocations', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // The Gumtree sites this API covers (uk, au, za) with currency and id formats.
     //
-    //Future<JsonObject> gumtreeListMarkets() async
+    //Future<JsonObject> gumtreeListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test gumtreeListMarkets', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Resolve a place name or postcode to Gumtree location ids (uk: with coordinates).  The `id` (au/za) or `name` (uk) is what `/search` takes as `location`.
     //
-    //Future<JsonObject> gumtreeLocationSuggestions(String query, { String market }) async
+    //Future<JsonObject> gumtreeLocationSuggestions(String query, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test gumtreeLocationSuggestions', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Search Gumtree listings in the UK, Australia or South Africa.  Up to 50 pages. Page size: uk 25, au 24 (plus up to 6 featured top ads), za 20.
     //
-    //Future<JsonObject> gumtreeSearchListings({ String query, String category, String location, num distance, int minPrice, int maxPrice, String sort, String sellerType, bool urgentOnly, bool withPhotos, String filters, int page, String market }) async
+    //Future<JsonObject> gumtreeSearchListings({ String query, String category, String location, num distance, int minPrice, int maxPrice, String sort, String sellerType, bool urgentOnly, bool withPhotos, String filters, int page, String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test gumtreeSearchListings', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Gumtree search-box keyword suggestions with their categories.
     //
-    //Future<JsonObject> gumtreeSearchSuggestions(String query, { String market }) async
+    //Future<JsonObject> gumtreeSearchSuggestions(String query, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test gumtreeSearchSuggestions', () async {
       // TODO
     });

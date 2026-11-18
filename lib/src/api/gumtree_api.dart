@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 
 import 'package:built_value/json_object.dart';
 import 'package:scrapebadger/src/api_util.dart';
+import 'package:scrapebadger/src/model/async_accepted.dart';
 import 'package:scrapebadger/src/model/http_validation_error.dart';
 
 class GumtreeApi {
@@ -26,6 +27,13 @@ class GumtreeApi {
   /// Parameters:
   /// * [listingId] - Gumtree listing id — the number at the end of the listing URL (uk/au: ~10 digits; za: the full 26-digit ad id, not the short one)
   /// * [market] - Which Gumtree: 'uk' (gumtree.com, GBP), 'au' (gumtree.com.au, AUD) or 'za' (gumtree.co.za, ZAR). Separate sites — ids from one market mean nothing in another.
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -38,6 +46,13 @@ class GumtreeApi {
   Future<Response<JsonObject>> gumtreeGetListing({ 
     required String listingId,
     String? market = 'uk',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -49,6 +64,9 @@ class GumtreeApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -67,6 +85,10 @@ class GumtreeApi {
 
     final _queryParameters = <String, dynamic>{
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -118,6 +140,13 @@ class GumtreeApi {
   /// * [query] - Optional keywords to scope the counts
   /// * [filters] - za only: filters already applied (e.g. 'ma:toyota' to list Toyota models)
   /// * [market] - Which Gumtree: 'uk' (gumtree.com, GBP), 'au' (gumtree.com.au, AUD) or 'za' (gumtree.co.za, ZAR). Separate sites — ids from one market mean nothing in another.
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -133,6 +162,13 @@ class GumtreeApi {
     String? query,
     String? filters,
     String? market = 'uk',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -144,6 +180,9 @@ class GumtreeApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -166,6 +205,10 @@ class GumtreeApi {
       r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
       r'filters': encodeQueryParameter(_serializers, filters, const FullType(String)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -215,6 +258,13 @@ class GumtreeApi {
   /// * [listingId] - Gumtree listing id — the number at the end of the listing URL (uk/au: ~10 digits; za: the full 26-digit ad id, not the short one)
   /// * [page] 
   /// * [market] - Which Gumtree: 'uk' (gumtree.com, GBP), 'au' (gumtree.com.au, AUD) or 'za' (gumtree.co.za, ZAR). Separate sites — ids from one market mean nothing in another.
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -228,6 +278,13 @@ class GumtreeApi {
     required String listingId,
     int? page = 1,
     String? market = 'uk',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -239,6 +296,9 @@ class GumtreeApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -258,6 +318,10 @@ class GumtreeApi {
     final _queryParameters = <String, dynamic>{
       if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -466,6 +530,13 @@ class GumtreeApi {
   /// Parameters:
   /// * [parentId] - Category id to list the children of (default: all)
   /// * [market] - Which Gumtree: 'uk' (gumtree.com, GBP), 'au' (gumtree.com.au, AUD) or 'za' (gumtree.co.za, ZAR). Separate sites — ids from one market mean nothing in another.
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -478,6 +549,13 @@ class GumtreeApi {
   Future<Response<JsonObject>> gumtreeListCategories({ 
     int? parentId,
     String? market = 'uk',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -489,6 +567,9 @@ class GumtreeApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -508,6 +589,10 @@ class GumtreeApi {
     final _queryParameters = <String, dynamic>{
       r'parent_id': encodeQueryParameter(_serializers, parentId, const FullType(int)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -556,6 +641,13 @@ class GumtreeApi {
   /// Parameters:
   /// * [parentId] - Location id to list the children of (default: the whole country)
   /// * [market] - Which Gumtree: 'uk' (gumtree.com, GBP), 'au' (gumtree.com.au, AUD) or 'za' (gumtree.co.za, ZAR). Separate sites — ids from one market mean nothing in another.
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -568,6 +660,13 @@ class GumtreeApi {
   Future<Response<JsonObject>> gumtreeListLocations({ 
     int? parentId,
     String? market = 'uk',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -579,6 +678,9 @@ class GumtreeApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -598,6 +700,10 @@ class GumtreeApi {
     final _queryParameters = <String, dynamic>{
       r'parent_id': encodeQueryParameter(_serializers, parentId, const FullType(int)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -644,6 +750,13 @@ class GumtreeApi {
   /// The Gumtree sites this API covers (uk, au, za) with currency and id formats.
   ///
   /// Parameters:
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -654,6 +767,13 @@ class GumtreeApi {
   /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> gumtreeListMarkets({ 
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -665,6 +785,9 @@ class GumtreeApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -681,9 +804,17 @@ class GumtreeApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
@@ -726,6 +857,13 @@ class GumtreeApi {
   /// Parameters:
   /// * [query] - Town, area or postcode prefix, e.g. 'manch' or 'SW1A'
   /// * [market] - Which Gumtree: 'uk' (gumtree.com, GBP), 'au' (gumtree.com.au, AUD) or 'za' (gumtree.co.za, ZAR). Separate sites — ids from one market mean nothing in another.
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -738,6 +876,13 @@ class GumtreeApi {
   Future<Response<JsonObject>> gumtreeLocationSuggestions({ 
     required String query,
     String? market = 'uk',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -749,6 +894,9 @@ class GumtreeApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -768,6 +916,10 @@ class GumtreeApi {
     final _queryParameters = <String, dynamic>{
       r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -827,6 +979,13 @@ class GumtreeApi {
   /// * [filters] - Category-specific filters as comma-separated key:value pairs, e.g. 'vehicle_make:bmw,vehicle_fuel_type:petrol,min_vehicle_mileage:10000' (uk), 'cars.carmake_s:toyota,cars.forsaleby_s:ownr' (au) or 'ma:toyota,fu:petrol,max_km:100000' (za). Range filters take min_<key>/max_<key>. Discover keys and values with /search/filters for the same market.
   /// * [page] 
   /// * [market] - Which Gumtree: 'uk' (gumtree.com, GBP), 'au' (gumtree.com.au, AUD) or 'za' (gumtree.co.za, ZAR). Separate sites — ids from one market mean nothing in another.
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -850,6 +1009,13 @@ class GumtreeApi {
     String? filters,
     int? page = 1,
     String? market = 'uk',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -861,6 +1027,9 @@ class GumtreeApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -891,6 +1060,10 @@ class GumtreeApi {
       r'filters': encodeQueryParameter(_serializers, filters, const FullType(String)),
       if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -939,6 +1112,13 @@ class GumtreeApi {
   /// Parameters:
   /// * [query] - Partial search term, e.g. 'iph'
   /// * [market] - Which Gumtree: 'uk' (gumtree.com, GBP), 'au' (gumtree.com.au, AUD) or 'za' (gumtree.co.za, ZAR). Separate sites — ids from one market mean nothing in another.
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -951,6 +1131,13 @@ class GumtreeApi {
   Future<Response<JsonObject>> gumtreeSearchSuggestions({ 
     required String query,
     String? market = 'uk',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -962,6 +1149,9 @@ class GumtreeApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -981,6 +1171,10 @@ class GumtreeApi {
     final _queryParameters = <String, dynamic>{
       r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

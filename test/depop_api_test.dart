@@ -29,7 +29,7 @@ void main() {
     //
     // A user's active listings (cursor-paginated).
     //
-    //Future<JsonObject> depopGetAUserSProducts(String username, { String market, int perPage, String cursor }) async
+    //Future<JsonObject> depopGetAUserSProducts(String username, { String market, int perPage, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test depopGetAUserSProducts', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Full detail for a single product (by numeric id or slug).
     //
-    //Future<JsonObject> depopGetProductDetail(String productId, { String market }) async
+    //Future<JsonObject> depopGetProductDetail(String productId, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test depopGetProductDetail', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Public shop/user profile by username.
     //
-    //Future<JsonObject> depopGetShopUserProfile(String username, { String market }) async
+    //Future<JsonObject> depopGetShopUserProfile(String username, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test depopGetShopUserProfile', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // List supported Depop markets (country + currency).
     //
-    //Future<JsonObject> depopListMarkets() async
+    //Future<JsonObject> depopListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test depopListMarkets', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Search the Depop catalog with filters (cursor-paginated).
     //
-    //Future<JsonObject> depopSearchDepopProducts(String query, { String market, int perPage, String cursor, num priceMin, num priceMax, String brands, String categories, String sizes, String conditions, String gender, String sort }) async
+    //Future<JsonObject> depopSearchDepopProducts(String query, { String market, int perPage, String cursor, num priceMin, num priceMax, String brands, String categories, String sizes, String conditions, String gender, String sort, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test depopSearchDepopProducts', () async {
       // TODO
     });

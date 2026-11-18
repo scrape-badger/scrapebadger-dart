@@ -11,7 +11,7 @@ void main() {
     //
     // Search Yandex Images by text — thumbnail, full-res URL, dimensions, source page.
     //
-    //Future<JsonObject> yandexImageSearch(String query, { String domain, int page }) async
+    //Future<JsonObject> yandexImageSearch(String query, { String domain, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yandexImageSearch', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Supported Yandex markets (domains, default region and language).
     //
-    //Future<JsonObject> yandexListSupportedMarkets() async
+    //Future<JsonObject> yandexListSupportedMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yandexListSupportedMarkets', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Reverse image search by URL — hosting pages, similar images, tags, other sizes.
     //
-    //Future<JsonObject> yandexReverseImageSearch(String imageUrl, { String domain }) async
+    //Future<JsonObject> yandexReverseImageSearch(String imageUrl, { String domain, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yandexReverseImageSearch', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Search Yandex web results — organic results, ads, displayed URLs, snippets.
     //
-    //Future<JsonObject> yandexWebSearch(String query, { String domain, int page, int lr, String lang }) async
+    //Future<JsonObject> yandexWebSearch(String query, { String domain, int page, int lr, String lang, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yandexWebSearch', () async {
       // TODO
     });

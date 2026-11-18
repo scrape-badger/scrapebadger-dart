@@ -11,7 +11,7 @@ void main() {
     //
     // Sales-ranked best-selling products, available for every operating market.  Ranked by real sold_count (source: sales_ranked); works for SG/MY/JP where TikTok's curated /shop/rankings are not exposed. Omit category_id for a market-wide list.
     //
-    //Future<JsonObject> tiktokBestSellingTiktokShopProducts({ String region, String categoryId, int pages, int limit }) async
+    //Future<JsonObject> tiktokBestSellingTiktokShopProducts({ String region, String categoryId, int pages, int limit, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokBestSellingTiktokShopProducts', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // General TikTok search — video results from the Top feed.
     //
-    //Future<JsonObject> tiktokGeneralSearch(String query, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGeneralSearch(String query, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGeneralSearch', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Get replies to a TikTok comment (best-effort).
     //
-    //Future<JsonObject> tiktokGetCommentReplies(String commentId, String videoId, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGetCommentReplies(String commentId, String videoId, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetCommentReplies', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Get top-level comments on a TikTok video.
     //
-    //Future<JsonObject> tiktokGetComments(String videoId, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGetComments(String videoId, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetComments', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Get publicly visible followers without an account.
     //
-    //Future<JsonObject> tiktokGetFollowers(String username, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGetFollowers(String username, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetFollowers', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Get publicly visible followed accounts. Hidden lists return HTTP 403.
     //
-    //Future<JsonObject> tiktokGetFollowing(String username, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGetFollowing(String username, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetFollowing', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Get TikTok hashtag/challenge detail.
     //
-    //Future<JsonObject> tiktokGetHashtagDetail(String name, { String region }) async
+    //Future<JsonObject> tiktokGetHashtagDetail(String name, { String region, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetHashtagDetail', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Get videos tagged with a TikTok hashtag.
     //
-    //Future<JsonObject> tiktokGetHashtagVideos(String name, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGetHashtagVideos(String name, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetHashtagVideos', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Get public liked videos. Hidden liked lists return HTTP 403.
     //
-    //Future<JsonObject> tiktokGetLikedVideos(String username, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGetLikedVideos(String username, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetLikedVideos', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Get TikTok sound/music detail.
     //
-    //Future<JsonObject> tiktokGetMusicSoundDetail(String musicId, { String region }) async
+    //Future<JsonObject> tiktokGetMusicSoundDetail(String musicId, { String region, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetMusicSoundDetail', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Get videos using a given TikTok sound.
     //
-    //Future<JsonObject> tiktokGetMusicVideos(String musicId, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGetMusicVideos(String musicId, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetMusicVideos', () async {
       // TODO
     });
@@ -110,7 +110,7 @@ void main() {
     //
     // Get cheap unauthenticated oEmbed metadata for a TikTok URL.
     //
-    //Future<JsonObject> tiktokGetOembedMetadata(String url, { String region }) async
+    //Future<JsonObject> tiktokGetOembedMetadata(String url, { String region, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetOembedMetadata', () async {
       // TODO
     });
@@ -119,7 +119,7 @@ void main() {
     //
     // Get TikTok's related videos for a given video.
     //
-    //Future<JsonObject> tiktokGetRelatedVideos(String videoId, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGetRelatedVideos(String videoId, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetRelatedVideos', () async {
       // TODO
     });
@@ -128,7 +128,7 @@ void main() {
     //
     // Get videos a TikTok user has reposted.
     //
-    //Future<JsonObject> tiktokGetReposts(String username, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGetReposts(String username, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetReposts', () async {
       // TODO
     });
@@ -137,7 +137,7 @@ void main() {
     //
     // Get a single ad's advertiser, creatives, and targeting/impression breakdown.
     //
-    //Future<JsonObject> tiktokGetTiktokAdDetail(String adId, { String region }) async
+    //Future<JsonObject> tiktokGetTiktokAdDetail(String adId, { String region, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetTiktokAdDetail', () async {
       // TODO
     });
@@ -146,7 +146,7 @@ void main() {
     //
     // Get subtitle/caption tracks for a TikTok video.
     //
-    //Future<JsonObject> tiktokGetTranscript(String videoId, { String region }) async
+    //Future<JsonObject> tiktokGetTranscript(String videoId, { String region, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetTranscript', () async {
       // TODO
     });
@@ -155,7 +155,7 @@ void main() {
     //
     // Get a TikTok user's full profile.
     //
-    //Future<JsonObject> tiktokGetUserProfile(String username, { String region }) async
+    //Future<JsonObject> tiktokGetUserProfile(String username, { String region, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetUserProfile', () async {
       // TODO
     });
@@ -164,7 +164,7 @@ void main() {
     //
     // Get a TikTok user's posted videos.
     //
-    //Future<JsonObject> tiktokGetUserVideos(String username, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokGetUserVideos(String username, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetUserVideos', () async {
       // TODO
     });
@@ -173,7 +173,7 @@ void main() {
     //
     // Get full metadata for a single TikTok video/post.
     //
-    //Future<JsonObject> tiktokGetVideoDetail(String videoId, { String region, String username }) async
+    //Future<JsonObject> tiktokGetVideoDetail(String videoId, { String region, String username, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokGetVideoDetail', () async {
       // TODO
     });
@@ -200,7 +200,7 @@ void main() {
     //
     // List supported TikTok content regions.
     //
-    //Future<JsonObject> tiktokListRegions() async
+    //Future<JsonObject> tiktokListRegions({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokListRegions', () async {
       // TODO
     });
@@ -209,7 +209,7 @@ void main() {
     //
     // Search TikTok hashtags by keyword.
     //
-    //Future<JsonObject> tiktokSearchHashtags(String query, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokSearchHashtags(String query, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokSearchHashtags', () async {
       // TODO
     });
@@ -218,7 +218,7 @@ void main() {
     //
     // Search TikTok's Commercial Content Library (ad transparency) by keyword or advertiser.
     //
-    //Future<JsonObject> tiktokSearchTheTiktokAdLibrary({ String query, String advertiserId, String region, int days, String sort, int offset, String searchId, int count }) async
+    //Future<JsonObject> tiktokSearchTheTiktokAdLibrary({ String query, String advertiserId, String region, int days, String sort, int offset, String searchId, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokSearchTheTiktokAdLibrary', () async {
       // TODO
     });
@@ -227,7 +227,7 @@ void main() {
     //
     // Look up TikTok advertiser business ids by name (feeds ads/search?advertiser_id=).
     //
-    //Future<JsonObject> tiktokSearchTiktokAdvertisers(String query, { String region, int count }) async
+    //Future<JsonObject> tiktokSearchTiktokAdvertisers(String query, { String region, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokSearchTiktokAdvertisers', () async {
       // TODO
     });
@@ -236,7 +236,7 @@ void main() {
     //
     // Keyword search over TikTok Shop products: 30 per page with offset pagination (US); the first page also carries matching shops and related searches.
     //
-    //Future<JsonObject> tiktokSearchTiktokShopProducts(String q, { String region, String pageToken, int offset }) async
+    //Future<JsonObject> tiktokSearchTiktokShopProducts(String q, { String region, String pageToken, int offset, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokSearchTiktokShopProducts', () async {
       // TODO
     });
@@ -245,7 +245,7 @@ void main() {
     //
     // Search TikTok users by keyword.
     //
-    //Future<JsonObject> tiktokSearchUsers(String query, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokSearchUsers(String query, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokSearchUsers', () async {
       // TODO
     });
@@ -254,7 +254,7 @@ void main() {
     //
     // Search TikTok videos by keyword.
     //
-    //Future<JsonObject> tiktokSearchVideos(String query, { String region, int count, String cursor }) async
+    //Future<JsonObject> tiktokSearchVideos(String query, { String region, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokSearchVideos', () async {
       // TODO
     });
@@ -263,7 +263,7 @@ void main() {
     //
     // Category recommendations. Pass accumulated exclusion IDs for the next page; these are not sales rankings.
     //
-    //Future<JsonObject> tiktokTiktokShopCategoryProducts(String categoryId, { String region, int count, BuiltList<String> excludeProductIds }) async
+    //Future<JsonObject> tiktokTiktokShopCategoryProducts(String categoryId, { String region, int count, BuiltList<String> excludeProductIds, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTiktokShopCategoryProducts', () async {
       // TODO
     });
@@ -272,7 +272,7 @@ void main() {
     //
     // A category's subcategories and its top products as TikTok Shop ranks them.
     //
-    //Future<JsonObject> tiktokTiktokShopCategorySubcategoriesTopProducts(String categoryId, { String region }) async
+    //Future<JsonObject> tiktokTiktokShopCategorySubcategoriesTopProducts(String categoryId, { String region, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTiktokShopCategorySubcategoriesTopProducts', () async {
       // TODO
     });
@@ -281,7 +281,7 @@ void main() {
     //
     // Full TikTok Shop product page: description, images, price, SKUs with stock, first reviews, shop and TikTok's AI summary.
     //
-    //Future<JsonObject> tiktokTiktokShopProductDetail(String productId, { String region }) async
+    //Future<JsonObject> tiktokTiktokShopProductDetail(String productId, { String region, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTiktokShopProductDetail', () async {
       // TODO
     });
@@ -290,7 +290,7 @@ void main() {
     //
     // Paginated product reviews with rating breakdown (US and ID). Indonesia supports recent/recommended ordering, star and media filters; verified=true is not supported.
     //
-    //Future<JsonObject> tiktokTiktokShopProductReviews(String productId, { String region, int page, int count, String sort, int rating, bool withMedia, bool verified }) async
+    //Future<JsonObject> tiktokTiktokShopProductReviews(String productId, { String region, int page, int count, String sort, int rating, bool withMedia, bool verified, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTiktokShopProductReviews', () async {
       // TODO
     });
@@ -299,7 +299,7 @@ void main() {
     //
     // Mall navigation and recommendations with a 15-minute continuation token.  ID, SG, MY, PH, TH, VN and JP are locally verified. Tabs are not a complete category taxonomy.
     //
-    //Future<JsonObject> tiktokTiktokShopRegionalMallFeed({ String region, int tabId, String pageToken }) async
+    //Future<JsonObject> tiktokTiktokShopRegionalMallFeed({ String region, int tabId, String pageToken, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTiktokShopRegionalMallFeed', () async {
       // TODO
     });
@@ -308,7 +308,7 @@ void main() {
     //
     // Top-level TikTok Shop categories of a market. Drill down with /shop/categories/{id}.
     //
-    //Future<JsonObject> tiktokTiktokShopRootCategories({ String region }) async
+    //Future<JsonObject> tiktokTiktokShopRootCategories({ String region, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTiktokShopRootCategories', () async {
       // TODO
     });
@@ -317,7 +317,7 @@ void main() {
     //
     // A store's stats and its cursor-paginated product catalogue (US).
     //
-    //Future<JsonObject> tiktokTiktokShopStoreProducts(String sellerId, { String region, String cursor, int count }) async
+    //Future<JsonObject> tiktokTiktokShopStoreProducts(String sellerId, { String region, String cursor, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTiktokShopStoreProducts', () async {
       // TODO
     });
@@ -326,7 +326,7 @@ void main() {
     //
     // Native category/theme ranking. ID, PH, TH and VN are locally verified.  Types: 1 high seller, 2 trending, 3 ratings. Coverage depends on the configured guest profile; a category recommendation feed is not used as a substitute.
     //
-    //Future<JsonObject> tiktokTiktokShopThemeRanking(String rankId, { String region, int rankType, int cursor, int count }) async
+    //Future<JsonObject> tiktokTiktokShopThemeRanking(String rankId, { String region, int rankType, int cursor, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTiktokShopThemeRanking', () async {
       // TODO
     });
@@ -335,7 +335,7 @@ void main() {
     //
     // Get trending hashtags (mobile Discover surface — view_count + creators).
     //
-    //Future<JsonObject> tiktokTrendingHashtags({ String region, int period, int count }) async
+    //Future<JsonObject> tiktokTrendingHashtags({ String region, int period, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTrendingHashtags', () async {
       // TODO
     });
@@ -344,7 +344,7 @@ void main() {
     //
     // Get trending songs/sounds (mobile hot-music feed — ranked by usage).
     //
-    //Future<JsonObject> tiktokTrendingSongs({ String region, int period, int count }) async
+    //Future<JsonObject> tiktokTrendingSongs({ String region, int period, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTrendingSongs', () async {
       // TODO
     });
@@ -353,7 +353,7 @@ void main() {
     //
     // Get trending videos from the TikTok Explore feed.
     //
-    //Future<JsonObject> tiktokTrendingVideos({ String region, int count }) async
+    //Future<JsonObject> tiktokTrendingVideos({ String region, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test tiktokTrendingVideos', () async {
       // TODO
     });

@@ -29,7 +29,7 @@ void main() {
     //
     // DuckDuckGo image search with size/color/type/layout/license filters.
     //
-    //Future<JsonObject> duckduckgoImageSearch(String query, { String region, String safesearch, int page, String size, String color, String imageType, String layout, String license }) async
+    //Future<JsonObject> duckduckgoImageSearch(String query, { String region, String safesearch, int page, String size, String color, String imageType, String layout, String license, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test duckduckgoImageSearch', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // DuckDuckGo Instant Answer — abstract, definition, direct answer, related topics.
     //
-    //Future<JsonObject> duckduckgoInstantAnswer(String query) async
+    //Future<JsonObject> duckduckgoInstantAnswer(String query, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test duckduckgoInstantAnswer', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // The full DuckDuckGo region (kl) code list.
     //
-    //Future<JsonObject> duckduckgoListSupportedRegions() async
+    //Future<JsonObject> duckduckgoListSupportedRegions({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test duckduckgoListSupportedRegions', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // DuckDuckGo news search — headline, source, excerpt, unix + ISO date, image.
     //
-    //Future<JsonObject> duckduckgoNewsSearch(String query, { String region, String safesearch, String timelimit, int page }) async
+    //Future<JsonObject> duckduckgoNewsSearch(String query, { String region, String safesearch, String timelimit, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test duckduckgoNewsSearch', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // DuckDuckGo search-box suggestions.
     //
-    //Future<JsonObject> duckduckgoSearchSuggestions(String query, { String region }) async
+    //Future<JsonObject> duckduckgoSearchSuggestions(String query, { String region, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test duckduckgoSearchSuggestions', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // DuckDuckGo video search — title, publisher, uploader, duration, views, thumbnails.
     //
-    //Future<JsonObject> duckduckgoVideoSearch(String query, { String region, String safesearch, int page, String duration, String resolution }) async
+    //Future<JsonObject> duckduckgoVideoSearch(String query, { String region, String safesearch, int page, String duration, String resolution, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test duckduckgoVideoSearch', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // DuckDuckGo web SERP — organic results, the zero-click abstract box, ads flagged.
     //
-    //Future<JsonObject> duckduckgoWebSearch(String query, { String region, String safesearch, String timelimit, int page }) async
+    //Future<JsonObject> duckduckgoWebSearch(String query, { String region, String safesearch, String timelimit, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test duckduckgoWebSearch', () async {
       // TODO
     });

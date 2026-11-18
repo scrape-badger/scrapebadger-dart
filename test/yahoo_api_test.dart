@@ -11,7 +11,7 @@ void main() {
     //
     // Yahoo Images — thumbnail, full-size and source URL per result.
     //
-    //Future<JsonObject> yahooImageSearch(String query, { String market, int count }) async
+    //Future<JsonObject> yahooImageSearch(String query, { String market, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yahooImageSearch', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Supported Yahoo market codes. Free — costs no credits.
     //
-    //Future<JsonObject> yahooListSupportedMarkets() async
+    //Future<JsonObject> yahooListSupportedMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yahooListSupportedMarkets', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Yahoo News — headline, source, published time and snippet per article.
     //
-    //Future<JsonObject> yahooNewsSearch(String query, { String market }) async
+    //Future<JsonObject> yahooNewsSearch(String query, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yahooNewsSearch', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Yahoo search-box query suggestions.
     //
-    //Future<JsonObject> yahooSearchSuggestions(String query, { String market }) async
+    //Future<JsonObject> yahooSearchSuggestions(String query, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yahooSearchSuggestions', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Yahoo Videos — title, thumbnail, duration, publisher and source per result.
     //
-    //Future<JsonObject> yahooVideoSearch(String query, { String market, int count }) async
+    //Future<JsonObject> yahooVideoSearch(String query, { String market, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yahooVideoSearch', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Yahoo web SERP — organic results, ads, related searches and total count.
     //
-    //Future<JsonObject> yahooWebSearch(String query, { String market, int offset, String safeSearch }) async
+    //Future<JsonObject> yahooWebSearch(String query, { String market, int offset, String safeSearch, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yahooWebSearch', () async {
       // TODO
     });

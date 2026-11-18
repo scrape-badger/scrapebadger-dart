@@ -15,9 +15,13 @@ import 'package:scrapebadger/src/date_serializer.dart';
 import 'package:scrapebadger/src/model/date.dart';
 
 import 'package:scrapebadger/src/model/account_info.dart';
+import 'package:scrapebadger/src/model/account_webhook_deliveries403_response.dart';
 import 'package:scrapebadger/src/model/age.dart';
 import 'package:scrapebadger/src/model/agent_trial_info.dart';
 import 'package:scrapebadger/src/model/article.dart';
+import 'package:scrapebadger/src/model/async_accepted.dart';
+import 'package:scrapebadger/src/model/async_accepted_next_action.dart';
+import 'package:scrapebadger/src/model/async_callback_status.dart';
 import 'package:scrapebadger/src/model/auto_scout24_filters_response.dart';
 import 'package:scrapebadger/src/model/auto_scout24_listing.dart';
 import 'package:scrapebadger/src/model/auto_scout24_listing_detail.dart';
@@ -179,6 +183,9 @@ import 'package:scrapebadger/src/model/vinted_status.dart';
 import 'package:scrapebadger/src/model/vinted_user_profile.dart';
 import 'package:scrapebadger/src/model/vinted_user_summary.dart';
 import 'package:scrapebadger/src/model/webhook_create.dart';
+import 'package:scrapebadger/src/model/webhook_deliveries.dart';
+import 'package:scrapebadger/src/model/webhook_delivery.dart';
+import 'package:scrapebadger/src/model/webhook_event.dart';
 import 'package:scrapebadger/src/model/webhook_list_item.dart';
 import 'package:scrapebadger/src/model/webhook_list_response.dart';
 import 'package:scrapebadger/src/model/webhook_response.dart';
@@ -200,9 +207,13 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   AccountInfo,
+  AccountWebhookDeliveries403Response,
   Age,
   AgentTrialInfo,
   Article,
+  AsyncAccepted,
+  AsyncAcceptedNextAction,
+  AsyncCallbackStatus,
   AutoScout24FiltersResponse,
   AutoScout24Listing,
   AutoScout24ListingDetail,
@@ -364,6 +375,9 @@ part 'serializers.g.dart';
   VintedUserProfile,
   VintedUserSummary,
   WebhookCreate,
+  WebhookDeliveries,
+  WebhookDelivery,
+  WebhookEvent,
   WebhookListItem,
   WebhookListResponse,
   WebhookResponse,

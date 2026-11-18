@@ -11,21 +11,21 @@ void main() {
     //
     // Ask the real Grok assistant and get its answer, web sources, and X post references.
     //
-    //Future<JsonObject> grokAskGrokAQuestion(String prompt, { String conversationId, String mode, String webSearch }) async
+    //Future<JsonObject> grokAskGrokAQuestion(String prompt, { String conversationId, String mode, String webSearch, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test grokAskGrokAQuestion', () async {
       // TODO
     });
 
     // Ask Grok a question (POST)
     //
-    //Future<JsonObject> grokAskGrokAQuestionPost() async
+    //Future<JsonObject> grokAskGrokAQuestionPost({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test grokAskGrokAQuestionPost', () async {
       // TODO
     });
 
     // Get a Grok conversation
     //
-    //Future<JsonObject> grokGetAGrokConversation(String conversationId) async
+    //Future<JsonObject> grokGetAGrokConversation(String conversationId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test grokGetAGrokConversation', () async {
       // TODO
     });
@@ -46,21 +46,21 @@ void main() {
 
     // List Grok assistant modes
     //
-    //Future<JsonObject> grokListGrokAssistantModes() async
+    //Future<JsonObject> grokListGrokAssistantModes({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test grokListGrokAssistantModes', () async {
       // TODO
     });
 
     // Measure brand visibility in Grok
     //
-    //Future<JsonObject> grokMeasureBrandVisibilityInGrok(String prompt, String brand, { BuiltList<String> competitors, String brandDomain, String mode, String webSearch }) async
+    //Future<JsonObject> grokMeasureBrandVisibilityInGrok(String prompt, String brand, { BuiltList<String> competitors, String brandDomain, String mode, String webSearch, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test grokMeasureBrandVisibilityInGrok', () async {
       // TODO
     });
 
     // Measure brand visibility in Grok (POST)
     //
-    //Future<JsonObject> grokMeasureBrandVisibilityInGrokPost() async
+    //Future<JsonObject> grokMeasureBrandVisibilityInGrokPost({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test grokMeasureBrandVisibilityInGrokPost', () async {
       // TODO
     });

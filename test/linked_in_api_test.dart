@@ -11,7 +11,7 @@ void main() {
     //
     // Public job postings for a company (numeric company id from the company endpoint).
     //
-    //Future<JsonObject> linkedinGetACompanySJobPostings(String companyId, { int start, String country }) async
+    //Future<JsonObject> linkedinGetACompanySJobPostings(String companyId, { int start, String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinGetACompanySJobPostings', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // A public LinkedIn Learning course — provider, workload, instructors, rating.
     //
-    //Future<JsonObject> linkedinGetACourse(String courseSlug, { String country }) async
+    //Future<JsonObject> linkedinGetACourse(String courseSlug, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinGetACourse', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // A public Pulse article — title, body, author, reactions (JSON-LD).
     //
-    //Future<JsonObject> linkedinGetAPublicArticle(String articleSlug, { String country }) async
+    //Future<JsonObject> linkedinGetAPublicArticle(String articleSlug, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinGetAPublicArticle', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // A public activity share — text, author, reactions, comments (JSON-LD).
     //
-    //Future<JsonObject> linkedinGetAPublicPost(String postSlug, { String country }) async
+    //Future<JsonObject> linkedinGetAPublicPost(String postSlug, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinGetAPublicPost', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Public company page — industry, size, HQ, followers, specialties (JSON-LD + SSR).
     //
-    //Future<JsonObject> linkedinGetCompany(String universalName, { String country }) async
+    //Future<JsonObject> linkedinGetCompany(String universalName, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinGetCompany', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Full profile using the server-owned authenticated LinkedIn session.
     //
-    //Future<JsonObject> linkedinGetFullProfileThroughTheAuthenticatedProjection(String publicId, { String country }) async
+    //Future<JsonObject> linkedinGetFullProfileThroughTheAuthenticatedProjection(String publicId, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinGetFullProfileThroughTheAuthenticatedProjection', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Full detail for one job posting (guest API, no login).
     //
-    //Future<JsonObject> linkedinGetJobDetail(String jobId, { String country }) async
+    //Future<JsonObject> linkedinGetJobDetail(String jobId, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinGetJobDetail', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Public profile by vanity id (the ``/in/{public_id}`` slug) — name, headline, location, about, experience, education (public JSON-LD + SSR subset).
     //
-    //Future<JsonObject> linkedinGetPublicProfile(String publicId, { String country }) async
+    //Future<JsonObject> linkedinGetPublicProfile(String publicId, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinGetPublicProfile', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Public school page — name, description, website, follower/alumni counts.
     //
-    //Future<JsonObject> linkedinGetSchool(String universalName, { String country }) async
+    //Future<JsonObject> linkedinGetSchool(String universalName, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinGetSchool', () async {
       // TODO
     });
@@ -110,7 +110,7 @@ void main() {
     //
     // Search public LinkedIn job postings (guest API, no login).
     //
-    //Future<JsonObject> linkedinSearchLinkedinJobs({ String keywords, String location, String geoId, String companyId, String datePosted, String experience, String jobType, String workplace, String sort, int start, String country }) async
+    //Future<JsonObject> linkedinSearchLinkedinJobs({ String keywords, String location, String geoId, String companyId, String datePosted, String experience, String jobType, String workplace, String sort, int start, String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinSearchLinkedinJobs', () async {
       // TODO
     });
@@ -119,7 +119,7 @@ void main() {
     //
     // Resolve a name to LinkedIn ids (job-search ``geo_id`` / ``company_id`` helper).
     //
-    //Future<JsonObject> linkedinSuggestLocationGeoIds(String query, { String type }) async
+    //Future<JsonObject> linkedinSuggestLocationGeoIds(String query, { String type, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test linkedinSuggestLocationGeoIds', () async {
       // TODO
     });

@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 
 import 'package:built_value/json_object.dart';
 import 'package:scrapebadger/src/api_util.dart';
+import 'package:scrapebadger/src/model/async_accepted.dart';
 import 'package:scrapebadger/src/model/auto_scout24_filters_response.dart';
 import 'package:scrapebadger/src/model/auto_scout24_listing_response.dart';
 import 'package:scrapebadger/src/model/auto_scout24_markets_response.dart';
@@ -111,6 +112,13 @@ class AutoScout24Api {
   /// * [url] - Full HTTPS listing URL from search results. Supply url or listing_id, not both.
   /// * [listingId] - Listing UUID from search results; requires no SEO slug.
   /// * [market] - Inferred from URL, otherwise de. Explicit market must match the URL host.
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -124,6 +132,13 @@ class AutoScout24Api {
     String? url,
     String? listingId,
     String? market,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -135,6 +150,9 @@ class AutoScout24Api {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -155,6 +173,10 @@ class AutoScout24Api {
       r'url': encodeQueryParameter(_serializers, url, const FullType(String)),
       r'listing_id': encodeQueryParameter(_serializers, listingId, const FullType(String)),
       r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -201,6 +223,13 @@ class AutoScout24Api {
   /// Verified marketplaces, domains, languages and currency. Free reference endpoint.
   ///
   /// Parameters:
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -211,6 +240,13 @@ class AutoScout24Api {
   /// Returns a [Future] containing a [Response] with a [AutoScout24MarketsResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<AutoScout24MarketsResponse>> autoscout24ListMarkets({ 
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -222,6 +258,9 @@ class AutoScout24Api {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -238,9 +277,17 @@ class AutoScout24Api {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
@@ -283,6 +330,13 @@ class AutoScout24Api {
   /// Parameters:
   /// * [market] 
   /// * [make] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -295,6 +349,13 @@ class AutoScout24Api {
   Future<Response<AutoScout24FiltersResponse>> autoscout24ListSearchFilters({ 
     String? market = 'de',
     String? make,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -306,6 +367,9 @@ class AutoScout24Api {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -325,6 +389,10 @@ class AutoScout24Api {
     final _queryParameters = <String, dynamic>{
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
       r'make': encodeQueryParameter(_serializers, make, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -391,6 +459,13 @@ class AutoScout24Api {
   /// * [radius] - Kilometres; requires zip.
   /// * [sortBy] 
   /// * [page] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -421,6 +496,13 @@ class AutoScout24Api {
     int? radius,
     String? sortBy = 'best_match',
     int? page = 1,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -432,6 +514,9 @@ class AutoScout24Api {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -469,6 +554,10 @@ class AutoScout24Api {
       r'radius': encodeQueryParameter(_serializers, radius, const FullType(int)),
       if (sortBy != null) r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(String)),
       if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

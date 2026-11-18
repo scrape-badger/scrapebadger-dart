@@ -11,7 +11,7 @@ void main() {
     //
     // Public user or organization profile, pins/popular repositories, README and contributions.  The overview preserves GitHub's public website sections, including organization-specific metadata. Compact displayed counts are approximate and marked with *_approximate. Unavailable or blocked data is an unbilled error, never an empty success.
     //
-    //Future<GitHubProfileResponse> githubGetProfile(String username, { String tab, int year, int page, String nextPageToken }) async
+    //Future<GitHubProfileResponse> githubGetProfile(String username, { String tab, int year, int page, String nextPageToken, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test githubGetProfile', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Public default-branch repository detail, native README, files and latest commit.  Use owner.login and name from a profile repository summary. Root file and contributor previews are not exhaustive recursive trees or membership lists. No GitHub token, market, ref, search or pagination parameter is accepted.
     //
-    //Future<GitHubRepositoryResponse> githubGetRepository(String owner, String repo) async
+    //Future<GitHubRepositoryResponse> githubGetRepository(String owner, String repo, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test githubGetRepository', () async {
       // TODO
     });

@@ -11,7 +11,7 @@ void main() {
     //
     // Get a Zillow professional's profile and their active listings.
     //
-    //Future<JsonObject> zillowGetAgentProfileListings({ String username, String url }) async
+    //Future<JsonObject> zillowGetAgentProfileListings({ String username, String url, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test zillowGetAgentProfileListings', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Get a Zillow apartment community with per-unit pricing and availability.  Multi-unit rentals are served on `/apartments/...` and `/b/...` pages, which `/property` cannot read — pass a `home_type=BUILDING` search result's `detail_url` here instead.
     //
-    //Future<JsonObject> zillowGetMultifamilyBuilding(String url) async
+    //Future<JsonObject> zillowGetMultifamilyBuilding(String url, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test zillowGetMultifamilyBuilding', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Get a single Zillow property's full detail by zpid.
     //
-    //Future<JsonObject> zillowGetPropertyDetail(String zpid) async
+    //Future<JsonObject> zillowGetPropertyDetail(String zpid, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test zillowGetPropertyDetail', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Get a single Zillow property's full detail by its homedetails URL.
     //
-    //Future<JsonObject> zillowGetPropertyDetailByUrl(String url) async
+    //Future<JsonObject> zillowGetPropertyDetailByUrl(String url, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test zillowGetPropertyDetailByUrl', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // List Zillow coverage regions (US + Canada).
     //
-    //Future<JsonObject> zillowListCoverageMarkets() async
+    //Future<JsonObject> zillowListCoverageMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test zillowListCoverageMarkets', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Resolve a search term to Zillow regions/addresses.
     //
-    //Future<JsonObject> zillowRegionAddressSuggestions(String query) async
+    //Future<JsonObject> zillowRegionAddressSuggestions(String query, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test zillowRegionAddressSuggestions', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Search Zillow for for-sale / for-rent / recently-sold properties.
     //
-    //Future<JsonObject> zillowSearchProperties(String location, { String status, int page, String sort, int priceMin, int priceMax, int bedsMin, num bathsMin, String homeType, int sqftMin, int sqftMax, int lotMin, int lotMax, int yearBuiltMin, int yearBuiltMax, int hoaMax, String keywords, String daysOn, num north, num south, num east, num west }) async
+    //Future<JsonObject> zillowSearchProperties(String location, { String status, int page, String sort, int priceMin, int priceMax, int bedsMin, num bathsMin, String homeType, int sqftMin, int sqftMax, int lotMin, int lotMax, int yearBuiltMin, int yearBuiltMax, int hoaMax, String keywords, String daysOn, num north, num south, num east, num west, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test zillowSearchProperties', () async {
       // TODO
     });

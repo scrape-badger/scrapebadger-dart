@@ -11,7 +11,7 @@ void main() {
     //
     // Send a prompt to meta.ai and get the answer (anonymous, no Meta account).
     //
-    //Future<JsonObject> metaAiAskMetaAiAQuestion(String prompt, { String country }) async
+    //Future<JsonObject> metaAiAskMetaAiAQuestion(String prompt, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test metaAiAskMetaAiAQuestion', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // POST form of `/ask`, for prompts too long for a query string.
     //
-    //Future<JsonObject> metaAiAskMetaAiAQuestionPost() async
+    //Future<JsonObject> metaAiAskMetaAiAQuestionPost({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test metaAiAskMetaAiAQuestionPost', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Assistant modes meta.ai currently serves to an anonymous visitor.
     //
-    //Future<JsonObject> metaAiListMetaAiAssistantModes({ String country }) async
+    //Future<JsonObject> metaAiListMetaAiAssistantModes({ String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test metaAiListMetaAiAssistantModes', () async {
       // TODO
     });

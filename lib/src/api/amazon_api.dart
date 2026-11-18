@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 
 import 'package:built_value/json_object.dart';
 import 'package:scrapebadger/src/api_util.dart';
+import 'package:scrapebadger/src/model/async_accepted.dart';
 import 'package:scrapebadger/src/model/http_validation_error.dart';
 
 class AmazonApi {
@@ -187,6 +188,13 @@ class AmazonApi {
   /// * [domain] 
   /// * [category] - Bestsellers node id or slug
   /// * [page] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -200,6 +208,13 @@ class AmazonApi {
     String? domain = 'com',
     String? category,
     int? page = 1,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -211,6 +226,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -231,6 +249,10 @@ class AmazonApi {
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
       r'category': encodeQueryParameter(_serializers, category, const FullType(String)),
       if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -281,6 +303,13 @@ class AmazonApi {
   /// * [domain] 
   /// * [page] 
   /// * [sortBy] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -295,6 +324,13 @@ class AmazonApi {
     String? domain = 'com',
     int? page = 1,
     String? sortBy,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -306,6 +342,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -327,6 +366,10 @@ class AmazonApi {
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
       if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
       r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -377,6 +420,13 @@ class AmazonApi {
   /// * [domain] 
   /// * [zip] 
   /// * [page] - Offer page, 10 rows each
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -391,6 +441,13 @@ class AmazonApi {
     String? domain = 'com',
     String? zip,
     int? page = 1,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -402,6 +459,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -422,6 +482,10 @@ class AmazonApi {
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
       r'zip': encodeQueryParameter(_serializers, zip, const FullType(String)),
       if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -472,6 +536,13 @@ class AmazonApi {
   /// * [domain] 
   /// * [zip] - Delivery postal/zip for localized buybox
   /// * [language] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -486,6 +557,13 @@ class AmazonApi {
     String? domain = 'com',
     String? zip,
     String? language,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -497,6 +575,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -517,6 +598,10 @@ class AmazonApi {
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
       r'zip': encodeQueryParameter(_serializers, zip, const FullType(String)),
       r'language': encodeQueryParameter(_serializers, language, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -575,6 +660,13 @@ class AmazonApi {
   /// * [perStar] - full mode: sweep each star filter and merge + dedupe
   /// * [limit] - full mode: stop at this many distinct reviews
   /// * [wootOffer] - full mode + .com: URL (or slug) of a CURRENT woot.com offer page carrying the ASIN — unlocks the anonymous woot reviews endpoint as a bonus transport after the account pool
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -597,6 +689,13 @@ class AmazonApi {
     bool? perStar = false,
     int? limit,
     String? wootOffer,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -608,6 +707,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -636,6 +738,10 @@ class AmazonApi {
       if (perStar != null) r'per_star': encodeQueryParameter(_serializers, perStar, const FullType(bool)),
       r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
       r'woot_offer': encodeQueryParameter(_serializers, wootOffer, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -685,6 +791,13 @@ class AmazonApi {
   /// * [sellerId] 
   /// * [domain] 
   /// * [page] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -698,6 +811,13 @@ class AmazonApi {
     required String sellerId,
     String? domain = 'com',
     int? page = 1,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -709,6 +829,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -728,6 +851,10 @@ class AmazonApi {
     final _queryParameters = <String, dynamic>{
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
       if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -776,6 +903,13 @@ class AmazonApi {
   /// Parameters:
   /// * [sellerId] 
   /// * [domain] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -788,6 +922,13 @@ class AmazonApi {
   Future<Response<JsonObject>> amazonGetSellerProfile({ 
     required String sellerId,
     String? domain = 'com',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -799,6 +940,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -817,6 +961,10 @@ class AmazonApi {
 
     final _queryParameters = <String, dynamic>{
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -866,6 +1014,13 @@ class AmazonApi {
   /// * [sellerId] 
   /// * [domain] 
   /// * [page] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -879,6 +1034,13 @@ class AmazonApi {
     required String sellerId,
     String? domain = 'com',
     int? page = 1,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -890,6 +1052,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -909,6 +1074,10 @@ class AmazonApi {
     final _queryParameters = <String, dynamic>{
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
       if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -957,6 +1126,13 @@ class AmazonApi {
   /// Parameters:
   /// * [query] - Partial search term
   /// * [domain] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -969,6 +1145,13 @@ class AmazonApi {
   Future<Response<JsonObject>> amazonKeywordSuggestions({ 
     required String query,
     String? domain = 'com',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -980,6 +1163,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -999,6 +1185,10 @@ class AmazonApi {
     final _queryParameters = <String, dynamic>{
       r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1046,6 +1236,13 @@ class AmazonApi {
   ///
   /// Parameters:
   /// * [domain] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1057,6 +1254,13 @@ class AmazonApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> amazonListCategoryAliases({ 
     String? domain = 'com',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1068,6 +1272,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -1086,6 +1293,10 @@ class AmazonApi {
 
     final _queryParameters = <String, dynamic>{
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1132,6 +1343,13 @@ class AmazonApi {
   /// List all supported Amazon marketplaces.
   ///
   /// Parameters:
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1142,6 +1360,13 @@ class AmazonApi {
   /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> amazonListMarketplaces({ 
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1153,6 +1378,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -1169,9 +1397,17 @@ class AmazonApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
@@ -1215,6 +1451,13 @@ class AmazonApi {
   /// * [domain] 
   /// * [category] 
   /// * [page] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1228,6 +1471,13 @@ class AmazonApi {
     String? domain = 'com',
     String? category,
     int? page = 1,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1239,6 +1489,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -1259,6 +1512,10 @@ class AmazonApi {
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
       r'category': encodeQueryParameter(_serializers, category, const FullType(String)),
       if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1314,6 +1571,13 @@ class AmazonApi {
   /// * [maxPrice] 
   /// * [zip] - Delivery postal/zip code for localized pricing
   /// * [language] - Locale for results, e.g. en_US, fr_FR
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1333,6 +1597,13 @@ class AmazonApi {
     num? maxPrice,
     String? zip,
     String? language,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1344,6 +1615,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -1370,6 +1644,10 @@ class AmazonApi {
       r'max_price': encodeQueryParameter(_serializers, maxPrice, const FullType(num)),
       r'zip': encodeQueryParameter(_serializers, zip, const FullType(String)),
       r'language': encodeQueryParameter(_serializers, language, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1419,6 +1697,13 @@ class AmazonApi {
   /// * [domain] 
   /// * [category] 
   /// * [page] 
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1432,6 +1717,13 @@ class AmazonApi {
     String? domain = 'com',
     String? category,
     int? page = 1,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1443,6 +1735,9 @@ class AmazonApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -1463,6 +1758,10 @@ class AmazonApi {
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
       r'category': encodeQueryParameter(_serializers, category, const FullType(String)),
       if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

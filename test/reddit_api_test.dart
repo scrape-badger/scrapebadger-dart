@@ -11,7 +11,7 @@ void main() {
     //
     // Get cross-posts and duplicates of a Reddit post.
     //
-    //Future<JsonObject> redditGetCrossPosts(String postId, { int limit, String after }) async
+    //Future<JsonObject> redditGetCrossPosts(String postId, { int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetCrossPosts', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Get comment tree for a Reddit post.
     //
-    //Future<JsonObject> redditGetPostComments(String postId, { String sort, int limit, int depth }) async
+    //Future<JsonObject> redditGetPostComments(String postId, { String sort, int limit, int depth, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetPostComments', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Get detailed information about a Reddit post.
     //
-    //Future<JsonObject> redditGetPostDetail(String postId) async
+    //Future<JsonObject> redditGetPostDetail(String postId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetPostDetail', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Get Reddit posts linking to a specific domain.
     //
-    //Future<JsonObject> redditGetPostsByDomain(String domain, { String sort, String t, int limit, String after }) async
+    //Future<JsonObject> redditGetPostsByDomain(String domain, { String sort, String t, int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetPostsByDomain', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Get detailed information about a subreddit.
     //
-    //Future<JsonObject> redditGetSubredditInfo(String subreddit) async
+    //Future<JsonObject> redditGetSubredditInfo(String subreddit, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetSubredditInfo', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Get posts from a subreddit with sorting options.
     //
-    //Future<JsonObject> redditGetSubredditPosts(String subreddit, { String sort, String t, int limit, String after }) async
+    //Future<JsonObject> redditGetSubredditPosts(String subreddit, { String sort, String t, int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetSubredditPosts', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Get the rules of a subreddit.
     //
-    //Future<JsonObject> redditGetSubredditRules(String subreddit) async
+    //Future<JsonObject> redditGetSubredditRules(String subreddit, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetSubredditRules', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Get trending posts from Reddit's front page.
     //
-    //Future<JsonObject> redditGetTrendingPosts({ String sort, String t, int limit, String after }) async
+    //Future<JsonObject> redditGetTrendingPosts({ String sort, String t, int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetTrendingPosts', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Get a Reddit user's profile.
     //
-    //Future<JsonObject> redditGetUserProfile(String username) async
+    //Future<JsonObject> redditGetUserProfile(String username, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetUserProfile', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Get comments by a Reddit user.
     //
-    //Future<JsonObject> redditGetUserSComments(String username, { String sort, String t, int limit, String after }) async
+    //Future<JsonObject> redditGetUserSComments(String username, { String sort, String t, int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetUserSComments', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Get subreddits moderated by a user.
     //
-    //Future<JsonObject> redditGetUserSModeratedSubreddits(String username) async
+    //Future<JsonObject> redditGetUserSModeratedSubreddits(String username, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetUserSModeratedSubreddits', () async {
       // TODO
     });
@@ -110,7 +110,7 @@ void main() {
     //
     // Get posts submitted by a Reddit user.
     //
-    //Future<JsonObject> redditGetUserSPosts(String username, { String sort, String t, int limit, String after }) async
+    //Future<JsonObject> redditGetUserSPosts(String username, { String sort, String t, int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetUserSPosts', () async {
       // TODO
     });
@@ -119,7 +119,7 @@ void main() {
     //
     // Get a user's trophy case.
     //
-    //Future<JsonObject> redditGetUserSTrophies(String username) async
+    //Future<JsonObject> redditGetUserSTrophies(String username, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetUserSTrophies', () async {
       // TODO
     });
@@ -128,7 +128,7 @@ void main() {
     //
     // Get the content of a specific wiki page.
     //
-    //Future<JsonObject> redditGetWikiPageContent(String subreddit, String page) async
+    //Future<JsonObject> redditGetWikiPageContent(String subreddit, String page, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditGetWikiPageContent', () async {
       // TODO
     });
@@ -137,7 +137,7 @@ void main() {
     //
     // List all wiki pages in a subreddit.
     //
-    //Future<JsonObject> redditListWikiPages(String subreddit) async
+    //Future<JsonObject> redditListWikiPages(String subreddit, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditListWikiPages', () async {
       // TODO
     });
@@ -146,7 +146,7 @@ void main() {
     //
     // Get recently created subreddits.
     //
-    //Future<JsonObject> redditNewSubreddits({ int limit, String after }) async
+    //Future<JsonObject> redditNewSubreddits({ int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditNewSubreddits', () async {
       // TODO
     });
@@ -155,7 +155,7 @@ void main() {
     //
     // Get popular subreddits by subscriber count.
     //
-    //Future<JsonObject> redditPopularSubreddits({ int limit, String after }) async
+    //Future<JsonObject> redditPopularSubreddits({ int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditPopularSubreddits', () async {
       // TODO
     });
@@ -178,7 +178,7 @@ void main() {
     //
     // Search Reddit's current web UI globally or within one or more subreddits.  Pass pagination.after unchanged with the same query, scope, sort and time filter. Search cursors expire after 30 minutes. Reddit's native page may contain fewer rows than limit; continue while after is present.  Reddit reads only the first 256 UTF-8 bytes of a search query and ignores the rest, so a longer query returns 422. Several subreddits are searched as (q) (subreddit:a OR subreddit:b ...), and that whole string counts toward the limit: split long subreddit lists across requests.
     //
-    //Future<JsonObject> redditSearchRedditPosts(String q, { String subreddit, String sort, String t, int limit, String after }) async
+    //Future<JsonObject> redditSearchRedditPosts(String q, { String subreddit, String sort, String t, int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditSearchRedditPosts', () async {
       // TODO
     });
@@ -187,7 +187,7 @@ void main() {
     //
     // Search communities using Reddit's current web UI ranking and pagination.  Pass pagination.after unchanged with the same query. Search cursors expire after 30 minutes. weekly_visitors and weekly_contributions are activity counters, separate from the subscriber count. A query over 256 UTF-8 bytes returns 422, because Reddit would silently drop the rest.
     //
-    //Future<JsonObject> redditSearchSubreddits(String q, { int limit, String after }) async
+    //Future<JsonObject> redditSearchSubreddits(String q, { int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditSearchSubreddits', () async {
       // TODO
     });
@@ -196,7 +196,7 @@ void main() {
     //
     // Search profiles using Reddit's current web UI ranking and pagination.  Pass pagination.after unchanged with the same query. Search cursors expire after 30 minutes. The native page may contain fewer rows than limit. A query over 256 UTF-8 bytes returns 422, because Reddit would silently drop the rest.
     //
-    //Future<JsonObject> redditSearchUsers(String q, { int limit, String after }) async
+    //Future<JsonObject> redditSearchUsers(String q, { int limit, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redditSearchUsers', () async {
       // TODO
     });

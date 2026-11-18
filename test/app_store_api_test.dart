@@ -11,7 +11,7 @@ void main() {
     //
     // App detail: bundle id, version, pricing, ratings, genres, min OS, size, languages, screenshots, in-app purchases and version history.
     //
-    //Future<JsonObject> appStoreGetAppDetail(String appId, { String country, String lang, bool includeExtras }) async
+    //Future<JsonObject> appStoreGetAppDetail(String appId, { String country, String lang, bool includeExtras, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test appStoreGetAppDetail', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Paginated customer reviews (50 per page, up to 10 pages).
     //
-    //Future<JsonObject> appStoreGetAppReviews(String appId, { String country, int page, String sort }) async
+    //Future<JsonObject> appStoreGetAppReviews(String appId, { String country, int page, String sort, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test appStoreGetAppReviews', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Developer info and their published apps.
     //
-    //Future<JsonObject> appStoreGetDeveloperApps(String artistId, { String country }) async
+    //Future<JsonObject> appStoreGetDeveloperApps(String artistId, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test appStoreGetDeveloperApps', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // The Apple App Store genre/category ids.
     //
-    //Future<JsonObject> appStoreListGenres() async
+    //Future<JsonObject> appStoreListGenres({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test appStoreListGenres', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Supported App Store country codes.
     //
-    //Future<JsonObject> appStoreListMarkets() async
+    //Future<JsonObject> appStoreListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test appStoreListMarkets', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Search the Apple App Store.
     //
-    //Future<JsonObject> appStoreSearchApps(String query, { String country, String entity, int limit, int offset, String lang }) async
+    //Future<JsonObject> appStoreSearchApps(String query, { String country, String entity, int limit, int offset, String lang, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test appStoreSearchApps', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Top charts, optionally scoped to a genre.
     //
-    //Future<JsonObject> appStoreTopCharts({ String country, String type, int genre, int limit, String entity }) async
+    //Future<JsonObject> appStoreTopCharts({ String country, String type, int genre, int limit, String entity, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test appStoreTopCharts', () async {
       // TODO
     });

@@ -11,7 +11,7 @@ void main() {
     //
     // Native search-box suggestions with entity descriptions and images. Two credits.
     //
-    //Future<BraveAutocompleteResponse> braveAutocomplete(String query, { String country }) async
+    //Future<BraveAutocompleteResponse> braveAutocomplete(String query, { String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test braveAutocomplete', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Native image batch with original URLs, source pages, thumbnails and dimensions.
     //
-    //Future<BraveResponse> braveImageSearch(String query, { String country, String uiLanguage, String safeSearch, int count }) async
+    //Future<BraveResponse> braveImageSearch(String query, { String country, String uiLanguage, String safeSearch, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test braveImageSearch', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Native country and UI-language choices. Free; result language is a separate preference.
     //
-    //Future<BraveLocalesResponse> braveListSupportedLocales() async
+    //Future<BraveLocalesResponse> braveListSupportedLocales({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test braveListSupportedLocales', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Native news batch; relative source dates stay display strings.
     //
-    //Future<BraveResponse> braveNewsSearch(String query, { String country, String uiLanguage, String safeSearch, int count }) async
+    //Future<BraveResponse> braveNewsSearch(String query, { String country, String uiLanguage, String safeSearch, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test braveNewsSearch', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Native video results with duration, creator, publisher and verified page ordinals.
     //
-    //Future<BravePagedResponse> braveVideoSearch(String query, { String country, String uiLanguage, String safeSearch, int page, int count }) async
+    //Future<BravePagedResponse> braveVideoSearch(String query, { String country, String uiLanguage, String safeSearch, int page, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test braveVideoSearch', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Native Brave organic results, rich source blocks and page metadata. Seven credits.
     //
-    //Future<BraveSearchResponse> braveWebSearch(String query, { String country, String uiLanguage, String safeSearch, int page, int count, String freshness, bool spellcheck }) async
+    //Future<BraveSearchResponse> braveWebSearch(String query, { String country, String uiLanguage, String safeSearch, int page, int count, String freshness, bool spellcheck, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test braveWebSearch', () async {
       // TODO
     });

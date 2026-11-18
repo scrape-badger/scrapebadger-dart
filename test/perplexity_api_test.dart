@@ -11,7 +11,7 @@ void main() {
     //
     // Send a prompt to Perplexity and get the answer plus the web sources it cited.
     //
-    //Future<JsonObject> perplexityAskPerplexityAQuestion(String prompt, { String country, bool strictCountry, String location }) async
+    //Future<JsonObject> perplexityAskPerplexityAQuestion(String prompt, { String country, bool strictCountry, String location, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test perplexityAskPerplexityAQuestion', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // POST form of `/ask`, for prompts too long for a query string.
     //
-    //Future<JsonObject> perplexityAskPerplexityAQuestionPost() async
+    //Future<JsonObject> perplexityAskPerplexityAQuestionPost({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test perplexityAskPerplexityAQuestionPost', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Ask Perplexity, then report whether the brand is mentioned, cited and how prominently.
     //
-    //Future<JsonObject> perplexityMeasureABrandSVisibilityInAPerplexityAnswer(String prompt, String brand, { String domain, String aliases, String competitors, String country, bool strictCountry, String location }) async
+    //Future<JsonObject> perplexityMeasureABrandSVisibilityInAPerplexityAnswer(String prompt, String brand, { String domain, String aliases, String competitors, String country, bool strictCountry, String location, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test perplexityMeasureABrandSVisibilityInAPerplexityAnswer', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // POST form, for longer prompts and larger competitor sets.
     //
-    //Future<JsonObject> perplexityMeasureABrandSVisibilityInAPerplexityAnswerPost() async
+    //Future<JsonObject> perplexityMeasureABrandSVisibilityInAPerplexityAnswerPost({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test perplexityMeasureABrandSVisibilityInAPerplexityAnswerPost', () async {
       // TODO
     });

@@ -11,7 +11,7 @@ void main() {
     //
     // Browse a Walmart category. Same result shape as search.  No `sort`: Walmart's browse pages ignore it. Sort on `/search` instead.
     //
-    //Future<JsonObject> walmartBrowseACategory(String path, { int page, num minPrice, num maxPrice, String facet }) async
+    //Future<JsonObject> walmartBrowseACategory(String path, { int page, num minPrice, num maxPrice, String facet, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test walmartBrowseACategory', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Walmart's current deals, rollbacks and clearance.
     //
-    //Future<JsonObject> walmartDealsRollbacksAndClearance({ int page, num minPrice, num maxPrice }) async
+    //Future<JsonObject> walmartDealsRollbacksAndClearance({ int page, num minPrice, num maxPrice, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test walmartDealsRollbacksAndClearance', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // A marketplace seller's catalogue, scoped by a search term.
     //
-    //Future<JsonObject> walmartGetASellerSCatalogue(String sellerId, String query, { int page, String sort }) async
+    //Future<JsonObject> walmartGetASellerSCatalogue(String sellerId, String query, { int page, String sort, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test walmartGetASellerSCatalogue', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Full product detail — price, stock, specs, variants, seller, reviews sample.
     //
-    //Future<JsonObject> walmartGetProductDetail(String itemId) async
+    //Future<JsonObject> walmartGetProductDetail(String itemId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test walmartGetProductDetail', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Paginated reviews with the full star histogram. 10 per page.
     //
-    //Future<JsonObject> walmartGetProductReviews(String itemId, { int page, String sort }) async
+    //Future<JsonObject> walmartGetProductReviews(String itemId, { int page, String sort, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test walmartGetProductReviews', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Marketplace seller profile — contact details, address, rating, policies.  No `page`: adding one makes Walmart's own SSR throw. Use `/sellers/{id}/products` for the catalogue.
     //
-    //Future<JsonObject> walmartGetSellerProfile(String sellerId) async
+    //Future<JsonObject> walmartGetSellerProfile(String sellerId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test walmartGetSellerProfile', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Store detail with hours, per-department services, and nearby stores.
     //
-    //Future<JsonObject> walmartGetStoreNearbyStores(String storeId) async
+    //Future<JsonObject> walmartGetStoreNearbyStores(String storeId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test walmartGetStoreNearbyStores', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Supported Walmart markets.
     //
-    //Future<JsonObject> walmartListSupportedMarkets() async
+    //Future<JsonObject> walmartListSupportedMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test walmartListSupportedMarkets', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Search walmart.com. ~40-60 organic products per page; ad tiles are dropped.
     //
-    //Future<JsonObject> walmartSearchProducts(String query, { int page, String sort, num minPrice, num maxPrice, String facet }) async
+    //Future<JsonObject> walmartSearchProducts(String query, { int page, String sort, num minPrice, num maxPrice, String facet, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test walmartSearchProducts', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Walmart search-box suggestions.
     //
-    //Future<JsonObject> walmartSearchSuggestions(String query) async
+    //Future<JsonObject> walmartSearchSuggestions(String query, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test walmartSearchSuggestions', () async {
       // TODO
     });

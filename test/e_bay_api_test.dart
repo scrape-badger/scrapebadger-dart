@@ -11,7 +11,7 @@ void main() {
     //
     // List active listings within an eBay category.
     //
-    //Future<JsonObject> ebayBrowseACategory(String categoryId, { String domain, int page, int perPage, String sortBy, num minPrice, num maxPrice }) async
+    //Future<JsonObject> ebayBrowseACategory(String categoryId, { String domain, int page, int perPage, String sortBy, num minPrice, num maxPrice, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebayBrowseACategory', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Search completed/sold listings — eBay's sold-price history.  Pass ``query``, ``seller`` or both. ``seller`` alone returns everything that seller sold, page by page, with no keyword needed.  eBay pads a short result set with \"results matching fewer words\" and counts only the exact ones in ``pagination.total_results``. Results come back in eBay's own ranking order with the exact matches first, and each one carries ``exact_match`` (true/false) so a price series can be built without parsing titles. An empty ``results`` with ``total_results: 0`` is eBay's own answer and costs 0 credits — a fetch failure is never a 200.  ``price`` is what the listing sold for, including the market's buyer-protection fee, as a local buyer sees it. It is ``null`` on one shape: an auction that also accepted offers (``bids`` set). eBay's sold index answers those with either the listing's start/Buy-It-Now price or the price it sold at, varying between identical requests with nothing to say which, so no number there is trustworthy — ``/v1/ebay/items/{item_id}`` carries the winning bid for them (before the fee). A listing that closed purely on an accepted Best Offer prices normally: eBay's sold index carries the listed price for it, not the accepted amount, so ``price`` is the listed one. ``/v1/ebay/items/{item_id}`` carries the accepted amount where eBay's item page publishes it (``best_offer_accepted``, ``price``, ``original_price``).
     //
-    //Future<JsonObject> ebayCompletedSoldListings({ String query, String seller, String domain, String categoryId, int page, int perPage, String sortBy, String condition, num minPrice, num maxPrice, String location, String language }) async
+    //Future<JsonObject> ebayCompletedSoldListings({ String query, String seller, String domain, String categoryId, int page, int perPage, String sortBy, String condition, num minPrice, num maxPrice, String location, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebayCompletedSoldListings', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Get a single eBay listing's full detail.  ``price`` is the price the listing's buy box shows. On a closed listing, ``is_sold`` says it carries eBay's \"Sold\" label rather than \"Ended\", and ``best_offer_accepted`` says it sold through an accepted Best Offer. eBay publishes the accepted amount on most such listings: then ``price`` is that amount, and ``original_price`` and ``buy_it_now_price`` are the listed price it was accepted against. Where eBay only strikes the listed price through, ``price`` stays the listed price and ``original_price`` is null, so ``best_offer_accepted`` with a null ``original_price`` means \"sold below ``price``, amount not published on this read\". On a listing from another eBay site the accepted amount is converted to the marketplace's currency at the rate eBay applied to the listed price on the same page; ``price.raw`` keeps it as eBay rendered it (\"US $300.00\").
     //
-    //Future<JsonObject> ebayGetItemDetail(String itemId, { String domain }) async
+    //Future<JsonObject> ebayGetItemDetail(String itemId, { String domain, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebayGetItemDetail', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Get catalog product reviews shown on an eBay listing.
     //
-    //Future<JsonObject> ebayGetItemReviews(String itemId, { String domain, int page }) async
+    //Future<JsonObject> ebayGetItemReviews(String itemId, { String domain, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebayGetItemReviews', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Get a seller's recent feedback comments.
     //
-    //Future<JsonObject> ebayGetSellerFeedback(String username, { String domain, int page }) async
+    //Future<JsonObject> ebayGetSellerFeedback(String username, { String domain, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebayGetSellerFeedback', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // List the active listings of a single eBay seller.
     //
-    //Future<JsonObject> ebayGetSellerListings(String username, { String domain, String query, int page, int perPage }) async
+    //Future<JsonObject> ebayGetSellerListings(String username, { String domain, String query, int page, int perPage, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebayGetSellerListings', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Get an eBay seller's public profile.
     //
-    //Future<JsonObject> ebayGetSellerProfile(String username, { String domain }) async
+    //Future<JsonObject> ebayGetSellerProfile(String username, { String domain, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebayGetSellerProfile', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Return eBay keyword autocomplete suggestions.
     //
-    //Future<JsonObject> ebayKeywordSuggestions(String query, { String domain }) async
+    //Future<JsonObject> ebayKeywordSuggestions(String query, { String domain, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebayKeywordSuggestions', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // List eBay's top-level category ids.
     //
-    //Future<JsonObject> ebayListCategories() async
+    //Future<JsonObject> ebayListCategories({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebayListCategories', () async {
       // TODO
     });
@@ -110,7 +110,7 @@ void main() {
     //
     // List all supported eBay marketplaces.
     //
-    //Future<JsonObject> ebayListMarkets() async
+    //Future<JsonObject> ebayListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebayListMarkets', () async {
       // TODO
     });
@@ -119,7 +119,7 @@ void main() {
     //
     // Search active listings by image, the way eBay's camera icon does.  No ``sort_by``: eBay ignores it on a visual results page.
     //
-    //Future<JsonObject> ebaySearchByImage(BuiltMap<String, JsonObject> requestBody) async
+    //Future<JsonObject> ebaySearchByImage(BuiltMap<String, JsonObject> requestBody, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebaySearchByImage', () async {
       // TODO
     });
@@ -128,7 +128,7 @@ void main() {
     //
     // Search an eBay marketplace for active listings.
     //
-    //Future<JsonObject> ebaySearchListings(String query, { String domain, String categoryId, int page, int perPage, String sortBy, String condition, String buyingFormat, num minPrice, num maxPrice, bool freeShipping, String location, String language }) async
+    //Future<JsonObject> ebaySearchListings(String query, { String domain, String categoryId, int page, int perPage, String sortBy, String condition, String buyingFormat, num minPrice, num maxPrice, bool freeShipping, String location, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test ebaySearchListings', () async {
       // TODO
     });

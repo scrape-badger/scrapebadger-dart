@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 
 import 'package:built_value/json_object.dart';
 import 'package:scrapebadger/src/api_util.dart';
+import 'package:scrapebadger/src/model/async_accepted.dart';
 import 'package:scrapebadger/src/model/http_validation_error.dart';
 
 class WallapopApi {
@@ -26,6 +27,13 @@ class WallapopApi {
   /// Parameters:
   /// * [query] - Partial search text, e.g. 'bici'
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -38,6 +46,13 @@ class WallapopApi {
   Future<Response<JsonObject>> wallapopAutocomplete({ 
     required String query,
     String? market = 'es',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -49,6 +64,9 @@ class WallapopApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -68,6 +86,10 @@ class WallapopApi {
     final _queryParameters = <String, dynamic>{
       r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -116,6 +138,13 @@ class WallapopApi {
   /// Parameters:
   /// * [itemId] 
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -128,6 +157,13 @@ class WallapopApi {
   Future<Response<JsonObject>> wallapopGetListingDetail({ 
     required String itemId,
     String? market = 'es',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -139,6 +175,9 @@ class WallapopApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -157,6 +196,10 @@ class WallapopApi {
 
     final _queryParameters = <String, dynamic>{
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -206,6 +249,13 @@ class WallapopApi {
   /// * [userId] 
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
   /// * [nextPage] - Cursor from the previous page's next_page
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -219,6 +269,13 @@ class WallapopApi {
     required String userId,
     String? market = 'es',
     String? nextPage,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -230,6 +287,9 @@ class WallapopApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -249,6 +309,10 @@ class WallapopApi {
     final _queryParameters = <String, dynamic>{
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
       r'next_page': encodeQueryParameter(_serializers, nextPage, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -297,6 +361,13 @@ class WallapopApi {
   /// Parameters:
   /// * [userId] 
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -309,6 +380,13 @@ class WallapopApi {
   Future<Response<JsonObject>> wallapopGetUserProfile({ 
     required String userId,
     String? market = 'es',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -320,6 +398,9 @@ class WallapopApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -338,6 +419,10 @@ class WallapopApi {
 
     final _queryParameters = <String, dynamic>{
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -387,6 +472,13 @@ class WallapopApi {
   /// * [userId] 
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
   /// * [nextPage] - Cursor from the previous page's next_page
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -400,6 +492,13 @@ class WallapopApi {
     required String userId,
     String? market = 'es',
     String? nextPage,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -411,6 +510,9 @@ class WallapopApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -430,6 +532,10 @@ class WallapopApi {
     final _queryParameters = <String, dynamic>{
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
       r'next_page': encodeQueryParameter(_serializers, nextPage, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -477,6 +583,13 @@ class WallapopApi {
   ///
   /// Parameters:
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -488,6 +601,13 @@ class WallapopApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> wallapopListCategories({ 
     String? market = 'es',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -499,6 +619,9 @@ class WallapopApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -517,6 +640,10 @@ class WallapopApi {
 
     final _queryParameters = <String, dynamic>{
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -567,6 +694,13 @@ class WallapopApi {
   /// * [categoryId] - Category to scope options to
   /// * [query] - Search text to scope options to
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -581,6 +715,13 @@ class WallapopApi {
     int? categoryId,
     String? query,
     String? market = 'es',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -592,6 +733,9 @@ class WallapopApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -612,6 +756,10 @@ class WallapopApi {
       r'category_id': encodeQueryParameter(_serializers, categoryId, const FullType(int)),
       r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -658,6 +806,13 @@ class WallapopApi {
   /// Supported Wallapop markets and their default search location.
   ///
   /// Parameters:
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -668,6 +823,13 @@ class WallapopApi {
   /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> wallapopListMarkets({ 
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -679,6 +841,9 @@ class WallapopApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -695,9 +860,17 @@ class WallapopApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
@@ -741,6 +914,13 @@ class WallapopApi {
   /// * [categoryId] - Category the filters apply to
   /// * [query] - Search text the filters apply to
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -754,6 +934,13 @@ class WallapopApi {
     int? categoryId,
     String? query,
     String? market = 'es',
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -765,6 +952,9 @@ class WallapopApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -785,6 +975,10 @@ class WallapopApi {
       r'category_id': encodeQueryParameter(_serializers, categoryId, const FullType(int)),
       r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -856,6 +1050,13 @@ class WallapopApi {
   /// * [maxHorsepower] - Cars: maximum power
   /// * [orderBy] - Sort order
   /// * [nextPage] - Cursor from the previous page's next_page; other parameters are then ignored
+  /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+  /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+  /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+  /// * [async_] - Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+  /// * [asyncWait] - Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+  /// * [callbackUrl] - Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+  /// * [idempotencyKey2] - Query form of `Idempotency-Key`. Not sent to the scraper.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -891,6 +1092,13 @@ class WallapopApi {
     int? maxHorsepower,
     String? orderBy = 'most_relevance',
     String? nextPage,
+    String? prefer,
+    String? xCallbackURL,
+    String? idempotencyKey,
+    bool? async_,
+    int? asyncWait,
+    String? callbackUrl,
+    String? idempotencyKey2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -902,6 +1110,9 @@ class WallapopApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (prefer != null) r'Prefer': prefer,
+        if (xCallbackURL != null) r'X-Callback-URL': xCallbackURL,
+        if (idempotencyKey != null) r'Idempotency-Key': idempotencyKey,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -944,6 +1155,10 @@ class WallapopApi {
       r'max_horsepower': encodeQueryParameter(_serializers, maxHorsepower, const FullType(int)),
       if (orderBy != null) r'order_by': encodeQueryParameter(_serializers, orderBy, const FullType(String)),
       r'next_page': encodeQueryParameter(_serializers, nextPage, const FullType(String)),
+      if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
+      if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
+      if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
+      if (idempotencyKey2 != null) r'idempotency_key': encodeQueryParameter(_serializers, idempotencyKey2, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

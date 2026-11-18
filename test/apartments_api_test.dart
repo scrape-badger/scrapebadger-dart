@@ -29,7 +29,7 @@ void main() {
     //
     // Get a property by its SEO slug and 7-character listing id.
     //
-    //Future<JsonObject> apartmentsGetPropertyDetailBySlugId(String slug, String propertyId) async
+    //Future<JsonObject> apartmentsGetPropertyDetailBySlugId(String slug, String propertyId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test apartmentsGetPropertyDetailBySlugId', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Get an apartments.com property with full per-unit pricing and availability.
     //
-    //Future<JsonObject> apartmentsGetPropertyDetailByUrl(String url) async
+    //Future<JsonObject> apartmentsGetPropertyDetailByUrl(String url, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test apartmentsGetPropertyDetailByUrl', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Search apartments.com for rental properties. 40 cards per page.
     //
-    //Future<JsonObject> apartmentsSearchRentalListings(String location, { int page, int beds, int minPrice, int maxPrice }) async
+    //Future<JsonObject> apartmentsSearchRentalListings(String location, { int page, int beds, int minPrice, int maxPrice, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test apartmentsSearchRentalListings', () async {
       // TODO
     });

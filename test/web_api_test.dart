@@ -11,7 +11,7 @@ void main() {
     //
     // Detect which anti-bot and CAPTCHA systems are present on a URL.  Uses rnet to fetch the page and identify DataDome, Cloudflare, Akamai, Kasada, Amazon WAF, reCAPTCHA, hCaptcha, GeeTest, and more. Cost: 1 credit.
     //
-    //Future<JsonObject> webDetectAntiBotAndCaptchaSystems() async
+    //Future<JsonObject> webDetectAntiBotAndCaptchaSystems({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test webDetectAntiBotAndCaptchaSystems', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Scrape a URL and extract fields with CSS/XPath selectors and/or AI.  ``extract_rules`` maps a field to a selector and returns ``data``; ``ai_extract_rules`` (field -> description) and ``ai_query`` return ``ai_extraction``. Billed as a scrape, plus the AI extraction credits when AI is asked for and succeeds.
     //
-    //Future<JsonObject> webExtractStructuredData(ExtractRequest extractRequest) async
+    //Future<JsonObject> webExtractStructuredData(ExtractRequest extractRequest, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test webExtractStructuredData', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Scrape a URL and return its content.  Callers pick their own request parameters (engine, proxy tier, country, JS rendering, …). When a host has a per-origin override, its access settings (engine chain, proxy tier/type/country, warm-up, injected headers) are used instead of the caller's, and the response's ``X-Proxy-Tier-Effective`` header names the tier billed; output settings (``render_js``, ``wait_for``, ``js_scenario``, ``format``, …) stay the caller's. A blocked target returns 422 ``blocking_page_detected`` at once, with ``block_kind``, ``vendor`` and, for a CAPTCHA wall, the gating ``captcha``. Repeated blocks on a host with no override start a background search for a working configuration, reported as ``unblock`` / ``X-Unblock`` (``discovering`` | ``cooldown`` | ``none``); once found it applies to later requests automatically.  Repeated identical upstream failures can return 429 with Retry-After under the gateway's existing failure-backoff thresholds. Other URLs and changed request options (including credentials) remain independent; validation errors do not fund or trip this protection.  One exception, added for SB-001083/SCR-64: a plain ``google.com/search`` web-SERP fetch is served by the dedicated Google scraper, whose rotation loop is built for SearchGuard. Same request shape, same response shape, billed at what it actually cost — the caller sees only a better hit rate. ``serp_adapter`` fails closed, so any request carrying a parameter it does not recognise as route-or-cost takes the generic path unchanged, and the user-driven contract above still holds.
     //
-    //Future<JsonObject> webScrapeAUrl() async
+    //Future<JsonObject> webScrapeAUrl({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test webScrapeAUrl', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Render a URL in the browser engine and return a PNG screenshot.  ``screenshot`` is the PNG, base64-encoded. ``width``/``height`` set the viewport; ``full_page`` captures the whole scrollable page. Billed as a browser scrape (plus the proxy tier); a page that loads without a screenshot is a 502 and costs nothing.
     //
-    //Future<JsonObject> webTakeAScreenshot(ScreenshotRequest screenshotRequest) async
+    //Future<JsonObject> webTakeAScreenshot(ScreenshotRequest screenshotRequest, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test webTakeAScreenshot', () async {
       // TODO
     });

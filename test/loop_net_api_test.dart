@@ -11,7 +11,7 @@ void main() {
     //
     // Get a LoopNet broker profile + their listings by slug + id.
     //
-    //Future<JsonObject> loopnetGetBrokerProfile(String slug, String brokerId, { String market }) async
+    //Future<JsonObject> loopnetGetBrokerProfile(String slug, String brokerId, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test loopnetGetBrokerProfile', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Get a single LoopNet listing's full detail by its numeric id.
     //
-    //Future<JsonObject> loopnetGetListingDetail(String listingId, { String market }) async
+    //Future<JsonObject> loopnetGetListingDetail(String listingId, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test loopnetGetListingDetail', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // List LoopNet coverage markets (US, CA, UK, FR, ES).
     //
-    //Future<JsonObject> loopnetListCoverageMarkets() async
+    //Future<JsonObject> loopnetListCoverageMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test loopnetListCoverageMarkets', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // List LoopNet property-type facets accepted by /search.
     //
-    //Future<JsonObject> loopnetListPropertyTypes() async
+    //Future<JsonObject> loopnetListPropertyTypes({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test loopnetListPropertyTypes', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Search LoopNet for-lease / for-sale / auction listings across all markets.
     //
-    //Future<JsonObject> loopnetSearchCommercialRealEstate(String location, { String market, String listingType, String propertyType, int page, int minPrice, int maxPrice, String priceType, int minSize, int maxSize }) async
+    //Future<JsonObject> loopnetSearchCommercialRealEstate(String location, { String market, String listingType, String propertyType, int page, int minPrice, int maxPrice, String priceType, int minSize, int maxSize, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test loopnetSearchCommercialRealEstate', () async {
       // TODO
     });

@@ -29,7 +29,7 @@ void main() {
     //
     // Ask Alexa for Shopping (Rufus) and get its answer and product cards.
     //
-    //Future<JsonObject> rufusAskAmazonRufusAQuestion(String prompt, { String asin }) async
+    //Future<JsonObject> rufusAskAmazonRufusAQuestion(String prompt, { String asin, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test rufusAskAmazonRufusAQuestion', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // POST form of `/ask`, accepting prompt and optional asin in the JSON body.
     //
-    //Future<JsonObject> rufusAskAmazonRufusAQuestionPost(RufusAskRequest rufusAskRequest) async
+    //Future<JsonObject> rufusAskAmazonRufusAQuestionPost(RufusAskRequest rufusAskRequest, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test rufusAskAmazonRufusAQuestionPost', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // List the Amazon shopping assistant surface exposed by this API.
     //
-    //Future<JsonObject> rufusListAmazonRufusModels() async
+    //Future<JsonObject> rufusListAmazonRufusModels({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test rufusListAmazonRufusModels', () async {
       // TODO
     });

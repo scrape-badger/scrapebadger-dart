@@ -11,7 +11,7 @@ void main() {
     //
     // Search tweets with advanced options.
     //
-    //Future<JsonObject> twitterAdvancedTweetSearch(String query, { String queryType, int count, String cursor }) async
+    //Future<JsonObject> twitterAdvancedTweetSearch(String query, { String queryType, int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterAdvancedTweetSearch', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Get multiple user profiles by their numeric IDs (comma-separated).
     //
-    //Future<JsonObject> twitterBatchGetUsersByIds(String userIds) async
+    //Future<JsonObject> twitterBatchGetUsersByIds(String userIds, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterBatchGetUsersByIds', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Get multiple user profiles by their usernames (comma-separated).
     //
-    //Future<JsonObject> twitterBatchGetUsersByUsernames(String usernames) async
+    //Future<JsonObject> twitterBatchGetUsersByUsernames(String usernames, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterBatchGetUsersByUsernames', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Get a long-form article by its ID.
     //
-    //Future<JsonObject> twitterGetArticleById(String articleId) async
+    //Future<JsonObject> twitterGetArticleById(String articleId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetArticleById', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Get details of a live video broadcast.
     //
-    //Future<JsonObject> twitterGetBroadcastDetails(String broadcastId) async
+    //Future<JsonObject> twitterGetBroadcastDetails(String broadcastId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetBroadcastDetails', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Get details of a specific community.
     //
-    //Future<JsonObject> twitterGetCommunityDetails(String communityId) async
+    //Future<JsonObject> twitterGetCommunityDetails(String communityId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetCommunityDetails', () async {
       // TODO
     });
@@ -110,7 +110,7 @@ void main() {
     //
     // Get community notes (Birdwatch) for a specific tweet.
     //
-    //Future<JsonObject> twitterGetCommunityNotes(String tweetId) async
+    //Future<JsonObject> twitterGetCommunityNotes(String tweetId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetCommunityNotes', () async {
       // TODO
     });
@@ -119,7 +119,7 @@ void main() {
     //
     // Get tweets from a specific community.
     //
-    //Future<JsonObject> twitterGetCommunityTweets(String communityId, { String tweetType, String cursor }) async
+    //Future<JsonObject> twitterGetCommunityTweets(String communityId, { String tweetType, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetCommunityTweets', () async {
       // TODO
     });
@@ -146,7 +146,7 @@ void main() {
     //
     // Get details of a specific list.
     //
-    //Future<JsonObject> twitterGetListDetails(String listId) async
+    //Future<JsonObject> twitterGetListDetails(String listId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetListDetails', () async {
       // TODO
     });
@@ -155,7 +155,7 @@ void main() {
     //
     // Get tweets from a specific list.
     //
-    //Future<JsonObject> twitterGetListTweets(String listId, { String cursor }) async
+    //Future<JsonObject> twitterGetListTweets(String listId, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetListTweets', () async {
       // TODO
     });
@@ -164,7 +164,7 @@ void main() {
     //
     // Get details of a specific place.
     //
-    //Future<JsonObject> twitterGetPlaceDetails(String placeId) async
+    //Future<JsonObject> twitterGetPlaceDetails(String placeId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetPlaceDetails', () async {
       // TODO
     });
@@ -173,7 +173,7 @@ void main() {
     //
     // Get tweets similar to a specific tweet.
     //
-    //Future<JsonObject> twitterGetSimilarTweets(String tweetId) async
+    //Future<JsonObject> twitterGetSimilarTweets(String tweetId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetSimilarTweets', () async {
       // TODO
     });
@@ -182,7 +182,7 @@ void main() {
     //
     // Get details of a Twitter Space.
     //
-    //Future<JsonObject> twitterGetSpaceDetails(String spaceId) async
+    //Future<JsonObject> twitterGetSpaceDetails(String spaceId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetSpaceDetails', () async {
       // TODO
     });
@@ -200,7 +200,7 @@ void main() {
     //
     // Get trending topics.
     //
-    //Future<JsonObject> twitterGetTrendingTopics({ String category, int count }) async
+    //Future<JsonObject> twitterGetTrendingTopics({ String category, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetTrendingTopics', () async {
       // TODO
     });
@@ -209,7 +209,7 @@ void main() {
     //
     // Get trending topics for a specific location (WOEID).
     //
-    //Future<JsonObject> twitterGetTrendsByLocation(String woeid) async
+    //Future<JsonObject> twitterGetTrendsByLocation(String woeid, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetTrendsByLocation', () async {
       // TODO
     });
@@ -218,7 +218,7 @@ void main() {
     //
     // Get detailed information about a specific tweet.
     //
-    //Future<JsonObject> twitterGetTweetDetails(String tweetId, { String cursor }) async
+    //Future<JsonObject> twitterGetTweetDetails(String tweetId, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetTweetDetails', () async {
       // TODO
     });
@@ -227,7 +227,7 @@ void main() {
     //
     // Get the edit history of a tweet.
     //
-    //Future<JsonObject> twitterGetTweetEditHistory(String tweetId) async
+    //Future<JsonObject> twitterGetTweetEditHistory(String tweetId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetTweetEditHistory', () async {
       // TODO
     });
@@ -236,7 +236,7 @@ void main() {
     //
     // Get users who favorited a specific tweet.
     //
-    //Future<JsonObject> twitterGetTweetFavoriters(String tweetId, { String cursor }) async
+    //Future<JsonObject> twitterGetTweetFavoriters(String tweetId, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetTweetFavoriters', () async {
       // TODO
     });
@@ -245,7 +245,7 @@ void main() {
     //
     // Get tweets that quote a specific tweet.
     //
-    //Future<JsonObject> twitterGetTweetQuotes(String tweetId, { String cursor }) async
+    //Future<JsonObject> twitterGetTweetQuotes(String tweetId, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetTweetQuotes', () async {
       // TODO
     });
@@ -254,7 +254,7 @@ void main() {
     //
     // Get replies to a specific tweet.
     //
-    //Future<JsonObject> twitterGetTweetReplies(String tweetId, { String cursor }) async
+    //Future<JsonObject> twitterGetTweetReplies(String tweetId, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetTweetReplies', () async {
       // TODO
     });
@@ -263,7 +263,7 @@ void main() {
     //
     // Get users who retweeted a specific tweet.
     //
-    //Future<JsonObject> twitterGetTweetRetweeters(String tweetId, { String cursor }) async
+    //Future<JsonObject> twitterGetTweetRetweeters(String tweetId, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetTweetRetweeters', () async {
       // TODO
     });
@@ -272,7 +272,7 @@ void main() {
     //
     // Get multiple tweets by their IDs.
     //
-    //Future<JsonObject> twitterGetTweetsByIds(String tweets) async
+    //Future<JsonObject> twitterGetTweetsByIds(String tweets, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetTweetsByIds', () async {
       // TODO
     });
@@ -281,7 +281,7 @@ void main() {
     //
     // Get long-form articles written by a user.
     //
-    //Future<JsonObject> twitterGetUserArticles(String userId, { String cursor }) async
+    //Future<JsonObject> twitterGetUserArticles(String userId, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetUserArticles', () async {
       // TODO
     });
@@ -290,7 +290,7 @@ void main() {
     //
     // Get user profile by user ID.
     //
-    //Future<JsonObject> twitterGetUserById(String userId) async
+    //Future<JsonObject> twitterGetUserById(String userId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetUserById', () async {
       // TODO
     });
@@ -299,7 +299,7 @@ void main() {
     //
     // Get user profile by username.
     //
-    //Future<JsonObject> twitterGetUserByUsername(String username) async
+    //Future<JsonObject> twitterGetUserByUsername(String username, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetUserByUsername', () async {
       // TODO
     });
@@ -308,7 +308,7 @@ void main() {
     //
     // Get followers of a specific user.
     //
-    //Future<JsonObject> twitterGetUserFollowers(String username, { String cursor }) async
+    //Future<JsonObject> twitterGetUserFollowers(String username, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetUserFollowers', () async {
       // TODO
     });
@@ -317,7 +317,7 @@ void main() {
     //
     // Get users that a specific user is following.
     //
-    //Future<JsonObject> twitterGetUserFollowing(String username, { String cursor }) async
+    //Future<JsonObject> twitterGetUserFollowing(String username, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetUserFollowing', () async {
       // TODO
     });
@@ -326,7 +326,7 @@ void main() {
     //
     // Get tweets mentioning a specific user.
     //
-    //Future<JsonObject> twitterGetUserMentions(String username, { int count, String cursor }) async
+    //Future<JsonObject> twitterGetUserMentions(String username, { int count, String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetUserMentions', () async {
       // TODO
     });
@@ -335,7 +335,7 @@ void main() {
     //
     // Get subscriptions of a specific user.
     //
-    //Future<JsonObject> twitterGetUserSubscriptions(String userId, { String cursor }) async
+    //Future<JsonObject> twitterGetUserSubscriptions(String userId, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetUserSubscriptions', () async {
       // TODO
     });
@@ -344,7 +344,7 @@ void main() {
     //
     // Get latest tweets from a specific user.
     //
-    //Future<JsonObject> twitterGetUserTweets(String username, { String cursor }) async
+    //Future<JsonObject> twitterGetUserTweets(String username, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterGetUserTweets', () async {
       // TODO
     });
@@ -416,7 +416,7 @@ void main() {
     //
     // Search for communities by query.
     //
-    //Future<JsonObject> twitterSearchCommunities(String query, { String cursor }) async
+    //Future<JsonObject> twitterSearchCommunities(String query, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterSearchCommunities', () async {
       // TODO
     });
@@ -425,7 +425,7 @@ void main() {
     //
     // Search tweets within a specific list.
     //
-    //Future<JsonObject> twitterSearchListTweets(String listId, String query, { String cursor }) async
+    //Future<JsonObject> twitterSearchListTweets(String listId, String query, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterSearchListTweets', () async {
       // TODO
     });
@@ -434,7 +434,7 @@ void main() {
     //
     // Search for places by query or coordinates.
     //
-    //Future<JsonObject> twitterSearchPlaces({ String query, num lat, num long }) async
+    //Future<JsonObject> twitterSearchPlaces({ String query, num lat, num long, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterSearchPlaces', () async {
       // TODO
     });
@@ -443,7 +443,7 @@ void main() {
     //
     // Search for users by query.
     //
-    //Future<JsonObject> twitterSearchUsers(String query, { String cursor }) async
+    //Future<JsonObject> twitterSearchUsers(String query, { String cursor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test twitterSearchUsers', () async {
       // TODO
     });

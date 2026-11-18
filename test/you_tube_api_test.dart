@@ -9,91 +9,91 @@ void main() {
   group(YouTubeApi, () {
     // Batch video detail
     //
-    //Future<JsonObject> youtubeBatchVideoDetail(BuiltMap<String, JsonObject> requestBody) async
+    //Future<JsonObject> youtubeBatchVideoDetail(BuiltMap<String, JsonObject> requestBody, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeBatchVideoDetail', () async {
       // TODO
     });
 
     // Channel about
     //
-    //Future<JsonObject> youtubeChannelAbout(String channelId) async
+    //Future<JsonObject> youtubeChannelAbout(String channelId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeChannelAbout', () async {
       // TODO
     });
 
     // Channel playlists
     //
-    //Future<JsonObject> youtubeChannelPlaylists(String channelId) async
+    //Future<JsonObject> youtubeChannelPlaylists(String channelId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeChannelPlaylists', () async {
       // TODO
     });
 
     // Channel shorts
     //
-    //Future<JsonObject> youtubeChannelShorts(String channelId) async
+    //Future<JsonObject> youtubeChannelShorts(String channelId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeChannelShorts', () async {
       // TODO
     });
 
     // Channel streams
     //
-    //Future<JsonObject> youtubeChannelStreams(String channelId) async
+    //Future<JsonObject> youtubeChannelStreams(String channelId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeChannelStreams', () async {
       // TODO
     });
 
     // Channel videos
     //
-    //Future<JsonObject> youtubeChannelVideos(String channelId) async
+    //Future<JsonObject> youtubeChannelVideos(String channelId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeChannelVideos', () async {
       // TODO
     });
 
     // Comment replies
     //
-    //Future<JsonObject> youtubeCommentReplies(String videoId, String commentId, String continuation) async
+    //Future<JsonObject> youtubeCommentReplies(String videoId, String commentId, String continuation, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeCommentReplies', () async {
       // TODO
     });
 
     // Community post comments
     //
-    //Future<JsonObject> youtubeCommunityPostComments(String postId) async
+    //Future<JsonObject> youtubeCommunityPostComments(String postId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeCommunityPostComments', () async {
       // TODO
     });
 
     // Community posts
     //
-    //Future<JsonObject> youtubeCommunityPosts(String channelId) async
+    //Future<JsonObject> youtubeCommunityPosts(String channelId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeCommunityPosts', () async {
       // TODO
     });
 
     // Content regions
     //
-    //Future<JsonObject> youtubeContentRegions() async
+    //Future<JsonObject> youtubeContentRegions({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeContentRegions', () async {
       // TODO
     });
 
     // Get a community post
     //
-    //Future<JsonObject> youtubeGetACommunityPost(String postId) async
+    //Future<JsonObject> youtubeGetACommunityPost(String postId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeGetACommunityPost', () async {
       // TODO
     });
 
     // Get a mix / radio queue
     //
-    //Future<JsonObject> youtubeGetAMixRadioQueue(String playlistId) async
+    //Future<JsonObject> youtubeGetAMixRadioQueue(String playlistId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeGetAMixRadioQueue', () async {
       // TODO
     });
 
     // Get a Short
     //
-    //Future<JsonObject> youtubeGetAShort(String videoId) async
+    //Future<JsonObject> youtubeGetAShort(String videoId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeGetAShort', () async {
       // TODO
     });
@@ -102,14 +102,14 @@ void main() {
     //
     // Channel detail (accepts a UC id, @handle, or custom URL).
     //
-    //Future<JsonObject> youtubeGetChannelDetail(String channelId, { String gl, String hl }) async
+    //Future<JsonObject> youtubeGetChannelDetail(String channelId, { String gl, String hl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeGetChannelDetail', () async {
       // TODO
     });
 
     // Get playlist detail
     //
-    //Future<JsonObject> youtubeGetPlaylistDetail(String playlistId) async
+    //Future<JsonObject> youtubeGetPlaylistDetail(String playlistId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeGetPlaylistDetail', () async {
       // TODO
     });
@@ -118,14 +118,14 @@ void main() {
     //
     // Full video detail — merged player + next (likes, comments, chapters, related).
     //
-    //Future<JsonObject> youtubeGetVideoDetail(String videoId, { String gl, String hl }) async
+    //Future<JsonObject> youtubeGetVideoDetail(String videoId, { String gl, String hl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeGetVideoDetail', () async {
       // TODO
     });
 
     // Guest home feed
     //
-    //Future<JsonObject> youtubeGuestHomeFeed() async
+    //Future<JsonObject> youtubeGuestHomeFeed({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeGuestHomeFeed', () async {
       // TODO
     });
@@ -134,56 +134,56 @@ void main() {
     //
     // Return YouTube keyword autocomplete suggestions.
     //
-    //Future<JsonObject> youtubeKeywordSuggestions(String query, { String gl, String hl }) async
+    //Future<JsonObject> youtubeKeywordSuggestions(String query, { String gl, String hl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeKeywordSuggestions', () async {
       // TODO
     });
 
     // List caption tracks
     //
-    //Future<JsonObject> youtubeListCaptionTracks(String videoId) async
+    //Future<JsonObject> youtubeListCaptionTracks(String videoId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeListCaptionTracks', () async {
       // TODO
     });
 
     // Live chat messages
     //
-    //Future<JsonObject> youtubeLiveChatMessages(String videoId, { String continuation, bool replay }) async
+    //Future<JsonObject> youtubeLiveChatMessages(String videoId, { String continuation, bool replay, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeLiveChatMessages', () async {
       // TODO
     });
 
     // oEmbed metadata
     //
-    //Future<JsonObject> youtubeOembedMetadata(String url) async
+    //Future<JsonObject> youtubeOembedMetadata(String url, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeOembedMetadata', () async {
       // TODO
     });
 
     // Playlist items page
     //
-    //Future<JsonObject> youtubePlaylistItemsPage(String playlistId) async
+    //Future<JsonObject> youtubePlaylistItemsPage(String playlistId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubePlaylistItemsPage', () async {
       // TODO
     });
 
     // Related videos
     //
-    //Future<JsonObject> youtubeRelatedVideos(String videoId) async
+    //Future<JsonObject> youtubeRelatedVideos(String videoId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeRelatedVideos', () async {
       // TODO
     });
 
     // Resolve handle/URL to id
     //
-    //Future<JsonObject> youtubeResolveHandleUrlToId({ String handle, String url }) async
+    //Future<JsonObject> youtubeResolveHandleUrlToId({ String handle, String url, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeResolveHandleUrlToId', () async {
       // TODO
     });
 
     // Search within a channel
     //
-    //Future<JsonObject> youtubeSearchWithinAChannel(String channelId, String query) async
+    //Future<JsonObject> youtubeSearchWithinAChannel(String channelId, String query, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeSearchWithinAChannel', () async {
       // TODO
     });
@@ -192,21 +192,21 @@ void main() {
     //
     // Search videos / channels / playlists with the full filter matrix.
     //
-    //Future<JsonObject> youtubeSearchYoutube(String query, { String type, String sortBy, String uploadDate, String duration, String features, String gl, String hl, String continuation }) async
+    //Future<JsonObject> youtubeSearchYoutube(String query, { String type, String sortBy, String uploadDate, String duration, String features, String gl, String hl, String continuation, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeSearchYoutube', () async {
       // TODO
     });
 
     // Search YouTube Music
     //
-    //Future<JsonObject> youtubeSearchYoutubeMusic(String query) async
+    //Future<JsonObject> youtubeSearchYoutubeMusic(String query, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeSearchYoutubeMusic', () async {
       // TODO
     });
 
     // Shorts by sound
     //
-    //Future<JsonObject> youtubeShortsBySound(String soundId) async
+    //Future<JsonObject> youtubeShortsBySound(String soundId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeShortsBySound', () async {
       // TODO
     });
@@ -215,70 +215,70 @@ void main() {
     //
     // Stream/format metadata (best-effort; media URLs may be PO-token gated).
     //
-    //Future<JsonObject> youtubeStreamFormats(String videoId, { String client }) async
+    //Future<JsonObject> youtubeStreamFormats(String videoId, { String client, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeStreamFormats', () async {
       // TODO
     });
 
     // Subscriber count (fast)
     //
-    //Future<JsonObject> youtubeSubscriberCountFast(String channelId) async
+    //Future<JsonObject> youtubeSubscriberCountFast(String channelId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeSubscriberCountFast', () async {
       // TODO
     });
 
     // Supported markets
     //
-    //Future<JsonObject> youtubeSupportedMarkets() async
+    //Future<JsonObject> youtubeSupportedMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeSupportedMarkets', () async {
       // TODO
     });
 
     // Trending shorts
     //
-    //Future<JsonObject> youtubeTrendingShorts() async
+    //Future<JsonObject> youtubeTrendingShorts({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeTrendingShorts', () async {
       // TODO
     });
 
     // Trending videos
     //
-    //Future<JsonObject> youtubeTrendingVideos({ String gl, String type }) async
+    //Future<JsonObject> youtubeTrendingVideos({ String gl, String type, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeTrendingVideos', () async {
       // TODO
     });
 
     // UI languages
     //
-    //Future<JsonObject> youtubeUiLanguages() async
+    //Future<JsonObject> youtubeUiLanguages({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeUiLanguages', () async {
       // TODO
     });
 
     // Video categories
     //
-    //Future<JsonObject> youtubeVideoCategories({ String gl }) async
+    //Future<JsonObject> youtubeVideoCategories({ String gl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeVideoCategories', () async {
       // TODO
     });
 
     // Video comments
     //
-    //Future<JsonObject> youtubeVideoComments(String videoId, { String sortBy, String continuation }) async
+    //Future<JsonObject> youtubeVideoComments(String videoId, { String sortBy, String continuation, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeVideoComments', () async {
       // TODO
     });
 
     // Video transcript
     //
-    //Future<JsonObject> youtubeVideoTranscript(String videoId, { String language }) async
+    //Future<JsonObject> youtubeVideoTranscript(String videoId, { String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeVideoTranscript', () async {
       // TODO
     });
 
     // Videos under a hashtag
     //
-    //Future<JsonObject> youtubeVideosUnderAHashtag(String tag) async
+    //Future<JsonObject> youtubeVideosUnderAHashtag(String tag, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test youtubeVideosUnderAHashtag', () async {
       // TODO
     });

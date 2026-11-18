@@ -11,7 +11,7 @@ void main() {
     //
     // Baidu image search via the acjson JSON API.
     //
-    //Future<JsonObject> baiduBaiduImageSearch(String query, { int page }) async
+    //Future<JsonObject> baiduBaiduImageSearch(String query, { int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test baiduBaiduImageSearch', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Baidu news vertical — articles with source, publish date and real URLs.
     //
-    //Future<JsonObject> baiduBaiduNewsSearch(String query, { int page }) async
+    //Future<JsonObject> baiduBaiduNewsSearch(String query, { int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test baiduBaiduNewsSearch', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Baidu web SERP — organic results with real target URLs, related searches, total count.
     //
-    //Future<JsonObject> baiduBaiduWebSearch(String query, { int page, int num_ }) async
+    //Future<JsonObject> baiduBaiduWebSearch(String query, { int page, int num_, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test baiduBaiduWebSearch', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Baidu search-box suggestions.
     //
-    //Future<JsonObject> baiduSearchSuggestions(String query) async
+    //Future<JsonObject> baiduSearchSuggestions(String query, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test baiduSearchSuggestions', () async {
       // TODO
     });

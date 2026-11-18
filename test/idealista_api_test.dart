@@ -11,7 +11,7 @@ void main() {
     //
     // Reverse-lookup the agency behind a contact phone (national number), with its listings.
     //
-    //Future<JsonObject> idealistaAgencyByPhone(String phone, { String market, String operation, String propertyType, int page, int maxItems, bool includeListings }) async
+    //Future<JsonObject> idealistaAgencyByPhone(String phone, { String market, String operation, String propertyType, int page, int maxItems, bool includeListings, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test idealistaAgencyByPhone', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // An agency's microsite profile plus a page of its listings (by URL-slug shortName).
     //
-    //Future<JsonObject> idealistaAgencyProfileListings(String shortName, { String market, String operation, String propertyType, int page, int maxItems, bool includeListings }) async
+    //Future<JsonObject> idealistaAgencyProfileListings(String shortName, { String market, String operation, String propertyType, int page, int maxItems, bool includeListings, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test idealistaAgencyProfileListings', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Engagement counters for a listing: views, email contacts, sent-to-friend, favourites.
     //
-    //Future<JsonObject> idealistaGetListingEngagementStats(String propertyCode, { String market, String locale }) async
+    //Future<JsonObject> idealistaGetListingEngagementStats(String propertyCode, { String market, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test idealistaGetListingEngagementStats', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Get a single Idealista listing's full detail (energy cert, characteristics, media).
     //
-    //Future<JsonObject> idealistaGetPropertyDetail(String propertyCode, { String market, String locale }) async
+    //Future<JsonObject> idealistaGetPropertyDetail(String propertyCode, { String market, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test idealistaGetPropertyDetail', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // List supported Idealista markets (ES, IT, PT).
     //
-    //Future<JsonObject> idealistaListMarkets() async
+    //Future<JsonObject> idealistaListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test idealistaListMarkets', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Resolve a free-text query into Idealista location codes for a search.
     //
-    //Future<JsonObject> idealistaResolveLocations(String query, { String operation, String propertyType, String market, String locale }) async
+    //Future<JsonObject> idealistaResolveLocations(String query, { String operation, String propertyType, String market, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test idealistaResolveLocations', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Full inventory for a location, beating Idealista's ~1800 per-search cap via price-range tiling (deduped). Billed per page fetched.
     //
-    //Future<JsonObject> idealistaSearchAllBeatsResultCap(String location, { String operation, String propertyType, String market, int maxResults, num minPrice, num maxPrice, num minSize, num maxSize, int minRooms, int maxRooms, String locale }) async
+    //Future<JsonObject> idealistaSearchAllBeatsResultCap(String location, { String operation, String propertyType, String market, int maxResults, num minPrice, num maxPrice, num minSize, num maxSize, int minRooms, int maxRooms, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test idealistaSearchAllBeatsResultCap', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Search Idealista real-estate listings by location code.
     //
-    //Future<JsonObject> idealistaSearchListings(String location, { String operation, String propertyType, String market, int page, int maxItems, String sortBy, String sortOrder, num minPrice, num maxPrice, num minSize, num maxSize, int minRooms, int maxRooms, String locale }) async
+    //Future<JsonObject> idealistaSearchListings(String location, { String operation, String propertyType, String market, int page, int maxItems, String sortBy, String sortOrder, num minPrice, num maxPrice, num minSize, num maxSize, int minRooms, int maxRooms, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test idealistaSearchListings', () async {
       // TODO
     });

@@ -11,7 +11,7 @@ void main() {
     //
     // Send a prompt to ChatGPT and get the answer plus the web sources it cited.
     //
-    //Future<JsonObject> chatgptAskChatgptAQuestion(String prompt, { String country, String webSearch, String imageUrl }) async
+    //Future<JsonObject> chatgptAskChatgptAQuestion(String prompt, { String country, String webSearch, String imageUrl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test chatgptAskChatgptAQuestion', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // POST form of `/ask`, for prompts too long for a query string.
     //
-    //Future<JsonObject> chatgptAskChatgptAQuestionPost() async
+    //Future<JsonObject> chatgptAskChatgptAQuestionPost({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test chatgptAskChatgptAQuestionPost', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Models chatgpt.com currently serves to an anonymous visitor.
     //
-    //Future<JsonObject> chatgptListChatgptModels({ String country }) async
+    //Future<JsonObject> chatgptListChatgptModels({ String country, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test chatgptListChatgptModels', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Ask ChatGPT, then report whether the brand is mentioned, cited and how prominently.
     //
-    //Future<JsonObject> chatgptMeasureABrandSVisibilityInAChatgptAnswer(String prompt, String brand, { String domain, String aliases, String competitors, String country, String webSearch }) async
+    //Future<JsonObject> chatgptMeasureABrandSVisibilityInAChatgptAnswer(String prompt, String brand, { String domain, String aliases, String competitors, String country, String webSearch, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test chatgptMeasureABrandSVisibilityInAChatgptAnswer', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // POST form, for longer prompts and larger competitor sets.
     //
-    //Future<JsonObject> chatgptMeasureABrandSVisibilityInAChatgptAnswerPost() async
+    //Future<JsonObject> chatgptMeasureABrandSVisibilityInAChatgptAnswerPost({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test chatgptMeasureABrandSVisibilityInAChatgptAnswerPost', () async {
       // TODO
     });

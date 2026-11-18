@@ -110,9 +110,16 @@ final String store = store_example; // String | Override store, e.g. COM or US
 final String country = country_example; // String | ISO country override
 final String currency = currency_example; // String | Currency override
 final String language = language_example; // String | Locale override, e.g. en-GB
+final String prefer = respond-async, wait=25; // String | `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
+final String xCallbackURL = xCallbackURL_example; // String | An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
+final String idempotencyKey = idempotencyKey_example; // String | 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
+final bool async_ = true; // bool | Query form of `Prefer: respond-async`: `true` or `1` (also `yes`, `on`; `false`, `0`, `no`, `off` leave the call synchronous). Waits 25 s unless `async_wait` is given. Not sent to the scraper.
+final int asyncWait = 56; // int | Seconds (0-120; values outside are clamped) to wait for the result before answering `202`. Implies async. Not sent to the scraper.
+final String callbackUrl = callbackUrl_example; // String | Query form of `X-Callback-URL` (URL-encode it). Implies async; on its own the answer is an immediate `202` (wait 0). Not sent to the scraper.
+final String idempotencyKey2 = idempotencyKey_example; // String | Query form of `Idempotency-Key`. Not sent to the scraper.
 
 try {
-    final response = await api.asosGetProductDetail(productId, market, store, country, currency, language);
+    final response = await api.asosGetProductDetail(productId, market, store, country, currency, language, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2);
     print(response);
 } catch on DioException (e) {
     print("Exception when calling ASOSApi->asosGetProductDetail: $e\n");
@@ -136,6 +143,7 @@ Class | Method | HTTP request | Description
 [*AccountApi*](doc/AccountApi.md) | [**accountGetAccountInfo**](doc/AccountApi.md#accountgetaccountinfo) | **GET** /v1/account/me | Get account info
 [*AccountApi*](doc/AccountApi.md) | [**accountGetTheWebhookSigningSecret**](doc/AccountApi.md#accountgetthewebhooksigningsecret) | **GET** /v1/account/webhook-secret | Get the webhook signing secret
 [*AccountApi*](doc/AccountApi.md) | [**accountRotateTheWebhookSigningSecret**](doc/AccountApi.md#accountrotatethewebhooksigningsecret) | **POST** /v1/account/webhook-secret/rotate | Rotate the webhook signing secret
+[*AccountApi*](doc/AccountApi.md) | [**accountWebhookDeliveries**](doc/AccountApi.md#accountwebhookdeliveries) | **GET** /v1/account/webhook-deliveries | Webhook deliveries
 [*AirbnbApi*](doc/AirbnbApi.md) | [**airbnbAirbnbScraperHealthCheck**](doc/AirbnbApi.md#airbnbairbnbscraperhealthcheck) | **GET** /v1/airbnb/health | Airbnb scraper health check
 [*AirbnbApi*](doc/AirbnbApi.md) | [**airbnbAirbnbScraperHealthCheckHead**](doc/AirbnbApi.md#airbnbairbnbscraperhealthcheckhead) | **HEAD** /v1/airbnb/health | Airbnb scraper health check
 [*AirbnbApi*](doc/AirbnbApi.md) | [**airbnbGetAvailabilityCalendar**](doc/AirbnbApi.md#airbnbgetavailabilitycalendar) | **GET** /v1/airbnb/listings/{room_id}/calendar | Get availability calendar
@@ -514,6 +522,7 @@ Class | Method | HTTP request | Description
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinRedfinScraperHealthCheckHead**](doc/RedfinApi.md#redfinredfinscraperhealthcheckhead) | **HEAD** /v1/redfin/health | Redfin scraper health check
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinRegionAddressSuggestions**](doc/RedfinApi.md#redfinregionaddresssuggestions) | **GET** /v1/redfin/autocomplete | Region/address suggestions
 [*RedfinApi*](doc/RedfinApi.md) | [**redfinSearchProperties**](doc/RedfinApi.md#redfinsearchproperties) | **GET** /v1/redfin/search | Search properties
+[*RequestsApi*](doc/RequestsApi.md) | [**requestsCallbackStatus**](doc/RequestsApi.md#requestscallbackstatus) | **GET** /v1/requests/{request_id}/callback | Callback status
 [*RequestsApi*](doc/RequestsApi.md) | [**requestsPollAnAsyncRequest**](doc/RequestsApi.md#requestspollanasyncrequest) | **GET** /v1/requests/{request_id} | Poll an async request
 [*ResultsApi*](doc/ResultsApi.md) | [**resultsReReadAResultRemoved**](doc/ResultsApi.md#resultsrereadaresultremoved) | **GET** /v1/results/{result_id} | Re-read a result (removed)
 [*RufusApi*](doc/RufusApi.md) | [**rufusAmazonRufusScraperHealthCheck**](doc/RufusApi.md#rufusamazonrufusscraperhealthcheck) | **GET** /v1/rufus/health | Amazon Rufus scraper health check
@@ -740,9 +749,13 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AccountInfo](doc/AccountInfo.md)
+ - [AccountWebhookDeliveries403Response](doc/AccountWebhookDeliveries403Response.md)
  - [Age](doc/Age.md)
  - [AgentTrialInfo](doc/AgentTrialInfo.md)
  - [Article](doc/Article.md)
+ - [AsyncAccepted](doc/AsyncAccepted.md)
+ - [AsyncAcceptedNextAction](doc/AsyncAcceptedNextAction.md)
+ - [AsyncCallbackStatus](doc/AsyncCallbackStatus.md)
  - [AutoScout24FiltersResponse](doc/AutoScout24FiltersResponse.md)
  - [AutoScout24Listing](doc/AutoScout24Listing.md)
  - [AutoScout24ListingDetail](doc/AutoScout24ListingDetail.md)
@@ -904,6 +917,9 @@ Class | Method | HTTP request | Description
  - [VintedUserProfile](doc/VintedUserProfile.md)
  - [VintedUserSummary](doc/VintedUserSummary.md)
  - [WebhookCreate](doc/WebhookCreate.md)
+ - [WebhookDeliveries](doc/WebhookDeliveries.md)
+ - [WebhookDelivery](doc/WebhookDelivery.md)
+ - [WebhookEvent](doc/WebhookEvent.md)
  - [WebhookListItem](doc/WebhookListItem.md)
  - [WebhookListResponse](doc/WebhookListResponse.md)
  - [WebhookResponse](doc/WebhookResponse.md)

@@ -11,7 +11,7 @@ void main() {
     //
     // Yelp sites this API verifiably searches. Free.
     //
-    //Future<YelpMarketsResponse> yelpListMarkets() async
+    //Future<YelpMarketsResponse> yelpListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yelpListMarkets', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Ranked Yelp businesses for a location, with ads kept separate. 15 credits; empty results free.  Ten businesses per page, pages 1-11. Narrow the location, category or filters to reach more businesses. Business detail and reviews are not part of this API.
     //
-    //Future<YelpSearchResponse> yelpSearchBusinesses(String location, { String query, String market, String category, String sortBy, String price, String features, int page }) async
+    //Future<YelpSearchResponse> yelpSearchBusinesses(String location, { String query, String market, String category, String sortBy, String price, String features, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test yelpSearchBusinesses', () async {
       // TODO
     });

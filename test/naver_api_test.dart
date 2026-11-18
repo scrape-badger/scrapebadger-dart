@@ -11,7 +11,7 @@ void main() {
     //
     // Naver blog vertical — post title, blog name and real post URLs.
     //
-    //Future<JsonObject> naverNaverBlogSearch(String query, { int page }) async
+    //Future<JsonObject> naverNaverBlogSearch(String query, { int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverNaverBlogSearch', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // DataLab Shopping Insight — top search keywords in a category over a window.
     //
-    //Future<JsonObject> naverNaverDatalabShoppingKeywordInsight(String categoryId, String startDate, String endDate, { String timeUnit, int count }) async
+    //Future<JsonObject> naverNaverDatalabShoppingKeywordInsight(String categoryId, String startDate, String endDate, { String timeUnit, int count, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverNaverDatalabShoppingKeywordInsight', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Naver news vertical — publisher, age string and real article URLs.
     //
-    //Future<JsonObject> naverNaverNewsSearch(String query, { int page }) async
+    //Future<JsonObject> naverNaverNewsSearch(String query, { int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverNaverNewsSearch', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Naver Place detail by place id.
     //
-    //Future<JsonObject> naverNaverPlaceDetail(String placeId) async
+    //Future<JsonObject> naverNaverPlaceDetail(String placeId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverNaverPlaceDetail', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Naver Place/Local search — name, category, rating, hours status.
     //
-    //Future<JsonObject> naverNaverPlaceLocalSearch(String query) async
+    //Future<JsonObject> naverNaverPlaceLocalSearch(String query, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverNaverPlaceLocalSearch', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Visitor reviews for a Naver place — rating, body, reviewer, voted keywords, photos.
     //
-    //Future<JsonObject> naverNaverPlaceVisitorReviews(String placeId) async
+    //Future<JsonObject> naverNaverPlaceVisitorReviews(String placeId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverNaverPlaceVisitorReviews', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Naver Shopping bestseller rankings — ranked products with price, review score, mall.
     //
-    //Future<JsonObject> naverNaverShoppingBestsellerRankings({ String categoryId, String ageType, String sortType, String periodType }) async
+    //Future<JsonObject> naverNaverShoppingBestsellerRankings({ String categoryId, String ageType, String sortType, String periodType, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverNaverShoppingBestsellerRankings', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Naver Shopping top-level category ids (for bestsellers/keywords/insight). Free.
     //
-    //Future<JsonObject> naverNaverShoppingCategoryReference() async
+    //Future<JsonObject> naverNaverShoppingCategoryReference({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverNaverShoppingCategoryReference', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Trending Naver Shopping keywords for a category (snxbest keyword rankings).
     //
-    //Future<JsonObject> naverNaverShoppingTrendingKeywordRankings(String categoryId, { String ageType, String sortType, String periodType }) async
+    //Future<JsonObject> naverNaverShoppingTrendingKeywordRankings(String categoryId, { String ageType, String sortType, String periodType, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverNaverShoppingTrendingKeywordRankings', () async {
       // TODO
     });
@@ -110,7 +110,7 @@ void main() {
     //
     // Naver integrated SERP — organic results plus the inline Place pack.
     //
-    //Future<JsonObject> naverNaverWebSearch(String query, { int page }) async
+    //Future<JsonObject> naverNaverWebSearch(String query, { int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverNaverWebSearch', () async {
       // TODO
     });
@@ -119,7 +119,7 @@ void main() {
     //
     // Naver search-box suggestions.
     //
-    //Future<JsonObject> naverSearchSuggestions(String query) async
+    //Future<JsonObject> naverSearchSuggestions(String query, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test naverSearchSuggestions', () async {
       // TODO
     });

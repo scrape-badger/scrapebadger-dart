@@ -11,7 +11,7 @@ void main() {
     //
     // Full listing detail: features, tax & price history, schools, photos, agents.
     //
-    //Future<JsonObject> realtorGetFullPropertyDetail(String propertyId, { String market }) async
+    //Future<JsonObject> realtorGetFullPropertyDetail(String propertyId, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test realtorGetFullPropertyDetail', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // List supported Realtor markets (US = realtor.com, CA = realtor.ca).
     //
-    //Future<JsonObject> realtorListMarkets() async
+    //Future<JsonObject> realtorListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test realtorListMarkets', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Resolve a location query into candidate places to feed /search.
     //
-    //Future<JsonObject> realtorLocationAutocomplete(String query, { String market, int limit }) async
+    //Future<JsonObject> realtorLocationAutocomplete(String query, { String market, int limit, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test realtorLocationAutocomplete', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Search for-sale/for-rent/sold listings with rich filters.
     //
-    //Future<JsonObject> realtorSearchPropertyListings({ String location, String market, String status, num priceMin, num priceMax, int bedsMin, int bathsMin, int sqftMin, int sqftMax, String propertyType, String sort, int page, int limit, num latMin, num latMax, num lngMin, num lngMax }) async
+    //Future<JsonObject> realtorSearchPropertyListings({ String location, String market, String status, num priceMin, num priceMax, int bedsMin, int bathsMin, int sqftMin, int sqftMax, String propertyType, String sort, int page, int limit, num latMin, num latMax, num lngMin, num lngMax, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test realtorSearchPropertyListings', () async {
       // TODO
     });

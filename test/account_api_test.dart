@@ -34,5 +34,14 @@ void main() {
       // TODO
     });
 
+    // Webhook deliveries
+    //
+    // This account's async-request webhook deliveries of the last 24 h, newest first. Free. Needs a full-access API key, like the webhook secret: a trial key gets `403 trial_not_allowed`, a key restricted to some APIs `403 full_access_required`.
+    //
+    //Future<WebhookDeliveries> accountWebhookDeliveries({ int limit }) async
+    test('test accountWebhookDeliveries', () async {
+      // TODO
+    });
+
   });
 }

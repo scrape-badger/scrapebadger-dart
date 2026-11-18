@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**accountGetAccountInfo**](AccountApi.md#accountgetaccountinfo) | **GET** /v1/account/me | Get account info
 [**accountGetTheWebhookSigningSecret**](AccountApi.md#accountgetthewebhooksigningsecret) | **GET** /v1/account/webhook-secret | Get the webhook signing secret
 [**accountRotateTheWebhookSigningSecret**](AccountApi.md#accountrotatethewebhooksigningsecret) | **POST** /v1/account/webhook-secret/rotate | Rotate the webhook signing secret
+[**accountWebhookDeliveries**](AccountApi.md#accountwebhookdeliveries) | **GET** /v1/account/webhook-deliveries | Webhook deliveries
 
 
 # **accountGetAccountInfo**
@@ -131,6 +132,53 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**WebhookSecret**](WebhookSecret.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **accountWebhookDeliveries**
+> WebhookDeliveries accountWebhookDeliveries(limit)
+
+Webhook deliveries
+
+This account's async-request webhook deliveries of the last 24 h, newest first. Free. Needs a full-access API key, like the webhook secret: a trial key gets `403 trial_not_allowed`, a key restricted to some APIs `403 full_access_required`.
+
+### Example
+```dart
+import 'package:scrapebadger/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api = Scrapebadger().getAccountApi();
+final int limit = 56; // int | How many deliveries to return (1-200).
+
+try {
+    final response = api.accountWebhookDeliveries(limit);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AccountApi->accountWebhookDeliveries: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int**| How many deliveries to return (1-200). | [optional] [default to 50]
+
+### Return type
+
+[**WebhookDeliveries**](WebhookDeliveries.md)
 
 ### Authorization
 

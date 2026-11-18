@@ -11,7 +11,7 @@ void main() {
     //
     // The top apps within a Play category.
     //
-    //Future<JsonObject> googlePlayBrowseACategory(String categoryId, { String country, String lang, int num_ }) async
+    //Future<JsonObject> googlePlayBrowseACategory(String categoryId, { String country, String lang, int num_, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePlayBrowseACategory', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Full app detail: ratings histogram, installs, pricing, IAP, developer, screenshots, version metadata and what's-new.
     //
-    //Future<JsonObject> googlePlayGetAppDetail(String appId, { String country, String lang }) async
+    //Future<JsonObject> googlePlayGetAppDetail(String appId, { String country, String lang, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePlayGetAppDetail', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // The app's requested Android permissions, grouped.
     //
-    //Future<JsonObject> googlePlayGetAppPermissions(String appId, { String lang }) async
+    //Future<JsonObject> googlePlayGetAppPermissions(String appId, { String lang, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePlayGetAppPermissions', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Paginated app reviews via the Play batchexecute RPC.
     //
-    //Future<JsonObject> googlePlayGetAppReviews(String appId, { String country, String lang, String sort, int count, String pageToken }) async
+    //Future<JsonObject> googlePlayGetAppReviews(String appId, { String country, String lang, String sort, int count, String pageToken, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePlayGetAppReviews', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // A developer's published apps.
     //
-    //Future<JsonObject> googlePlayGetDeveloperApps(String developer, { String country, String lang, int num_ }) async
+    //Future<JsonObject> googlePlayGetDeveloperApps(String developer, { String country, String lang, int num_, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePlayGetDeveloperApps', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Apps Google Play lists as similar to this one.
     //
-    //Future<JsonObject> googlePlayGetSimilarApps(String appId, { String country, String lang }) async
+    //Future<JsonObject> googlePlayGetSimilarApps(String appId, { String country, String lang, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePlayGetSimilarApps', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // The Google Play app/game category ids.
     //
-    //Future<JsonObject> googlePlayListCategories() async
+    //Future<JsonObject> googlePlayListCategories({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePlayListCategories', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Supported Google Play store countries and languages.
     //
-    //Future<JsonObject> googlePlayListMarkets() async
+    //Future<JsonObject> googlePlayListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePlayListMarkets', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Search Google Play for apps and games (the ~30 server-rendered results; Play exposes no page parameter).
     //
-    //Future<JsonObject> googlePlaySearchApps(String query, { String country, String lang, String price }) async
+    //Future<JsonObject> googlePlaySearchApps(String query, { String country, String lang, String price, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePlaySearchApps', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Top charts for a collection, optionally scoped to a category.
     //
-    //Future<JsonObject> googlePlayTopCharts(String collection, { String category, String country, String lang }) async
+    //Future<JsonObject> googlePlayTopCharts(String collection, { String category, String country, String lang, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePlayTopCharts', () async {
       // TODO
     });

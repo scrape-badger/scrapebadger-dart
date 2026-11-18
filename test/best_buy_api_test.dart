@@ -9,70 +9,70 @@ void main() {
   group(BestBuyApi, () {
     // Browse a category
     //
-    //Future<JsonObject> bestbuyBrowseACategory(String categoryId, { int page }) async
+    //Future<JsonObject> bestbuyBrowseACategory(String categoryId, { int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bestbuyBrowseACategory', () async {
       // TODO
     });
 
     // Get categories
     //
-    //Future<JsonObject> bestbuyGetCategories({ String query }) async
+    //Future<JsonObject> bestbuyGetCategories({ String query, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bestbuyGetCategories', () async {
       // TODO
     });
 
     // Get laptop and computer deals
     //
-    //Future<JsonObject> bestbuyGetLaptopAndComputerDeals({ int page }) async
+    //Future<JsonObject> bestbuyGetLaptopAndComputerDeals({ int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bestbuyGetLaptopAndComputerDeals', () async {
       // TODO
     });
 
     // Get product availability
     //
-    //Future<JsonObject> bestbuyGetProductAvailability(String sku, String zipCode, { String storeId }) async
+    //Future<JsonObject> bestbuyGetProductAvailability(String sku, String zipCode, { String storeId, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bestbuyGetProductAvailability', () async {
       // TODO
     });
 
     // Get product detail
     //
-    //Future<JsonObject> bestbuyGetProductDetail(String sku) async
+    //Future<JsonObject> bestbuyGetProductDetail(String sku, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bestbuyGetProductDetail', () async {
       // TODO
     });
 
     // Get product questions
     //
-    //Future<JsonObject> bestbuyGetProductQuestions(String sku, { int page, int pageSize, String query }) async
+    //Future<JsonObject> bestbuyGetProductQuestions(String sku, { int page, int pageSize, String query, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bestbuyGetProductQuestions', () async {
       // TODO
     });
 
     // Get product reviews
     //
-    //Future<JsonObject> bestbuyGetProductReviews(String sku, { int page, int pageSize, String sort }) async
+    //Future<JsonObject> bestbuyGetProductReviews(String sku, { int page, int pageSize, String sort, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bestbuyGetProductReviews', () async {
       // TODO
     });
 
     // Get search suggestions
     //
-    //Future<JsonObject> bestbuyGetSearchSuggestions(String query) async
+    //Future<JsonObject> bestbuyGetSearchSuggestions(String query, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bestbuyGetSearchSuggestions', () async {
       // TODO
     });
 
     // List supported markets
     //
-    //Future<JsonObject> bestbuyListSupportedMarkets() async
+    //Future<JsonObject> bestbuyListSupportedMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bestbuyListSupportedMarkets', () async {
       // TODO
     });
 
     // Search products
     //
-    //Future<JsonObject> bestbuySearchProducts(String query, { int page, String sort }) async
+    //Future<JsonObject> bestbuySearchProducts(String query, { int page, String sort, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bestbuySearchProducts', () async {
       // TODO
     });

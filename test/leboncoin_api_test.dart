@@ -11,7 +11,7 @@ void main() {
     //
     // A seller's active ads.
     //
-    //Future<JsonObject> leboncoinGetASellerSAds(String userId, { int page, int limit }) async
+    //Future<JsonObject> leboncoinGetASellerSAds(String userId, { int page, int limit, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test leboncoinGetASellerSAds', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Full detail for a Leboncoin ad.
     //
-    //Future<JsonObject> leboncoinGetAdDetail(int listId) async
+    //Future<JsonObject> leboncoinGetAdDetail(int listId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test leboncoinGetAdDetail', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Public seller/pro-store profile.
     //
-    //Future<JsonObject> leboncoinGetSellerProfile(String userId) async
+    //Future<JsonObject> leboncoinGetSellerProfile(String userId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test leboncoinGetSellerProfile', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Ads Leboncoin surfaces as similar to the given ad.
     //
-    //Future<JsonObject> leboncoinGetSimilarAds(int listId, { int limit }) async
+    //Future<JsonObject> leboncoinGetSimilarAds(int listId, { int limit, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test leboncoinGetSimilarAds', () async {
       // TODO
     });
@@ -63,35 +63,35 @@ void main() {
 
     // List categories
     //
-    //Future<JsonObject> leboncoinListCategories() async
+    //Future<JsonObject> leboncoinListCategories({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test leboncoinListCategories', () async {
       // TODO
     });
 
     // List departments
     //
-    //Future<JsonObject> leboncoinListDepartments({ String regionId }) async
+    //Future<JsonObject> leboncoinListDepartments({ String regionId, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test leboncoinListDepartments', () async {
       // TODO
     });
 
     // List markets
     //
-    //Future<JsonObject> leboncoinListMarkets() async
+    //Future<JsonObject> leboncoinListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test leboncoinListMarkets', () async {
       // TODO
     });
 
     // List regions
     //
-    //Future<JsonObject> leboncoinListRegions() async
+    //Future<JsonObject> leboncoinListRegions({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test leboncoinListRegions', () async {
       // TODO
     });
 
     // Location autocomplete
     //
-    //Future<JsonObject> leboncoinLocationAutocomplete(String q) async
+    //Future<JsonObject> leboncoinLocationAutocomplete(String q, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test leboncoinLocationAutocomplete', () async {
       // TODO
     });
@@ -100,7 +100,7 @@ void main() {
     //
     // Search Leboncoin classifieds (France; scope by region/department/city).
     //
-    //Future<JsonObject> leboncoinSearchLeboncoinAds({ String text, String category, String regionId, String departmentId, String city, String zipcode, int priceMin, int priceMax, String ownerType, String adType, String sort, int page, int limit }) async
+    //Future<JsonObject> leboncoinSearchLeboncoinAds({ String text, String category, String regionId, String departmentId, String city, String zipcode, int priceMin, int priceMax, String ownerType, String adType, String sort, int page, int limit, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test leboncoinSearchLeboncoinAds', () async {
       // TODO
     });

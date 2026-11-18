@@ -29,7 +29,7 @@ void main() {
     //
     // Day-by-day availability for up to 12 months: bookable, check-in/out windows and min/max nights per date.
     //
-    //Future<JsonObject> airbnbGetAvailabilityCalendar(String roomId, { int month, int year, int months, String currency, String locale }) async
+    //Future<JsonObject> airbnbGetAvailabilityCalendar(String roomId, { int month, int year, int months, String currency, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test airbnbGetAvailabilityCalendar', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Full detail for one experience: description, rating, host, location and photos.
     //
-    //Future<JsonObject> airbnbGetExperienceDetail(String experienceId, { int adults, int children, int infants, String currency, String locale }) async
+    //Future<JsonObject> airbnbGetExperienceDetail(String experienceId, { int adults, int children, int infants, String currency, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test airbnbGetExperienceDetail', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Full detail for one listing: amenities, house rules, host, ratings, coordinates and photos.
     //
-    //Future<JsonObject> airbnbGetListingDetail(String roomId, { int adults, String currency, String locale }) async
+    //Future<JsonObject> airbnbGetListingDetail(String roomId, { int adults, String currency, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test airbnbGetListingDetail', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Paginated guest reviews with reviewer, rating, date, text and host response.
     //
-    //Future<JsonObject> airbnbGetListingReviews(String roomId, { int limit, int offset, String sort, String currency, String locale }) async
+    //Future<JsonObject> airbnbGetListingReviews(String roomId, { int limit, int offset, String sort, String currency, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test airbnbGetListingReviews', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Search Airbnb Experiences by location.
     //
-    //Future<JsonObject> airbnbSearchExperiences(String location, { String cursor, String currency, String locale }) async
+    //Future<JsonObject> airbnbSearchExperiences(String location, { String cursor, String currency, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test airbnbSearchExperiences', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Search Airbnb stays by place name and/or map bounding box, with dates, guests, price and property filters. Paginate with the `cursor`.
     //
-    //Future<JsonObject> airbnbSearchStays({ String location, num neLat, num neLng, num swLat, num swLng, String checkIn, String checkOut, int adults, int children, int infants, int pets, int priceMin, int priceMax, int minBedrooms, int minBeds, int minBathrooms, String roomType, String cursor, int limit, String currency, String locale }) async
+    //Future<JsonObject> airbnbSearchStays({ String location, num neLat, num neLng, num swLat, num swLng, String checkIn, String checkOut, int adults, int children, int infants, int pets, int priceMin, int priceMax, int minBedrooms, int minBeds, int minBathrooms, String roomType, String cursor, int limit, String currency, String locale, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test airbnbSearchStays', () async {
       // TODO
     });

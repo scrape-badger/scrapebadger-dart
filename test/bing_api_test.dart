@@ -29,7 +29,7 @@ void main() {
     //
     // Bing Images — thumbnail, full-size and source URL per result.
     //
-    //Future<JsonObject> bingImageSearch(String query, { String market, int count, String safeSearch }) async
+    //Future<JsonObject> bingImageSearch(String query, { String market, int count, String safeSearch, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bingImageSearch', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Supported Bing market codes. Free — costs no credits.
     //
-    //Future<JsonObject> bingListSupportedMarkets() async
+    //Future<JsonObject> bingListSupportedMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bingListSupportedMarkets', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Bing News — headline, source, published time and snippet per article.
     //
-    //Future<JsonObject> bingNewsSearch(String query, { String market, String freshness }) async
+    //Future<JsonObject> bingNewsSearch(String query, { String market, String freshness, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bingNewsSearch', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Bing search-box query suggestions.
     //
-    //Future<JsonObject> bingSearchSuggestions(String query, { String market }) async
+    //Future<JsonObject> bingSearchSuggestions(String query, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bingSearchSuggestions', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Bing Videos — title, thumbnail, duration, publisher and source per result.
     //
-    //Future<JsonObject> bingVideoSearch(String query, { String market, int count, String safeSearch }) async
+    //Future<JsonObject> bingVideoSearch(String query, { String market, int count, String safeSearch, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bingVideoSearch', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Bing web SERP — organic results, ads, related searches and total count.
     //
-    //Future<JsonObject> bingWebSearch(String query, { String market, int count, int offset, String safeSearch }) async
+    //Future<JsonObject> bingWebSearch(String query, { String market, int count, int offset, String safeSearch, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test bingWebSearch', () async {
       // TODO
     });

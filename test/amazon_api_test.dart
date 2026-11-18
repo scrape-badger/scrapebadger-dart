@@ -29,7 +29,7 @@ void main() {
     //
     // Top-selling products for a category (browse node).
     //
-    //Future<JsonObject> amazonBestsellersByCategory({ String domain, String category, int page }) async
+    //Future<JsonObject> amazonBestsellersByCategory({ String domain, String category, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonBestsellersByCategory', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // List products within an Amazon browse-node category.
     //
-    //Future<JsonObject> amazonBrowseNodeCategoryListing(String node, { String domain, int page, String sortBy }) async
+    //Future<JsonObject> amazonBrowseNodeCategoryListing(String node, { String domain, int page, String sortBy, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonBrowseNodeCategoryListing', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // All third-party offers for an ASIN, including the Buy Box winner.
     //
-    //Future<JsonObject> amazonGetAllSellerOffersBuybox(String asin, { String domain, String zip, int page }) async
+    //Future<JsonObject> amazonGetAllSellerOffersBuybox(String asin, { String domain, String zip, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonGetAllSellerOffersBuybox', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Full product detail by ASIN (price, variants, badges, buybox, ranks…).
     //
-    //Future<JsonObject> amazonGetProductDetail(String asin, { String domain, String zip, String language }) async
+    //Future<JsonObject> amazonGetProductDetail(String asin, { String domain, String zip, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonGetProductDetail', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Customer reviews for an ASIN, filtered, sorted and paginated.  Reviews come from the product page's public featured block, which is the only review surface Amazon serves anonymously — a subset of the full history (``ratings_total`` reports the true total). ``pagination`` gives the filtered count and the last page, so paging past it returns an empty list. An unrecognised ``star`` or ``sort_by`` is rejected with 422 rather than silently answered with unfiltered reviews.  ``mode=full`` serves the rest, pool first and woot second: one pool account is leased and the authenticated review pages are walked until Amazon stops returning new rows (a gate, the review-limit banner or an expired session rotates the lease), then — when ``woot_offer`` names a current woot.com offer page carrying the ASIN (.com only) — Amazon-owned woot.com's anonymous reviews endpoint is fanned out as a bonus and merged in, deduped by review id. The same filter / sort / pagination contract applies to the collected set. When no source produced rows the answer is 503 (``pool_exhausted``, or ``reviews_unavailable`` when both paths ran) — never an empty 200 that reads as \"no reviews\". Auth, rate limits, credits and usage logging are the gateway's, exactly as for every other mode of this endpoint.
     //
-    //Future<JsonObject> amazonGetProductReviews(String asin, { String domain, int page, String sortBy, String star, bool verifiedOnly, bool mediaOnly, String mode, int maxPages, bool perStar, int limit, String wootOffer }) async
+    //Future<JsonObject> amazonGetProductReviews(String asin, { String domain, int page, String sortBy, String star, bool verifiedOnly, bool mediaOnly, String mode, int maxPages, bool perStar, int limit, String wootOffer, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonGetProductReviews', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Buyer feedback entries for a seller.
     //
-    //Future<JsonObject> amazonGetSellerFeedback(String sellerId, { String domain, int page }) async
+    //Future<JsonObject> amazonGetSellerFeedback(String sellerId, { String domain, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonGetSellerFeedback', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Seller profile, ratings and feedback summary.
     //
-    //Future<JsonObject> amazonGetSellerProfile(String sellerId, { String domain }) async
+    //Future<JsonObject> amazonGetSellerProfile(String sellerId, { String domain, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonGetSellerProfile', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Products listed in a seller's storefront.
     //
-    //Future<JsonObject> amazonGetSellerStorefrontProducts(String sellerId, { String domain, int page }) async
+    //Future<JsonObject> amazonGetSellerStorefrontProducts(String sellerId, { String domain, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonGetSellerStorefrontProducts', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Get Amazon search autocomplete suggestions for keyword research.
     //
-    //Future<JsonObject> amazonKeywordSuggestions(String query, { String domain }) async
+    //Future<JsonObject> amazonKeywordSuggestions(String query, { String domain, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonKeywordSuggestions', () async {
       // TODO
     });
@@ -110,7 +110,7 @@ void main() {
     //
     // List common Amazon department/category aliases and bestseller nodes.
     //
-    //Future<JsonObject> amazonListCategoryAliases({ String domain }) async
+    //Future<JsonObject> amazonListCategoryAliases({ String domain, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonListCategoryAliases', () async {
       // TODO
     });
@@ -119,7 +119,7 @@ void main() {
     //
     // List all supported Amazon marketplaces.
     //
-    //Future<JsonObject> amazonListMarketplaces() async
+    //Future<JsonObject> amazonListMarketplaces({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonListMarketplaces', () async {
       // TODO
     });
@@ -128,7 +128,7 @@ void main() {
     //
     // Newly released products for a category (browse node).
     //
-    //Future<JsonObject> amazonNewReleasesByCategory({ String domain, String category, int page }) async
+    //Future<JsonObject> amazonNewReleasesByCategory({ String domain, String category, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonNewReleasesByCategory', () async {
       // TODO
     });
@@ -137,7 +137,7 @@ void main() {
     //
     // Search the Amazon catalog with filters and sorting.
     //
-    //Future<JsonObject> amazonSearchAmazonProducts(String query, { String domain, int page, String sortBy, String category, num minPrice, num maxPrice, String zip, String language }) async
+    //Future<JsonObject> amazonSearchAmazonProducts(String query, { String domain, int page, String sortBy, String category, num minPrice, num maxPrice, String zip, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonSearchAmazonProducts', () async {
       // TODO
     });
@@ -146,7 +146,7 @@ void main() {
     //
     // Current Amazon deals (lightning deals, best deals).
     //
-    //Future<JsonObject> amazonTodaySDeals({ String domain, String category, int page }) async
+    //Future<JsonObject> amazonTodaySDeals({ String domain, String category, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test amazonTodaySDeals', () async {
       // TODO
     });

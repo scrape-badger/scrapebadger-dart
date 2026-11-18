@@ -9,56 +9,56 @@ void main() {
   group(EtsyApi, () {
     // Get categories
     //
-    //Future<JsonObject> etsyGetCategories({ String country, String currency, String language }) async
+    //Future<JsonObject> etsyGetCategories({ String country, String currency, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test etsyGetCategories', () async {
       // TODO
     });
 
     // Get listing detail
     //
-    //Future<JsonObject> etsyGetListingDetail(String listingId, { String country, String currency, String language }) async
+    //Future<JsonObject> etsyGetListingDetail(String listingId, { String country, String currency, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test etsyGetListingDetail', () async {
       // TODO
     });
 
     // Get listing reviews
     //
-    //Future<JsonObject> etsyGetListingReviews(String listingId, { int page, String sort, String country, String currency, String language }) async
+    //Future<JsonObject> etsyGetListingReviews(String listingId, { int page, String sort, String country, String currency, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test etsyGetListingReviews', () async {
       // TODO
     });
 
     // Get search suggestions
     //
-    //Future<JsonObject> etsyGetSearchSuggestions(String query, { String country, String currency, String language }) async
+    //Future<JsonObject> etsyGetSearchSuggestions(String query, { String country, String currency, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test etsyGetSearchSuggestions', () async {
       // TODO
     });
 
     // Get shop listings
     //
-    //Future<JsonObject> etsyGetShopListings(String shopName, { int page, String country, String currency, String language }) async
+    //Future<JsonObject> etsyGetShopListings(String shopName, { int page, String country, String currency, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test etsyGetShopListings', () async {
       // TODO
     });
 
     // Get shop profile
     //
-    //Future<JsonObject> etsyGetShopProfile(String shopName, { String country, String currency, String language }) async
+    //Future<JsonObject> etsyGetShopProfile(String shopName, { String country, String currency, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test etsyGetShopProfile', () async {
       // TODO
     });
 
     // Get shop reviews
     //
-    //Future<JsonObject> etsyGetShopReviews(String shopName, { int page, String country, String currency, String language }) async
+    //Future<JsonObject> etsyGetShopReviews(String shopName, { int page, String country, String currency, String language, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test etsyGetShopReviews', () async {
       // TODO
     });
 
     // Search listings
     //
-    //Future<JsonObject> etsySearchListings(String query, { int page, String country, String currency, String language, String sort, num minPrice, num maxPrice }) async
+    //Future<JsonObject> etsySearchListings(String query, { int page, String country, String currency, String language, String sort, num minPrice, num maxPrice, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test etsySearchListings', () async {
       // TODO
     });

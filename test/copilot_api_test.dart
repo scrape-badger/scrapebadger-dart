@@ -11,7 +11,7 @@ void main() {
     //
     // Ask Microsoft Copilot (Copilot Search in Bing) and get the answer plus its cited sources.
     //
-    //Future<JsonObject> copilotAskCopilotAQuestion(String prompt, { String country, String market, bool strictCountry }) async
+    //Future<JsonObject> copilotAskCopilotAQuestion(String prompt, { String country, String market, bool strictCountry, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test copilotAskCopilotAQuestion', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // POST form of `/ask`, for prompts too long for a query string.
     //
-    //Future<JsonObject> copilotAskCopilotAQuestionPost() async
+    //Future<JsonObject> copilotAskCopilotAQuestionPost({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test copilotAskCopilotAQuestionPost', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // The Bing markets Copilot can be asked in.
     //
-    //Future<JsonObject> copilotListCopilotMarkets() async
+    //Future<JsonObject> copilotListCopilotMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test copilotListCopilotMarkets', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Ask Copilot, then report whether the brand is mentioned, cited and how prominently.
     //
-    //Future<JsonObject> copilotMeasureABrandSVisibilityInACopilotAnswer(String prompt, String brand, { String domain, String aliases, String competitors, String country, String market, bool strictCountry }) async
+    //Future<JsonObject> copilotMeasureABrandSVisibilityInACopilotAnswer(String prompt, String brand, { String domain, String aliases, String competitors, String country, String market, bool strictCountry, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test copilotMeasureABrandSVisibilityInACopilotAnswer', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // POST form, for longer prompts and larger competitor sets.
     //
-    //Future<JsonObject> copilotMeasureABrandSVisibilityInACopilotAnswerPost() async
+    //Future<JsonObject> copilotMeasureABrandSVisibilityInACopilotAnswerPost({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test copilotMeasureABrandSVisibilityInACopilotAnswerPost', () async {
       // TODO
     });

@@ -18,7 +18,7 @@ void main() {
     //
     // Full public vehicle specifications, equipment, photos, price and seller data.  Exactly one of url or listing_id is required. Supported markets match /markets. Successful detail costs 10 credits; removed or missing listings return an unbilled 404. Invalid inputs return 422 and source failures 503.
     //
-    //Future<AutoScout24ListingResponse> autoscout24GetListing({ String url, String listingId, String market }) async
+    //Future<AutoScout24ListingResponse> autoscout24GetListing({ String url, String listingId, String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test autoscout24GetListing', () async {
       // TODO
     });
@@ -27,7 +27,7 @@ void main() {
     //
     // Verified marketplaces, domains, languages and currency. Free reference endpoint.
     //
-    //Future<AutoScout24MarketsResponse> autoscout24ListMarkets() async
+    //Future<AutoScout24MarketsResponse> autoscout24ListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test autoscout24ListMarkets', () async {
       // TODO
     });
@@ -36,7 +36,7 @@ void main() {
     //
     // Current native make, model and vehicle filter options. Set make for its models.
     //
-    //Future<AutoScout24FiltersResponse> autoscout24ListSearchFilters({ String market, String make }) async
+    //Future<AutoScout24FiltersResponse> autoscout24ListSearchFilters({ String market, String make, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test autoscout24ListSearchFilters', () async {
       // TODO
     });
@@ -45,7 +45,7 @@ void main() {
     //
     // Search live vehicle cards, seller/location information and current filter taxonomy.  Browsing is capped at 200 pages (normally 20 cards each). Narrow the query to reach more inventory. Empty results cost zero credits. Pass a result's url or id to /listing for its full specifications and equipment.
     //
-    //Future<AutoScout24SearchResponse> autoscout24SearchVehicles({ String market, String make, String model, int priceMin, int priceMax, int mileageMin, int mileageMax, int yearMin, int yearMax, int powerMin, int powerMax, String fuelType, String transmission, String bodyType, String sellerType, String condition, String zip, int radius, String sortBy, int page }) async
+    //Future<AutoScout24SearchResponse> autoscout24SearchVehicles({ String market, String make, String model, int priceMin, int priceMax, int mileageMin, int mileageMax, int yearMin, int yearMax, int powerMin, int powerMax, String fuelType, String transmission, String bodyType, String sellerType, String condition, String zip, int radius, String sortBy, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test autoscout24SearchVehicles', () async {
       // TODO
     });

@@ -11,14 +11,14 @@ void main() {
     //
     // Return the citations-per-year chart for a Google Scholar author.
     //
-    //Future<JsonObject> googleGetAuthorCitationsPerYearChart(String authorId, { String hl }) async
+    //Future<JsonObject> googleGetAuthorCitationsPerYearChart(String authorId, { String hl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGetAuthorCitationsPerYearChart', () async {
       // TODO
     });
 
     // Get business posts
     //
-    //Future<JsonObject> googleGetBusinessPosts(String dataId, { String nextPageToken }) async
+    //Future<JsonObject> googleGetBusinessPosts(String dataId, { String nextPageToken, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGetBusinessPosts', () async {
       // TODO
     });
@@ -27,28 +27,28 @@ void main() {
     //
     // Return MLA, APA, Chicago, Harvard, and Vancouver citation formats for a paper.
     //
-    //Future<JsonObject> googleGetCitationFormatsForAScholarPaper(String q, { String hl }) async
+    //Future<JsonObject> googleGetCitationFormatsForAScholarPaper(String q, { String hl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGetCitationFormatsForAScholarPaper', () async {
       // TODO
     });
 
     // Get place details
     //
-    //Future<JsonObject> googleGetPlaceDetails({ String placeId, String dataId, String hl, String gl }) async
+    //Future<JsonObject> googleGetPlaceDetails({ String placeId, String dataId, String hl, String gl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGetPlaceDetails', () async {
       // TODO
     });
 
     // Get place photos
     //
-    //Future<JsonObject> googleGetPlacePhotos(String dataId, { String hl, String nextPageToken }) async
+    //Future<JsonObject> googleGetPlacePhotos(String dataId, { String hl, String nextPageToken, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGetPlacePhotos', () async {
       // TODO
     });
 
     // Get place reviews
     //
-    //Future<JsonObject> googleGetPlaceReviews(String dataId, { String sortBy, String hl, String nextPageToken, int results }) async
+    //Future<JsonObject> googleGetPlaceReviews(String dataId, { String sortBy, String hl, String nextPageToken, int results, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGetPlaceReviews', () async {
       // TODO
     });
@@ -57,7 +57,7 @@ void main() {
     //
     // Get detailed Google Scholar author profile including articles, stats, co-authors.
     //
-    //Future<JsonObject> googleGetScholarAuthorProfile(String authorId, { String hl, int cstart, int pagesize }) async
+    //Future<JsonObject> googleGetScholarAuthorProfile(String authorId, { String hl, int cstart, int pagesize, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGetScholarAuthorProfile', () async {
       // TODO
     });
@@ -66,7 +66,7 @@ void main() {
     //
     // Get a stock or index quote from Google Finance.
     //
-    //Future<JsonObject> googleGetStockIndexQuote(String q, { String hl }) async
+    //Future<JsonObject> googleGetStockIndexQuote(String q, { String hl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGetStockIndexQuote', () async {
       // TODO
     });
@@ -75,7 +75,7 @@ void main() {
     //
     // Get AI-generated search results from Google AI Mode.  Returns the structured `text_blocks` (paragraphs, headings, comparison `table` blocks and lists), a flat `references` source list, a compact `markdown` rendering of the whole answer and — unless `include_html` is false — the raw `answer_html` body.  `location`, `uule` or `lat`/`lon` localise the answer (\"near me\", local results) to that place, down to the city or district, wherever the request exits from. Located answers echo a `location` object.
     //
-    //Future<JsonObject> googleGoogleAiModeSearch(String q, { String gl, String hl, bool includeHtml, String location, String uule, num lat, num lon }) async
+    //Future<JsonObject> googleGoogleAiModeSearch(String q, { String gl, String hl, bool includeHtml, String location, String uule, num lat, num lon, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGoogleAiModeSearch', () async {
       // TODO
     });
@@ -84,7 +84,7 @@ void main() {
     //
     // Get the AI Overview block Google renders inline at the top of a SERP.  Deferred overviews (where Google lazy-loads the block via a follow-up ``page_token``) are chased automatically.
     //
-    //Future<JsonObject> googleGoogleAiOverviewInlineSerpBlock(String q, { String gl, String hl }) async
+    //Future<JsonObject> googleGoogleAiOverviewInlineSerpBlock(String q, { String gl, String hl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGoogleAiOverviewInlineSerpBlock', () async {
       // TODO
     });
@@ -93,7 +93,7 @@ void main() {
     //
     // Price a whole range of dates in one call — up to 200 dates per request.  Google Flights' own price graph / date grid: the cheapest fare per departure date instead of one search per date. Prices match `/flights/search` exactly.
     //
-    //Future<JsonObject> googleGoogleFlightsCalendarCheapestFarePerDate(String departureId, String arrivalId, String outboundDateFrom, String outboundDateTo, { String tripType, int tripLengthDays, String returnDateFrom, String returnDateTo, int adults, int children, int infantsInSeat, int infantsOnLap, String travelClass, String currency, String gl, String hl }) async
+    //Future<JsonObject> googleGoogleFlightsCalendarCheapestFarePerDate(String departureId, String arrivalId, String outboundDateFrom, String outboundDateTo, { String tripType, int tripLengthDays, String returnDateFrom, String returnDateTo, int adults, int children, int infantsInSeat, int infantsOnLap, String travelClass, String currency, String gl, String hl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGoogleFlightsCalendarCheapestFarePerDate', () async {
       // TODO
     });
@@ -102,7 +102,7 @@ void main() {
     //
     // Search Google Flights for available itineraries.
     //
-    //Future<JsonObject> googleGoogleFlightsSearch(String departureId, String arrivalId, String outboundDate, { String returnDate, String tripType, int adults, int children, int infantsInSeat, int infantsOnLap, String travelClass, String currency, String gl, String hl, String stops, int maxPrice, String departureToken }) async
+    //Future<JsonObject> googleGoogleFlightsSearch(String departureId, String arrivalId, String outboundDate, { String returnDate, String tripType, int adults, int children, int infantsInSeat, int infantsOnLap, String travelClass, String currency, String gl, String hl, String stops, int maxPrice, String departureToken, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGoogleFlightsSearch', () async {
       // TODO
     });
@@ -111,7 +111,7 @@ void main() {
     //
     // Google Lens visual search.  Response carries ``lens_results`` (Scrapingdog parity alias) with ``title`` / ``source`` / ``source_favicon`` / ``thumbnail`` / ``original_thumbnail`` / ``rating`` / ``reviews`` / ``in_stock``, plus ``price`` (``{value, currency, extracted}``) and the raw ``tag`` chip it is parsed from, on shoppable matches. ``related_searches`` chips come alongside. Legacy ``results`` alias kept for backwards compat.  ``query`` refines the grid with text. ``exact_matches=true`` returns just the pages hosting the image, each flagged ``exact_match: true``, instead of the broad grid — available for most images (8 of 10 in sampling) and falling back to the grid otherwise. ``product=true`` narrows the grid to the tiles Google marked buyable. ``visual_matches=false`` cannot be honoured: visual matches are the only grid served. Anything that could not be applied — including an exact-match lookup that came back empty — is named in the ``warnings`` array rather than silently dropped (SCR-177, SCR-180).  When Google has no matches for an image — it filters explicit images and matches removed under DMCA — the response is ``404`` with ``error: lens_no_visual_matches``. That is Google's final answer for the image: it is not charged, and retrying will not change it (SCR-325).
     //
-    //Future<JsonObject> googleGoogleLensVisualSearch(String url, { String query, String country, String language, String gl, String hl, bool product, bool visualMatches, bool exactMatches }) async
+    //Future<JsonObject> googleGoogleLensVisualSearch(String url, { String query, String country, String language, String gl, String hl, bool product, bool visualMatches, bool exactMatches, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGoogleLensVisualSearch', () async {
       // TODO
     });
@@ -120,7 +120,7 @@ void main() {
     //
     // Organic results and related searches only. Costs 10 credits per successful uncached request, compared with 20 credits for regular Google Search. Light always skips rich SERP blocks; mode and ai_overview cannot enable them.
     //
-    //Future<JsonObject> googleGoogleLightWebSearch(String q, { String gl, String hl, int num_, int start, String domain, String location, String uule, String lr, String tbs, String safe, int filter, int nfpr, String output, String oq, String sourceid, String ie, String googleDomain, num lat, num lon, num radius, String colorScheme, String tbm, String udm, bool noCache, String asDt, String asEpq, String asEq, String asLq, String asNlo, String asNhi, String asOq, String asQ, String asQdr, String asRq, String asSitesearch, String device, String userAgent, String cr, String ludocid, String lsig, String kgmid, String si, String ibp, String uds }) async
+    //Future<JsonObject> googleGoogleLightWebSearch(String q, { String gl, String hl, int num_, int start, String domain, String location, String uule, String lr, String tbs, String safe, int filter, int nfpr, String output, String oq, String sourceid, String ie, String googleDomain, num lat, num lon, num radius, String colorScheme, String tbm, String udm, bool noCache, String asDt, String asEpq, String asEq, String asLq, String asNlo, String asNhi, String asOq, String asQ, String asQdr, String asRq, String asSitesearch, String device, String userAgent, String cr, String ludocid, String lsig, String kgmid, String si, String ibp, String uds, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGoogleLightWebSearch', () async {
       // TODO
     });
@@ -147,7 +147,7 @@ void main() {
     //
     // Get Google search autocomplete suggestions.
     //
-    //Future<JsonObject> googleGoogleSearchSuggestions(String q, { String hl, String gl }) async
+    //Future<JsonObject> googleGoogleSearchSuggestions(String q, { String hl, String gl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGoogleSearchSuggestions', () async {
       // TODO
     });
@@ -156,7 +156,7 @@ void main() {
     //
     // Return short-form video results (YouTube Shorts, TikToks) from Google Shorts mode.
     //
-    //Future<JsonObject> googleGoogleShortsSearch(String q, { String gl, String hl, String domain, int num_, int start }) async
+    //Future<JsonObject> googleGoogleShortsSearch(String q, { String gl, String hl, String domain, int num_, int start, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGoogleShortsSearch', () async {
       // TODO
     });
@@ -165,14 +165,14 @@ void main() {
     //
     // Search Google and get structured results (organic, ads, KG, AI overview, PAA).
     //
-    //Future<JsonObject> googleGoogleWebSearch(String q, { String gl, String hl, int num_, int start, String domain, String device, String userAgent, String output, String location, String lr, String tbs, String safe, String uule, int filter, int nfpr, String cr, String ludocid, String lsig, String kgmid, String si, String ibp, String uds, bool aiOverview, String mode, String expandRelatedQuestions, String oq, String sourceid, String ie, String googleDomain, num lat, num lon, num radius, String colorScheme, String tbm, String udm, bool noCache, String asDt, String asEpq, String asEq, String asLq, String asNlo, String asNhi, String asOq, String asQ, String asQdr, String asRq, String asSitesearch }) async
+    //Future<JsonObject> googleGoogleWebSearch(String q, { String gl, String hl, int num_, int start, String domain, String device, String userAgent, String output, String location, String lr, String tbs, String safe, String uule, int filter, int nfpr, String cr, String ludocid, String lsig, String kgmid, String si, String ibp, String uds, bool aiOverview, String mode, String expandRelatedQuestions, String oq, String sourceid, String ie, String googleDomain, num lat, num lon, num radius, String colorScheme, String tbm, String udm, bool noCache, String asDt, String asEpq, String asEq, String asLq, String asNlo, String asNhi, String asOq, String asQ, String asQdr, String asRq, String asSitesearch, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleGoogleWebSearch', () async {
       // TODO
     });
 
     // Hotel details
     //
-    //Future<JsonObject> googleHotelDetails(String propertyToken, String checkIn, String checkOut) async
+    //Future<JsonObject> googleHotelDetails(String propertyToken, String checkIn, String checkOut, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleHotelDetails', () async {
       // TODO
     });
@@ -181,21 +181,21 @@ void main() {
     //
     // Get deep product details from Google's immersive product page.
     //
-    //Future<JsonObject> googleImmersiveProductDetail(String productId, String q, { String gl, String hl, String catalogId, String imageDocid, String headlineOfferDocid, String mid, bool includeOffers, bool includeVariants }) async
+    //Future<JsonObject> googleImmersiveProductDetail(String productId, String q, { String gl, String hl, String catalogId, String imageDocid, String headlineOfferDocid, String mid, bool includeOffers, bool includeVariants, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleImmersiveProductDetail', () async {
       // TODO
     });
 
     // Interest by region
     //
-    //Future<JsonObject> googleInterestByRegion(String q, { String geo }) async
+    //Future<JsonObject> googleInterestByRegion(String q, { String geo, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleInterestByRegion', () async {
       // TODO
     });
 
     // Interest over time
     //
-    //Future<JsonObject> googleInterestOverTime(String q, { String geo, String date }) async
+    //Future<JsonObject> googleInterestOverTime(String q, { String geo, String date, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleInterestOverTime', () async {
       // TODO
     });
@@ -204,28 +204,28 @@ void main() {
     //
     // Google Shopping seller offers (source + price + link per merchant) for a product identified either by ``barcode`` (resolved via Google web search) or by its Google Shopping ``catalog_id`` (read straight off Google's product page, all seller pages fetched in parallel).
     //
-    //Future<JsonObject> googleMultiSellerOffersByBarcode({ String barcode, String catalogId, String gl, String hl, String domain }) async
+    //Future<JsonObject> googleMultiSellerOffersByBarcode({ String barcode, String catalogId, String gl, String hl, String domain, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleMultiSellerOffersByBarcode', () async {
       // TODO
     });
 
     // News by topic
     //
-    //Future<JsonObject> googleNewsByTopic(String topic, { String hl, String gl, int maxResults }) async
+    //Future<JsonObject> googleNewsByTopic(String topic, { String hl, String gl, int maxResults, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleNewsByTopic', () async {
       // TODO
     });
 
     // Patent details
     //
-    //Future<JsonObject> googlePatentDetails(String patentId) async
+    //Future<JsonObject> googlePatentDetails(String patentId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googlePatentDetails', () async {
       // TODO
     });
 
     // Related topics & queries
     //
-    //Future<JsonObject> googleRelatedTopicsQueries(String q, { String geo }) async
+    //Future<JsonObject> googleRelatedTopicsQueries(String q, { String geo, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleRelatedTopicsQueries', () async {
       // TODO
     });
@@ -234,28 +234,28 @@ void main() {
     //
     // Search Google Images for visual content.
     //
-    //Future<JsonObject> googleSearchGoogleImages(String q, { String gl, String hl, String tbs, String imgsz, String imgcolor, String imgtype, String safe, int page }) async
+    //Future<JsonObject> googleSearchGoogleImages(String q, { String gl, String hl, String tbs, String imgsz, String imgcolor, String imgtype, String safe, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleSearchGoogleImages', () async {
       // TODO
     });
 
     // Search Google Jobs
     //
-    //Future<JsonObject> googleSearchGoogleJobs(String q, { String location, String gl, String jobType, String datePosted }) async
+    //Future<JsonObject> googleSearchGoogleJobs(String q, { String location, String gl, String jobType, String datePosted, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleSearchGoogleJobs', () async {
       // TODO
     });
 
     // Search Google Maps places
     //
-    //Future<JsonObject> googleSearchGoogleMapsPlaces(String q, { String ll, String gl, String hl, int start }) async
+    //Future<JsonObject> googleSearchGoogleMapsPlaces(String q, { String ll, String gl, String hl, int start, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleSearchGoogleMapsPlaces', () async {
       // TODO
     });
 
     // Search Google News
     //
-    //Future<JsonObject> googleSearchGoogleNews(String q, { String hl, String gl, int maxResults }) async
+    //Future<JsonObject> googleSearchGoogleNews(String q, { String hl, String gl, int maxResults, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleSearchGoogleNews', () async {
       // TODO
     });
@@ -264,7 +264,7 @@ void main() {
     //
     // Search Google Scholar for scholarly articles.  Each result ships with its doc ``id``, ``type`` badge ([BOOK]/[PDF]/...), wrapped ``inline_links`` (versions + cited_by + related), PDF ``resources`` list, and structured ``authors`` (with ``author_id`` for profiled authors — pipe straight into ``/scholar/author``). Envelope carries ``scholar_results`` alias (Scrapingdog parity), ``related_searches``, and matched ``profiles`` cards.
     //
-    //Future<JsonObject> googleSearchGoogleScholar(String q, { String hl, int asYlo, int asYhi, String asSdt, int page, int num_ }) async
+    //Future<JsonObject> googleSearchGoogleScholar(String q, { String hl, int asYlo, int asYhi, String asSdt, int page, int num_, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleSearchGoogleScholar', () async {
       // TODO
     });
@@ -273,28 +273,28 @@ void main() {
     //
     // Search Google for video results.
     //
-    //Future<JsonObject> googleSearchGoogleVideos(String q, { String gl, String hl, String tbs, String safe, int page }) async
+    //Future<JsonObject> googleSearchGoogleVideos(String q, { String gl, String hl, String tbs, String safe, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleSearchGoogleVideos', () async {
       // TODO
     });
 
     // Search hotels
     //
-    //Future<JsonObject> googleSearchHotels(String q, String checkIn, String checkOut, { int adults, String currency, String gl }) async
+    //Future<JsonObject> googleSearchHotels(String q, String checkIn, String checkOut, { int adults, String currency, String gl, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleSearchHotels', () async {
       // TODO
     });
 
     // Search patents
     //
-    //Future<JsonObject> googleSearchPatents(String q, { int page, int num_, String sort, String inventor, String assignee, String country, String language, String status, String patentType, String before, String after }) async
+    //Future<JsonObject> googleSearchPatents(String q, { int page, int num_, String sort, String inventor, String assignee, String country, String language, String status, String patentType, String before, String after, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleSearchPatents', () async {
       // TODO
     });
 
     // Search products
     //
-    //Future<JsonObject> googleSearchProducts(String q, { String gl, int minPrice, int maxPrice, String sortBy }) async
+    //Future<JsonObject> googleSearchProducts(String q, { String gl, int minPrice, int maxPrice, String sortBy, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleSearchProducts', () async {
       // TODO
     });
@@ -303,21 +303,21 @@ void main() {
     //
     // Search Google Scholar for author profiles by name.
     //
-    //Future<JsonObject> googleSearchScholarAuthorProfiles(String mauthors, { String hl, String afterAuthor, String beforeAuthor }) async
+    //Future<JsonObject> googleSearchScholarAuthorProfiles(String mauthors, { String hl, String afterAuthor, String beforeAuthor, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleSearchScholarAuthorProfiles', () async {
       // TODO
     });
 
     // Trending news
     //
-    //Future<JsonObject> googleTrendingNews({ String hl, String gl, int maxResults }) async
+    //Future<JsonObject> googleTrendingNews({ String hl, String gl, int maxResults, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleTrendingNews', () async {
       // TODO
     });
 
     // Trending searches
     //
-    //Future<JsonObject> googleTrendingSearches({ String geo }) async
+    //Future<JsonObject> googleTrendingSearches({ String geo, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleTrendingSearches', () async {
       // TODO
     });
@@ -326,7 +326,7 @@ void main() {
     //
     // Return categorized Knowledge Graph topic entities (mid, type) for a query.
     //
-    //Future<JsonObject> googleTrendsTopicAutocomplete(String q, { String hl, String tz }) async
+    //Future<JsonObject> googleTrendsTopicAutocomplete(String q, { String hl, String tz, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test googleTrendsTopicAutocomplete', () async {
       // TODO
     });

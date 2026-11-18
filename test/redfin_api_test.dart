@@ -11,7 +11,7 @@ void main() {
     //
     // Get a Redfin real-estate agent's profile and their active listings.
     //
-    //Future<JsonObject> redfinGetAgentProfileListings({ String url, String agentId }) async
+    //Future<JsonObject> redfinGetAgentProfileListings({ String url, String agentId, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redfinGetAgentProfileListings', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Get a single Redfin property's full detail by its numeric propertyId.
     //
-    //Future<JsonObject> redfinGetPropertyDetail(String propertyId) async
+    //Future<JsonObject> redfinGetPropertyDetail(String propertyId, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redfinGetPropertyDetail', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Get a single Redfin property's full detail by its home URL.
     //
-    //Future<JsonObject> redfinGetPropertyDetailByUrl(String url) async
+    //Future<JsonObject> redfinGetPropertyDetailByUrl(String url, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redfinGetPropertyDetailByUrl', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // List Redfin coverage regions (US).
     //
-    //Future<JsonObject> redfinListCoverageMarkets() async
+    //Future<JsonObject> redfinListCoverageMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redfinListCoverageMarkets', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Resolve a search term to Redfin regions/addresses.
     //
-    //Future<JsonObject> redfinRegionAddressSuggestions(String query) async
+    //Future<JsonObject> redfinRegionAddressSuggestions(String query, { String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redfinRegionAddressSuggestions', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Search Redfin for for-sale / for-rent / recently-sold properties.
     //
-    //Future<JsonObject> redfinSearchProperties(String location, { int page, String sort, int priceMin, int priceMax, int bedsMin, num bathsMin, String homeType, int sqftMin, int sqftMax, int lotMin, int lotMax, int yearBuiltMin, int yearBuiltMax, int maxDaysOnMarket, num north, num south, num east, num west }) async
+    //Future<JsonObject> redfinSearchProperties(String location, { int page, String sort, int priceMin, int priceMax, int bedsMin, num bathsMin, String homeType, int sqftMin, int sqftMax, int lotMin, int lotMax, int yearBuiltMin, int yearBuiltMax, int maxDaysOnMarket, num north, num south, num east, num west, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test redfinSearchProperties', () async {
       // TODO
     });

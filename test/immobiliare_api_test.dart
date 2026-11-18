@@ -11,7 +11,7 @@ void main() {
     //
     // Public agency/advertiser profile.
     //
-    //Future<JsonObject> immobiliareGetAgencyProfile(int agencyId, { String market }) async
+    //Future<JsonObject> immobiliareGetAgencyProfile(int agencyId, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test immobiliareGetAgencyProfile', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // An agency's active listings.
     //
-    //Future<JsonObject> immobiliareGetAnAgencySListings(int agencyId, { String market, String contract, int page }) async
+    //Future<JsonObject> immobiliareGetAnAgencySListings(int agencyId, { String market, String contract, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test immobiliareGetAnAgencySListings', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Full detail for a single listing.
     //
-    //Future<JsonObject> immobiliareGetListingDetail(int listingId, { String market }) async
+    //Future<JsonObject> immobiliareGetListingDetail(int listingId, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test immobiliareGetListingDetail', () async {
       // TODO
     });
@@ -54,14 +54,14 @@ void main() {
 
     // List filter enums
     //
-    //Future<JsonObject> immobiliareListFilterEnums() async
+    //Future<JsonObject> immobiliareListFilterEnums({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test immobiliareListFilterEnums', () async {
       // TODO
     });
 
     // List markets
     //
-    //Future<JsonObject> immobiliareListMarkets() async
+    //Future<JsonObject> immobiliareListMarkets({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test immobiliareListMarkets', () async {
       // TODO
     });
@@ -70,7 +70,7 @@ void main() {
     //
     // Resolve a place name to region/province/city ids usable in search.
     //
-    //Future<JsonObject> immobiliareLocationAutocomplete(String query, { String market }) async
+    //Future<JsonObject> immobiliareLocationAutocomplete(String query, { String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test immobiliareLocationAutocomplete', () async {
       // TODO
     });
@@ -79,7 +79,7 @@ void main() {
     //
     // Historical €/m² price statistics for an area.
     //
-    //Future<JsonObject> immobiliarePriceMTimeSeries(String regionId, { String market, String provinceId, String cityId, String contract }) async
+    //Future<JsonObject> immobiliarePriceMTimeSeries(String regionId, { String market, String provinceId, String cityId, String contract, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test immobiliarePriceMTimeSeries', () async {
       // TODO
     });
@@ -88,7 +88,7 @@ void main() {
     //
     // Search Immobiliare-group listings (scope by location + contract + filters).
     //
-    //Future<JsonObject> immobiliareSearchListings({ String market, String location, String regionId, String provinceId, String cityId, String contract, String category, int priceMin, int priceMax, int surfaceMin, int surfaceMax, int roomsMin, int roomsMax, int bathroomsMin, String sort, int page }) async
+    //Future<JsonObject> immobiliareSearchListings({ String market, String location, String regionId, String provinceId, String cityId, String contract, String category, int priceMin, int priceMax, int surfaceMin, int surfaceMax, int roomsMin, int roomsMax, int bathroomsMin, String sort, int page, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test immobiliareSearchListings', () async {
       // TODO
     });
