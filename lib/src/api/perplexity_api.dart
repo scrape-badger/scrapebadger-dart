@@ -29,6 +29,8 @@ class PerplexityApi {
   /// * [country] - ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'.
   /// * [strictCountry] - Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`.
   /// * [location] - Where the asker is: a city (tokyo, osaka, seoul, new-york, london, ...) or 'lat,lng' in decimal degrees. Perplexity answers a local-sounding question for it instead of the exit IP's city. It does not pick the egress: `country` does.
+  /// * [html] - Also return `answer_html`: the answer rendered as an HTML fragment, with each `[n]` citation linked to its source (`<a class=\"citation\" data-ref=\"n\">`). Raw HTML and unsafe links in the answer are dropped. Same price.
+  /// * [raw] - Also return `raw`: Perplexity's own final answer object as it sent it (answer blocks, web results, related queries, model and mode metadata), minus its thread write token. Every other field is parsed from it. Same price.
   /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
   /// * [xCallbackURL] - An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
   /// * [idempotencyKey] - 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
@@ -50,6 +52,8 @@ class PerplexityApi {
     String? country,
     bool? strictCountry = false,
     String? location,
+    bool? html = false,
+    bool? raw = false,
     String? prefer,
     String? xCallbackURL,
     String? idempotencyKey,
@@ -92,6 +96,8 @@ class PerplexityApi {
       r'country': encodeQueryParameter(_serializers, country, const FullType(String)),
       if (strictCountry != null) r'strict_country': encodeQueryParameter(_serializers, strictCountry, const FullType(bool)),
       r'location': encodeQueryParameter(_serializers, location, const FullType(String)),
+      if (html != null) r'html': encodeQueryParameter(_serializers, html, const FullType(bool)),
+      if (raw != null) r'raw': encodeQueryParameter(_serializers, raw, const FullType(bool)),
       if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
       if (asyncWait != null) r'async_wait': encodeQueryParameter(_serializers, asyncWait, const FullType(int)),
       if (callbackUrl != null) r'callback_url': encodeQueryParameter(_serializers, callbackUrl, const FullType(String)),
@@ -139,7 +145,7 @@ class PerplexityApi {
   }
 
   /// Ask Perplexity a question (POST)
-  /// POST form of &#x60;/ask&#x60;, for prompts too long for a query string.
+  /// POST form of &#x60;/ask&#x60;, for prompts too long for a query string. The JSON body takes the same fields as the query (&#x60;prompt&#x60;, &#x60;country&#x60;, &#x60;strict_country&#x60;, &#x60;location&#x60;, &#x60;html&#x60;, &#x60;raw&#x60;).
   ///
   /// Parameters:
   /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.

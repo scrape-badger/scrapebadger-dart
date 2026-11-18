@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **perplexityAskPerplexityAQuestion**
-> JsonObject perplexityAskPerplexityAQuestion(prompt, country, strictCountry, location, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2)
+> JsonObject perplexityAskPerplexityAQuestion(prompt, country, strictCountry, location, html, raw, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2)
 
 Ask Perplexity a question
 
@@ -37,6 +37,8 @@ final String prompt = prompt_example; // String | The prompt to send to Perplexi
 final String country = country_example; // String | ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'.
 final bool strictCountry = true; // bool | Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`.
 final String location = location_example; // String | Where the asker is: a city (tokyo, osaka, seoul, new-york, london, ...) or 'lat,lng' in decimal degrees. Perplexity answers a local-sounding question for it instead of the exit IP's city. It does not pick the egress: `country` does.
+final bool html = true; // bool | Also return `answer_html`: the answer rendered as an HTML fragment, with each `[n]` citation linked to its source (`<a class=\"citation\" data-ref=\"n\">`). Raw HTML and unsafe links in the answer are dropped. Same price.
+final bool raw = true; // bool | Also return `raw`: Perplexity's own final answer object as it sent it (answer blocks, web results, related queries, model and mode metadata), minus its thread write token. Every other field is parsed from it. Same price.
 final String prefer = respond-async, wait=25; // String | `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
 final String xCallbackURL = xCallbackURL_example; // String | An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`.
 final String idempotencyKey = idempotencyKey_example; // String | 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`.
@@ -46,7 +48,7 @@ final String callbackUrl = callbackUrl_example; // String | Query form of `X-Cal
 final String idempotencyKey2 = idempotencyKey_example; // String | Query form of `Idempotency-Key`. Not sent to the scraper.
 
 try {
-    final response = api.perplexityAskPerplexityAQuestion(prompt, country, strictCountry, location, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2);
+    final response = api.perplexityAskPerplexityAQuestion(prompt, country, strictCountry, location, html, raw, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling PerplexityApi->perplexityAskPerplexityAQuestion: $e\n');
@@ -61,6 +63,8 @@ Name | Type | Description  | Notes
  **country** | **String**| ISO-3166 alpha-2 egress country, e.g. 'US', 'GB', 'DE'. | [optional] 
  **strictCountry** | **bool**| Answer only from an exit in `country`, never another one; 503 `country_unavailable` (not billed) when none answers. Requires `country`. | [optional] [default to false]
  **location** | **String**| Where the asker is: a city (tokyo, osaka, seoul, new-york, london, ...) or 'lat,lng' in decimal degrees. Perplexity answers a local-sounding question for it instead of the exit IP's city. It does not pick the egress: `country` does. | [optional] 
+ **html** | **bool**| Also return `answer_html`: the answer rendered as an HTML fragment, with each `[n]` citation linked to its source (`<a class=\"citation\" data-ref=\"n\">`). Raw HTML and unsafe links in the answer are dropped. Same price. | [optional] [default to false]
+ **raw** | **bool**| Also return `raw`: Perplexity's own final answer object as it sent it (answer blocks, web results, related queries, model and mode metadata), minus its thread write token. Every other field is parsed from it. Same price. | [optional] [default to false]
  **prefer** | **String**| `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait. | [optional] 
  **xCallbackURL** | **String**| An `https` URL that receives the signed `request.completed` webhook when the call finishes. Implies async: on its own (no `Prefer`, `async` or `async_wait`) the answer is an immediate `202`; with `Prefer: respond-async` or `async=true` the call still waits 25 s unless a wait is given. Wins over `callback_url`. | [optional] 
  **idempotencyKey** | **String**| 1-200 visible ASCII characters, per account, kept as long as the result (about 15 minutes). The same key on the same call returns that call's current state (`Idempotent-Replayed: true`) without running or billing it again; on a different call it is `409 idempotency_key_reused`. Applies to async calls only; on a synchronous call it is ignored. Wins over `idempotency_key`. | [optional] 
@@ -89,7 +93,7 @@ Name | Type | Description  | Notes
 
 Ask Perplexity a question (POST)
 
-POST form of `/ask`, for prompts too long for a query string.
+POST form of `/ask`, for prompts too long for a query string. The JSON body takes the same fields as the query (`prompt`, `country`, `strict_country`, `location`, `html`, `raw`).
 
 ### Example
 ```dart

@@ -11,14 +11,14 @@ void main() {
     //
     // Send a prompt to Perplexity and get the answer plus the web sources it cited.
     //
-    //Future<JsonObject> perplexityAskPerplexityAQuestion(String prompt, { String country, bool strictCountry, String location, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
+    //Future<JsonObject> perplexityAskPerplexityAQuestion(String prompt, { String country, bool strictCountry, String location, bool html, bool raw, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test perplexityAskPerplexityAQuestion', () async {
       // TODO
     });
 
     // Ask Perplexity a question (POST)
     //
-    // POST form of `/ask`, for prompts too long for a query string.
+    // POST form of `/ask`, for prompts too long for a query string. The JSON body takes the same fields as the query (`prompt`, `country`, `strict_country`, `location`, `html`, `raw`).
     //
     //Future<JsonObject> perplexityAskPerplexityAQuestionPost({ String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test perplexityAskPerplexityAQuestionPost', () async {
