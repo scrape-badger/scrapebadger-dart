@@ -105,6 +105,10 @@ import 'package:scrapebadger/src/model/git_hub_repository_response.dart';
 import 'package:scrapebadger/src/model/git_hub_social_account.dart';
 import 'package:scrapebadger/src/model/git_hub_status.dart';
 import 'package:scrapebadger/src/model/git_hub_text_link.dart';
+import 'package:scrapebadger/src/model/google_resolve_item.dart';
+import 'package:scrapebadger/src/model/google_resolve_request.dart';
+import 'package:scrapebadger/src/model/google_resolve_response.dart';
+import 'package:scrapebadger/src/model/google_resolve_row.dart';
 import 'package:scrapebadger/src/model/http_validation_error.dart';
 import 'package:scrapebadger/src/model/imageurl.dart';
 import 'package:scrapebadger/src/model/is_live.dart';
@@ -297,6 +301,10 @@ part 'serializers.g.dart';
   GitHubSocialAccount,
   GitHubStatus,
   GitHubTextLink,
+  GoogleResolveItem,
+  GoogleResolveRequest,
+  GoogleResolveResponse,
+  GoogleResolveRow,
   HTTPValidationError,
   Imageurl,
   IsLive,

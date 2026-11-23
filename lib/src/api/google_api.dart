@@ -11,6 +11,8 @@ import 'package:dio/dio.dart';
 import 'package:built_value/json_object.dart';
 import 'package:scrapebadger/src/api_util.dart';
 import 'package:scrapebadger/src/model/async_accepted.dart';
+import 'package:scrapebadger/src/model/google_resolve_request.dart';
+import 'package:scrapebadger/src/model/google_resolve_response.dart';
 import 'package:scrapebadger/src/model/http_validation_error.dart';
 
 class GoogleApi {
@@ -3419,6 +3421,108 @@ class GoogleApi {
     }
 
     return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Resolve
+  /// Get the URLs of search results whose &#x60;link&#x60; is still a Google redirect. Costs 0 credits.  Google hides a result&#39;s URL behind a redirect (&#x60;https://www.google.com/goto?url&#x3D;...&#x60;) and paces how fast a result page&#39;s links can be followed. &#x60;GET /v1/google/search&#x60; and &#x60;GET /v1/google/light/search&#x60; give every organic result whose &#x60;link&#x60; is still such a redirect a &#x60;link_token&#x60; and &#x60;retry_after_seconds&#x60; (0 means it can be resolved right away). Both are null on a result whose &#x60;link&#x60; is already the real URL. Send the results that have a &#x60;link_token&#x60; here, 1 to 25 per call.  Each row comes back in the order sent, in one of three states:  - Resolved: &#x60;link&#x60; is the result&#39;s own URL and there is no &#x60;link_token&#x60;. - Not ready: &#x60;link_token&#x60; is the token to send next time (it can differ from the one   sent) and &#x60;retry_after_seconds&#x60; is how long to wait, at least 1. - Failed: &#x60;link_token&#x60; and &#x60;error&#x60;. Do not send this token again.  The top-level &#x60;retry_after_seconds&#x60; is the smallest wait among the rows that are not ready, or null. Wait that long, then send the rows that are not ready again. A token sent early is not an error: its row comes back not ready with the wait that is left.  Typical timing: calling again after each &#x60;retry_after_seconds&#x60;, all ten links of a result page are known 45 to 70 seconds after the search. Once the result page is about 160 seconds old, one call returns every remaining link.  An invalid body answers 422. The async request forms do not apply to this endpoint.
+  ///
+  /// Parameters:
+  /// * [googleResolveRequest] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [GoogleResolveResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<GoogleResolveResponse>> googleResolve({ 
+    required GoogleResolveRequest googleResolveRequest,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/google/resolve';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ApiKeyAuth',
+            'keyName': 'X-API-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(GoogleResolveRequest);
+      _bodyData = _serializers.serialize(googleResolveRequest, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    GoogleResolveResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(GoogleResolveResponse),
+      ) as GoogleResolveResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<GoogleResolveResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
