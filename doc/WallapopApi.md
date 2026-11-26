@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 List categories
 
-The full category tree; ids are usable as the search category_id.
+The full category tree; top-level ids are the search category_id, nested subcategory ids go in subcategory_ids.
 
 ### Example
 ```dart
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **wallapopListFilterOptions**
-> JsonObject wallapopListFilterOptions(filterId, categoryId, query, market, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2)
+> JsonObject wallapopListFilterOptions(filterId, categoryId, subcategoryIds, query, market, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2)
 
 List filter options
 
@@ -421,6 +421,7 @@ import 'package:scrapebadger/api.dart';
 final api = Scrapebadger().getWallapopApi();
 final String filterId = filterId_example; // String | 
 final int categoryId = 56; // int | Category to scope options to
+final String subcategoryIds = subcategoryIds_example; // String | Comma-separated subcategory ids to scope options to
 final String query = query_example; // String | Search text to scope options to
 final String market = market_example; // String | Market: es (Spain), it (Italy), pt (Portugal)
 final String prefer = respond-async, wait=25; // String | `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
@@ -432,7 +433,7 @@ final String callbackUrl = callbackUrl_example; // String | Query form of `X-Cal
 final String idempotencyKey2 = idempotencyKey_example; // String | Query form of `Idempotency-Key`. Not sent to the scraper.
 
 try {
-    final response = api.wallapopListFilterOptions(filterId, categoryId, query, market, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2);
+    final response = api.wallapopListFilterOptions(filterId, categoryId, subcategoryIds, query, market, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling WallapopApi->wallapopListFilterOptions: $e\n');
@@ -445,6 +446,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filterId** | **String**|  | 
  **categoryId** | **int**| Category to scope options to | [optional] 
+ **subcategoryIds** | **String**| Comma-separated subcategory ids to scope options to | [optional] 
  **query** | **String**| Search text to scope options to | [optional] 
  **market** | **String**| Market: es (Spain), it (Italy), pt (Portugal) | [optional] [default to 'es']
  **prefer** | **String**| `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait. | [optional] 
@@ -530,7 +532,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **wallapopListSearchFilters**
-> JsonObject wallapopListSearchFilters(categoryId, query, market, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2)
+> JsonObject wallapopListSearchFilters(categoryId, subcategoryIds, query, market, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2)
 
 List search filters
 
@@ -546,6 +548,7 @@ import 'package:scrapebadger/api.dart';
 
 final api = Scrapebadger().getWallapopApi();
 final int categoryId = 56; // int | Category the filters apply to
+final String subcategoryIds = subcategoryIds_example; // String | Comma-separated subcategory ids the filters apply to
 final String query = query_example; // String | Search text the filters apply to
 final String market = market_example; // String | Market: es (Spain), it (Italy), pt (Portugal)
 final String prefer = respond-async, wait=25; // String | `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
@@ -557,7 +560,7 @@ final String callbackUrl = callbackUrl_example; // String | Query form of `X-Cal
 final String idempotencyKey2 = idempotencyKey_example; // String | Query form of `Idempotency-Key`. Not sent to the scraper.
 
 try {
-    final response = api.wallapopListSearchFilters(categoryId, query, market, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2);
+    final response = api.wallapopListSearchFilters(categoryId, subcategoryIds, query, market, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling WallapopApi->wallapopListSearchFilters: $e\n');
@@ -569,6 +572,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryId** | **int**| Category the filters apply to | [optional] 
+ **subcategoryIds** | **String**| Comma-separated subcategory ids the filters apply to | [optional] 
  **query** | **String**| Search text the filters apply to | [optional] 
  **market** | **String**| Market: es (Spain), it (Italy), pt (Portugal) | [optional] [default to 'es']
  **prefer** | **String**| `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait. | [optional] 
@@ -595,11 +599,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **wallapopSearchListings**
-> JsonObject wallapopSearchListings(query, market, latitude, longitude, distanceKm, categoryId, minPrice, maxPrice, condition, brand, model, color, timeFilter, shippable, hasWarranty, refurbished, minYear, maxYear, minKm, maxKm, gearbox, minHorsepower, maxHorsepower, orderBy, nextPage, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2)
+> JsonObject wallapopSearchListings(query, market, latitude, longitude, distanceKm, categoryId, subcategoryIds, minPrice, maxPrice, condition, brand, model, color, timeFilter, shippable, hasWarranty, refurbished, minYear, maxYear, minKm, maxKm, gearbox, minHorsepower, maxHorsepower, orderBy, nextPage, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2)
 
 Search listings
 
-Search Wallapop listings (40 per page). Needs a query, a category_id, or both.
+Search Wallapop listings (40 per page). Needs a query, a category_id, subcategory_ids, or a combination.
 
 ### Example
 ```dart
@@ -616,6 +620,7 @@ final num latitude = 8.14; // num | Search centre latitude (defaults to the mark
 final num longitude = 8.14; // num | Search centre longitude
 final int distanceKm = 56; // int | Search radius
 final int categoryId = 56; // int | Category id from /categories
+final String subcategoryIds = subcategoryIds_example; // String | Comma-separated subcategory ids from /categories (any level of the tree), e.g. 9447 (Smartphones) or 9447,10310
 final num minPrice = 8.14; // num | Minimum price (EUR)
 final num maxPrice = 8.14; // num | Maximum price (EUR)
 final String condition = condition_example; // String | Comma-separated: un_opened, in_box, new, as_good_as_new, good, fair, has_given_it_all
@@ -644,7 +649,7 @@ final String callbackUrl = callbackUrl_example; // String | Query form of `X-Cal
 final String idempotencyKey2 = idempotencyKey_example; // String | Query form of `Idempotency-Key`. Not sent to the scraper.
 
 try {
-    final response = api.wallapopSearchListings(query, market, latitude, longitude, distanceKm, categoryId, minPrice, maxPrice, condition, brand, model, color, timeFilter, shippable, hasWarranty, refurbished, minYear, maxYear, minKm, maxKm, gearbox, minHorsepower, maxHorsepower, orderBy, nextPage, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2);
+    final response = api.wallapopSearchListings(query, market, latitude, longitude, distanceKm, categoryId, subcategoryIds, minPrice, maxPrice, condition, brand, model, color, timeFilter, shippable, hasWarranty, refurbished, minYear, maxYear, minKm, maxKm, gearbox, minHorsepower, maxHorsepower, orderBy, nextPage, prefer, xCallbackURL, idempotencyKey, async_, asyncWait, callbackUrl, idempotencyKey2);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling WallapopApi->wallapopSearchListings: $e\n');
@@ -661,6 +666,7 @@ Name | Type | Description  | Notes
  **longitude** | **num**| Search centre longitude | [optional] 
  **distanceKm** | **int**| Search radius | [optional] 
  **categoryId** | **int**| Category id from /categories | [optional] 
+ **subcategoryIds** | **String**| Comma-separated subcategory ids from /categories (any level of the tree), e.g. 9447 (Smartphones) or 9447,10310 | [optional] 
  **minPrice** | **num**| Minimum price (EUR) | [optional] 
  **maxPrice** | **num**| Maximum price (EUR) | [optional] 
  **condition** | **String**| Comma-separated: un_opened, in_box, new, as_good_as_new, good, fair, has_given_it_all | [optional] 

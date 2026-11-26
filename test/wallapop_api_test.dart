@@ -54,7 +54,7 @@ void main() {
 
     // List categories
     //
-    // The full category tree; ids are usable as the search category_id.
+    // The full category tree; top-level ids are the search category_id, nested subcategory ids go in subcategory_ids.
     //
     //Future<JsonObject> wallapopListCategories({ String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test wallapopListCategories', () async {
@@ -65,7 +65,7 @@ void main() {
     //
     // Long option lists (e.g. brand, model) for filters flagged options_endpoint.
     //
-    //Future<JsonObject> wallapopListFilterOptions(String filterId, { int categoryId, String query, String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
+    //Future<JsonObject> wallapopListFilterOptions(String filterId, { int categoryId, String subcategoryIds, String query, String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test wallapopListFilterOptions', () async {
       // TODO
     });
@@ -83,16 +83,16 @@ void main() {
     //
     // The filters Wallapop offers for a category or query, with option ids.
     //
-    //Future<JsonObject> wallapopListSearchFilters({ int categoryId, String query, String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
+    //Future<JsonObject> wallapopListSearchFilters({ int categoryId, String subcategoryIds, String query, String market, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test wallapopListSearchFilters', () async {
       // TODO
     });
 
     // Search listings
     //
-    // Search Wallapop listings (40 per page). Needs a query, a category_id, or both.
+    // Search Wallapop listings (40 per page). Needs a query, a category_id, subcategory_ids, or a combination.
     //
-    //Future<JsonObject> wallapopSearchListings({ String query, String market, num latitude, num longitude, int distanceKm, int categoryId, num minPrice, num maxPrice, String condition, String brand, String model, String color, String timeFilter, bool shippable, bool hasWarranty, bool refurbished, int minYear, int maxYear, int minKm, int maxKm, String gearbox, int minHorsepower, int maxHorsepower, String orderBy, String nextPage, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
+    //Future<JsonObject> wallapopSearchListings({ String query, String market, num latitude, num longitude, int distanceKm, int categoryId, String subcategoryIds, num minPrice, num maxPrice, String condition, String brand, String model, String color, String timeFilter, bool shippable, bool hasWarranty, bool refurbished, int minYear, int maxYear, int minKm, int maxKm, String gearbox, int minHorsepower, int maxHorsepower, String orderBy, String nextPage, String prefer, String xCallbackURL, String idempotencyKey, bool async_, int asyncWait, String callbackUrl, String idempotencyKey2 }) async
     test('test wallapopSearchListings', () async {
       // TODO
     });

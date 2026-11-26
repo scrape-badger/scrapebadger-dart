@@ -579,7 +579,7 @@ class WallapopApi {
   }
 
   /// List categories
-  /// The full category tree; ids are usable as the search category_id.
+  /// The full category tree; top-level ids are the search category_id, nested subcategory ids go in subcategory_ids.
   ///
   /// Parameters:
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
@@ -692,6 +692,7 @@ class WallapopApi {
   /// Parameters:
   /// * [filterId] 
   /// * [categoryId] - Category to scope options to
+  /// * [subcategoryIds] - Comma-separated subcategory ids to scope options to
   /// * [query] - Search text to scope options to
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
   /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
@@ -713,6 +714,7 @@ class WallapopApi {
   Future<Response<JsonObject>> wallapopListFilterOptions({ 
     required String filterId,
     int? categoryId,
+    String? subcategoryIds,
     String? query,
     String? market = 'es',
     String? prefer,
@@ -754,6 +756,7 @@ class WallapopApi {
 
     final _queryParameters = <String, dynamic>{
       r'category_id': encodeQueryParameter(_serializers, categoryId, const FullType(int)),
+      r'subcategory_ids': encodeQueryParameter(_serializers, subcategoryIds, const FullType(String)),
       r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
       if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
@@ -912,6 +915,7 @@ class WallapopApi {
   ///
   /// Parameters:
   /// * [categoryId] - Category the filters apply to
+  /// * [subcategoryIds] - Comma-separated subcategory ids the filters apply to
   /// * [query] - Search text the filters apply to
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
   /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
@@ -932,6 +936,7 @@ class WallapopApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JsonObject>> wallapopListSearchFilters({ 
     int? categoryId,
+    String? subcategoryIds,
     String? query,
     String? market = 'es',
     String? prefer,
@@ -973,6 +978,7 @@ class WallapopApi {
 
     final _queryParameters = <String, dynamic>{
       r'category_id': encodeQueryParameter(_serializers, categoryId, const FullType(int)),
+      r'subcategory_ids': encodeQueryParameter(_serializers, subcategoryIds, const FullType(String)),
       r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
       if (market != null) r'market': encodeQueryParameter(_serializers, market, const FullType(String)),
       if (async_ != null) r'async': encodeQueryParameter(_serializers, async_, const FullType(bool)),
@@ -1022,7 +1028,7 @@ class WallapopApi {
   }
 
   /// Search listings
-  /// Search Wallapop listings (40 per page). Needs a query, a category_id, or both.
+  /// Search Wallapop listings (40 per page). Needs a query, a category_id, subcategory_ids, or a combination.
   ///
   /// Parameters:
   /// * [query] - Search text, e.g. 'iphone 14'
@@ -1031,6 +1037,7 @@ class WallapopApi {
   /// * [longitude] - Search centre longitude
   /// * [distanceKm] - Search radius
   /// * [categoryId] - Category id from /categories
+  /// * [subcategoryIds] - Comma-separated subcategory ids from /categories (any level of the tree), e.g. 9447 (Smartphones) or 9447,10310
   /// * [minPrice] - Minimum price (EUR)
   /// * [maxPrice] - Maximum price (EUR)
   /// * [condition] - Comma-separated: un_opened, in_box, new, as_good_as_new, good, fair, has_given_it_all
@@ -1073,6 +1080,7 @@ class WallapopApi {
     num? longitude,
     int? distanceKm,
     int? categoryId,
+    String? subcategoryIds,
     num? minPrice,
     num? maxPrice,
     String? condition,
@@ -1136,6 +1144,7 @@ class WallapopApi {
       r'longitude': encodeQueryParameter(_serializers, longitude, const FullType(num)),
       r'distance_km': encodeQueryParameter(_serializers, distanceKm, const FullType(int)),
       r'category_id': encodeQueryParameter(_serializers, categoryId, const FullType(int)),
+      r'subcategory_ids': encodeQueryParameter(_serializers, subcategoryIds, const FullType(String)),
       r'min_price': encodeQueryParameter(_serializers, minPrice, const FullType(num)),
       r'max_price': encodeQueryParameter(_serializers, maxPrice, const FullType(num)),
       r'condition': encodeQueryParameter(_serializers, condition, const FullType(String)),
