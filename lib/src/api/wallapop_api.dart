@@ -692,7 +692,7 @@ class WallapopApi {
   /// Parameters:
   /// * [filterId] 
   /// * [categoryId] - Category to scope options to
-  /// * [subcategoryIds] - Comma-separated subcategory ids to scope options to
+  /// * [subcategoryIds] - Comma-separated subcategory ids (needs their category_id)
   /// * [query] - Search text to scope options to
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
   /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
@@ -915,7 +915,7 @@ class WallapopApi {
   ///
   /// Parameters:
   /// * [categoryId] - Category the filters apply to
-  /// * [subcategoryIds] - Comma-separated subcategory ids the filters apply to
+  /// * [subcategoryIds] - Comma-separated subcategory ids (needs their category_id)
   /// * [query] - Search text the filters apply to
   /// * [market] - Market: es (Spain), it (Italy), pt (Portugal)
   /// * [prefer] - `respond-async[, wait=N]` (RFC 7240): run the call async. If it has not finished after `wait` seconds (0-120, default 25) the answer is `202` with a `request_id`; poll `GET /v1/requests/{request_id}`. Its `wait=` wins over `async_wait`; without one, `async_wait` sets the wait.
