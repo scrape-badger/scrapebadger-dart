@@ -1633,6 +1633,7 @@ class GoogleApi {
   /// * [safe] - Safe search: off or active
   /// * [filter] 
   /// * [nfpr] - Disable auto-correction
+  /// * [requireResolvedLinks] - Require direct organic result URLs and resolve Google redirects in returned result links. JSON only. The handler returns HTTP 503 on a budget miss (2 s fast, 2.5 s full).
   /// * [output] 
   /// * [oq] - Original query sent to Google. Defaults to q; an empty string omits it.
   /// * [sourceid] - Google source identifier. Defaults to chrome; an empty string omits it.
@@ -1695,6 +1696,7 @@ class GoogleApi {
     String? safe = 'off',
     int? filter,
     int? nfpr = 0,
+    bool? requireResolvedLinks = false,
     String? output = 'json',
     String? oq,
     String? sourceid,
@@ -1778,6 +1780,7 @@ class GoogleApi {
       if (safe != null) r'safe': encodeQueryParameter(_serializers, safe, const FullType(String)),
       r'filter': encodeQueryParameter(_serializers, filter, const FullType(int)),
       if (nfpr != null) r'nfpr': encodeQueryParameter(_serializers, nfpr, const FullType(int)),
+      if (requireResolvedLinks != null) r'require_resolved_links': encodeQueryParameter(_serializers, requireResolvedLinks, const FullType(bool)),
       if (output != null) r'output': encodeQueryParameter(_serializers, output, const FullType(String)),
       r'oq': encodeQueryParameter(_serializers, oq, const FullType(String)),
       r'sourceid': encodeQueryParameter(_serializers, sourceid, const FullType(String)),
@@ -2265,6 +2268,7 @@ class GoogleApi {
   /// * [domain] - Google domain
   /// * [device] - Device target: desktop, mobile, iphone, android, tablet
   /// * [userAgent] - Custom User-Agent (overrides device)
+  /// * [requireResolvedLinks] - Require direct organic result URLs and resolve Google redirects in returned result links. JSON only. The handler returns HTTP 503 on a budget miss (2 s fast, 2.5 s full).
   /// * [output] - Response format: json (parsed) or html (raw SERP)
   /// * [location] - City-level geo-targeting
   /// * [lr] - Language restrict (e.g. lang_en)
@@ -2330,6 +2334,7 @@ class GoogleApi {
     String? domain = 'google.com',
     String? device = 'desktop',
     String? userAgent,
+    bool? requireResolvedLinks = false,
     String? output = 'json',
     String? location,
     String? lr,
@@ -2416,6 +2421,7 @@ class GoogleApi {
       if (domain != null) r'domain': encodeQueryParameter(_serializers, domain, const FullType(String)),
       if (device != null) r'device': encodeQueryParameter(_serializers, device, const FullType(String)),
       r'user_agent': encodeQueryParameter(_serializers, userAgent, const FullType(String)),
+      if (requireResolvedLinks != null) r'require_resolved_links': encodeQueryParameter(_serializers, requireResolvedLinks, const FullType(bool)),
       if (output != null) r'output': encodeQueryParameter(_serializers, output, const FullType(String)),
       r'location': encodeQueryParameter(_serializers, location, const FullType(String)),
       r'lr': encodeQueryParameter(_serializers, lr, const FullType(String)),
